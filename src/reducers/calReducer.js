@@ -5,32 +5,38 @@ const initialState = {
     {
       id: '1',
       title: 'pansement genevieve',
-      start: '2021/08/14',
-      end: '2021/08/16',
+      start: new Date('Wed Aug 18 2021 12:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+      end: new Date('Wed Aug 18 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
     },
     {
       id: '2',
       title: 'pansement renéé',
-      start: '2021/08/20',
-      end: '2021/08/21',
+      start: new Date('Wed Aug 18 2021 15:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+      end: new Date('Wed Aug 18 2021 16:00:00 GMT+0200 (heure d’été d’Europe centrale)'),
     },
     {
       id: '3',
       title: 'pansement Jacques',
-      start: '2021/08/25',
-      end: '2021/08/26',
+      start: new Date('Tue Aug 19 2021 16:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+      end: new Date('Tue Aug 19 2021 17:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+    },
+    {
+      id: '4',
+      title: 'pansement Gillou',
+      start: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+      end: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
     },
   ],
   displayPopup: false,
   titleEvent: '',
   startDateEvent: '',
   endDateEvent: '',
+
 };
 
 const calReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case TOGGLE_POPUP:
-
       return {
         ...state,
         displayPopup: !state.displayPopup,

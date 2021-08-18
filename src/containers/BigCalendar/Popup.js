@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 // on importe le composant de présentation
-import Popup from 'src/components/BigCalendar';
+import Popup from 'src/components/BigCalendar/Popup';
 
 import {
   togglePopup, manageEventSubmit, updateTitleValue, updateStartDateValue, updateEndDateValue,

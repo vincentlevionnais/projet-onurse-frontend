@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import events from 'src/events';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+
 import moment from 'moment';
 
 import Popup from 'src/containers/BigCalendar/Popup';
@@ -13,7 +13,6 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
-// const date = new Date();
 const DnDCalendar = withDragAndDrop(Calendar);
 
 const BigCalendar = ({ events, displayPopup, setDisplayPopup }) => {
@@ -51,20 +50,20 @@ const BigCalendar = ({ events, displayPopup, setDisplayPopup }) => {
   //   setEvents([...events]);
   // };
 
-  const changeBgColor = () => {
-    const style = {
+  // const changeBgColor = () => {
+  //   const style = {
 
-      backgroundColor: color,
-      borderRadius: '3px',
-      opacity: 0.8,
-      color: 'black',
-      border: '0px',
-      display: 'block',
-    };
-    return {
-      style: style,
-    };
-  };
+  //     backgroundColor: color,
+  //     borderRadius: '3px',
+  //     opacity: 0.8,
+  //     color: 'black',
+  //     border: '0px',
+  //     display: 'block',
+  //   };
+  //   return {
+  //     style: style,
+  //   };
+  // };
 
   // console.log(events);
 
@@ -73,7 +72,7 @@ const BigCalendar = ({ events, displayPopup, setDisplayPopup }) => {
       {displayPopup && <Popup />}
       <DnDCalendar
         style={styled}
-        eventPropGetter={changeBgColor}
+        // eventPropGetter={changeBgColor}
         defaultDate={moment().toDate()}
         defaultView="month"
         events={events}

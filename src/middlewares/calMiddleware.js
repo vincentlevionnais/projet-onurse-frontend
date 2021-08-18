@@ -35,7 +35,8 @@ const calMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
+        .finally(() => {
+          console.log('je passe par finally');
           // ! enlever ce bloc .then quand le endpoint API sera OK, 
           // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
           const id = '1';
