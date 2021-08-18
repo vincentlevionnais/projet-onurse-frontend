@@ -4,11 +4,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // local imports
 import Errors from '../Errors';
 import Home from '../Home';
+import Tour from '../Tour';
 import './page.scss';
 
 const Page = () => (
   <Router>
-    <Home />
+    <Tour />
+    {/* <Home /> */}
     {/* <Errors /> */}
   </Router>
 );
