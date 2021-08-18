@@ -1,0 +1,121 @@
+@use 'src/styles/vars';
+
+.home {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    color: white;
+    background-color: vars.$darkBlue;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    a {
+      font-size: x-large;
+      border-radius: 1em;
+      background-color: vars.$lightBlue;
+
+      left: 5em;       
+    }
+
+    p {
+
+      font-family: vars.$contentFont;
+      padding-left: 1em;
+    }
+
+  }
+
+  .searchPatient {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    input {
+      background-color: vars.$lightBlue;
+      border-color: transparent;
+      width: 20em;
+      font-family: vars.$contentFont;
+      
+      color: vars.$darkBlue;
+    }
+
+    button {
+      color: vars.$lightBlue;
+      margin-left: 0.5em;
+      border-color: transparent;
+      background-color: vars.$darkBlue;
+      padding:0;
+
+    }
+  }
+
+  .patients-small {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+
+    .patient-small {
+      width: 20em;
+ 
+      
+
+
+
+      .patient-small-content {
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+        background-color: vars.$lightBlue;
+
+        h2 {
+          font-family: vars.$contentFont;
+          font-size: 1em;
+    
+        }
+
+        p {
+          font-family: vars.$contentFont;
+
+          
+        }
+
+          .patient-small-link {
+            color: vars.$pink;
+        
+             &:hover {
+               text-decoration: underline;
+             }
+           }
+         }
+        }
+      }
+.patients-small>.patient-small:nth-child(even){
+  .patient-small-content{
+  background-color: white;
+  }
+}
+//.patients-small>.patient-small:nth-child(even){
+//  background-color: white;
+//}
+
+      button {
+        color: white;
+        padding: 0.5em;
+        border-color: transparent;
+        background-color: vars.$darkBlue;
+      }
+      hr{
+        line-height: 1em;
+        background-color: vars.$green;
+        width: 5em;
+      }
+    }
+  
