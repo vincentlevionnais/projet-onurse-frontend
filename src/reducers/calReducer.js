@@ -33,12 +33,12 @@ const calReducer = (state = initialState, action = {}) => {
 
       return {
         ...state,
-        displayPopup: action.value,
+        displayPopup: !state.displayPopup,
       };
 
     case ADD_EVENT: {
       const newEvents = {
-        // id: '',
+        id: action.id,
         title: action.titleEvent,
         start: action.startDateEvent,
         end: action.endDateEvent,
@@ -47,6 +47,8 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         events: [...state.events, newEvents],
+        displayPopup: false,
+        titleEvent: '',
       };
     }
 

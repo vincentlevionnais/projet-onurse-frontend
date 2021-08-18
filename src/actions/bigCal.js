@@ -13,17 +13,17 @@ export const MANAGE_EVENT_SUBMIT = 'MANAGE_EVENT_SUBMIT';
 export const ADD_EVENT = 'ADD_EVENT';
 
 // actions creators
-export const togglePopup = (newValue) => ({
+export const togglePopup = () => ({
   type: TOGGLE_POPUP,
-  value: newValue,
 });
 
 export const manageEventSubmit = () => ({
   type: MANAGE_EVENT_SUBMIT,
 });
 
-export const addEvent = (titleEvent, startDateEvent, endDateEvent) => ({
+export const addEvent = (id, titleEvent, startDateEvent, endDateEvent) => ({
   type: ADD_EVENT,
+  id: id,
   titleEvent: titleEvent,
   startDateEvent: startDateEvent,
   endDateEvent: endDateEvent,

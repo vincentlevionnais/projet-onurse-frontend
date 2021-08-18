@@ -20,10 +20,9 @@ const mapStateToProps = (state) => ({
 // si j'ai besoin de dispatcher des actions vers le store (mettre à jour le state)
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: fonction qui dispatch l'action
-  setDisplayPopup: (value) => {
-    dispatch(togglePopup(value));
+  setDisplayPopup: () => {
+    dispatch(togglePopup());
   },
-
   manageSubmit: () => {
     dispatch(manageEventSubmit());
   },

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { togglePopup } from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';
 
@@ -15,6 +16,9 @@ const mapStateToProps = (state) => ({
 // si j'ai besoin de dispatcher des actions vers le store (mettre à jour le state)
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: fonction qui dispatch l'action
+  setDisplayPopup: () => {
+    dispatch(togglePopup());
+  },
 });
 
 // === création de l'assistant

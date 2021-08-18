@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // import DatePicker from 'react-datepicker';
 import DatePicker from 'react-datepicker';
@@ -39,19 +39,29 @@ const Popup = ({
       </select> */}
 
       <button type="submit">Valider</button>
-      <button type="button" onClick={() => setDisplayPopup(false)}>Annuler</button>
+      <button type="button" onClick={() => setDisplayPopup()}>Annuler</button>
       <button type="">Supprimer</button>
     </form>
   </div>
 );
 
+Popup.propTypes = {
+  /** Function which close the Popup */
+  setDisplayPopup: PropTypes.func.isRequired,
+  /**Function to send form value to API */
+  manageSubmit: PropTypes.func.isRequired,
+  /** value for the title event */
+  titleEvent: PropTypes.string.isRequired,
+  /** value for the start date event */
+  startDateEvent: PropTypes.string.isRequired,
+  /** value for the end date event */
+  endDateEvent: PropTypes.string.isRequired,
+  /**Function to update the title value */
+  setTitleEvent: PropTypes.func.isRequired,
+  /**Function to update the start date value */
+  setStartDateEvent: PropTypes.func.isRequired,
+  /**Function to update the end date value */
+  setEndDateEvent: PropTypes.func.isRequired,
+}
+
 export default Popup;
-// manageSubmit={manageSubmit}
-//         titleEvent={titleEvent}
-//         setTitleEvent={setTitleEvent}
-//         startDateEvent={startDateEvent}
-//         setStartDateEvent={setStartDateEvent}
-//         endDateEvent={endDateEvent}
-//         setEndDateEvent={setEndDateEvent}
-//         color={color}
-//         setColor={setColor}
