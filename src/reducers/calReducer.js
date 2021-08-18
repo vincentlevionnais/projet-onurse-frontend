@@ -5,8 +5,8 @@ const initialState = {
     {
       id: '1',
       title: 'pansement genevieve',
-      start: new Date('Wed Aug 18 2021 12:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-      end: new Date('Wed Aug 18 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+      start: new Date('2021-08-18T15:50'),
+      end: new Date('2021-08-18T16:50'),
     },
     {
       id: '2',
@@ -28,9 +28,9 @@ const initialState = {
     },
   ],
   displayPopup: false,
-  titleEvent: '',
-  startDateEvent: '',
-  endDateEvent: '',
+  reason: '',
+  datetimeStart: '',
+  datetimeEnd: '',
 
 };
 
@@ -45,35 +45,35 @@ const calReducer = (state = initialState, action = {}) => {
     case ADD_EVENT: {
       const newEvents = {
         id: action.id,
-        title: action.titleEvent,
-        start: action.startDateEvent,
-        end: action.endDateEvent,
+        reason: action.reason,
+        start: action.datetimeStart,
+        end: action.datetimeEnd,
       };
 
       return {
         ...state,
         events: [...state.events, newEvents],
         displayPopup: false,
-        titleEvent: '',
+        reason: '',
       };
     }
 
     case UPDATE_TITLE_VALUE:
       return {
         ...state,
-        titleEvent: action.value,
+        reason: action.value,
       };
 
     case UPDATE_START_DATE_VALUE:
       return {
         ...state,
-        startDateEvent: action.value,
+        datetimeStart: action.value,
       };
 
     case UPDATE_END_DATE_VALUE:
       return {
         ...state,
-        endDateEvent: action.value,
+        datetimeEnd: action.value,
       };
 
     default:

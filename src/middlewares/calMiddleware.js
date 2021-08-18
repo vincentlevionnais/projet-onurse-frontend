@@ -7,29 +7,29 @@ const calMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case MANAGE_EVENT_SUBMIT: {
       // todo appel API
-      const { titleEvent, startDateEvent, endDateEvent } = store.getState().cal;
+      const { reason, datetimeStart, datetimeEnd } = store.getState().cal;
 
       axios.post(
         'url API',
         {
-          titleEvent: titleEvent,
-          startDateEvent: startDateEvent,
-          endDateEvent: endDateEvent,
+          reason: reason,
+          datetimeStart: datetimeStart,
+          datetimeEnd: datetimeEnd,
         },
       )
         .then((response) => {
           // console.log(response);
           // todo qu'est ce que le back me retourne??
           // todo à minima l'id de l'event
-          /* response.data.titleEvent,
-            response.data.startDateEvent,
-            response.data.endDateEvent, */
+          /* response.data.reason,
+            response.data.datetimeStart,
+            response.data.datetimeEnd, */
 
           store.dispatch(addEvent(
             response.data.id,
-            titleEvent,
-            startDateEvent,
-            endDateEvent,
+            reason,
+            datetimeStart,
+            datetimeEnd,
           ));
         })
         .catch((error) => {
@@ -39,14 +39,17 @@ const calMiddleware = (store) => (next) => (action) => {
           console.log('je passe par finally');
           // ! enlever ce bloc .then quand le endpoint API sera OK, 
           // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-          const id = '1';
+          const id = '12';
 
           store.dispatch(addEvent(
             id,
-            titleEvent,
-            startDateEvent,
-            endDateEvent,
+            reason,
+            datetimeStart,
+            datetimeEnd,
           ));
+          console.log(reason);
+          console.log(datetimeStart);
+          console.log(datetimeEnd);
         });
     }
       break;

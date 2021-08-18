@@ -9,12 +9,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Popup = ({
   setDisplayPopup,
   manageSubmit,
-  titleEvent,
-  setTitleEvent,
-  startDateEvent,
-  setStartDateEvent,
-  endDateEvent,
-  setEndDateEvent,
+  reason,
+  setReason,
+  datetimeStart,
+  setdatetimeStart,
+  datetimeEnd,
+  setdatetimeEnd,
   // setColor,
 }) => (
   <div className="popup">
@@ -25,12 +25,13 @@ const Popup = ({
         manageSubmit();
       }}
     >
-      <label className="popup-text" htmlFor="title" placeholder="Titre de l'evenement" />
-      <input type="text" value={titleEvent} id="title" onChange={(evt) => setTitleEvent(evt.target.value)} />
 
-      <DatePicker locale={fr} placeholderText="Date de début" value={startDateEvent} onChange={(date) => setStartDateEvent(date)} shouldCloseOnSelect showTimeSelect timeCaption="Heure" />
+      <label className="popup-text" htmlFor="title"  />
+      <input type="text" placeholder="Titre de l'evenement" value={reason} id="title" onChange={(evt) => setReason(evt.target.value)} />
 
-      <DatePicker locale={fr} placeholderText="Date de fin" value={endDateEvent} onChange={(date) => setEndDateEvent(date)} shouldCloseOnSelect showTimeSelect timeCaption="Heure" />
+      <DatePicker className="datepicker" locale={fr} placeholderText="Date de début" value={datetimeStart} onChange={(date) => setdatetimeStart(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+
+      <DatePicker className="datepicker" locale={fr} placeholderText="Date de fin" value={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
 
       {/* <select name="color" onClick={(evt) => setColor(evt.target.value)}>
         <option value="">couleurs</option>
@@ -38,9 +39,9 @@ const Popup = ({
         <option value="green">green</option>
       </select> */}
 
-      <button type="submit">Valider</button>
-      <button type="button" onClick={() => setDisplayPopup()}>Annuler</button>
-      <button type="">Supprimer</button>
+      <button className="button" type="submit">Valider</button>
+      <button className="button" type="button" onClick={() => setDisplayPopup()}>Annuler</button>
+      <button className="button" type="">Supprimer</button>
     </form>
   </div>
 );
@@ -51,17 +52,17 @@ Popup.propTypes = {
   /**Function to send form value to API */
   manageSubmit: PropTypes.func.isRequired,
   /** value for the title event */
-  titleEvent: PropTypes.string.isRequired,
+  reason: PropTypes.string.isRequired,
   /** value for the start date event */
-  startDateEvent: PropTypes.string.isRequired,
+  // datetimeStart: PropTypes.object.isRequired,
   /** value for the end date event */
-  endDateEvent: PropTypes.string.isRequired,
+  // datetimeEnd: PropTypes.string.isRequired,
   /**Function to update the title value */
-  setTitleEvent: PropTypes.func.isRequired,
+  setReason: PropTypes.func.isRequired,
   /**Function to update the start date value */
-  setStartDateEvent: PropTypes.func.isRequired,
+  setdatetimeStart: PropTypes.func.isRequired,
   /**Function to update the end date value */
-  setEndDateEvent: PropTypes.func.isRequired,
+  setdatetimeEnd: PropTypes.func.isRequired,
 }
 
 export default Popup;

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { togglePopup } from 'src/actions/bigCal';
+import { togglePopup, dropEvent } from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';
 
@@ -18,6 +18,14 @@ const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: fonction qui dispatch l'action
   setDisplayPopup: () => {
     dispatch(togglePopup());
+  },
+  onEventDrop: (data) => {
+    const { start, end } = data;
+    // const { id } = data.event.id;
+    // expected undefined
+    // convertion de l'id en Int
+    const idInInt = parseInt(data.event.id, 10);
+    dispatch(dropEvent(start, end, idInInt));
   },
 });
 

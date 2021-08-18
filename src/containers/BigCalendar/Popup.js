@@ -11,9 +11,9 @@ import {
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
-  titleEvent: state.cal.titleEvent,
-  startDateEvent: state.cal.startDateEvent,
-  endDateEvent: state.cal.endDateEvent,
+  reason: state.cal.reason,
+  datetimeStart: state.cal.datetimeStart,
+  datetimeEnd: state.cal.datetimeEnd,
 });
 
 // === mapDispatchToProps
@@ -27,15 +27,15 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(manageEventSubmit());
   },
 
-  setTitleEvent: (newValue) => {
+  setReason: (newValue) => {
     dispatch(updateTitleValue(newValue));
   },
 
-  setStartDateEvent: (newValue) => {
+  setdatetimeStart: (newValue) => {
     dispatch(updateStartDateValue(newValue));
   },
 
-  setEndDateEvent: (newValue) => {
+  setdatetimeEnd: (newValue) => {
     dispatch(updateEndDateValue(newValue));
   },
 
