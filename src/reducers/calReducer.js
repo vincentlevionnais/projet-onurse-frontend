@@ -1,4 +1,4 @@
-import { UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT } from 'src/actions/auth';
+import { TOGGLE_POPUP, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE, UPDATE_END_DATE_VALUE } from 'src/actions/bigCal';
 
 const initialState = {
   events: [
@@ -22,11 +22,52 @@ const initialState = {
     },
   ],
   displayPopup: false,
+  titleEvent: '',
+  startDateEvent: '',
+  endDateEvent: '',
 };
 
 const calReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    
+    case TOGGLE_POPUP:
+
+      return {
+        ...state,
+        displayPopup: action.value,
+      };
+
+    case ADD_EVENT: {
+      const newEvents = {
+        // id: '',
+        title: action.titleEvent,
+        start: action.startDateEvent,
+        end: action.endDateEvent,
+      };
+
+      return {
+        ...state,
+        events: [...state.events, newEvents],
+      };
+    }
+
+    case UPDATE_TITLE_VALUE:
+      return {
+        ...state,
+        titleEvent: action.value,
+      };
+
+    case UPDATE_START_DATE_VALUE:
+      return {
+        ...state,
+        startDateEvent: action.value,
+      };
+
+    case UPDATE_END_DATE_VALUE:
+      return {
+        ...state,
+        endDateEvent: action.value,
+      };
+
     default:
       return state;
   }
