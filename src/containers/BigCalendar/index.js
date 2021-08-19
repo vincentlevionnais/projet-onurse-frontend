@@ -21,11 +21,23 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onEventDrop: (data) => {
     const { start, end } = data;
-    // const { id } = data.event.id;
-    // expected undefined
-    // convertion de l'id en Int
+    const datetimeStart = start;
+    const datetimeEnd = end;
     const idInInt = parseInt(data.event.id, 10);
-    dispatch(dropEvent(start, end, idInInt));
+    const id = idInInt;
+    const reason = data.event.title;
+    // console.log(idInInt);
+    // console.log(start);
+    // console.log(end);
+    // console.log(datetimeStart);
+    // console.log(data);
+    // const eventDropped = {
+    //   id,
+    //   datetimeStart,
+    //   datetimeEnd,
+    // };
+    // console.log(eventDropped);
+    dispatch(dropEvent(id, reason, datetimeStart, datetimeEnd));
   },
 });
 

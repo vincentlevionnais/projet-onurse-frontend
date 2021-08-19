@@ -14,11 +14,11 @@ export const ADD_EVENT = 'ADD_EVENT';
 // modifier la date d'un rendez vous via un drop et envoi des données api
 export const DROP_EVENT = 'DROP_EVENT';
 // update des données sur le calendrier
-export const UPDATE_AFTER_DROP = 'UPDATE_AFTER_DROP'; 
+export const UPDATE_AFTER_DROP = 'UPDATE_AFTER_DROP';
 
 // ========actions creators
 
-/**ouverture ou fermeture du popup */
+/** ouverture ou fermeture du popup */
 export const togglePopup = () => ({
   type: TOGGLE_POPUP,
 });
@@ -56,18 +56,18 @@ export const updateEndDateValue = (newValue) => ({
 });
 
 /** mise à jour des nouvelles données vers l'api */
-export const dropEvent = (datetimeStart, datetimeEnd, id) => ({
+export const dropEvent = (id, reason, datetimeStart, datetimeEnd) => ({
   type: DROP_EVENT,
+  id: id,
+  reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
-  id: id,
-
 });
 
 /** si retour api ok, affichage de l'event au nouvel emplacement */
 export const updateAfterDrop = (id, datetimeStart, datetimeEnd) => ({
   type: UPDATE_AFTER_DROP,
-  id: id, 
-  datetimeStart: datetimeStart, 
+  id: id,
+  datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
 });

@@ -25,31 +25,6 @@ const BigCalendar = ({ events, displayPopup, setDisplayPopup, onEventDrop }) => 
     // overflow: 'hidden',
   };
 
-  // const onEventResize = (data) => {
-  //   const { start, end } = data;
-  //   console.log(data);
-
-  //   const eventToResise = events.find((item) => item.id === events.id);
-
-  //   console.log(eventToResise);
-  //   console.log(events);
-
-  //   eventToResise.start.start = start;
-  //   eventToResise.end.end = end;
-  //   // events[0].start = start;
-  //   // events[0].end = end;
-  //   setEvents([...events]);
-  // };
-
-  // const onEventDrop = (data) => {
-  //   const { start, end } = data;
-  //   console.log(data);
-
-  //   events[0].start = start;
-  //   events[0].end = end;
-  //   setEvents([...events]);
-  // };
-
   // const changeBgColor = () => {
   //   const style = {
 
