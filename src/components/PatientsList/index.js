@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PatientSmall from './PatientSmall';
 
 import './patientsList.scss';
-import AddPatient from '../AddPatient';
 
 const PatientsList = () => (
   <div className="home">

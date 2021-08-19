@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import './addPatient.scss';
@@ -18,13 +19,13 @@ const validate = values => {
 
   if (!values.dateOfBirth) {
     errors.dateOfBirth = 'Requis';
-  } else if (!/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i.test(values.dateOfBirth)) {
+  } else if (!/^(?:(?:19|20)[0-9][0-9])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/i.test(values.dateOfBirth)) {
     errors.dateOfBirth = 'Date invalide';
   }
 
   if (!values.phoneNumber) {
     errors.phoneNumber = 'Requis';
-  } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.dateOfBirth)) {
+  } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phoneNumber)) {
     errors.phoneNumber = 'Format invalide';
   }
 
@@ -32,6 +33,42 @@ const validate = values => {
     errors.adress = 'Requis';
   } else if (values.adress.length > 40) {
     errors.adress = 'Maximum : 40 caractères';
+  }
+
+  if (!values.doctor) {
+    errors.doctor = 'Requis';
+  } else if (values.doctor.length > 40) {
+    errors.doctor = 'Maximum : 30 caractères';
+  }
+
+  if (!values.NIR) {
+    errors.NIR = 'Requis';
+  } else if(!/^((?!219-09-9999|078-05-1120)(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4})|((?!219 09 9999|078 05 1120)(?!666|000|9\d{2})\d{3} (?!00)\d{2} (?!0{4})\d{4})|((?!219099999|078051120)(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4})$/i.test(values.NIR)) {
+    errors.NIR = 'Format invalide';
+  }
+
+  if (!values.trustedPersonLastName) {
+    errors.trustedPersonLastName = 'Requis';
+  } else if (values.trustedPersonLastName.length > 20) {
+    errors.trustedPersonLastName = 'Maximum : 20 caractères';
+  }
+
+  if (!values.trustedPersonFirstName) {
+    errors.trustedPersonFirstName = 'Requis';
+  } else if (values.trustedPersonFirstName.length > 15) {
+    errors.trustedPersonFirstName = 'Maximum : 15 caractères';
+  }
+
+  if (!values.relation) {
+    errors.relation = 'Requis';
+  } else if (values.relation.length > 15) {
+    errors.relation = 'Maximum : 15 caractères';
+  }
+
+  if (!values.TrustedPersonPhoneNumber) {
+    errors.TrustedPersonPhoneNumber = 'Requis';
+  } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.TrustedPersonPhoneNumber)) {
+    errors.TrustedPersonPhoneNumber = 'Format invalide';
   }
 
   return errors;
@@ -46,7 +83,7 @@ const AddPatient = () => {
       phoneNumber: '',
       adress: '',
       doctor: '',
-      NIR: {},
+      NIR: '',
       trustedPersonLastName: '',
       trustedPersonFirstName: '',
       relation: '',
@@ -95,6 +132,7 @@ const AddPatient = () => {
             onChange={formik.handleChange}
             value={formik.values.dateOfBirth}
           />
+    {console.log( formik.values.dateOfBirth )}
         </label>
         {formik.errors.dateOfBirth ? <div>{formik.errors.dateOfBirth}</div> : null}
 
