@@ -5,10 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Errors from '../Errors';
 import Home from '../Home';
 import Tour from '../Tour';
-import PatientCard from '../PatientCard';
-import PatientsList from '../../components/PatientsList';
+import PatientCard from '../../containers/PatientCard';
+import PatientsList from '../../containers/PatientsList';
 import './page.scss';
-import data from 'src/data';
 
 const Page = () => (
   <Router>
@@ -20,9 +19,9 @@ const Page = () => (
         <Tour />
       </Route>
       <Route path="/patients" exact>
-        <PatientsList patients={data} />
+        <PatientsList />
       </Route>
-      <Route path="/patients/10">
+      <Route path="/patients/:id">
         <PatientCard />
       </Route>
       <Route>

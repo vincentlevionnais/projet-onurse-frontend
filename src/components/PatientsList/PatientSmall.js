@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PatientsList from '.';
 
 const PatientSmall = ({
+  id,
   firstname,
   lastname,
 }) => (
@@ -12,7 +13,7 @@ const PatientSmall = ({
     <div className="patient-small-content">
       <h2>
         <Link
-          to="/patients/10"
+          to={`/patients/${id}`}
           className="patient-small-link"
         >
           {`${firstname} ${lastname}`}
@@ -24,6 +25,7 @@ const PatientSmall = ({
 );
 
 PatientSmall.propTypes = {
+  id: PropTypes.number.isRequired,
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
 };

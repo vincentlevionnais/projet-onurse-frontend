@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, LogOut, Search } from 'react-feather';
+// sub component PatientSmall
 import PatientSmall from './PatientSmall';
 
 import './patientsList.scss';
 
 const PatientsList = ({ fetchPatients, patients }) => {
- /*  useEffect(() => {
+  useEffect(() => {
     fetchPatients();
-  }, []); */
+  }, []);
   return (
     <>
       <header className="header">
