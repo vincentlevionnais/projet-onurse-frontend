@@ -1,35 +1,66 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { ArrowLeft, LogOut, Search } from 'react-feather';
 import PatientSmall from './PatientSmall';
 
 import './patientsList.scss';
 
 const PatientsList = () => (
-  <div className="home">
-    <div className="header">
-      <a href="javascript:history.go(-1)">&larr;</a>
-      <p>Mes patients</p>
-    </div>
-    <form className="searchPatient">
-      <input
-        type="text"
-        placeholder="Recherche un patient"
-      />
-      <button type="submit">&#128269;</button>
-    </form>
-    <hr />
-    <div className="patients-small">
+  <>
+    <header className="header">
+      <Link
+        to="/"
+        className="home-button"
+      >
+        <ArrowLeft />
+      </Link>
+      <div className="header-infos">
+        <h1 className="header-title">
+          Mes patients
+        </h1>
+      </div>
+      <Link
+        to="/login"
+        className="logout-button"
+      >
+        <LogOut />
+      </Link>
+    </header>
 
-      <PatientSmall />
-      <PatientSmall />
-      <PatientSmall />
+    <main className="main">
+      <form className="searchPatient">
+        <input
+          type="text"
+          placeholder="Recherche un patient"
+        />
+        <button type="submit">
+          <Search />
+        </button>
+      </form>
+      <hr />
+      <div className="patients-small">
 
-    </div>
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
+        <PatientSmall />
 
-    <hr />
+      </div>
 
-    <button type="button">Ajouter un nouveau patient</button>
-  </div>
+      <hr />
+
+      <button type="button">Ajouter un nouveau patient</button>
+    </main>
+    
+  </>
 );
 
 export default PatientsList;

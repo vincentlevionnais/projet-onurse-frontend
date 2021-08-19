@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, MemoryRouter } from 'react-router-dom';
 import { ArrowLeft, LogOut } from 'react-feather';
-
 import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
@@ -12,7 +11,7 @@ const PatientCard = () => (
   <>
     <header className="header">
       <Link
-        to={window.history.back()}
+        to="/"
         className="home-button"
       >
         <ArrowLeft />

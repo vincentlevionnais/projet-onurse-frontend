@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut } from 'react-feather';
-import logo from "../../assets/images/LOGO-V2.png"
+import logo from "../../assets/images/LOGO-V3.png"
 import './home.scss';
 
 const Home = () => {

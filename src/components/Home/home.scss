@@ -13,8 +13,12 @@
   position: relative;
 
   .header-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .header-title {
       font-size: 2em;
+      width: 100%;
     }
     .date {
       display: flex;
@@ -22,6 +26,7 @@
       justify-content: space-around;
       time {
         font-size: 1.5em;
+        margin-right: 1em;
       }
     }
   }
