@@ -1,15 +1,15 @@
 // == Import npm
 import React from 'react';
-import PatientsList from '../PatientsList';
 
 // == Import
-
-import './styles.css';
+import Page from '../Page';
+import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <PatientsList />
+
+    <Page />
   </div>
 );
 
