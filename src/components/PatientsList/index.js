@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import PatientSmall from './PatientSmall';
 
 import './patientsList.scss';
+import AddPatient from '../AddPatient';
 
 const PatientsList = () => (
   <div className="home">
@@ -28,7 +30,13 @@ const PatientsList = () => (
 
     <hr />
 
-    <button type="button">Ajouter un nouveau patient</button>
+    <div className="addPatient-element">
+      <Link
+        to="/patients/add"
+        className="addPatient-button"
+      >"Ajouter un patient"
+      </Link>
+    </div>
   </div>
 );
 

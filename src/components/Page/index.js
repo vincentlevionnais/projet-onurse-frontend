@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // local imports
 import Errors from '../Errors';
 import Home from '../Home';
+import PatientsList from '../PatientsList';
+import AddPatient from '../AddPatient';
 import Tour from '../Tour';
 import './page.scss';
 
@@ -15,6 +17,12 @@ const Page = () => (
       </Route>
       <Route path="/calendar/day">
         <Tour />
+      </Route>
+      <Route path="/patients" exact>
+        <PatientsList />
+      </Route>
+      <Route path="/patients/add">
+        <AddPatient />
       </Route>
       <Route>
         <Errors />

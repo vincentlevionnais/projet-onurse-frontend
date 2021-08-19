@@ -1,0 +1,33 @@
+@use 'src/styles/vars';
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+    h2{
+      font: vars.$contentFont;
+      padding: 0.2em;
+      margin: 0.8em;
+    }
+    input{
+      border:transparent;
+      background-color: vars.$lightBlue;
+      color: black;
+      margin: 0.2em;
+      padding: 0.2em;
+    }
+    label{
+    font: vars.$contentFont;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    div{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.6em;
+      font-style: italic;
+      color: vars.$pink;
+    }
+}
