@@ -27,21 +27,24 @@ const Popup = ({
     >
 
       <label className="popup-text" htmlFor="title"  />
-      <input type="text" placeholder="Titre de l'evenement" value={reason} id="title" onChange={(evt) => setReason(evt.target.value)} />
+      <input className="popup-input" type="text" placeholder="Titre de l'evenement" value={reason} id="title" onChange={(evt) => setReason(evt.target.value)} />
 
+    <div className="datepickers">
       <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de début" selected={datetimeStart} onChange={(date) => setdatetimeStart(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
 
       <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de fin" selected={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+    </div>
 
       {/* <select name="color" onClick={(evt) => setColor(evt.target.value)}>
         <option value="">couleurs</option>
         <option value="red">rouge</option>
         <option value="green">green</option>
       </select> */}
-
+    <div className="buttons">
       <button className="button" type="submit">Valider</button>
       <button className="button" type="button" onClick={() => setDisplayPopup()}>Annuler</button>
       <button className="button" type="">Supprimer</button>
+    </div>
     </form>
   </div>
 );
