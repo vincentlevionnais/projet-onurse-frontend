@@ -43,7 +43,7 @@ const validate = values => {
 
   if (!values.NIR) {
     errors.NIR = 'Requis';
-  } else if(!/^((?!219-09-9999|078-05-1120)(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4})|((?!219 09 9999|078 05 1120)(?!666|000|9\d{2})\d{3} (?!00)\d{2} (?!0{4})\d{4})|((?!219099999|078051120)(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4})$/i.test(values.NIR)) {
+  } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.NIR)) {
     errors.NIR = 'Format invalide';
   }
 
@@ -132,7 +132,7 @@ const AddPatient = () => {
             onChange={formik.handleChange}
             value={formik.values.dateOfBirth}
           />
-    {console.log( formik.values.dateOfBirth )}
+          {console.log(formik.values.dateOfBirth)}
         </label>
         {formik.errors.dateOfBirth ? <div>{formik.errors.dateOfBirth}</div> : null}
 
@@ -237,7 +237,8 @@ const AddPatient = () => {
           onChange={formik.handleChange}
           value={formik.values.trustedPersonLastName}
         />
-        {formik.errors.trustedPersonLastName ? <div>{formik.errors.trustedPersonLastName}</div> : null}
+        {formik.errors.trustedPersonLastName ?
+          <div>{formik.errors.trustedPersonLastName}</div> : null}
 
         <input
           placeholder="Prénom"
@@ -247,7 +248,8 @@ const AddPatient = () => {
           onChange={formik.handleChange}
           value={formik.values.trustedPersonFirstName}
         />
-        {formik.errors.trustedPersonFirstName ? <div>{formik.errors.trustedPersonFirstName}</div> : null}
+        {formik.errors.trustedPersonFirstName ?
+          <div>{formik.errors.trustedPersonFirstName}</div> : null}
 
         <input
           placeholder="Relation (père, soeur, voisin...)"
