@@ -2,7 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const RdvByDay = ({ lastname, firstname, reason, hour, id }) => (
+const RdvByDay = ({
+  lastname,
+  firstname,
+  reason,
+  hour,
+  id,
+}) => (
   <div className="taskToDo">
     <time className="appointment-hour">
       {hour}
