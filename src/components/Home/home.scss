@@ -70,6 +70,7 @@
     text-align: center;
     font-size: 0.8em;
     text-transform: uppercase;
+    box-shadow: 3px 5px 5px rgba(#2C3C4B, 0.7);
   }
 
   .nav-top {
@@ -82,6 +83,7 @@
         .nav-link {
           background-color: vars.$lightBlue;
           color: vars.$darkBlue;
+          box-shadow: 3px 5px 5px rgba(vars.$mediumGrey, 0.7);
         }
       }
 
