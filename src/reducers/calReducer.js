@@ -20,12 +20,12 @@ const initialState = {
       start: new Date('Tue Aug 19 2021 16:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
       end: new Date('Tue Aug 19 2021 17:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
     },
-    {
-      id: '4',
-      title: 'pansement Gillou',
-      start: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-      end: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    },
+    // {
+    //   id: '4',
+    //   title: 'pansement Gillou',
+    //   start: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+    //   end: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
+    // },
   ],
   displayPopup: false,
   reason: '',
@@ -45,11 +45,11 @@ const calReducer = (state = initialState, action = {}) => {
     case ADD_EVENT: {
       const newEvents = {
         id: action.id,
-        reason: action.reason,
+        title: action.reason,
         start: action.datetimeStart,
         end: action.datetimeEnd,
       };
-
+      
       return {
         ...state,
         events: [...state.events, newEvents],

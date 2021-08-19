@@ -29,9 +29,9 @@ const Popup = ({
       <label className="popup-text" htmlFor="title"  />
       <input type="text" placeholder="Titre de l'evenement" value={reason} id="title" onChange={(evt) => setReason(evt.target.value)} />
 
-      <DatePicker className="datepicker" locale={fr} placeholderText="Date de début" value={datetimeStart} onChange={(date) => setdatetimeStart(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+      <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de début" selected={datetimeStart} onChange={(date) => setdatetimeStart(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
 
-      <DatePicker className="datepicker" locale={fr} placeholderText="Date de fin" value={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+      <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de fin" selected={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
 
       {/* <select name="color" onClick={(evt) => setColor(evt.target.value)}>
         <option value="">couleurs</option>
