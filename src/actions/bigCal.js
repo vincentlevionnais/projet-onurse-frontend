@@ -13,8 +13,14 @@ export const MANAGE_EVENT_SUBMIT = 'MANAGE_EVENT_SUBMIT';
 export const ADD_EVENT = 'ADD_EVENT';
 // modifier la date d'un rendez vous via un drop et envoi des données api
 export const DROP_EVENT = 'DROP_EVENT';
-// update des données sur le calendrier
+// update des données de date au drop d'un event sur le calendrier
 export const UPDATE_AFTER_DROP = 'UPDATE_AFTER_DROP';
+// modifier la date d'un rdv via un resize et envoi données à API
+export const RESIZE_EVENT = 'RESIZE_EVENT';
+// update des données date au resize d'un event sur le calendrier
+export const UPDATE_AFTER_RESIZE = 'UPDATE_AFTER_RESIZE';
+// update des données titre et autres
+export const UPDATE_ONE_EVENT = 'UPDATE_ONE_EVENT';
 
 // ========actions creators
 
@@ -55,7 +61,7 @@ export const updateEndDateValue = (newValue) => ({
   value: newValue,
 });
 
-/** mise à jour des nouvelles données vers l'api */
+/** mise à jour des nouvelles données après drop,  vers l'api */
 export const dropEvent = (id, reason, datetimeStart, datetimeEnd) => ({
   type: DROP_EVENT,
   id: id,
@@ -70,4 +76,27 @@ export const updateAfterDrop = (id, datetimeStart, datetimeEnd) => ({
   id: id,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
+});
+
+/** mise à jour des nouvelles données après resize vers l'api */
+export const resizeEvent = (id, reason, datetimeStart, datetimeEnd) => ({
+  type: RESIZE_EVENT,
+  id: id,
+  reason: reason,
+  datetimeStart: datetimeStart,
+  datetimeEnd: datetimeEnd,
+});
+
+/** si retour api ok, affichage de l'event au nouvel emplacement */
+export const updateAfterResize = (id, datetimeStart, datetimeEnd) => ({
+  type: UPDATE_AFTER_RESIZE,
+  id: id,
+  datetimeStart: datetimeStart,
+  datetimeEnd: datetimeEnd,
+});
+
+/** màj d'un event déjà crée */
+export const updateOneEvent = (evt) => ({
+  type: UPDATE_ONE_EVENT,
+  value: evt,
 });

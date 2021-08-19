@@ -15,7 +15,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
-const BigCalendar = ({ events, displayPopup, setDisplayPopup, onEventDrop }) => {
+const BigCalendar = ({ events, displayPopup, setDisplayPopup, onEventDrop, updateValueinPopup, onEventResize }) => {
   const styled = {
     height: '100vh',
     // backgroundImage: `url(${BackGroundLogo})`,
@@ -53,7 +53,11 @@ const BigCalendar = ({ events, displayPopup, setDisplayPopup, onEventDrop }) => 
         events={events}
         localizer={localizer}
         onEventDrop={(data) => onEventDrop(data)}
-        // onEventResize={onEventResize}
+        onEventResize={(data) => onEventResize(data)}
+        onSelectEvent={(evt) => {
+          setDisplayPopup();
+          updateValueinPopup(evt);
+        }}
         resizable
         selectable
         onSelectSlot={() => setDisplayPopup()}

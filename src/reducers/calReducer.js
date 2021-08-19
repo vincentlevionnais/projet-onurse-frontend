@@ -1,6 +1,6 @@
 import {
-  TOGGLE_POPUP, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE, UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP,
-  DROP_EVENT,
+  TOGGLE_POPUP, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
+  UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE,
 } from 'src/actions/bigCal';
 
 const initialState = {
@@ -78,48 +78,43 @@ const calReducer = (state = initialState, action = {}) => {
         ...state,
         datetimeEnd: action.value,
       };
-    case DROP_EVENT: {
-      // console.log(action.id);
-      // console.log(action.datetimeStart);
-      // console.log(action.datetimeEnd);
-      // todo, trouver dans le state l'id de l'event modifier
-      // todo et lui assigner les nouvelles valeurs
-      const test = [...state.events];
 
-      let eventJustDropped = state.events.filter((item) => {
-        test.splice(item.id == action.id);
-        return (item.id == action.id);
+    case UPDATE_AFTER_DROP: {
+      const newListEvents = state.events.map((items) => {
+        if (items.id == action.id) {
+          return {
+            ...items,
+            start: action.datetimeStart,
+            end: action.datetimeEnd,
+
+          };
+        }
+        return items;
       });
-      console.log(test);
 
-      console.log(eventJustDropped);
-
-      eventJustDropped = {
-        id: action.id,
-        title: action.reason,
-        start: action.datetimeStart,
-        end: action.datetimeEnd,
-      };
-      console.log(eventJustDropped);
       return {
         ...state,
-        events: [...state.events, eventJustDropped],
+        events: [...newListEvents],
       };
     }
-    // case UPDATE_AFTER_DROP: {
-    //   let eventDropped = state.events.find((item) => item.id === action.id);
+    case UPDATE_AFTER_RESIZE: {
+      const newListEvents = state.events.map((items) => {
+        if (items.id == action.id) {
+          return {
+            ...items,
+            start: action.datetimeStart,
+            end: action.datetimeEnd,
 
-    //   eventDropped = {
-    //     id: action.id,
-    //     datetimeStart: action.datetimeStart,
-    //     datetimeEnd: action.datetimeEnd,
-    //   };
+          };
+        }
+        return items;
+      });
 
-    //   return {
-    //     ...state,
-    //     events: [...state.events, eventDropped],
-    //   };
-    // }
+      return {
+        ...state,
+        events: [...newListEvents],
+      };
+    }
     default:
       return state;
   }

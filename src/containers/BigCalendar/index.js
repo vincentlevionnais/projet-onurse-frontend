@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { togglePopup, dropEvent } from 'src/actions/bigCal';
+import { togglePopup, dropEvent, resizeEvent, updateOneEvent } from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';
 
@@ -19,26 +19,34 @@ const mapDispatchToProps = (dispatch) => ({
   setDisplayPopup: () => {
     dispatch(togglePopup());
   },
+
   onEventDrop: (data) => {
     const { start, end } = data;
+    // renommage des données reçues pour coller avec le nommage general
     const datetimeStart = start;
     const datetimeEnd = end;
     const idInInt = parseInt(data.event.id, 10);
     const id = idInInt;
     const reason = data.event.title;
-    // console.log(idInInt);
-    // console.log(start);
-    // console.log(end);
-    // console.log(datetimeStart);
-    // console.log(data);
-    // const eventDropped = {
-    //   id,
-    //   datetimeStart,
-    //   datetimeEnd,
-    // };
-    // console.log(eventDropped);
     dispatch(dropEvent(id, reason, datetimeStart, datetimeEnd));
   },
+
+  onEventResize: (data) => {
+    const { start, end } = data;
+    // renommage des données reçues pour coller avec le nommage general
+    const datetimeStart = start;
+    const datetimeEnd = end;
+    const idInInt = parseInt(data.event.id, 10);
+    const id = idInInt;
+    const reason = data.event.title;
+    dispatch(resizeEvent(id, reason, datetimeStart, datetimeEnd));
+  },
+
+  // todo
+  // updateValueinPopup: (evt) => {
+  //   console.log(evt);
+  //   dispatch(updateOneEvent(evt));
+  // },
 });
 
 // === création de l'assistant
