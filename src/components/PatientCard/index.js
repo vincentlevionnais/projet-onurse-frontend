@@ -18,7 +18,7 @@ const PatientCard = () => (
       </Link>
       <div className="header-infos">
         <h1 className="header-title">
-          Mr DUPONT Jean-Yves - 75 ans
+          Fiche patient
         </h1>
       </div>
       <Link
@@ -29,6 +29,9 @@ const PatientCard = () => (
       </Link>
     </header>
     <main className="main">
+      <h2 className="patient-name">
+        Mr DUPONT Jean-Yves <br/> 75 ans
+      </h2>
       <CivilStatus />
       <Pathologies />
       <Visit />

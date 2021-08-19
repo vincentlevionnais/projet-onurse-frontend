@@ -42,7 +42,16 @@
 
 .main {
   margin: 0;
-
+  .patient-name {
+    text-align: center;
+    font-size: 1.8em;
+    color: vars.$darkBlue;
+    background-color: white;
+    font-weight: bold;
+   
+    padding: 1em;
+    font-family: vars.$titleFont;
+  }
   .section {
     width: 100%;
     padding: 1em;
@@ -91,11 +100,21 @@
     background-color: vars.$lightBlue;
     text-align: center;
 
-    span {
-      font-weight: bold;
-    }
-    div {
-      padding-bottom: 1em;
+    .visit-content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      .visit-content_infos {
+        line-height: 2em;
+        span {
+          font-weight: bold;
+        }
+      }
+      .visit-content_calendarLogo {
+        margin-left: 2em;
+      }
     }
   }
 
