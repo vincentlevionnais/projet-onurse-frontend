@@ -6,8 +6,9 @@ import Errors from '../Errors';
 import Home from '../Home';
 import Tour from '../Tour';
 import PatientCard from '../PatientCard';
-import PatientsList from '../../containers/PatientsList';
+import PatientsList from '../../components/PatientsList';
 import './page.scss';
+import data from 'src/data';
 
 const Page = () => (
   <Router>
@@ -19,7 +20,7 @@ const Page = () => (
         <Tour />
       </Route>
       <Route path="/patients" exact>
-        <PatientsList />
+        <PatientsList patients={data} />
       </Route>
       <Route path="/patients/10">
         <PatientCard />

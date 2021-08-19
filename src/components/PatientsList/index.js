@@ -7,9 +7,9 @@ import PatientSmall from './PatientSmall';
 import './patientsList.scss';
 
 const PatientsList = ({ fetchPatients, patients }) => {
-  useEffect(() => {
+ /*  useEffect(() => {
     fetchPatients();
-  }, []);
+  }, []); */
   return (
     <>
       <header className="header">

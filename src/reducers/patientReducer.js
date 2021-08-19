@@ -1,5 +1,6 @@
 import { SAVE_PATIENTS } from 'src/actions/patients';
 
+
 const initialState = {
   patientsList: [],
   patientsLoaded: false,
