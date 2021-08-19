@@ -6,7 +6,7 @@ import Errors from '../Errors';
 import Home from '../Home';
 import Tour from '../Tour';
 import PatientCard from '../PatientCard';
-import PatientsList from '../PatientsList'
+import PatientsList from '../../containers/PatientsList';
 import './page.scss';
 
 const Page = () => (
