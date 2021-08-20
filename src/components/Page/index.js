@@ -8,7 +8,6 @@ import PatientsList from '../PatientsList';
 import AddPatient from '../AddPatient';
 import Tour from '../Tour';
 import PatientCard from '../PatientCard';
-import PatientsList from '../PatientsList'
 import './page.scss';
 
 const Page = () => (
@@ -23,13 +22,11 @@ const Page = () => (
       <Route path="/patients" exact>
         <PatientsList />
       </Route>
-<<<<<<< HEAD
       <Route path="/patients/add">
         <AddPatient />
-=======
+      </Route>
       <Route path="/patients/10">
         <PatientCard />
->>>>>>> develop
       </Route>
       <Route>
         <Errors />
