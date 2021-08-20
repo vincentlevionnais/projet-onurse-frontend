@@ -16,6 +16,7 @@ const PatientsList = ({
   search,
   setPatients,
 }) => {
+
   useEffect(() => {
     fetchPatients();
   }, []);
@@ -43,30 +44,28 @@ const PatientsList = ({
       </header>
 
       <main className="main">
-        {/* <form
+        <form
           className="searchPatient"
           onSubmit={(event) => {
             event.preventDefault();
-            // excute function to search patient by his name
-            const patientToDisplay = searchPatientByName(search, patients);
-            // execute action to stock this patient in the state patients
-            // to adapt display of patients List
-            //setPatients(patientToDisplay);
+            setPatients(searchPatientByName(search, patients));
           }}
-        > */}
+        > 
         <input
           type="text"
           placeholder="Recherche un patient"
           onChange={(event) => {
             setSearch(event.currentTarget.value);
+            console.log(search);
+            // set patients state with the result of search
             setPatients(searchPatientByName(search, patients));
           }}
           value={search}
         />
-     {/*      <button type="submit">
+          <button type="submit">
             <Search />
           </button>
-        </form> */}
+        </form>
         <hr />
         <div className="patients-small">
           {patients.map((patient) => (

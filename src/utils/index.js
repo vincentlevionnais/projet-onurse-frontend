@@ -19,12 +19,13 @@ export const getPatientById = (id, patients) => {
  */
 
 export const searchPatientByName = (search, patients) => {
-  patients.filter((item) => {
+  const patientToDisplay = patients.filter((item) => {
     // transform search result in lower case
     const searchLowered = search.toLowerCase();
     // transforme patient's lastname in lower case
-    const patientNameLowered = item.lastname.toLowerCase();
+    const patientNameLowered = (item.lastname).toLowerCase();
     // return result if there is a connection between patient name and search
     return patientNameLowered.includes(searchLowered);
   });
+  return patientToDisplay;
 };
