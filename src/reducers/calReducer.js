@@ -75,8 +75,8 @@ const calReducer = (state = initialState, action = {}) => {
         events: [...state.events, newEvents],
         displayPopup: false,
         reason: '',
-        start: '',
-        end: '',
+        datetimeStart: '',
+        datetimeEnd: '',
 
       };
     }
@@ -161,29 +161,23 @@ const calReducer = (state = initialState, action = {}) => {
         ...state,
         events: [...newListEvents],
         displayPopup: false,
+        id: '',
         reason: '',
-        start: '',
-        end: '',
+        datetimeStart: '',
+        datetimeEnd: '',
 
       };
     }
     case DELETE_EVENT: {
       const newListEvents = state.events.filter((items) => items.id !== action.id);
-      //   if (items.id == action.id) {
-      //     return {
-      //       ...items,
-      //     };
-      //   }
-      //   return items;
-      // });
 
       return {
         ...state,
         events: [...newListEvents],
         displayPopup: false,
         reason: '',
-        start: '',
-        end: '',
+        datetimeStart: '',
+        datetimeEnd: '',
 
       };
     }

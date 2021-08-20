@@ -52,24 +52,8 @@ const calMiddleware = (store) => (next) => (action) => {
             ));
           })
           .catch((error) => {
-            // todo gerer l'erreur, alert avec message et
-            // todo ouverture auto du popup pour nouvel essaie?
-            console.log(error);
+            alert('Une erreur est survenue merci de réessayer');
           });
-        // .finally(() => {
-        //   console.log('je passe par finally');
-        //   // console.log(datetimeStartGoodFormat);
-        //   // console.log(datetimeEndGoodFormat);
-        //   // ! enlever ce bloc .then quand le endpoint API sera OK,
-        //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-        //   const idTest = '12';
-        //   store.dispatch(addEvent(
-        //     idTest,
-        //     reason,
-        //     datetimeStart,
-        //     datetimeEnd,
-        //   ));
-        // });
       }
       else {
         const datetimeStartGoodFormat = moment(datetimeStart).format();
@@ -91,23 +75,8 @@ const calMiddleware = (store) => (next) => (action) => {
             ));
           })
           .catch((error) => {
-            // todo gerer l'erreur, alert avec message et
-            // todo ouverture auto du popup pour nouvel essaie?
-            console.log(error);
+            alert('Une erreur est survenue merci de réessayer');
           });
-        // .finally(() => {
-        //   // console.log('je passe par finally');
-        //   // console.log(datetimeStartGoodFormat);
-        //   // console.log(datetimeEndGoodFormat);
-        //   // ! enlever ce bloc .then quand le endpoint API sera OK,
-        //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-        //   store.dispatch(updateOneEvent(
-        //     id,
-        //     reason,
-        //     datetimeStart,
-        //     datetimeEnd,
-        //   ));
-        // });
       }
     }
       break;
@@ -129,9 +98,6 @@ const calMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // console.log(response);
-          // todo le back me retourne un 201, alert avec un mot "ajout ok"??
-          // todo et dispatch action
           store.dispatch(updateAfterDrop(
             action.id,
             action.datetimeStart,
@@ -140,20 +106,8 @@ const calMiddleware = (store) => (next) => (action) => {
           alert('Modification effectué');
         })
         .catch((error) => {
-          // todo gerer l'erreur, alert avec message et
-          // todo ouverture auto du popup pour nouvel essaie?
           alert('une erreur est survenue, merci de réessayer');
-          console.log(error);
         });
-      // .finally(() => {
-      //   // ! enlever ce bloc .then quand le endpoint API sera OK,
-      //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-      //   store.dispatch(updateAfterDrop(
-      //     action.id,
-      //     action.datetimeStart,
-      //     action.datetimeEnd,
-      //   ));
-      // });
     }
       break;
     case RESIZE_EVENT: {
@@ -173,9 +127,6 @@ const calMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // console.log(response);
-          // todo le back me retourne un 201, alert avec un mot "ajout ok"??
-          // todo et dispatch action
           store.dispatch(updateAfterResize(
             action.id,
             action.datetimeStart,
@@ -184,21 +135,8 @@ const calMiddleware = (store) => (next) => (action) => {
           alert('Modification effectué');
         })
         .catch((error) => {
-          // todo gerer l'erreur, alert avec message et
-          // todo ouverture auto du popup pour nouvel essaie?
-          console.log(error);
           alert('une erreur est survenue, merci de réessayer');
         });
-      // .finally(() => {
-      //   console.log('je passe par finally resize');
-      //   // ! enlever ce bloc .then quand le endpoint API sera OK,
-      //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-      //   store.dispatch(updateAfterResize(
-      //     action.id,
-      //     action.datetimeStart,
-      //     action.datetimeEnd,
-      //   ));
-      // });
     }
       break;
     case DELETE_ONE_EVENT:
@@ -212,23 +150,8 @@ const calMiddleware = (store) => (next) => (action) => {
           store.dispatch(deleteEvent(action.id));
         })
         .catch((error) => {
-          console.log(error);
           alert('une erreur est survenue, merci de réessayer');
         });
-      // .finally(() => {
-      //   console.log('je passe par finally');
-      //   console.log(datetimeStartGoodFormat);
-      //   console.log(datetimeEndGoodFormat);
-      //   // ! enlever ce bloc .then quand le endpoint API sera OK,
-      //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-      //   const id = '12';
-      //   store.dispatch(addEvent(
-      //     id,
-      //     reason,
-      //     datetimeStart,
-      //     datetimeEnd,
-      //   ));
-      // });
       break;
     default:
   }
