@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import './addPatient.scss';
@@ -269,7 +268,8 @@ const AddPatient = () => {
           onChange={formik.handleChange}
           value={formik.values.TrustedPersonPhoneNumber}
         />
-        {formik.errors.TrustedPersonPhoneNumber ? <div>{formik.errors.TrustedPersonPhoneNumber}</div> : null}
+        {formik.errors.TrustedPersonPhoneNumber
+          ? <div>{formik.errors.TrustedPersonPhoneNumber}</div> : null}
 
         <input
           placeholder="Adresse"
@@ -280,7 +280,6 @@ const AddPatient = () => {
           value={formik.values.TrustedPersonAdress}
         />
         {formik.errors.TrustedPersonAdress ? <div>{formik.errors.TrustedPersonAdress}</div> : null}
-
 
         <button type="submit">Valider</button>
       </form>

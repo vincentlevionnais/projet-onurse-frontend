@@ -34,4 +34,13 @@ form{
       color: vars.$pink;
 
     }
+    button{
+      font: vars.$contentFont;
+      color: white;
+      background-color: vars.$darkBlue;
+      padding: 0.5em;
+      margin: 0.8em;
+      text-align: center;
+     
+    }
 }
