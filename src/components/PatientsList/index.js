@@ -2,16 +2,24 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, LogOut, Search } from 'react-feather';
+
 // sub component PatientSmall
 import PatientSmall from './PatientSmall';
-
+// function to search patient by name
+import { searchPatientByName } from '../../utils';
 import './patientsList.scss';
 
-const PatientsList = ({ fetchPatients, patients }) => {
-  console.log(patients);
+const PatientsList = ({
+  fetchPatients,
+  patients,
+  setSearch,
+  search,
+  setPatients,
+}) => {
   useEffect(() => {
     fetchPatients();
   }, []);
+
   return (
     <>
       <header className="header">
@@ -35,15 +43,30 @@ const PatientsList = ({ fetchPatients, patients }) => {
       </header>
 
       <main className="main">
-        <form className="searchPatient">
-          <input
-            type="text"
-            placeholder="Recherche un patient"
-          />
-          <button type="submit">
+        {/* <form
+          className="searchPatient"
+          onSubmit={(event) => {
+            event.preventDefault();
+            // excute function to search patient by his name
+            const patientToDisplay = searchPatientByName(search, patients);
+            // execute action to stock this patient in the state patients
+            // to adapt display of patients List
+            //setPatients(patientToDisplay);
+          }}
+        > */}
+        <input
+          type="text"
+          placeholder="Recherche un patient"
+          onChange={(event) => {
+            setSearch(event.currentTarget.value);
+            setPatients(searchPatientByName(search, patients));
+          }}
+          value={search}
+        />
+     {/*      <button type="submit">
             <Search />
           </button>
-        </form>
+        </form> */}
         <hr />
         <div className="patients-small">
           {patients.map((patient) => (
@@ -65,6 +88,9 @@ const PatientsList = ({ fetchPatients, patients }) => {
 PatientsList.propTypes = {
   fetchPatients: PropTypes.func.isRequired,
   patients: PropTypes.array.isRequired,
+  setSearch: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  setPatients: PropTypes.func.isRequired,
 };
 
 export default PatientsList;

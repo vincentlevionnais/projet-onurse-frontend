@@ -1,6 +1,6 @@
 import React from 'react';
-import pansement from 'src/assets/images/pansementLoader.png';
 import './loader.scss';
+
 const Loader = () => (
   <div className="loader">
     <div className="loadingio-spinner-spinner-ympf6ujg3pr">

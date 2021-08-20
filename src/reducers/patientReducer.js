@@ -1,9 +1,9 @@
-import { SAVE_PATIENTS } from 'src/actions/patients';
-
+import { SAVE_PATIENTS, SET_SEARCH, SET_PATIENTS } from 'src/actions/patients';
 
 const initialState = {
   patientsList: [],
   patientsLoaded: false,
+  search: '',
 };
 
 function patientReducer(state = initialState, action = {}) {
@@ -13,6 +13,16 @@ function patientReducer(state = initialState, action = {}) {
         ...state,
         patientsList: action.patients,
         patientsLoaded: true,
+      };
+    case SET_SEARCH:
+      return {
+        ...state,
+        search: action.search,
+      };
+    case SET_PATIENTS:
+      return {
+        ...state,
+        patientsList: action.patients,
       };
     default:
       return state;
