@@ -57,9 +57,15 @@ const PatientsList = () => (
 
       <hr />
 
-      <button type="button">Ajouter un nouveau patient</button>
+      <div className="addPatient-element">
+        <Link
+          to="/patients/add"
+          className="addPatient-button"
+        >"Ajouter un patient"
+        </Link>
+      </div>
     </main>
-    
+
   </>
 );
 
