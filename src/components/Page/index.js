@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // local imports
 import Errors from '../Errors';
 import Home from '../Home';
+import PatientsList from '../PatientsList';
+import AddPatient from '../AddPatient';
 import Tour from '../Tour';
 import PatientCard from '../PatientCard';
-import PatientsList from '../PatientsList';
-
 import './page.scss';
 
 const Page = () => (
@@ -21,6 +21,9 @@ const Page = () => (
       </Route>
       <Route path="/patients" exact>
         <PatientsList />
+      </Route>
+      <Route path="/patients/add">
+        <AddPatient />
       </Route>
       <Route path="/patients/10">
         <PatientCard />
