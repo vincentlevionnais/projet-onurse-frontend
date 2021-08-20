@@ -131,7 +131,6 @@ const AddPatient = () => {
             onChange={formik.handleChange}
             value={formik.values.dateOfBirth}
           />
-          {console.log(formik.values.dateOfBirth)}
         </label>
         {formik.errors.dateOfBirth ? <div>{formik.errors.dateOfBirth}</div> : null}
 
