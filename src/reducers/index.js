@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 
 // on importe tous les reducers
 import calReducer from './calReducer';
+import patientsReducer from './patientsReducer';
+
 // import nomReducer2 from './reducer2';
 // etc
 
@@ -10,6 +12,7 @@ import calReducer from './calReducer';
 // chaque reducer
 const rootReducer = combineReducers({
   cal: calReducer,
+  patients: patientsReducer,
   // nomDuTiroir2: nomReducer2,
   // etc
 });

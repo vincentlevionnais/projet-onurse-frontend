@@ -2,10 +2,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // local imports
+import AddPatient from '../../containers/addPatient';
 import Errors from '../Errors';
 import Home from '../Home';
 import PatientsList from '../PatientsList';
-import AddPatient from '../AddPatient';
+
 import Tour from '../Tour';
 import PatientCard from '../PatientCard';
 import './page.scss';
@@ -31,6 +32,7 @@ const Page = () => (
       <Route>
         <Errors />
       </Route>
+
     </Switch>
   </Router>
 );
