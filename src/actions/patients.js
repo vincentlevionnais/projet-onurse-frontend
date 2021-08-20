@@ -1,8 +1,9 @@
 export const SUBMIT_NEW_PATIENT = 'SUBMIT_NEW_PATIENT';
 export const ADD_PATIENT = 'ADD_PATIENT';
 
-export const submitNewPatient = () => ({
+export const submitNewPatient = (data) => ({
   type: SUBMIT_NEW_PATIENT,
+  patient: data,
 });
 
 export const addPatient = (id, lastName, firstName, dateOfBirth, phoneNumber, adress,

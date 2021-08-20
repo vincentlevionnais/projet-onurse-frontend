@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import './addPatient.scss';
@@ -73,26 +74,28 @@ const validate = values => {
   return errors;
 };
 
-const AddPatient = () => {
+const AddPatient = ({ onNewPatient }) => {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
-      phoneNumber: '',
-      adress: '',
-      doctor: '',
-      NIR: '',
+      firstName: 'qsdqsd',
+      lastName: 'qsdqsd',
+      dateOfBirth: '2000-05-05',
+      phoneNumber: '0505050505',
+      adress: 'qsdsqdqs',
+      doctor: 'qsdqsd',
+      NIR: '111111111111111',
       trustedPersonLastName: '',
       trustedPersonFirstName: '',
       relation: '',
       TrustedPersonPhoneNumber: '',
     },
     validate,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values) => {
+      onNewPatient(values);
     },
+
   });
+
   return (
 
     <div className="home">
@@ -235,8 +238,8 @@ const AddPatient = () => {
           onChange={formik.handleChange}
           value={formik.values.trustedPersonLastName}
         />
-        {formik.errors.trustedPersonLastName ?
-          <div>{formik.errors.trustedPersonLastName}</div> : null}
+        {formik.errors.trustedPersonLastName
+          ? <div>{formik.errors.trustedPersonLastName}</div> : null}
 
         <input
           placeholder="Prénom"
@@ -285,6 +288,11 @@ const AddPatient = () => {
 
     </div>
   );
+};
+
+AddPatient.propTypes = {
+
+  onNewPatient: PropTypes.func.isRequired,
 };
 
 export default AddPatient;

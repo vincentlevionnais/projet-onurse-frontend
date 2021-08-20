@@ -9,8 +9,8 @@ const patientsMiddleware = (store) => (next) => (action) => {
       const {
         lastName, firstName, dateOfBirth, phoneNumber, adress, complement, information,
         doctor, NIR, mutual, AMC, pathology, trustedPersonLastName, trustedPersonFirstName,
-        relation, TrustedPersonPhoneNumber, TrustedPersonAdress
-      } = store.getState().cal;
+        relation, TrustedPersonPhoneNumber, TrustedPersonAdress,
+      } = store.getState().patientsMiddleware;
 
       axios.post(
         'http://35.173.138.41/projet-o-nurse/public/api/patients',
