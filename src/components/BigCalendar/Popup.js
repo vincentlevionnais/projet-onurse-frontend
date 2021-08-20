@@ -56,15 +56,11 @@ Popup.propTypes = {
   manageSubmit: PropTypes.func.isRequired,
   /** value for the title event */
   reason: PropTypes.string.isRequired,
-  /** value for the start date event */
-  // datetimeStart: PropTypes.object.isRequired,
-  /** value for the end date event */
-  // datetimeEnd: PropTypes.string.isRequired,
   /**Function to update the title value */
   setReason: PropTypes.func.isRequired,
-  /**Function to update the start date value */
+  /**Function to update the start date and time value */
   setdatetimeStart: PropTypes.func.isRequired,
-  /**Function to update the end date value */
+  /**Function to update the end date and time value */
   setdatetimeEnd: PropTypes.func.isRequired,
 }
 

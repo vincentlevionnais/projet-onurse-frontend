@@ -2,13 +2,11 @@
 import React from 'react';
 
 // == Import
-import BigCalendar from 'src/containers/BigCalendar';
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <BigCalendar />
   </div>
 );
 

@@ -58,6 +58,9 @@ const calReducer = (state = initialState, action = {}) => {
         events: [...state.events, newEvents],
         displayPopup: false,
         reason: '',
+        start: '',
+        end: '',
+
       };
     }
 
