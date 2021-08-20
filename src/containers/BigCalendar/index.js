@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { togglePopup, dropEvent, resizeEvent, updateOneEvent } from 'src/actions/bigCal';
+import { togglePopup, dropEvent, resizeEvent, updateOneEvent, updateTitleValue, updateStartDateValue,updateEndDateValue, updateIdValue } from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';
 
@@ -42,11 +42,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(resizeEvent(id, reason, datetimeStart, datetimeEnd));
   },
 
-  // todo
-  // updateValueinPopup: (evt) => {
-  //   console.log(evt);
-  //   dispatch(updateOneEvent(evt));
-  // },
+  updateValueinPopup: (evt) => {
+    dispatch(updateTitleValue(evt.title));
+    dispatch(updateStartDateValue(evt.start));
+    dispatch(updateEndDateValue(evt.end));
+    dispatch(updateIdValue(evt.id));
+    // dispatch(updateOneEvent(evt));
+  },
 });
 
 // === création de l'assistant

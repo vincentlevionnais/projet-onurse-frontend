@@ -2,7 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import {
   FETCH_EVENTS, saveEvents, MANAGE_EVENT_SUBMIT, addEvent, DROP_EVENT, updateAfterDrop,
-  RESIZE_EVENT, updateAfterResize, UPDATE_ONE_EVENT,
+  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent,
 } from 'src/actions/bigCal';
 
 const calMiddleware = (store) => (next) => (action) => {
@@ -14,7 +14,6 @@ const calMiddleware = (store) => (next) => (action) => {
         'http://35.173.138.41/projet-o-nurse/public/api/appointments',
       )
         .then((response) => {
-          console.log(response.data);
           store.dispatch(saveEvents(response.data));
         })
         .catch((error) => {
@@ -23,49 +22,93 @@ const calMiddleware = (store) => (next) => (action) => {
         });
       break;
     case MANAGE_EVENT_SUBMIT: {
-      // todo appel API
-      const { reason, datetimeStart, datetimeEnd } = store.getState().cal;
-      /* ici je dois formater les dates pour l'envoi API
+      const {
+        id, reason, datetimeStart, datetimeEnd,
+      } = store.getState().cal;
+
+      console.log(id);
+
+      if (id === '') {
+        /* ici je dois formater les dates pour l'envoi API
        /!\ lors du dispatch de mon action j'envoi les données non formater pour que le calendrier
        puisse les lire.
       */
-      const datetimeStartGoodFormat = moment(datetimeStart).format();
-      const datetimeEndGoodFormat = moment(datetimeEnd).format();
-      axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/appointments',
-        {
-          reason: reason,
-          datetimeStart: datetimeStartGoodFormat,
-          datetimeEnd: datetimeEndGoodFormat,
-        },
-      )
-        .then((response) => {
-          store.dispatch(addEvent(
-            response.data.id,
-            reason,
-            datetimeStart,
-            datetimeEnd,
-          ));
-        })
-        .catch((error) => {
-          // todo gerer l'erreur, alert avec message et
-          // todo ouverture auto du popup pour nouvel essaie?
-          console.log(error);
-        });
-      // .finally(() => {
-      //   console.log('je passe par finally');
-      //   console.log(datetimeStartGoodFormat);
-      //   console.log(datetimeEndGoodFormat);
-      //   // ! enlever ce bloc .then quand le endpoint API sera OK,
-      //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
-      //   const id = '12';
-      //   store.dispatch(addEvent(
-      //     id,
-      //     reason,
-      //     datetimeStart,
-      //     datetimeEnd,
-      //   ));
-      // });
+        const datetimeStartGoodFormat = moment(datetimeStart).format();
+        const datetimeEndGoodFormat = moment(datetimeEnd).format();
+        axios.post(
+          'http://35.173.138.41/projet-o-nurse/public/api/appointments',
+          {
+            reason: reason,
+            datetimeStart: datetimeStartGoodFormat,
+            datetimeEnd: datetimeEndGoodFormat,
+          },
+        )
+          .then((response) => {
+            store.dispatch(addEvent(
+              response.data.id,
+              reason,
+              datetimeStart,
+              datetimeEnd,
+            ));
+          })
+          .catch((error) => {
+            // todo gerer l'erreur, alert avec message et
+            // todo ouverture auto du popup pour nouvel essaie?
+            console.log(error);
+          });
+        // .finally(() => {
+        //   console.log('je passe par finally');
+        //   // console.log(datetimeStartGoodFormat);
+        //   // console.log(datetimeEndGoodFormat);
+        //   // ! enlever ce bloc .then quand le endpoint API sera OK,
+        //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
+        //   const idTest = '12';
+        //   store.dispatch(addEvent(
+        //     idTest,
+        //     reason,
+        //     datetimeStart,
+        //     datetimeEnd,
+        //   ));
+        // });
+      }
+      else {
+        const datetimeStartGoodFormat = moment(datetimeStart).format();
+        const datetimeEndGoodFormat = moment(datetimeEnd).format();
+        axios.put(
+          `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,
+          {
+            reason: reason,
+            datetimeStart: datetimeStartGoodFormat,
+            datetimeEnd: datetimeEndGoodFormat,
+          },
+        )
+          .then((response) => {
+            store.dispatch(updateOneEvent(
+              id,
+              reason,
+              datetimeStart,
+              datetimeEnd,
+            ));
+          })
+          .catch((error) => {
+            // todo gerer l'erreur, alert avec message et
+            // todo ouverture auto du popup pour nouvel essaie?
+            console.log(error);
+          });
+        // .finally(() => {
+        //   // console.log('je passe par finally');
+        //   // console.log(datetimeStartGoodFormat);
+        //   // console.log(datetimeEndGoodFormat);
+        //   // ! enlever ce bloc .then quand le endpoint API sera OK,
+        //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
+        //   store.dispatch(updateOneEvent(
+        //     id,
+        //     reason,
+        //     datetimeStart,
+        //     datetimeEnd,
+        //   ));
+        // });
+      }
     }
       break;
 
@@ -76,6 +119,7 @@ const calMiddleware = (store) => (next) => (action) => {
       */
       const datetimeStartGoodFormat = moment(action.datetimeStart).format();
       const datetimeEndGoodFormat = moment(action.datetimeEnd).format();
+      console.log(datetimeStartGoodFormat);
       axios.put(
         `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
         {
@@ -157,16 +201,35 @@ const calMiddleware = (store) => (next) => (action) => {
       // });
     }
       break;
-      // case UPDATE_ONE_EVENT:
-      //   console.log(action.value);
-      //   const { reason, datetimeStart, datetimeEnd } = store.getState().cal;
+    case DELETE_ONE_EVENT:
+      axios.delete(
+        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
 
-      //     return {
-      //       ...state,
-      //       reason: action.value
-      //     }
+      )
+        .then((response) => {
+          alert('Rendez-vous supprimé');
 
-    //   break;
+          store.dispatch(deleteEvent(action.id));
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('une erreur est survenue, merci de réessayer');
+        });
+      // .finally(() => {
+      //   console.log('je passe par finally');
+      //   console.log(datetimeStartGoodFormat);
+      //   console.log(datetimeEndGoodFormat);
+      //   // ! enlever ce bloc .then quand le endpoint API sera OK,
+      //   // ! il ne sert qu'a faire un test d'ajout de l'event à l'ecran
+      //   const id = '12';
+      //   store.dispatch(addEvent(
+      //     id,
+      //     reason,
+      //     datetimeStart,
+      //     datetimeEnd,
+      //   ));
+      // });
+      break;
     default:
   }
 
