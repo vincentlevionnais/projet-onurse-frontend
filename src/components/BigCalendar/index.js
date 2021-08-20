@@ -15,7 +15,14 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
-const BigCalendar = ({ events, displayPopup, setDisplayPopup, onEventDrop, updateValueinPopup, onEventResize }) => {
+const BigCalendar = ({
+  events,
+  displayPopup,
+  setDisplayPopup,
+  onEventDrop,
+  onEventResize,
+  updateValueinPopup,
+}) => {
   const styled = {
     height: '100vh',
     // backgroundImage: `url(${BackGroundLogo})`,
@@ -84,6 +91,8 @@ BigCalendar.propTypes = {
   displayPopup: PropTypes.bool.isRequired,
   setDisplayPopup: PropTypes.func.isRequired,
   onEventDrop: PropTypes.func.isRequired,
+  onEventResize: PropTypes.func.isRequired,
+  updateValueinPopup: PropTypes.func.isRequired,
 };
 
 export default BigCalendar;

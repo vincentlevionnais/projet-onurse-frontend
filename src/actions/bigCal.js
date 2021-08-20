@@ -21,7 +21,10 @@ export const RESIZE_EVENT = 'RESIZE_EVENT';
 export const UPDATE_AFTER_RESIZE = 'UPDATE_AFTER_RESIZE';
 // update des données titre et autres
 export const UPDATE_ONE_EVENT = 'UPDATE_ONE_EVENT';
-
+// recuperations des events depuis API
+export const FETCH_EVENTS = 'FETCH_EVENTS';
+// sauvegarde des events dans le state
+export const SAVE_EVENTS = 'SAVE_EVENTS';
 // ========actions creators
 
 /** ouverture ou fermeture du popup */
@@ -99,4 +102,15 @@ export const updateAfterResize = (id, datetimeStart, datetimeEnd) => ({
 export const updateOneEvent = (evt) => ({
   type: UPDATE_ONE_EVENT,
   value: evt,
+});
+
+/** recuperation des events depuis API */
+export const fetchEvents = () => ({
+  type: FETCH_EVENTS,
+});
+
+/** sauvegarde des données dans le state */
+export const saveEvents = (events) => ({
+  type: SAVE_EVENTS,
+  events: events,
 });

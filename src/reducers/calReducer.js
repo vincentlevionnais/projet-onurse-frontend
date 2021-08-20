@@ -1,5 +1,5 @@
 import {
-  TOGGLE_POPUP, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
+  TOGGLE_POPUP, SAVE_EVENTS, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
   UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE,
 } from 'src/actions/bigCal';
 
@@ -44,7 +44,12 @@ const calReducer = (state = initialState, action = {}) => {
         ...state,
         displayPopup: !state.displayPopup,
       };
-
+    case SAVE_EVENTS:
+      return {
+        ...state,
+        events: action.events,
+        // todo mettre le loader à false
+      }
     case ADD_EVENT: {
       const newEvents = {
         id: action.id,
