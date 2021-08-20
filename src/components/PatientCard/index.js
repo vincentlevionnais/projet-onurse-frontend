@@ -45,11 +45,11 @@ const PatientCard = ({ patients }) => {
           {...patientToDisplay}
         />
         <Pathologies
-          pathologies={patientToDisplay.pathology}
+          {...patientToDisplay}
         />
         <Visit />
         <Informations
-          note={patientToDisplay.note}
+          {...patientToDisplay}
         />
       </main>
     </>

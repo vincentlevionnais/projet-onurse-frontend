@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CivilStatus = ({
-  birthDate,
+  birthdate,
   completeAdress,
   phone,
   trustedPerson,
@@ -10,13 +10,24 @@ const CivilStatus = ({
   mutualName,
   mutualNumberAmc,
   doctorName,
-}) => (
+}) => {
+  
+  // convert birthdate props (string) in Date Object
+  const birthdateInDate = new Date(birthdate);
+
+  return (
   <div className="section civil-status">
     <h2 className="civil-status_title title">
       Etat-civil
     </h2>
     <div className="identity">
-      <p>Date de naissance : {birthDate}</p>
+      <p>Date de naissance : 
+        {
+          `${birthdateInDate.getDate()}
+          /${birthdateInDate.getMonth()}
+          /${birthdateInDate.getFullYear()}`
+        }
+      </p>
       <p>Adresse: {completeAdress}</p>
       <p>Téléphone: {phone}</p>
     </div>
@@ -35,17 +46,21 @@ const CivilStatus = ({
       <p>Dr {doctorName}</p>
     </div>
   </div>
-);
+)};
 
 CivilStatus.propTypes = {
-  birthDate: PropTypes.string.isRequired,
-  adress: PropTypes.string.isRequired,
+  birthdate: PropTypes.string.isRequired,
+  completeAdress: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
-  trustedPerson: PropTypes.string.isRequired,
+  trustedPerson: PropTypes.string,
   nir: PropTypes.string.isRequired,
   mutualName: PropTypes.string.isRequired,
   mutualNumberAmc: PropTypes.string.isRequired,
   doctorName: PropTypes.string.isRequired,
 };
+
+CivilStatus.defaultProps = {
+  trustedPerson: "",
+}
 
 export default CivilStatus;

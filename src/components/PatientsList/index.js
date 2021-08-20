@@ -8,6 +8,7 @@ import PatientSmall from './PatientSmall';
 import './patientsList.scss';
 
 const PatientsList = ({ fetchPatients, patients }) => {
+  console.log(patients);
   useEffect(() => {
     fetchPatients();
   }, []);
