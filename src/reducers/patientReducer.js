@@ -37,12 +37,15 @@ function patientReducer(state = initialState, action = {}) {
         trustedPersonLastName: action.pathology,
         trustedPersonFirstName: action.trustedPersonFirstName,
         relation: action.relation,
-        TrustedPersonPhoneNumber: action.TrustedPersonPhoneNumber,
-        TrustedPersonAdress: action.TrustedPersonAdress,
+        trustedPersonPhoneNumber: action.trustedPersonPhoneNumber,
+        trustedPersonAdress: action.trustedPersonAdress,
+
       };
+
       return {
         ...state,
         patientsList: [...state.patientsList, newPatient],
+
         lastName: '',
         firstName: '',
         dateOfBirth: '',
@@ -58,8 +61,9 @@ function patientReducer(state = initialState, action = {}) {
         trustedPersonLastName: '',
         trustedPersonFirstName: '',
         relation: '',
-        TrustedPersonPhoneNumber: '',
-        TrustedPersonAdress: '',
+        trustedPersonPhoneNumber: '',
+        trustedPersonAdress: '',
+
       };
     }
 

@@ -33,7 +33,7 @@ export const submitNewPatient = (data) => ({
 
 export const addPatient = (id, lastName, firstName, dateOfBirth, phoneNumber, adress,
   complement, information, doctor, NIR, mutual, AMC, pathology, trustedPersonLastName,
-  trustedPersonFirstName, relation, TrustedPersonPhoneNumber, TrustedPersonAdress) => (
+  trustedPersonFirstName, relation, trustedPersonPhoneNumber, trustedPersonAdress) => (
   {
     type: ADD_PATIENT,
     lastName: lastName,
@@ -51,8 +51,8 @@ export const addPatient = (id, lastName, firstName, dateOfBirth, phoneNumber, ad
     trustedPersonLastName: trustedPersonLastName,
     trustedPersonFirstName: trustedPersonFirstName,
     relation: relation,
-    TrustedPersonPhoneNumber: TrustedPersonPhoneNumber,
-    TrustedPersonAdress: TrustedPersonAdress,
+    trustedPersonPhoneNumber: trustedPersonPhoneNumber,
+    trustedPersonAdress: trustedPersonAdress,
 
   });
 

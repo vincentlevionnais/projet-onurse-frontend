@@ -289,7 +289,7 @@ const AddPatient = ({ onNewPatient }) => {
             value={formik.values.TrustedPersonPhoneNumber}
           />
           {formik.errors.TrustedPersonPhoneNumber
-            ? <div>{formik.errors.TrustedPersonPhoneNumber}</div> : null}
+            ? <div>{formik.errors.trustedPersonPhoneNumber}</div> : null}
 
           <input
             placeholder="Adresse"
@@ -297,7 +297,7 @@ const AddPatient = ({ onNewPatient }) => {
             name="TrustedPersonAdress"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.TrustedPersonAdress}
+            value={formik.values.trustedPersonAdress}
           />
           {formik.errors.TrustedPersonAdress ? <div>{formik.errors.TrustedPersonAdress}</div> : null}
 
