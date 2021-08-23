@@ -14,9 +14,17 @@ const PatientsList = ({
   patients,
   setSearch,
   search,
-  setPatients,
 }) => {
 
+  // search patients to display in terms of the search of user
+  let patientToDisplay;
+  if (search.length === 0) {
+    patientToDisplay = patients;
+  } else {
+    patientToDisplay=searchPatientByName(search, patients);
+  };
+
+  // load patients list
   useEffect(() => {
     fetchPatients();
   }, []);
@@ -44,31 +52,28 @@ const PatientsList = ({
       </header>
 
       <main className="main">
-        <form
+        {/* <form
           className="searchPatient"
           onSubmit={(event) => {
             event.preventDefault();
-            setPatients(searchPatientByName(search, patients));
+            patientToDisplay = searchPatientByName(search, patients);
           }}
-        > 
-        <input
+        >  */}
+        <input className="input-search"
           type="text"
           placeholder="Recherche un patient"
           onChange={(event) => {
             setSearch(event.currentTarget.value);
-            console.log(search);
-            // set patients state with the result of search
-            setPatients(searchPatientByName(search, patients));
           }}
           value={search}
         />
-          <button type="submit">
+         {/*  <button type="submit">
             <Search />
           </button>
-        </form>
+        </form> */}
         <hr />
         <div className="patients-small">
-          {patients.map((patient) => (
+          {patientToDisplay.map((patient) => (
             <PatientSmall
               {...patient}
               key={patient.id}
@@ -89,7 +94,6 @@ PatientsList.propTypes = {
   patients: PropTypes.array.isRequired,
   setSearch: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
-  setPatients: PropTypes.func.isRequired,
 };
 
 export default PatientsList;

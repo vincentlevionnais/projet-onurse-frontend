@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPatients, setSearch, setPatients } from 'src/actions/patients';
+import { fetchPatients, setSearch } from 'src/actions/patients';
 // on importe le composant de présentation
 import PatientsList from 'src/components/PatientsList';
 
@@ -17,9 +17,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setSearch: (search) => {
     dispatch(setSearch(search));
-  },
-  setPatients: (patients) => {
-    dispatch(setPatients(patients));
   },
 });
 
