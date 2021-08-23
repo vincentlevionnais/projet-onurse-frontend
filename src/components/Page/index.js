@@ -14,7 +14,7 @@ import Loader from '../Loader';
 
 const Page = () => (
   <Router>
-    <Loader />
+   {/*  <Loader /> */}
     <Switch>
       <Route path="/" exact>
         <Home />
