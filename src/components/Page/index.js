@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // local imports
+import BigCalendar from 'src/containers/BigCalendar';
 import Errors from '../Errors';
 import Home from '../Home';
 import PatientsList from '../PatientsList';
@@ -27,6 +28,9 @@ const Page = () => (
       </Route>
       <Route path="/patients/10">
         <PatientCard />
+      </Route>
+      <Route path="/calendar" exact>
+        <BigCalendar />
       </Route>
       <Route>
         <Errors />
