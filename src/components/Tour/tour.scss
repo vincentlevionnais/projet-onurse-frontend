@@ -37,43 +37,64 @@
 }
 .main {
   margin-top: 2em;
-}
-.taskToDo {
-  position: relative;
-  background-color: vars.$lightBlue;
-  margin: 1em;
-  color: vars.$darkBlue;
 
-  .appointment-hour {
-    position: absolute;
-    left: 0;
-    background-color: vars.$green;
-    width: 50px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-  }
+  .taskToDo {
+    position: relative;
+    background-color: vars.$lightBlue;
+    margin: 1em;
+    color: vars.$darkBlue;
 
-  .appointment-infos {
-    margin-left: 50px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1em;
-
-    span:not(:last-child) {
-      margin-right: 0.5em;
+    .appointment-hour {
+      position: absolute;
+      left: 0;
+      background-color: vars.$green;
+      width: 50px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
     }
 
-    .firstname {
-      text-transform: uppercase;
-    }
+    .appointment-patient {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-    .appointment-reason {
-      margin-left: 0.5em;
+      .appointment-infos {
+        margin-left: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1em;
+    
+        span:not(:last-child) {
+          margin-right: 0.5em;
+          font-weight: bold;
+        }
+    
+        .firstname {
+          text-transform: uppercase;
+        }
+    
+        .appointment-reason {
+          margin-left: 0.5em;
+        }
+      }
+    
+      .checked {
+        align-self: center;
+        font-size: 0.6em;
+        *{
+          background-color: vars.$darkBlue;
+          color: white;
+          margin-right: 1em;
+          border-radius: 100%;
+          padding: 0.5em;
+        }
+      }
     }
+      
   }
 }
+

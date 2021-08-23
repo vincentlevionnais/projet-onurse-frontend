@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Check, X } from 'react-feather';
 import PropTypes from 'prop-types';
 
 const RdvByDay = ({
@@ -16,6 +17,7 @@ const RdvByDay = ({
     <Link
       to={`/patients/${id}`}
     >
+    <div className="appointment-patient">
       <div className="appointment-infos">
         <span className="firstname">
           {firstname}
@@ -28,7 +30,14 @@ const RdvByDay = ({
           {reason}
         </span>
       </div>
+      <div className="checked">
+        <Check />
+        <X />
+      </div>
+    </div>
+
     </Link>
+    
   </div>
 );
 
