@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BigCalendar from 'src/containers/BigCalendar';
 import Errors from '../Errors';
 import Home from '../Home';
-import PatientsList from '../PatientsList';
 import AddPatient from '../AddPatient';
 import Tour from '../Tour';
 import PatientCard from '../../containers/PatientCard';

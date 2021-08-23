@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, LogOut, Search } from 'react-feather';
+import { ArrowLeft, LogOut } from 'react-feather';
 
 // sub component PatientSmall
 import PatientSmall from './PatientSmall';
@@ -10,7 +10,6 @@ import { searchPatientByName } from '../../utils';
 import './patientsList.scss';
 
 const PatientsList = ({
-  fetchPatients,
   patients,
   setSearch,
   search,
@@ -23,11 +22,6 @@ const PatientsList = ({
   } else {
     patientToDisplay=searchPatientByName(search, patients);
   };
-
-  // load patients list
-  useEffect(() => {
-    fetchPatients();
-  }, []);
 
   return (
     <>
@@ -52,13 +46,6 @@ const PatientsList = ({
       </header>
 
       <main className="main">
-        {/* <form
-          className="searchPatient"
-          onSubmit={(event) => {
-            event.preventDefault();
-            patientToDisplay = searchPatientByName(search, patients);
-          }}
-        >  */}
         <input className="input-search"
           type="text"
           placeholder="Recherche un patient"
@@ -67,10 +54,6 @@ const PatientsList = ({
           }}
           value={search}
         />
-         {/*  <button type="submit">
-            <Search />
-          </button>
-        </form> */}
         <hr />
         <div className="patients-small">
           {patientToDisplay.map((patient) => (
@@ -96,7 +79,6 @@ const PatientsList = ({
 };
 
 PatientsList.propTypes = {
-  fetchPatients: PropTypes.func.isRequired,
   patients: PropTypes.array.isRequired,
   setSearch: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
