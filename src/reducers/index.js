@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+<<<<<<< HEAD
 // on importe tous les reducers
 import calReducer from './calReducer';
 // import nomReducer2 from './reducer2';
@@ -12,6 +13,13 @@ const rootReducer = combineReducers({
   cal: calReducer,
   // nomDuTiroir2: nomReducer2,
   // etc
+=======
+// import all reducers
+import patientReducer from './patientReducer';
+
+const rootReducer = combineReducers({
+  patients: patientReducer,
+>>>>>>> feature/FEATURE_DYNAMISATION_PATIENT_LIST
 });
 
 export default rootReducer;
