@@ -20,57 +20,48 @@ function patientReducer(state = initialState, action = {}) {
         search: action.search,
       };
 
-    case ADD_PATIENT: {
-      const newPatient = {
-        id: action.id,
-
-        lastName: action.lastName,
-        firstName: action.firstName,
-        dateOfBirth: action.dateOfBirth,
-        phoneNumber: action.phoneNumber,
-        adress: action.adress,
-        complement: action.complement,
-        information: action.information,
-
-        doctor: action.doctor,
-        nir: action.nir,
-        mutual: action.mutual,
-        AMC: action.AMC,
-        pathology: action.pathology,
-
-        trustedPersonLastName: action.pathology,
-        trustedPersonFirstName: action.trustedPersonFirstName,
-        relation: action.relation,
-        TrustedPersonPhoneNumber: action.TrustedPersonPhoneNumber,
-        TrustedPersonAdress: action.TrustedPersonAdress,
-
-      };
-
-      return {
-        ...state,
-        patients: [...state.patients, newPatient],
-
-        lastName: '',
-        firstName: '',
-        dateOfBirth: '',
-        phoneNumber: '',
-        adress: '',
-        complement: '',
-        information: '',
-
-        doctor: '',
-        nir: '',
-        mutual: '',
-        AMC: '',
-        pathology: '',
-
-        trustedPersonLastName: '',
-        trustedPersonFirstName: '',
-        relation: '',
-        TrustedPersonPhoneNumber: '',
-        TrustedPersonAdress: '',
-
-      };
+      case ADD_PATIENT: {
+        const newPatient = {
+          id: action.id,
+          lastName: action.lastName,
+          firstName: action.firstName,
+          dateOfBirth: action.dateOfBirth,
+          phoneNumber: action.phoneNumber,
+          adress: action.adress,
+          complement: action.complement,
+          information: action.information,
+          doctor: action.doctor,
+          nir: action.nir,
+          mutual: action.mutual,
+          AMC: action.AMC,
+          pathology: action.pathology,
+          trustedPersonLastName: action.pathology,
+          trustedPersonFirstName: action.trustedPersonFirstName,
+          relation: action.relation,
+          TrustedPersonPhoneNumber: action.TrustedPersonPhoneNumber,
+          TrustedPersonAdress: action.TrustedPersonAdress,
+        };
+        return {
+          ...state,
+          patientsList: [...state.patientsList, newPatient],
+          lastName: '',
+          firstName: '',
+          dateOfBirth: '',
+          phoneNumber: '',
+          adress: '',
+          complement: '',
+          information: '',
+          doctor: '',
+          nir: '',
+          mutual: '',
+          AMC: '',
+          pathology: '',
+          trustedPersonLastName: '',
+          trustedPersonFirstName: '',
+          relation: '',
+          TrustedPersonPhoneNumber: '',
+          TrustedPersonAdress: '',
+        };
     }
 
     default:
