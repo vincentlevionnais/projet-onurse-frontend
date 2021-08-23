@@ -29,3 +29,44 @@ export const searchPatientByName = (search, patients) => {
   });
   return patientToDisplay;
 };
+
+/**
+ * Validate the CreateAccount components values
+ * @param {strings} values input value
+ */
+
+export const createAccountValidateValue = (values) => {
+  const errors = {};
+
+  if (!values.lastName) {
+    errors.lastName = 'Requis';
+  }
+  else if (values.lastName.length > 64) {
+    errors.lastName = 'Maximum : 20 caractères';
+  }
+  if (!values.firstName) {
+    errors.firstName = 'Requis';
+  }
+  else if (values.firstName.length > 64) {
+    errors.firstName = 'Maximum : 15 caractères';
+  }
+
+  if (!values.email) {
+    errors.email = 'Requis';
+  }
+  else if (values.firstName.email > 255) {
+    errors.firstName = 'Maximum : 255 caractères';
+  }
+  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Adresse email invalide';
+  }
+
+  if (!values.phoneNumber) {
+    errors.phoneNumber = 'Requis';
+  }
+  else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phoneNumber)) {
+    errors.phoneNumber = 'Format invalide';
+  }
+
+  return errors;
+};
