@@ -37,6 +37,7 @@ const Page = () => (
       <Route>
         <Errors />
       </Route>
+
     </Switch>
   </Router>
 );
