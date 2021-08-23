@@ -5,38 +5,31 @@ const patientsMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le autMiddleware: ', action);
 
   switch (action.type) {
-    case SUBMIT_NEW_PATIENT: {
-      const {
-        lastName, firstName, dateOfBirth, phoneNumber, adress, complement, information,
-        doctor, NIR, mutual, AMC, pathology, trustedPersonLastName, trustedPersonFirstName,
-        relation, TrustedPersonPhoneNumber, TrustedPersonAdress,
-      } = store.getState().patientsMiddleware;
-
-      axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/patients',
+    case SUBMIT_NEW_PATIENT:
+      console.log(action);
+      axios.post('http://35.173.138.41/projet-o-nurse/public/api/patients',
         {
-          lastName: lastName,
-          firstName: firstName,
-          dateOfBirth: dateOfBirth,
-          phoneNumber: phoneNumber,
-          adress: adress,
-          complement: complement,
-          information: information,
-          doctor: doctor,
-          NIR: NIR,
-          mutual: mutual,
-          AMC: AMC,
-          pathology: pathology,
-          trustedPersonLastName: trustedPersonLastName,
-          trustedPersonFirstName: trustedPersonFirstName,
-          relation: relation,
-          TrustedPersonPhoneNumber: TrustedPersonPhoneNumber,
-          TrustedPersonAdress: TrustedPersonAdress,
+          lastName: action.lastName,
+          firstName: action.firstName,
+          dateOfBirth: action.dateOfBirth,
+          phoneNumber: action.phoneNumber,
+          adress: action.adress,
+          complement: action.complement,
+          information: action.information,
+          doctor: action.doctor,
+          nir: action.nir,
+          mutual: action.mutual,
+          AMC: action.AMC,
+          pathology: action.pathology,
+          trustedPersonLastName: action.trustedPersonLastName,
+          trustedPersonFirstName: action.trustedPersonFirstName,
+          relation: action.relation,
+          TrustedPersonPhoneNumber: action.TrustedPersonPhoneNumber,
+          TrustedPersonAdress: action.TrustedPersonAdress,
 
-        },
-      )
+        })
         .then((response) => {
-          console.log(response);
+        //  console.log(response);
 
           store.dispatch(addPatient(
             response.data.id,
@@ -48,7 +41,7 @@ const patientsMiddleware = (store) => (next) => (action) => {
             response.data.complement,
             response.data.information,
             response.data.doctor,
-            response.data.NIR,
+            response.data.nir,
             response.data.mutual,
             response.data.AMC,
             response.data.pathology,
@@ -63,7 +56,7 @@ const patientsMiddleware = (store) => (next) => (action) => {
           console.log(error);
         })
         .finally();
-    }
+
       break;
     default:
   }

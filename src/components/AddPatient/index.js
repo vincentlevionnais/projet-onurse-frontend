@@ -41,10 +41,10 @@ const validate = values => {
     errors.doctor = 'Maximum : 30 caractères';
   }
 
-  if (!values.NIR) {
-    errors.NIR = 'Requis';
-  } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.NIR)) {
-    errors.NIR = 'Format invalide';
+  if (!values.nir) {
+    errors.nir = 'Requis';
+  } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.nir)) {
+    errors.nir = 'Format invalide';
   }
 
   if (!values.trustedPersonLastName) {
@@ -77,13 +77,13 @@ const validate = values => {
 const AddPatient = ({ onNewPatient }) => {
   const formik = useFormik({
     initialValues: {
-      firstName: 'qsdqsd',
-      lastName: 'qsdqsd',
-      dateOfBirth: '2000-05-05',
-      phoneNumber: '0505050505',
-      adress: 'qsdsqdqs',
-      doctor: 'qsdqsd',
-      NIR: '111111111111111',
+      firstName: '',
+      lastName: '',
+      dateOfBirth: '',
+      phoneNumber: '',
+      adress: '',
+      doctor: '',
+      nir: '',
       trustedPersonLastName: '',
       trustedPersonFirstName: '',
       relation: '',
@@ -91,6 +91,7 @@ const AddPatient = ({ onNewPatient }) => {
     },
     validate,
     onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
       onNewPatient(values);
     },
 
@@ -190,13 +191,13 @@ const AddPatient = ({ onNewPatient }) => {
 
         <input
           placeholder="N° de Sécurité Sociale"
-          id="NIR"
-          name="NIR"
-          type="number"
+          id="nir"
+          name="nir"
+          type="text"
           onChange={formik.handleChange}
-          value={formik.values.NIR}
+          value={formik.values.nir}
         />
-        {formik.errors.NIR ? <div>{formik.errors.NIR}</div> : null}
+        {formik.errors.nir ? <div>{formik.errors.nir}</div> : null}
 
         <input
           placeholder="Nom de la mutuelle"

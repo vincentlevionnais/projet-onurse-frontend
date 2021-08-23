@@ -13,7 +13,7 @@ const initialState = {
     information: '',
 
     doctor: '',
-    NIR: '',
+    nir: '',
     mutual: '',
     AMC: '',
     pathology: '',
@@ -41,7 +41,7 @@ const patientsReducer = (state = initialState, action = {}) => {
         information: action.information,
 
         doctor: action.doctor,
-        NIR: action.NIR,
+        nir: action.nir,
         mutual: action.mutual,
         AMC: action.AMC,
         pathology: action.pathology,
@@ -67,7 +67,7 @@ const patientsReducer = (state = initialState, action = {}) => {
         information: '',
 
         doctor: '',
-        NIR: '',
+        nir: '',
         mutual: '',
         AMC: '',
         pathology: '',

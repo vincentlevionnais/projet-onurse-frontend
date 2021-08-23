@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
   information: state.information,
 
   doctor: state.doctor,
-  NIR: state.NIR,
+  nir: state.nir,
   mutual: state.mutual,
   AMC: state.AMC,
   pathology: state.pathology,
