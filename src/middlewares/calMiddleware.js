@@ -2,7 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import {
   FETCH_EVENTS, saveEvents, MANAGE_EVENT_SUBMIT, addEvent, DROP_EVENT, updateAfterDrop,
-  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent,
+  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded,
 } from 'src/actions/bigCal';
 
 const calMiddleware = (store) => (next) => (action) => {
@@ -19,6 +19,9 @@ const calMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           // todo gerer l'erreur
           console.log(error);
+        })
+        .finally (() => {
+          store.dispatch(setEventsLoaded());
         });
       break;
     case MANAGE_EVENT_SUBMIT: {

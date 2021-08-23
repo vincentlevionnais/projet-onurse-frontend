@@ -8,6 +8,8 @@ export const SAVE_PATIENTS = 'SAVE_PATIENTS';
 export const SET_SEARCH = 'SET_SEARCH';
 export const SUBMIT_NEW_PATIENT = 'SUBMIT_NEW_PATIENT';
 export const ADD_PATIENT = 'ADD_PATIENT';
+// change state patientsLoaded;
+export const SET_PATIENTS_LOADED = 'SET_PATIENTS_LOADED';
 
 // ========= action creators
 export const fetchPatients = () => ({
@@ -53,3 +55,7 @@ export const addPatient = (id, lastName, firstName, dateOfBirth, phoneNumber, ad
     TrustedPersonAdress: TrustedPersonAdress,
 
   });
+
+export const setPatientLoaded = () => ({
+  type: SET_PATIENTS_LOADED,
+});

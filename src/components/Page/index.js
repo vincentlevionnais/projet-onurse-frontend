@@ -11,7 +11,6 @@ import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
 
-
 const Page = () => (
   <Router>
     <Switch>
