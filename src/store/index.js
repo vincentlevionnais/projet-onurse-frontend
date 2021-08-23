@@ -4,13 +4,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from 'src/reducers';
 
 import calMiddleware from 'src/middlewares/calMiddleware';
-import patientsMiddleware from '../middlewares/patientsMiddleware';
+import patientMiddleware from '../middlewares/patientMiddleware';
 
 // on combine devTools avec les middlewares
 const enhancers = composeWithDevTools(
   applyMiddleware(
+    patientMiddleware,
     calMiddleware,
-    patientsMiddleware,
   ),
 );
 

@@ -1,18 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Pathologies = () => (
+const Pathologies = ({ pathology }) => (
   <div className="section pathologies">
     <h2 className="pathologies-title title">
       Pathologies
     </h2>
     <div className="pathologies-list">
-      <ul>
-        <li>DNID</li>
-        <li>Sclérose en plaque</li>
-        <li>Cancer du pancrés</li>
-      </ul>
+      <p>
+      {pathology}
+      </p>
     </div>
   </div>
 );
+
+Pathologies.propTypes = {
+  pathology: PropTypes.string,
+};
+
+Pathologies.defaultProps = {
+  pathology: "",
+};
 
 export default Pathologies;

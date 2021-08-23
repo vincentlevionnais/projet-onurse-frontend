@@ -1,33 +1,25 @@
-import {
-  ADD_PATIENT,
-} from 'src/actions/patients';
+import { SAVE_PATIENTS, SET_SEARCH, ADD_PATIENT } from 'src/actions/patients';
 
 const initialState = {
-  patients: {
-    lastName: '',
-    firstName: '',
-    dateOfBirth: '',
-    phoneNumber: '',
-    adress: '',
-    complement: '',
-    information: '',
-
-    doctor: '',
-    nir: '',
-    mutual: '',
-    AMC: '',
-    pathology: '',
-
-    trustedPersonLastName: '',
-    trustedPersonFirstName: '',
-    relation: '',
-    TrustedPersonPhoneNumber: '',
-    TrustedPersonAdress: '',
-  },
+  patientsList: [],
+  patientsLoaded: false,
+  search: '',
 };
 
-const patientsReducer = (state = initialState, action = {}) => {
+function patientReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case SAVE_PATIENTS:
+      return {
+        ...state,
+        patientsList: action.patients,
+        patientsLoaded: true,
+      };
+    case SET_SEARCH:
+      return {
+        ...state,
+        search: action.search,
+      };
+
     case ADD_PATIENT: {
       const newPatient = {
         id: action.id,
@@ -84,6 +76,6 @@ const patientsReducer = (state = initialState, action = {}) => {
     default:
       return state;
   }
-};
+}
 
-export default patientsReducer;
+export default patientReducer;

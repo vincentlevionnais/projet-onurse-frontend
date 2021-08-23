@@ -1,10 +1,19 @@
 import axios from 'axios';
-import { SUBMIT_NEW_PATIENT, addPatient } from 'src/actions/patients';
+import { FETCH_PATIENTS, savePatients, SUBMIT_NEW_PATIENT, addPatient } from 'src/actions/patients';
 
-const patientsMiddleware = (store) => (next) => (action) => {
-  // console.log('on a intercepté une action dans le autMiddleware: ', action);
-
+const patientMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
+    case FETCH_PATIENTS:
+      axios.get('http://35.173.138.41/projet-o-nurse/public/api/patients')
+        .then((response) => {
+          // console.log(response);
+          store.dispatch(savePatients(response.data));
+        })
+        .catch((error => {
+          console.log(error);
+        }));
+      break;
+
     case SUBMIT_NEW_PATIENT:
       console.log(action);
       axios.post('http://35.173.138.41/projet-o-nurse/public/api/patients',
@@ -29,7 +38,7 @@ const patientsMiddleware = (store) => (next) => (action) => {
 
         })
         .then((response) => {
-        //  console.log(response);
+          //  console.log(response);
 
           store.dispatch(addPatient(
             response.data.id,
@@ -65,4 +74,4 @@ const patientsMiddleware = (store) => (next) => (action) => {
   next(action);
 };
 
-export default patientsMiddleware;
+export default patientMiddleware;

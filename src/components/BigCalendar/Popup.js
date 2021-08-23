@@ -9,12 +9,14 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Popup = ({
   setDisplayPopup,
   manageSubmit,
+  id,
   reason,
   setReason,
   datetimeStart,
   setdatetimeStart,
   datetimeEnd,
   setdatetimeEnd,
+  deleteEvent,
   // setColor,
 }) => (
   <div className="popup">
@@ -43,7 +45,7 @@ const Popup = ({
     <div className="buttons">
       <button className="button" type="submit">Valider</button>
       <button className="button" type="button" onClick={() => setDisplayPopup()}>Annuler</button>
-      <button className="button" type="">Supprimer</button>
+      <button className="button" type="button" onClick={() => {deleteEvent(id)}} >Supprimer</button>
     </div>
     </form>
   </div>
@@ -62,6 +64,8 @@ Popup.propTypes = {
   setdatetimeStart: PropTypes.func.isRequired,
   /**Function to update the end date and time value */
   setdatetimeEnd: PropTypes.func.isRequired,
+  /** Function to delete a event in BDD */
+  deleteEvent: PropTypes.func.isRequired,
 }
 
 export default Popup;
