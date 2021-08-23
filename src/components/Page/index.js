@@ -14,7 +14,6 @@ import './page.scss';
 
 const Page = () => (
   <Router>
-   {/*  <Loader /> */}
     <Switch>
       <Route path="/" exact>
         <Home />
