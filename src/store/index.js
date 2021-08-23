@@ -11,7 +11,6 @@ const enhancers = composeWithDevTools(
   applyMiddleware(
     patientMiddleware,
     calMiddleware,
-    // ... d'autres middlewares
   ),
 );
 
