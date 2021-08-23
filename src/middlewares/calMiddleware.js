@@ -26,8 +26,6 @@ const calMiddleware = (store) => (next) => (action) => {
         id, reason, datetimeStart, datetimeEnd,
       } = store.getState().cal;
 
-      console.log(id);
-
       if (id === '') {
         /* ici je dois formater les dates pour l'envoi API
        /!\ lors du dispatch de mon action j'envoi les données non formater pour que le calendrier
@@ -88,7 +86,6 @@ const calMiddleware = (store) => (next) => (action) => {
       */
       const datetimeStartGoodFormat = moment(action.datetimeStart).format();
       const datetimeEndGoodFormat = moment(action.datetimeEnd).format();
-      console.log(datetimeStartGoodFormat);
       axios.put(
         `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
         {
