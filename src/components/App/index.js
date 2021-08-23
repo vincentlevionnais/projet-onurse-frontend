@@ -7,9 +7,10 @@ import Page from 'src/components/Page';
 import './styles.scss';
 
 // == Composant
-const App = ({ loadEvents }) => {
+const App = ({ loadEvents, fetchPatients }) => {
   useEffect(() => {
     loadEvents();
+    fetchPatients();
   }, []);
 
   return (
@@ -21,6 +22,7 @@ const App = ({ loadEvents }) => {
 
 App.propTypes = {
   loadEvents: PropTypes.func.isRequired,
+  fetchPatients: PropTypes.func.isRequired,
 };
 // == Export
 export default App;

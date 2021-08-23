@@ -41,32 +41,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .searchPatient {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
-    input {
-      background-color: vars.$lightBlue;
-      border-color: transparent;
-      width: 20em;
-      font-family: vars.$contentFont;
-      padding: 0.5em;
-      color: vars.$darkBlue;
-    }
   
-    button {
-      color: vars.$lightBlue;
-      margin-left: 2em;
-      border-color: transparent;
-      background-color: vars.$darkBlue;
-      padding:0.5em;
-      font-size: 0.2em;
-    }
+  .input-search {
+    background-color: vars.$lightBlue;
+    border-color: transparent;
+    width: 20em;
+    font-family: vars.$contentFont;
+    padding: 0.5em;
+    color: vars.$darkBlue;
+    align-self: center;
   }
+
   
   .patients-small {
     display: flex;

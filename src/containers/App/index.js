@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchEvents } from 'src/actions/bigCal';
+import { fetchPatients } from 'src/actions/patients';
 // on importe le composant de présentation
 import App from 'src/components/App';
 
@@ -18,6 +19,10 @@ const mapDispatchToProps = (dispatch) => ({
   loadEvents: () => {
     dispatch(fetchEvents());
   },
+
+  fetchPatients: () => {
+    dispatch(fetchPatients());
+  }
 });
 
 // === création de l'assistant
