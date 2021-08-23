@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // local imports
 import BigCalendar from 'src/containers/BigCalendar';
+import LoginForm from 'src/containers/LoginForm';
 import Errors from '../Errors';
 import Home from '../Home';
 import AddPatient from '../AddPatient';
@@ -16,6 +17,12 @@ const Page = () => (
   <Router>
     <Loader />
     <Switch>
+      <Route path="/login">
+        <LoginForm />
+      </Route>
+      <Route path="/account/create/account">
+        <div>page ajout d'un compte</div>
+      </Route>
       <Route path="/" exact>
         <Home />
       </Route>

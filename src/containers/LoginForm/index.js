@@ -1,29 +1,34 @@
 import { connect } from 'react-redux';
 
-import { fetchEvents } from 'src/actions/bigCal';
-import { fetchPatients } from 'src/actions/patients';
 // on importe le composant de présentation
-import App from 'src/components/App';
+import LoginForm from 'src/components/LoginForm';
+
+import { updateLoginField, submitLogin, logOut } from 'src/actions/login';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
- // todo recuperer le loader dans le state et côté composant APP le mettre en if implicite
+  email: state.log.email,
+  password: state.log.password,
+  loggedMessage: state.log.loggedMessage,
 });
 
 // === mapDispatchToProps
 // si j'ai besoin de dispatcher des actions vers le store (mettre à jour le state)
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: fonction qui dispatch l'action
-  loadEvents: () => {
-    dispatch(fetchEvents());
+  changeField: (newvalue, name) => {
+    dispatch(updateLoginField(newvalue, name));
   },
 
-  fetchPatients: () => {
-    dispatch(fetchPatients());
+  handleLogin: () => {
+    dispatch(submitLogin());
+  },
+  handleLogout: () => {
+    dispatch(logOut());
   },
 });
 
 // === création de l'assistant
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
