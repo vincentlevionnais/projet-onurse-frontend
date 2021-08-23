@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, LogOut } from 'react-feather';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 
@@ -32,56 +34,75 @@ const BigCalendar = ({
     // overflow: 'hidden',
   };
 
-  // const changeBgColor = () => {
-  //   const style = {
+  const changeBgColor = () => {
+    const style = {
 
-  //     backgroundColor: color,
-  //     borderRadius: '3px',
-  //     opacity: 0.8,
-  //     color: 'black',
-  //     border: '0px',
-  //     display: 'block',
-  //   };
-  //   return {
-  //     style: style,
-  //   };
-  // };
-
-  // console.log(events);
+      backgroundColor: '#00A79D',
+      color: '#fff',
+      borderRadius: '3px',
+      opacity: 0.8,
+      border: '0px',
+      display: 'block',
+    };
+    return {
+      style: style,
+    };
+  };
 
   return (
-    <div className="calendar">
-      {displayPopup && <Popup />}
-      <DnDCalendar
-        style={styled}
-        // eventPropGetter={changeBgColor}
-        defaultDate={moment().toDate()}
-        defaultView="month"
-        events={events}
-        localizer={localizer}
-        onEventDrop={(data) => onEventDrop(data)}
-        onEventResize={(data) => onEventResize(data)}
-        onSelectEvent={(evt) => {
-          setDisplayPopup();
-          updateValueinPopup(evt);
-        }}
-        resizable
-        selectable
-        onSelectSlot={() => setDisplayPopup()}
-        startAccessor="start"
-        endAccessor="end"
-        culture="fr"
-        messages={{
-          next: '>',
-          previous: '<',
-          today: 'Auj.',
-          month: 'Mois',
-          week: 'Semaine',
-          day: 'Jour',
-          monday: 'Lun.',
-        }}
-      />
-    </div>
+    <>
+      <header className="header">
+        <Link
+          to="/"
+          className="home-button"
+        >
+          <ArrowLeft />
+        </Link>
+        <div className="header-infos">
+          <h1 className="header-title">
+            Mon Calendrier
+          </h1>
+        </div>
+        <Link
+          to="/login"
+          className="logout-button"
+        >
+          <LogOut />
+        </Link>
+      </header>
+      <div className="calendar">
+        {displayPopup && <Popup />}
+        <DnDCalendar
+          style={styled}
+          eventPropGetter={changeBgColor}
+          defaultDate={moment().toDate()}
+          defaultView="month"
+          events={events}
+          localizer={localizer}
+          onEventDrop={(data) => onEventDrop(data)}
+          onEventResize={(data) => onEventResize(data)}
+          onSelectEvent={(evt) => {
+            setDisplayPopup();
+            updateValueinPopup(evt);
+          }}
+          resizable
+          selectable
+          onSelectSlot={() => setDisplayPopup()}
+          startAccessor="start"
+          endAccessor="end"
+          culture="fr"
+          messages={{
+            next: '>',
+            previous: '<',
+            today: 'Auj.',
+            month: 'Mois',
+            week: 'Semaine',
+            day: 'Jour',
+            monday: 'Lun.',
+          }}
+        />
+      </div>
+    </>
   );
 };
 
