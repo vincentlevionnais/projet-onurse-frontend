@@ -6,7 +6,7 @@ import BigCalendar from 'src/containers/BigCalendar';
 import Errors from '../Errors';
 import Home from '../Home';
 import AddPatient from '../../containers/addPatient';
-import Tour from '../Tour';
+import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
