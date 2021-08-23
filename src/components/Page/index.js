@@ -10,11 +10,10 @@ import Tour from '../Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
-import Loader from '../Loader';
+
 
 const Page = () => (
   <Router>
-    <Loader />
     <Switch>
       <Route path="/" exact>
         <Home />

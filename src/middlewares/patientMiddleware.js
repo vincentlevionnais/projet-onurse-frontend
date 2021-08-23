@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_PATIENTS, savePatients } from 'src/actions/patients';
+import { FETCH_PATIENTS, savePatients, setPatientLoaded } from 'src/actions/patients';
 
 const patientMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -11,7 +11,10 @@ const patientMiddleware = (store) => (next) => (action) => {
         })
         .catch((error => {
           console.log(error);
-        }));
+        }))
+        .finally (() => {
+          store.dispatch(setPatientLoaded());
+        })
       break;
     default:
   }

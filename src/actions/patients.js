@@ -5,6 +5,8 @@ export const FETCH_PATIENTS = 'FETCH_PATIENTS';
 export const SAVE_PATIENTS = 'SAVE_PATIENTS';
 // stock search in state
 export const SET_SEARCH = 'SET_SEARCH';
+// change state patientsLoaded;
+export const SET_PATIENTS_LOADED = 'SET_PATIENTS_LOADED';
 
 // ========= action creators
 export const fetchPatients = () => ({
@@ -21,3 +23,6 @@ export const setSearch = (search) => ({
   search: search,
 });
 
+export const setPatientLoaded = () => ({
+  type: SET_PATIENTS_LOADED,
+})

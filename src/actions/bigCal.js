@@ -31,6 +31,8 @@ export const DELETE_EVENT = 'DELETE_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 // sauvegarde des events dans le state
 export const SAVE_EVENTS = 'SAVE_EVENTS';
+// change eventsLoaded
+export const SET_EVENTS_LOADED = 'SET_EVENTS_LOADED';
 
 // ========================actions creators
 
@@ -141,4 +143,9 @@ export const fetchEvents = () => ({
 export const saveEvents = (events) => ({
   type: SAVE_EVENTS,
   events: events,
+});
+
+/** change la valeur de eventsLoaded quand les données sont chargées */
+export const setEventsLoaded = () => ({
+  type: SET_EVENTS_LOADED,
 });
