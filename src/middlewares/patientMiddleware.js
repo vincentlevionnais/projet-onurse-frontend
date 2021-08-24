@@ -60,7 +60,8 @@ const patientMiddleware = (store) => (next) => (action) => {
           .catch((error) => {
             console.log(error);
           })
-          .finally(console.log(lastname));
+          .finally(
+          );
       }
       break;
     default:

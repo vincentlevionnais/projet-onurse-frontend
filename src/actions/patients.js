@@ -35,7 +35,6 @@ export const addPatient = (id, lastname, firstname, birthdate, phone, completeAd
     type: ADD_PATIENT,
     lastname: lastname,
     firstname: firstname,
-    
     birthdate: birthdate,
     phone: phone,
     completeAdress: completeAdress,

@@ -53,22 +53,30 @@ const validate = (values) => {
 
 const AddPatient = ({ onNewPatient }) => {
   const formik = useFormik({
+    
     initialValues: {
       firstname: '',
       lastname: '',
       birthdate: '',
       phone: '',
       completeAdress: '',
+      informationAdress: '',
+      note: '',
       doctorName: '',
       nir: '',
+      mutualName: '',
+      mutualNumberAmc: '',
+      pathology: '',
       trustedPerson: '',
     },
+
     validate,
-    onSubmit: (values) => {
+
+    onSubmit: (values, { resetForm }) => {
       //  alert(JSON.stringify(values, null, 2));
       onNewPatient(values);
+      resetForm({});
     },
-
   });
 
   return (
