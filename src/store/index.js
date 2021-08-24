@@ -5,12 +5,14 @@ import reducer from 'src/reducers';
 
 import calMiddleware from 'src/middlewares/calMiddleware';
 import patientMiddleware from '../middlewares/patientMiddleware';
+import logMiddleware from '../middlewares/logMiddleware';
 
 // on combine devTools avec les middlewares
 const enhancers = composeWithDevTools(
   applyMiddleware(
     patientMiddleware,
     calMiddleware,
+    logMiddleware,
     // ... d'autres middlewares
   ),
 );

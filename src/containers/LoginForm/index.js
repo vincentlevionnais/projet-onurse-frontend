@@ -11,7 +11,6 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
   email: state.log.email,
   password: state.log.password,
-  loggedMessage: state.log.loggedMessage,
 });
 
 // === mapDispatchToProps

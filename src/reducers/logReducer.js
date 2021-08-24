@@ -1,12 +1,12 @@
 import { UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT } from 'src/actions/login';
 
+import { set, remove } from 'src/utils/cookies';
+
 const initialState = {
   email: '',
   password: '',
   // indique si l'utilisateur est authentifié
   logged: false,
-  // token
-  token: null,
 };
 
 function logReducer(state = initialState, action = {}) {
@@ -17,15 +17,18 @@ function logReducer(state = initialState, action = {}) {
         [action.name]: action.value,
       };
 
-    case CONNECT_USER:
+    case CONNECT_USER: {
+      const options = { path: '/' };
+
+      set('token', action.token, options);
+
       return {
         ...state,
-        token: action.token,
         logged: true,
       };
-
+    }
     case LOG_OUT:
-      // todo supprimer le tiroir en local storage?
+      remove('token');
 
       return {
         ...state,

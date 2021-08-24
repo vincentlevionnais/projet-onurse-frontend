@@ -1,9 +1,8 @@
 import axios from 'axios';
+
 import { SUBMIT_LOGIN, connectUser } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
-  console.log('on a intercepté une action dans le logMiddleware: ', action);
-
   switch (action.type) {
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().log;
@@ -37,3 +36,4 @@ const logMiddleware = (store) => (next) => (action) => {
 };
 
 export default logMiddleware;
+// alainfirmier@liberal.com
