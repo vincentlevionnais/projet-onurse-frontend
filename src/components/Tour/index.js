@@ -6,10 +6,14 @@ import RdvByDay from './RdvByDay';
 import { searchAppointmentOfTheDay } from '../../utils';
 import './tour.scss';
 
+
 const Tour = ( {events} ) => {
 
-  const appointmentOfTheDay = searchAppointmentOfTheDay(events);
-
+  useEffect (() => {
+    //location.reload();
+  }, [events]);
+  const appointmentOfTheDay=searchAppointmentOfTheDay(events);
+  
   return (
     <>
       <header className="header">
@@ -45,6 +49,7 @@ const Tour = ( {events} ) => {
 
 Tour.propTypes = {
   events: PropTypes.array.isRequired,
+  loadEvents: PropTypes.func.isRequired,
 };
 
 export default Tour;

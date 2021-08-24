@@ -47,5 +47,17 @@ export const searchAppointmentOfTheDay = (events) => {
     const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth()} ${datetimeStart.getFullYear()}`;
     return eventDate === currentDay;
   });
-  return appointmentOfTheDay;
+
+  // build a new table from appointment of the day, but sorted by hour to have a display in order
+  const appointmentOfTheDayByHour = appointmentOfTheDay.sort(function compare(a, b) {
+    if (a.datetimeStart < b.datetimeStart) {
+      return -1;
+    }
+    if(a.datetimeStart > b.datetimeStart) {
+      return 1;
+    }
+    return 0;
+  });
+
+  return appointmentOfTheDayByHour;
 };

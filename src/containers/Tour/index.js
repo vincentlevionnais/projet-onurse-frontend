@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-
 });
 
 // === création de l'assistant
