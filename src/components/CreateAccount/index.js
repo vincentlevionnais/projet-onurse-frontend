@@ -1,54 +1,34 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'react-feather';
 import { useFormik } from 'formik';
 
+import { createAccountValidateValue } from 'src//utils';
 import './createAccount.scss';
 
-const CreateAccount = ({ manageSubmit }) => {
-  const createAccountValidateValue = (values) => {
-    const errors = {};
-
-    if (!values.lastName) {
-      errors.lastName = 'Requis';
-    }
-    else if (values.lastName.length > 20) {
-      errors.lastName = 'Maximum : 20 caractères';
-    }
-    if (!values.firstName) {
-      errors.firstName = 'Requis';
-    }
-    else if (values.firstName.length > 15) {
-      errors.firstName = 'Maximum : 15 caractères';
-    }
-
-    if (!values.email) {
-      errors.email = 'Requis';
-    }
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Adresse email invalide';
-    }
-
-    if (!values.phoneNumber) {
-      errors.phoneNumber = 'Requis';
-    }
-    else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phoneNumber)) {
-      errors.phoneNumber = 'Format invalide';
-    }
-
-    return errors;
-  };
+const CreateAccount = ({
+  lastName,
+  firstName,
+  email,
+  password,
+  phone,
+  manageSubmit,
+}) => {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      phoneNumber: '',
+      lastName,
+      firstName,
+      email,
+      password,
+      phone,
+      manageSubmit,
+
     },
     createAccountValidateValue,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      console.log('soumission ajour ');
       manageSubmit();
     },
   });
@@ -69,7 +49,7 @@ const CreateAccount = ({ manageSubmit }) => {
         </div>
       </header>
 
-      <form className="create-account-container" onSubmit={formik.manageSubmit}>
+      <form className="create-account-container">
         <input
           className="create-account-input"
           placeholder="Nom"
@@ -77,7 +57,7 @@ const CreateAccount = ({ manageSubmit }) => {
           name="lastName"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.lastName}
+          value={lastName}
         />
         {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
 
@@ -88,7 +68,7 @@ const CreateAccount = ({ manageSubmit }) => {
           name="firstName"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.firstName}
+          value={firstName}
         />
         {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
 
@@ -99,7 +79,7 @@ const CreateAccount = ({ manageSubmit }) => {
           name="email"
           type="email"
           onChange={formik.handleChange}
-          value={formik.values.email}
+          value={email}
         />
         {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
@@ -110,7 +90,7 @@ const CreateAccount = ({ manageSubmit }) => {
           name="password"
           type="password"
           onChange={formik.handleChange}
-          value={formik.values.password}
+          value={password}
         />
         {formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
@@ -121,7 +101,7 @@ const CreateAccount = ({ manageSubmit }) => {
           name="phoneNumber"
           type="tel"
           onChange={formik.handleChange}
-          value={formik.values.phoneNumber}
+          value={phone}
         />
         {formik.errors.phoneNumber ? <div>{formik.errors.phoneNumber}</div> : null}
 
@@ -132,15 +112,12 @@ const CreateAccount = ({ manageSubmit }) => {
   );
 };
 
-CreateAccount.prototype = {
-
+CreateAccount.propTypes = {
+  lastName: Proptypes.string.isRequired,
+  firstName: Proptypes.string.isRequired,
+  email: Proptypes.string.isRequired,
+  password: Proptypes.string.isRequired,
+  phone: Proptypes.number.isRequired,
+  manageSubmit: Proptypes.func.isRequired,
 };
 export default CreateAccount;
-
-/*
-firstname
-lastname
-email
-password
-phone
-*/

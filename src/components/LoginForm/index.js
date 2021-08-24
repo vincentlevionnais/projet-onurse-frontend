@@ -7,11 +7,9 @@ import Field from 'src/components/Field';
 import logo from 'src/assets/images/LOGO-V3.png';
 
 import './loginForm.scss';
+
 /**
  * Affichage d'un formulaire d'authentification (email, mot de passe)
- * Deux modes d'affichage :
- * - non connecté => formulaire affiché
- * - connecté => message et bouton de déconnexion
  */
 const LoginForm = ({
   email,
@@ -22,6 +20,7 @@ const LoginForm = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log('je soumet');
     handleLogin();
   };
 

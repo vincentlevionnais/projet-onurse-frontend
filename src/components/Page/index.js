@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // local imports
 import BigCalendar from 'src/containers/BigCalendar';
 import LoginForm from 'src/containers/LoginForm';
-import CreateAccount from 'src/components/CreateAccount';
+import CreateAccount from 'src/containers/CreateAccount';
 import Errors from '../Errors';
 import Home from '../Home';
 import AddPatient from '../AddPatient';
