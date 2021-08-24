@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { SUBMIT_CREATE_ACCOUNT_FORM } from 'src/actions/create';
+import { SUBMIT_CREATE_ACCOUNT_FORM, cleanInput } from 'src/actions/create';
+// import { connectUser } from 'src/actions/login';
 
 const createMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -24,7 +25,8 @@ const createMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // TODO le back me renvoi un token à la creation d'un nouveau nurse?
           // todo si oui je dispatch connectUser
-          store.dispatch(/* todo */);
+          // store.dispatch(connectUser(response.data.token));
+          store.dispatch(cleanInput());
         })
         .catch((error) => {
           console.log(error);

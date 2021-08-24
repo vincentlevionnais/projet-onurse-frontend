@@ -1,4 +1,4 @@
-import { UPDATE_CREATE_FIELD } from 'src/actions/create';
+import { UPDATE_CREATE_FIELD, CLEAN_INPUT } from 'src/actions/create';
 
 const initialState = {
   lastName: '',
@@ -15,6 +15,16 @@ const createAccountReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+
+    case CLEAN_INPUT:
+      return {
+        ...state,
+        lastName: '',
+        firstName: '',
+        email: '',
+        password: '',
+        phone: '',
       };
     default:
       return state;
