@@ -20,8 +20,8 @@ function logReducer(state = initialState, action = {}) {
     case CONNECT_USER: {
       const options = { path: '/' };
 
-      set('token', action.token, options);
-
+      set('BEARER', action.token, options);
+      console.log(action.token);
       return {
         ...state,
         logged: true,

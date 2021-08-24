@@ -12,6 +12,10 @@ const calMiddleware = (store) => (next) => (action) => {
     case FETCH_EVENTS:
       axios.get(
         'http://35.173.138.41/projet-o-nurse/public/api/appointments',
+
+        {
+          withCredentials: true,
+        },
       )
         .then((response) => {
           store.dispatch(saveEvents(response.data));
