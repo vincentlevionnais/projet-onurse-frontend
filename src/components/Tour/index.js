@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, LogOut } from 'react-feather';
@@ -9,9 +9,6 @@ import './tour.scss';
 
 const Tour = ( {events} ) => {
 
-  useEffect (() => {
-    //location.reload();
-  }, [events]);
   const appointmentOfTheDay=searchAppointmentOfTheDay(events);
   
   return (
@@ -49,7 +46,6 @@ const Tour = ( {events} ) => {
 
 Tour.propTypes = {
   events: PropTypes.array.isRequired,
-  loadEvents: PropTypes.func.isRequired,
 };
 
 export default Tour;

@@ -8,12 +8,16 @@ import './styles.scss';
 import Loader from '../Loader';
 
 // == Composant
-const App = ({ loadEvents, fetchPatients, eventsLoaded, patientsLoaded }) => {
+const App = ({ loadEvents, fetchPatients, eventsLoaded, patientsLoaded, events }) => {
   useEffect(() => {
     loadEvents();
     fetchPatients();
   }, []);
 
+  useEffect(() => {
+    loadEvents();
+  }, [events]);
+  
   return (
     <div className="app">
     {(patientsLoaded && eventsLoaded) && (
@@ -31,6 +35,7 @@ App.propTypes = {
   fetchPatients: PropTypes.func.isRequired,
   eventsLoaded: PropTypes.bool.isRequired,
   patientsLoaded: PropTypes.bool.isRequired,
+  events: PropTypes.array.isRequired,
 };
 // == Export
 export default App;

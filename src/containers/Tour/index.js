@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Tour from 'src/components/Tour';
-
+import fetchEvents from 'src/actions/bigCal';
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   events: state.cal.events,
@@ -8,6 +8,9 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
+  /* loadEvents: () => {
+    dispatch(fetchEvents());
+  }, */
 });
 
 // === création de l'assistant
