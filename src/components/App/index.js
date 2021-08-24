@@ -9,15 +9,12 @@ import Loader from '../Loader';
 
 // == Composant
 const App = ({ loadEvents, fetchPatients, eventsLoaded, patientsLoaded, events }) => {
+  
   useEffect(() => {
     loadEvents();
     fetchPatients();
-  }, []);
-
-  useEffect(() => {
-    loadEvents();
   }, [events]);
-  
+
   return (
     <div className="app">
     {(patientsLoaded && eventsLoaded) && (

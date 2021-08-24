@@ -83,16 +83,34 @@
       }
     
       .checked {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         align-self: center;
+        margin: 0.5em;
         *{
           background-color: vars.$darkBlue;
           color: white;
           border-radius: 100%;
-          font-size: 0.5em;
+          font-size: 1px;
         }
       }
     }
-      
+  }
+}
+
+@media (min-width: 740px) {
+  .main {
+    .taskToDo {
+      .appointment-patient {
+        .checked {
+          flex-direction: row;
+          * {
+            font-size: 2px;
+          }
+        }
+      }
+    }
   }
 }
 
