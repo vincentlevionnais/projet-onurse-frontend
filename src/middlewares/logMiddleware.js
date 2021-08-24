@@ -2,6 +2,8 @@ import axios from 'axios';
 import { SUBMIT_LOGIN, connectUser } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
+  console.log('on a intercepté une action dans le logMiddleware: ', action);
+
   switch (action.type) {
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().log;
@@ -14,12 +16,16 @@ const logMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // console.log(response);
+          console.log(response);
           store.dispatch(connectUser(response.data.token));
         })
         .catch((error) => {
           console.log(error);
-        });
+        })
+        .finally(
+          console.log('soumission finally'),
+        );
+
       break;
     }
 

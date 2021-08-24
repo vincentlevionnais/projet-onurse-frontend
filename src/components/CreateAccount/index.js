@@ -14,6 +14,7 @@ const CreateAccount = ({
   password,
   phone,
   manageSubmit,
+  handleChange,
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -28,7 +29,7 @@ const CreateAccount = ({
     createAccountValidateValue,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      console.log('soumission ajour ');
+      console.log('soumission ajout ');
       manageSubmit();
     },
   });
@@ -56,7 +57,9 @@ const CreateAccount = ({
           id="lastName"
           name="lastName"
           type="text"
-          onChange={formik.handleChange}
+          onChange={((newValue, name) => {
+            handleChange(newValue, name);
+          })}
           value={lastName}
         />
         {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
@@ -97,8 +100,8 @@ const CreateAccount = ({
         <input
           className="create-account-input"
           placeholder="N° de téléphone"
-          id="phoneNumber"
-          name="phoneNumber"
+          id="phone"
+          name="phone"
           type="tel"
           onChange={formik.handleChange}
           value={phone}
@@ -117,7 +120,8 @@ CreateAccount.propTypes = {
   firstName: Proptypes.string.isRequired,
   email: Proptypes.string.isRequired,
   password: Proptypes.string.isRequired,
-  phone: Proptypes.number.isRequired,
+  phone: Proptypes.string.isRequired,
   manageSubmit: Proptypes.func.isRequired,
+  handleChange: Proptypes.func.isRequired,
 };
 export default CreateAccount;

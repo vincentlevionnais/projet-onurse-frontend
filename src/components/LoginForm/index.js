@@ -17,60 +17,60 @@ const LoginForm = ({
   changeField,
   handleLogin,
 
-}) => {
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    console.log('je soumet');
-    handleLogin();
-  };
+}) => (
 
-  return (
+  <div className="login-form">
 
-    <div className="login-form">
+    <form
+      autoComplete="off"
+      className="login-form-element"
+      onSubmit={(evt) => {
+        evt.preventDefault();
+        console.log('je soumet la connexion');
+        handleLogin();
+      }}
+    >
+      <Field
+        className="login-form-input"
+        name="email"
+        placeholder="Email"
+        manageChange={((newValue, name) => {
+          changeField(newValue, name);
+        })}
+        value={email}
+      />
+      <Field
+        className="login-form-input"
+        name="password"
+        type="password"
+        placeholder="Mot de passe"
+        manageChange={((newValue, name) => {
+          changeField(newValue, name);
+        })}
+        value={password}
+      />
+      <button
+        type="submit"
+        className="login-form-button"
+      >
+        Se connecter
+      </button>
+    </form>
 
-      <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
-        <Field
-          className="login-form-input"
-          name="email"
-          placeholder="Email"
-          manageChange={((newValue, name) => {
-            changeField(newValue, name);
-          })}
-          value={email}
-        />
-        <Field
-          className="login-form-input"
-          name="password"
-          type="password"
-          placeholder="Mot de passe"
-          manageChange={((newValue, name) => {
-            changeField(newValue, name);
-          })}
-          value={password}
-        />
-        <button
-          type="submit"
-          className="login-form-button"
-        >
-          Se connecter
-        </button>
-      </form>
-
-      <div className="log-create-account">
-        <Link
-          to="/account/create/account"
-          className="log-create-account-link"
-        >
-          Créer un compte
-        </Link>
-      </div>
-      <div className="logo">
-        <img className="logo-pic" src={logo} alt="logo o'nurse" />
-      </div>
+    <div className="log-create-account">
+      <Link
+        to="/account/create/account"
+        className="log-create-account-link"
+      >
+        Créer un compte
+      </Link>
     </div>
+    <div className="logo">
+      <img className="logo-pic" src={logo} alt="logo o'nurse" />
+    </div>
+  </div>
 
-  );
-};
+);
 
 LoginForm.propTypes = {
   /** value for the email */

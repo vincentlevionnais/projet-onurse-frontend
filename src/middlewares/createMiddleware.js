@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { MANAGE_SUBMIT } from 'src/actions/create';
 
-const logMiddleware = (store) => (next) => (action) => {
+const createMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case MANAGE_SUBMIT: {
       const {
@@ -11,7 +11,7 @@ const logMiddleware = (store) => (next) => (action) => {
       console.log('soumission');
 
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/login_check',
+        'http://35.173.138.41/projet-o-nurse/public/api/nurses',
         {
           lastName: lastName,
           firstName: firstName,
@@ -36,4 +36,4 @@ const logMiddleware = (store) => (next) => (action) => {
   next(action);
 };
 
-export default logMiddleware;
+export default createMiddleware;
