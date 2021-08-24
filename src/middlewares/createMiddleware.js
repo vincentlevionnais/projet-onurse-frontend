@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { MANAGE_SUBMIT } from 'src/actions/create';
+import { SUBMIT_CREATE_ACCOUNT_FORM } from 'src/actions/create';
 
 const createMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case MANAGE_SUBMIT: {
+    case SUBMIT_CREATE_ACCOUNT_FORM: {
       const {
         lastName, firstName, email, password, phone,
       } = store.getState().create;
@@ -22,6 +22,8 @@ const createMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           // console.log(response);
+          // TODO le back me renvoi un token à la creation d'un nouveau nurse?
+          // todo si oui je dispatch connectUser
           store.dispatch(/* todo */);
         })
         .catch((error) => {

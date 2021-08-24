@@ -26,13 +26,26 @@ const CreateAccount = ({
       manageSubmit,
 
     },
-    createAccountValidateValue,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log('soumission ajout ');
-      manageSubmit();
-    },
+    // createAccountValidateValue,
+    // onSubmit: (evt, values) => {
+    //   alert(JSON.stringify(values, null, 2));
+    //   console.log('soumission ajout ');
+    //   evt.preventDefault();
+    //   manageSubmit();
+    // },
   });
+
+  const onSubmit = (evt) => {
+    console.log('soumission ajout ');
+    evt.preventDefault();
+    const values = [lastName, firstName, email, password, phone];
+    if (createAccountValidateValue(values)) {
+      manageSubmit();
+    }
+    else {
+      alert('vérification des infos');
+    }
+  };
 
   return (
     <>
@@ -50,15 +63,20 @@ const CreateAccount = ({
         </div>
       </header>
 
-      <form className="create-account-container">
+      <form
+        className="create-account-container"
+        onSubmit={(evt) => {
+          onSubmit(evt);
+        }}
+      >
         <input
           className="create-account-input"
           placeholder="Nom"
           id="lastName"
           name="lastName"
           type="text"
-          onChange={((newValue, name) => {
-            handleChange(newValue, name);
+          onChange={((evt) => {
+            handleChange(evt.target.value, evt.target.name);
           })}
           value={lastName}
         />
@@ -70,7 +88,9 @@ const CreateAccount = ({
           id="firstName"
           name="firstName"
           type="text"
-          onChange={formik.handleChange}
+          onChange={((evt) => {
+            handleChange(evt.target.value, evt.target.name);
+          })}
           value={firstName}
         />
         {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
@@ -81,7 +101,9 @@ const CreateAccount = ({
           id="email"
           name="email"
           type="email"
-          onChange={formik.handleChange}
+          onChange={((evt) => {
+            handleChange(evt.target.value, evt.target.name);
+          })}
           value={email}
         />
         {formik.errors.email ? <div>{formik.errors.email}</div> : null}
@@ -92,7 +114,9 @@ const CreateAccount = ({
           id="password"
           name="password"
           type="password"
-          onChange={formik.handleChange}
+          onChange={((evt) => {
+            handleChange(evt.target.value, evt.target.name);
+          })}
           value={password}
         />
         {formik.errors.password ? <div>{formik.errors.password}</div> : null}
@@ -103,7 +127,9 @@ const CreateAccount = ({
           id="phone"
           name="phone"
           type="tel"
-          onChange={formik.handleChange}
+          onChange={((evt) => {
+            handleChange(evt.target.value, evt.target.name);
+          })}
           value={phone}
         />
         {formik.errors.phoneNumber ? <div>{formik.errors.phoneNumber}</div> : null}
