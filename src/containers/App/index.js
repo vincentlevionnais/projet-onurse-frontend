@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchPatients: () => {
     dispatch(fetchPatients());
-  }
+  },
 });
 
 // === création de l'assistant

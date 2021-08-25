@@ -6,32 +6,7 @@ import {
 
 
 const initialState = {
-  events: [
-    // {
-    //   id: '1',
-    //   title: 'pansement genevieve',
-    //   start: new Date('2021-08-18T15:50'),
-    //   end: new Date('2021-08-18T16:50'),
-    // },
-    // {
-    //   id: '2',
-    //   title: 'pansement renéé',
-    //   start: new Date('Wed Aug 18 2021 15:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    //   end: new Date('Wed Aug 18 2021 16:00:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    // },
-    // {
-    //   id: '3',
-    //   title: 'pansement Jacques',
-    //   start: new Date('Tue Aug 19 2021 16:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    //   end: new Date('Tue Aug 19 2021 17:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    // },
-    // {
-    //   id: '4',
-    //   title: 'pansement Gillou',
-    //   start: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    //   end: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    // },
-  ],
+  events: [],
   displayPopup: false,
   id: '',
   reason: '',
@@ -184,8 +159,8 @@ const calReducer = (state = initialState, action = {}) => {
     case SET_EVENTS_LOADED:
       return {
         ...state,
-        eventsLoaded: true, 
-      }
+        eventsLoaded: true,
+      };
     default:
       return state;
   }
