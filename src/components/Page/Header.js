@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, LogOut } from 'react-feather';
 import './page.scss';
-
-const history = useHistory();
 
 const Header = ({ titlePage }) => (
 
   <header className="header">
     <Link
-      to={history.goBack()}
+      to="/"
       className="home-button"
     >
       <ArrowLeft />

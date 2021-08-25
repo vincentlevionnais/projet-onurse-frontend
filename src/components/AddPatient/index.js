@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, LogOut } from 'react-feather';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import './addPatient.scss';
+import Header from '../Page/Header';
 
 const validate = (values) => {
   const errors = {};
@@ -53,7 +52,7 @@ const validate = (values) => {
 
 const AddPatient = ({ onNewPatient }) => {
   const formik = useFormik({
-    
+
     initialValues: {
       firstname: '',
       lastname: '',
@@ -81,25 +80,7 @@ const AddPatient = ({ onNewPatient }) => {
 
   return (
     <>
-      <header className="header">
-        <Link
-          to="/patients"
-          className="home-button"
-        >
-          <ArrowLeft />
-        </Link>
-        <div className="header-infos">
-          <h1 className="header-title">
-            Nouveau patient
-          </h1>
-        </div>
-        <Link
-          to="/login"
-          className="logout-button"
-        >
-          <LogOut />
-        </Link>
-      </header>
+      <Header titlePage="Nouveau patient" />
 
       <main className="main">
         <form onSubmit={formik.handleSubmit}>
@@ -229,7 +210,7 @@ const AddPatient = ({ onNewPatient }) => {
           <h2>Personne de confiance</h2>
 
           <input
-            placeholder="Nom/prénom/téléphone de la personne de confiance"
+            placeholder="Identité et coordonnées"
             id="trustedPerson"
             name="trustedPerson"
             type="text"
