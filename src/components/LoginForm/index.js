@@ -26,7 +26,6 @@ const LoginForm = ({
       className="login-form-element"
       onSubmit={(evt) => {
         evt.preventDefault();
-        console.log('je soumet la connexion');
         handleLogin();
       }}
     >

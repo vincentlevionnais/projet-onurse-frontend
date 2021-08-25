@@ -8,7 +8,7 @@ import {
 import BigCalendar from 'src/containers/BigCalendar';
 import LoginForm from 'src/containers/LoginForm';
 import CreateAccount from 'src/containers/CreateAccount';
-import Home from 'src/containers/Home';
+import Home from 'src/components/Home';
 import Loader from 'src/components/Loader';
 import Errors from '../Errors';
 import AddPatient from '../../containers/addPatient';
@@ -17,7 +17,9 @@ import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
 
-const Page = ({ isCreate, logged, patientsLoaded, eventsLoaded }) => (
+const Page = ({
+  isCreate, logged, patientsLoaded, eventsLoaded,
+}) => (
   <Router>
     <Switch>
       {isCreate && <Redirect from="/account/create/account" to="/login" /> }
@@ -61,12 +63,12 @@ const Page = ({ isCreate, logged, patientsLoaded, eventsLoaded }) => (
           <Route path="/calendar" exact>
             <BigCalendar />
           </Route>
-          <Route>
-            <Errors />
-          </Route>
         </>
 
       )}
+      <Route>
+        <Errors />
+      </Route>
 
     </Switch>
   </Router>
@@ -76,6 +78,8 @@ Page.propTypes = {
 
   isCreate: Proptypes.bool.isRequired,
   logged: Proptypes.bool.isRequired,
+  patientsLoaded: Proptypes.bool.isRequired,
+  eventsLoaded: Proptypes.bool.isRequired,
 };
 
 export default Page;

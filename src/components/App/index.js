@@ -9,12 +9,10 @@ import './styles.scss';
 
 // == Composant
 const App = ({
-  loadEvents, fetchPatients, eventsLoaded, patientsLoaded, logged,
+  loadEvents, fetchPatients, logged,
 }) => {
   useEffect(() => {
-    console.log('useeffect or If');
     if (logged) {
-      console.log('useeffect dans If');
       loadEvents();
       fetchPatients();
     }
@@ -30,8 +28,6 @@ const App = ({
 App.propTypes = {
   loadEvents: PropTypes.func.isRequired,
   fetchPatients: PropTypes.func.isRequired,
-  // eventsLoaded: PropTypes.bool.isRequired,
-  // patientsLoaded: PropTypes.bool.isRequired,
   logged: PropTypes.bool.isRequired,
 };
 // == Export

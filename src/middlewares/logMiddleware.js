@@ -6,7 +6,6 @@ const logMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().log;
-      console.log('soumission');
       axios.post(
         'http://35.173.138.41/projet-o-nurse/public/api/login_check',
         {
@@ -21,9 +20,6 @@ const logMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response.data.token);
-          // console.log(response.headers('set-cookie'));
-          console.log(response.headers);
-          // console.log(response.headers['set-cookie']);
           store.dispatch(connectUser(response.data.token));
         })
         .catch((error) => {

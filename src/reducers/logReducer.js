@@ -17,7 +17,7 @@ function logReducer(state = initialState, action = {}) {
 
     case CONNECT_USER:
       localStorage.setItem('token', action.token);
-      // localStorage.getItem('token')
+
       if (localStorage.getItem('token')) {
         return {
           ...state,
