@@ -2,8 +2,6 @@ import axios from 'axios';
 
 import { SUBMIT_LOGIN, connectUser } from 'src/actions/login';
 
-// import { get } from 'src/utils/cookies';
-
 const logMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN: {
@@ -16,7 +14,9 @@ const logMiddleware = (store) => (next) => (action) => {
           password: password,
         },
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
         },
       )
         .then((response) => {
@@ -44,6 +44,3 @@ const logMiddleware = (store) => (next) => (action) => {
 };
 
 export default logMiddleware;
-// alainfirmier@liberal.com
-
-// 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Mjk4MTQ3NDIsImV4cCI6MTYyOTgxODM0Miwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiYWxhaW5maXJtaWVyQGxpYmVyYWwuY29tIn0.EvgdI98bxmjuKVpnVc1ayU6RCgJFYvWmWGcCw9YKgc1K1zRtDTWoY4djIrTU2pbEOeVN7ttwLl7pYt13gfcj318PwPqPiIiuxA5DwMXiPXf4VUvX5a6Ipwi994FaGIgEpYM945lGSbcH17EFnzEbFuf7xuAgN9be_MOpx7d5lhvqjtFwMliaQ5xfbge1jEFW1_JZoo1oHWZ15SwvDDz-QO0hIA0Okg0LBXLlVAjEt76cqPfI2GaAPPwiKzLXf4q89UpxNdSQyy3UdA_Kbulfg0UC_EZBsdaY8EhNReyeR_CMd86NTHGI7iL7d_C27wCe05Zj1YidNOJyWIeyWwrjkw'

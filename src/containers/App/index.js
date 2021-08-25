@@ -10,6 +10,7 @@ import App from 'src/components/App';
 const mapStateToProps = (state) => ({
   eventsLoaded: state.cal.eventsLoaded,
   patientsLoaded: state.patients.patientsLoaded,
+  logged: state.log.logged,
 });
 
 // === mapDispatchToProps

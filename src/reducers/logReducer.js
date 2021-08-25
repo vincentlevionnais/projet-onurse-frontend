@@ -1,7 +1,5 @@
 import { UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT } from 'src/actions/login';
 
-import { set, remove } from 'src/utils/cookies';
-
 const initialState = {
   email: '',
   password: '',
@@ -17,18 +15,22 @@ function logReducer(state = initialState, action = {}) {
         [action.name]: action.value,
       };
 
-    case CONNECT_USER: {
-      const options = { path: '/' };
-
-      set('BEARER', action.token, options);
-      console.log(action.token);
+    case CONNECT_USER:
+      localStorage.setItem('token', action.token);
+      // localStorage.getItem('token')
+      if (localStorage.getItem('token')) {
+        return {
+          ...state,
+          logged: true,
+        };
+      }
       return {
         ...state,
-        logged: true,
+        logged: false,
       };
-    }
+
     case LOG_OUT:
-      remove('token');
+      localStorage.remove('token');
 
       return {
         ...state,

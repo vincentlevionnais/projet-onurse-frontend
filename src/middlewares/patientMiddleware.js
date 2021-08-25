@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { FETCH_PATIENTS, savePatients, SUBMIT_NEW_PATIENT, addPatient, setPatientLoaded } from 'src/actions/patients';
+import {
+  FETCH_PATIENTS, savePatients, SUBMIT_NEW_PATIENT, addPatient, setPatientLoaded,
+} from 'src/actions/patients';
 
 const patientMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -7,7 +9,9 @@ const patientMiddleware = (store) => (next) => (action) => {
       axios.get('http://35.173.138.41/projet-o-nurse/public/api/patients',
 
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
         })
         .then((response) => {
           // console.log(response);
@@ -16,9 +20,9 @@ const patientMiddleware = (store) => (next) => (action) => {
         .catch(((error) => {
           console.log(error);
         }))
-        .finally (() => {
+        .finally(() => {
           store.dispatch(setPatientLoaded());
-        })
+        });
       break;
 
     case SUBMIT_NEW_PATIENT:
@@ -43,6 +47,12 @@ const patientMiddleware = (store) => (next) => (action) => {
           TrustedPersonPhoneNumber: action.TrustedPersonPhoneNumber,
           TrustedPersonAdress: action.TrustedPersonAdress,
 
+        },
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
         })
         .then((response) => {
           //  console.log(response);

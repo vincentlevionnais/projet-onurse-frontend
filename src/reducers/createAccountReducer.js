@@ -6,7 +6,8 @@ const initialState = {
   email: '',
   password: '',
   phone: '',
-
+  // suite à compte crée
+  isCreate: false,
 };
 
 const createAccountReducer = (state = initialState, action = {}) => {
@@ -25,6 +26,7 @@ const createAccountReducer = (state = initialState, action = {}) => {
         email: '',
         password: '',
         phone: '',
+        isCreate: true,
       };
     default:
       return state;

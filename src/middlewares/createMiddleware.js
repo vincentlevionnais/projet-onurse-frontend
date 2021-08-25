@@ -12,7 +12,7 @@ const createMiddleware = (store) => (next) => (action) => {
       console.log('soumission');
 
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/nurses',
+        'http://35.173.138.41/projet-o-nurse/public/api/login',
         {
           lastName: lastName,
           firstName: firstName,
@@ -20,16 +20,23 @@ const createMiddleware = (store) => (next) => (action) => {
           password: password,
           phone: phone,
         },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       )
         .then((response) => {
-          // console.log(response);
+          console.log(response);
           // TODO le back me renvoi un token à la creation d'un nouveau nurse?
           // todo si oui je dispatch connectUser
           // store.dispatch(connectUser(response.data.token));
+          alert('Compte crée');
           store.dispatch(cleanInput());
         })
         .catch((error) => {
           console.log(error);
+          alert('Une erreur est survenue, merci de réessayer');
         });
       break;
     }
