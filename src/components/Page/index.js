@@ -11,7 +11,7 @@ import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/components/Home';
 import Loader from 'src/components/Loader';
 import Errors from '../Errors';
-import AddPatient from '../../containers/addPatient';
+import AddPatient from '../../containers/AddPatient';
 import Tour from '../Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
