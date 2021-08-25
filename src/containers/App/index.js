@@ -8,8 +8,8 @@ import App from 'src/components/App';
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
-  // nom de la prop à remplir: élément à récupérer dans le state
- // todo recuperer le loader dans le state et côté composant APP le mettre en if implicite
+  eventsLoaded: state.cal.eventsLoaded,
+  patientsLoaded: state.patients.patientsLoaded,
 });
 
 // === mapDispatchToProps

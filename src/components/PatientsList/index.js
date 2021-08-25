@@ -55,7 +55,7 @@ const PatientsList = ({
           value={search}
         />
         <hr />
-        <div className="patients-small">
+        <div className="patients-small-content">
           {patientToDisplay.map((patient) => (
             <PatientSmall
               {...patient}
@@ -70,7 +70,7 @@ const PatientsList = ({
         <Link
           to="/patients/add"
           className="addPatient-button"
-        >"Ajouter un patient"
+        >Ajouter un patient
         </Link>
       </div>
     </main>

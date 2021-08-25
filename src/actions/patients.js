@@ -1,3 +1,4 @@
+
 // ========= action types
 // send a request to the API to retrieve the list of patients
 export const FETCH_PATIENTS = 'FETCH_PATIENTS';
@@ -5,6 +6,10 @@ export const FETCH_PATIENTS = 'FETCH_PATIENTS';
 export const SAVE_PATIENTS = 'SAVE_PATIENTS';
 // stock search in state
 export const SET_SEARCH = 'SET_SEARCH';
+export const SUBMIT_NEW_PATIENT = 'SUBMIT_NEW_PATIENT';
+export const ADD_PATIENT = 'ADD_PATIENT';
+// change state patientsLoaded;
+export const SET_PATIENTS_LOADED = 'SET_PATIENTS_LOADED';
 
 // ========= action creators
 export const fetchPatients = () => ({
@@ -21,3 +26,36 @@ export const setSearch = (search) => ({
   search: search,
 });
 
+export const submitNewPatient = (data) => ({
+  type: SUBMIT_NEW_PATIENT,
+  patient: data,
+});
+
+export const addPatient = (id, lastName, firstName, dateOfBirth, phoneNumber, adress,
+  complement, information, doctor, NIR, mutual, AMC, pathology, trustedPersonLastName,
+  trustedPersonFirstName, relation, trustedPersonPhoneNumber, trustedPersonAdress) => (
+  {
+    type: ADD_PATIENT,
+    lastName: lastName,
+    firstName: firstName,
+    dateOfBirth: dateOfBirth,
+    phoneNumber: phoneNumber,
+    adress: adress,
+    complement: complement,
+    information: information,
+    doctor: doctor,
+    NIR: NIR,
+    mutual: mutual,
+    AMC: AMC,
+    pathology: pathology,
+    trustedPersonLastName: trustedPersonLastName,
+    trustedPersonFirstName: trustedPersonFirstName,
+    relation: relation,
+    trustedPersonPhoneNumber: trustedPersonPhoneNumber,
+    trustedPersonAdress: trustedPersonAdress,
+
+  });
+
+export const setPatientLoaded = () => ({
+  type: SET_PATIENTS_LOADED,
+});

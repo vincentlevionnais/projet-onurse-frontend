@@ -5,16 +5,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BigCalendar from 'src/containers/BigCalendar';
 import Errors from '../Errors';
 import Home from '../Home';
-import AddPatient from '../AddPatient';
+import AddPatient from '../../containers/addPatient';
 import Tour from '../Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
-import Loader from '../Loader';
 
 const Page = () => (
   <Router>
-    <Loader />
     <Switch>
       <Route path="/" exact>
         <Home />
@@ -37,6 +35,7 @@ const Page = () => (
       <Route>
         <Errors />
       </Route>
+
     </Switch>
   </Router>
 );

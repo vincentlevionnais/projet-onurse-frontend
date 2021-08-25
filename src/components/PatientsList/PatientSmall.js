@@ -7,7 +7,7 @@ const PatientSmall = ({
   firstname,
   lastname,
 }) => (
-  <article className="patient-small">
+  <div className="patient-small">
 
     <div className="patient-small-content">
       <h2>
@@ -20,7 +20,7 @@ const PatientSmall = ({
 
       </h2>
     </div>
-  </article>
+  </div>
 );
 
 PatientSmall.propTypes = {

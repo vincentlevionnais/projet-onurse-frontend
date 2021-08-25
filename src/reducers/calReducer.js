@@ -1,8 +1,9 @@
 import {
   TOGGLE_POPUP, SAVE_EVENTS, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
   UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE, UPDATE_ID_VALUE,
-  UPDATE_ONE_EVENT, DELETE_EVENT,
+  UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED,
 } from 'src/actions/bigCal';
+
 
 const initialState = {
   events: [
@@ -36,7 +37,7 @@ const initialState = {
   reason: '',
   datetimeStart: '',
   datetimeEnd: '',
-
+  eventsLoaded : false,
 };
 
 const calReducer = (state = initialState, action = {}) => {
@@ -53,7 +54,6 @@ const calReducer = (state = initialState, action = {}) => {
         title: event.reason,
         start: new Date(event.datetimeStart),
         end: new Date(event.datetimeEnd),
-
       }));
 
       return {
@@ -181,6 +181,11 @@ const calReducer = (state = initialState, action = {}) => {
 
       };
     }
+    case SET_EVENTS_LOADED:
+      return {
+        ...state,
+        eventsLoaded: true, 
+      }
     default:
       return state;
   }

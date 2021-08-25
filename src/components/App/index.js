@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 // == Import
 import Page from 'src/components/Page';
 import './styles.scss';
+import Loader from '../Loader';
 
 // == Composant
-const App = ({ loadEvents, fetchPatients }) => {
+const App = ({ loadEvents, fetchPatients, eventsLoaded, patientsLoaded }) => {
   useEffect(() => {
     loadEvents();
     fetchPatients();
@@ -15,7 +16,12 @@ const App = ({ loadEvents, fetchPatients }) => {
 
   return (
     <div className="app">
+    {(patientsLoaded && eventsLoaded) && (
       <Page />
+    )}
+    {(!patientsLoaded || !eventsLoaded) && (
+      <Loader />
+    )}
     </div>
   );
 };
@@ -23,6 +29,8 @@ const App = ({ loadEvents, fetchPatients }) => {
 App.propTypes = {
   loadEvents: PropTypes.func.isRequired,
   fetchPatients: PropTypes.func.isRequired,
+  eventsLoaded: PropTypes.bool.isRequired,
+  patientsLoaded: PropTypes.bool.isRequired,
 };
 // == Export
 export default App;
