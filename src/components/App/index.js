@@ -14,7 +14,7 @@ const App = ({ loadEvents, fetchPatients, eventsLoaded, patientsLoaded, events }
     fetchPatients();
   }, []);
 
-  /* useEffect(() => {
+ /*  useEffect(() => {
     loadEvents();
   }, [events]);  */
 

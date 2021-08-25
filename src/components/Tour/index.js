@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, LogOut } from 'react-feather';
-import RdvByDay from './RdvByDay';
+import RdvByDay from 'src/containers/Tour/RdvByDay';
 import { searchAppointmentOfTheDay } from '../../utils';
 import './tour.scss';
 
 
 const Tour = ( {events} ) => {
-
-  const appointmentOfTheDay=searchAppointmentOfTheDay(events);
+  console.log(events);
   
+  const appointmentOfTheDay=searchAppointmentOfTheDay(events);
+ 
+  console.log(appointmentOfTheDay);
+/*  useEffect(() => {
+    loadEvents();
+  }, [appointmentOfTheDay]); */
+
+/*   useEffect(() => {
+    window.location.reload();
+  }, []); */
   return (
     <>
       <header className="header">
@@ -33,12 +42,14 @@ const Tour = ( {events} ) => {
         </Link>
       </header>
       <main className="main">
-      {appointmentOfTheDay.map((appointment) => (
+      {appointmentOfTheDay.map((appointment) => {
+        console.log(appointment);
+        return (
         <RdvByDay
           {...appointment}
           key={appointment.id}
         />
-      ))}
+      )})}
       </main>
     </>
   )
