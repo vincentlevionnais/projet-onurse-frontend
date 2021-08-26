@@ -12,7 +12,7 @@ import Home from 'src/components/Home';
 import Loader from 'src/components/Loader';
 import Errors from '../Errors';
 import AddPatient from '../../containers/addPatient';
-import Tour from '../Tour';
+import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
@@ -54,7 +54,7 @@ const Page = ({
           <Route path="/patients" exact>
             <PatientsList />
           </Route>
-          <Route path="/patients/add">
+          <Route path="/addPatient">
             <AddPatient />
           </Route>
           <Route path="/patients/:id">

@@ -18,6 +18,10 @@ const App = ({
     }
   }, [logged]);
 
+ /*  useEffect(() => {
+    loadEvents();
+  }, [events]);  */
+
   return (
     <div className="app">
       <Page />

@@ -1,7 +1,7 @@
 import {
   TOGGLE_POPUP, SAVE_EVENTS, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
   UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE, UPDATE_ID_VALUE,
-  UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED,
+  UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED, UPDATE_PATIENT_ID,
 } from 'src/actions/bigCal';
 
 
@@ -13,6 +13,7 @@ const initialState = {
   datetimeStart: '',
   datetimeEnd: '',
   eventsLoaded : false,
+  patient: '',
 };
 
 const calReducer = (state = initialState, action = {}) => {
@@ -78,6 +79,12 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         id: action.id,
+      };
+
+    case UPDATE_PATIENT_ID:
+      return {
+        ...state,
+        patient: action.value,
       };
 
     case UPDATE_AFTER_DROP: {
