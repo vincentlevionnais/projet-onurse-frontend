@@ -46,6 +46,7 @@ export const addPatient = (
   mutualNumberAmc,
   pathology,
   trustedPerson,
+
 ) => (
   {
     type: ADD_PATIENT,
