@@ -69,7 +69,7 @@
 
   .nav-link {
     border-radius: 100%;
-    padding: 3.5em 0.5em;
+    padding: 2.5em 0.5em;
     font-weight: bold;
     max-width: 60%;
     text-align: center;
@@ -120,4 +120,23 @@
       }
     }
   }
+}
+
+@media (min-width: 320px){
+  .nav {
+    .nav-link {
+      padding: 3.5em 0.5em;
+    }
+  }
+  
+}
+
+@media (min-width: 740px) {
+  .logo {
+    .logo-pic {
+      width: 35%;
+      margin: 2em;
+    }
+  }
+ 
 }

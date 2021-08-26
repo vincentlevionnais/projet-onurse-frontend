@@ -1,290 +1,235 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import './addPatient.scss';
+import Header from '../Page/Header';
 
-const validate = values => {
+const validate = (values) => {
   const errors = {};
-  if (!values.lastName) {
-    errors.lastName = 'Requis';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Maximum : 20 caractères';
+  if (!values.lastname) {
+    errors.lastname = 'Requis';
+  } else if (values.lastname.length > 20) {
+    errors.lastname = 'Maximum : 20 caractères';
   }
-  if (!values.firstName) {
-    errors.firstName = 'Requis';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Maximum : 15 caractères';
+  if (!values.firstname) {
+    errors.firstname = 'Requis';
+  } else if (values.firstname.length > 15) {
+    errors.firstname = 'Maximum : 15 caractères';
   }
-
-  if (!values.dateOfBirth) {
-    errors.dateOfBirth = 'Requis';
-  } else if (!/^(?:(?:19|20)[0-9][0-9])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/i.test(values.dateOfBirth)) {
-    errors.dateOfBirth = 'Date invalide';
+  if (!values.birthdate) {
+    errors.birthdate = 'Requis';
+  } else if (!/^(?:(?:19|20)[0-9][0-9])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/i.test(values.birthdate)) {
+    errors.birthdate = 'Date invalide';
   }
-
-  if (!values.phoneNumber) {
-    errors.phoneNumber = 'Requis';
-  } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phoneNumber)) {
-    errors.phoneNumber = 'Format invalide';
+  if (!values.phone) {
+    errors.phone = 'Requis';
+  } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phone)) {
+    errors.phone = 'Format invalide';
   }
-
-  if (!values.adress) {
-    errors.adress = 'Requis';
-  } else if (values.adress.length > 40) {
-    errors.adress = 'Maximum : 40 caractères';
+  if (!values.completeAdress) {
+    errors.completeAdress = 'Requis';
+  } else if (values.completeAdress.length > 40) {
+    errors.completeAdress = 'Maximum : 40 caractères';
   }
-
-  if (!values.doctor) {
-    errors.doctor = 'Requis';
-  } else if (values.doctor.length > 40) {
-    errors.doctor = 'Maximum : 30 caractères';
+  if (!values.doctorName) {
+    errors.doctorName = 'Requis';
+  } else if (values.doctorName.length > 40) {
+    errors.docdoctorNametor = 'Maximum : 30 caractères';
   }
-
-  if (!values.NIR) {
-    errors.NIR = 'Requis';
-  } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.NIR)) {
-    errors.NIR = 'Format invalide';
+  if (!values.nir) {
+    errors.nir = 'Requis';
+  } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.nir)) {
+    errors.nir = 'Format invalide';
   }
-
-  if (!values.trustedPersonLastName) {
-    errors.trustedPersonLastName = 'Requis';
-  } else if (values.trustedPersonLastName.length > 20) {
-    errors.trustedPersonLastName = 'Maximum : 20 caractères';
+  if (!values.trustedPerson) {
+    errors.trustedPerson = 'Requis';
+  } else if (values.trustedPerson.length > 50) {
+    errors.trustedPerson = 'Maximum : 50 caractères';
   }
-
-  if (!values.trustedPersonFirstName) {
-    errors.trustedPersonFirstName = 'Requis';
-  } else if (values.trustedPersonFirstName.length > 15) {
-    errors.trustedPersonFirstName = 'Maximum : 15 caractères';
-  }
-
-  if (!values.relation) {
-    errors.relation = 'Requis';
-  } else if (values.relation.length > 15) {
-    errors.relation = 'Maximum : 15 caractères';
-  }
-
-  if (!values.TrustedPersonPhoneNumber) {
-    errors.TrustedPersonPhoneNumber = 'Requis';
-  } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.TrustedPersonPhoneNumber)) {
-    errors.TrustedPersonPhoneNumber = 'Format invalide';
-  }
-
   return errors;
 };
 
-const AddPatient = () => {
+const AddPatient = ({ onNewPatient }) => {
   const formik = useFormik({
+
     initialValues: {
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
-      phoneNumber: '',
-      adress: '',
-      doctor: '',
-      NIR: '',
-      trustedPersonLastName: '',
-      trustedPersonFirstName: '',
-      relation: '',
-      TrustedPersonPhoneNumber: '',
+      firstname: '',
+      lastname: '',
+      birthdate: '',
+      phone: '',
+      completeAdress: '',
+      informationAdress: '',
+      note: '',
+      doctorName: '',
+      nir: '',
+      mutualName: '',
+      mutualNumberAmc: '',
+      pathology: '',
+      trustedPerson: '',
     },
+
     validate,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+
+    onSubmit: (values, { resetForm }) => {
+      //  alert(JSON.stringify(values, null, 2));
+      onNewPatient(values);
+      resetForm({});
     },
   });
+
   return (
+    <>
+      <Header titlePage="Nouveau patient" />
 
-    <div className="home">
-      <div className="header">
-        <a href="javascript:history.go(-1)">&larr;</a>
-        <p>Nouveau patient</p>
-      </div>
-
-      <form onSubmit={formik.handleSubmit}>
-        <h2>Coordonnées du nouveau patient</h2>
-        <input
-          placeholder="Nom"
-          id="lastName"
-          name="lastName"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.lastName}
-        />
-        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-
-        <input
-          placeholder="Prénom"
-          id="firstName"
-          name="firstName"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.firstName}
-        />
-        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-
-        <label htmlFor="dateOfBirth">Date de naissance
+      <main className="main">
+        <form onSubmit={formik.handleSubmit}>
+          <h2>Coordonnées du nouveau patient</h2>
           <input
-            id="dateOfBirth"
-            name="dateOfBirth"
-            type="date"
+            placeholder="Nom"
+            id="lastname"
+            name="lastname"
+            type="text"
             onChange={formik.handleChange}
-            value={formik.values.dateOfBirth}
+            value={formik.values.lastname}
           />
-        </label>
-        {formik.errors.dateOfBirth ? <div>{formik.errors.dateOfBirth}</div> : null}
+          {formik.errors.lastname ? <div>{formik.errors.lastname}</div> : null}
 
-        <input
-          placeholder="N° de téléphone"
-          id="phoneNumber"
-          name="phoneNumber"
-          type="tel"
-          onChange={formik.handleChange}
-          value={formik.values.phoneNumber}
-        />
-        {formik.errors.phoneNumber ? <div>{formik.errors.phoneNumber}</div> : null}
+          <input
+            placeholder="Prénom"
+            id="firstname"
+            name="firstname"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.firstname}
+          />
+          {formik.errors.firstname ? <div>{formik.errors.firstname}</div> : null}
 
-        <input
-          placeholder="Adresse"
-          id="adress"
-          name="adress"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.adress}
-        />
-        {formik.errors.adress ? <div>{formik.errors.adress}</div> : null}
+          <label htmlFor="birthdate">Date de naissance
+            <input
+              id="birthdate"
+              name="birthdate"
+              type="date"
+              onChange={formik.handleChange}
+              value={formik.values.birthdate}
+            />
+          </label>
+          {formik.errors.birthdate ? <div>{formik.errors.birthdate}</div> : null}
 
-        <input
-          placeholder="Complément d'adresse"
-          id="complement"
-          name="complement"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.complement}
-        />
-        {formik.errors.complement ? <div>{formik.errors.complement}</div> : null}
+          <input
+            placeholder="N° de téléphone"
+            id="phone"
+            name="phone"
+            type="tel"
+            onChange={formik.handleChange}
+            value={formik.values.phone}
+          />
+          {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
 
-        <input
-          placeholder="Informations diverses"
-          id="information"
-          name="information"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.information}
-        />
-        {formik.errors.information ? <div>{formik.errors.information}</div> : null}
+          <input
+            placeholder="Adresse"
+            id="completeAdress"
+            name="completeAdress"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.completeAdress}
+          />
+          {formik.errors.completeAdress ? <div>{formik.errors.completeAdress}</div> : null}
 
-        <h2>Médical</h2>
-        <input
-          placeholder="Medecin traitant"
-          id="doctor"
-          name="doctor"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.doctor}
-        />
-        {formik.errors.doctor ? <div>{formik.errors.doctor}</div> : null}
+          <input
+            placeholder="Complément d'adresse"
+            id="informationAdress"
+            name="informationAdress"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.informationAdress}
+          />
+          {formik.errors.informationAdress ? <div>{formik.errors.informationAdress}</div> : null}
 
-        <input
-          placeholder="N° de Sécurité Sociale"
-          id="NIR"
-          name="NIR"
-          type="number"
-          onChange={formik.handleChange}
-          value={formik.values.NIR}
-        />
-        {formik.errors.NIR ? <div>{formik.errors.NIR}</div> : null}
+          <input
+            placeholder="Informations diverses"
+            id="note"
+            name="note"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.note}
+          />
+          {formik.errors.note ? <div>{formik.errors.note}</div> : null}
 
-        <input
-          placeholder="Nom de la mutuelle"
-          id="mutual"
-          name="mutual"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.mutual}
-        />
-        {formik.errors.mutual ? <div>{formik.errors.mutual}</div> : null}
+          <h2>Médical</h2>
+          <input
+            placeholder="Medecin traitant"
+            id="doctorName"
+            name="doctorName"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.doctorName}
+          />
+          {formik.errors.doctorName ? <div>{formik.errors.doctorName}</div> : null}
 
-        <input
-          placeholder="N° télétransmission (AMC)"
-          id="AMC"
-          name="AMC"
-          type="number"
-          onChange={formik.handleChange}
-          value={formik.values.AMC}
-        />
-        {formik.errors.AMC ? <div>{formik.errors.AMC}</div> : null}
+          <input
+            placeholder="N° de Sécurité Sociale"
+            id="nir"
+            name="nir"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.nir}
+          />
+          {formik.errors.nir ? <div>{formik.errors.nir}</div> : null}
 
-        <input
-          placeholder="Pathologie"
-          id="pathology"
-          name="pathology"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.pathology}
-        />
-        {formik.errors.pathology ? <div>{formik.errors.pathology}</div> : null}
+          <input
+            placeholder="Nom de la mutuelle"
+            id="mutualName"
+            name="mutualName"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.mutualName}
+          />
+          {formik.errors.mutualName ? <div>{formik.errors.mutmutualNameual}</div> : null}
 
-        <h2>Personne de confiance</h2>
+          <input
+            placeholder="N° télétransmission (AMC)"
+            id="mutualNumberAmc"
+            name="mutualNumberAmc"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.mutualNumberAmc}
+          />
+          {formik.errors.mutualNumberAmc ? <div>{formik.errors.mutualNumberAmc}</div> : null}
 
-        <input
-          placeholder="Nom"
-          id="trustedPersonLastName"
-          name="trustedPersonLastName"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.trustedPersonLastName}
-        />
-        {formik.errors.trustedPersonLastName ?
-          <div>{formik.errors.trustedPersonLastName}</div> : null}
+          <input
+            placeholder="Pathologie"
+            id="pathology"
+            name="pathology"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.pathology}
+          />
+          {formik.errors.pathology ? <div>{formik.errors.pathology}</div> : null}
 
-        <input
-          placeholder="Prénom"
-          id="trustedPersonFirstName"
-          name="trustedPersonFirstName"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.trustedPersonFirstName}
-        />
-        {formik.errors.trustedPersonFirstName ?
-          <div>{formik.errors.trustedPersonFirstName}</div> : null}
+          <h2>Personne de confiance</h2>
 
-        <input
-          placeholder="Relation (père, soeur, voisin...)"
-          id="relation"
-          name="relation"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.relation}
-        />
-        {formik.errors.relation ? <div>{formik.errors.relation}</div> : null}
+          <input
+            placeholder="Identité et coordonnées"
+            id="trustedPerson"
+            name="trustedPerson"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.trustedPerson}
+          />
+          {formik.errors.trustedPerson
+            ? <div>{formik.errors.trustedPerson}</div> : null}
 
-        <input
-          placeholder="N° de téléphone"
-          id="TrustedPersonPhoneNumber"
-          name="TrustedPersonPhoneNumber"
-          type="tel"
-          onChange={formik.handleChange}
-          value={formik.values.TrustedPersonPhoneNumber}
-        />
-        {formik.errors.TrustedPersonPhoneNumber
-          ? <div>{formik.errors.TrustedPersonPhoneNumber}</div> : null}
-
-        <input
-          placeholder="Adresse"
-          id="TrustedPersonAdress"
-          name="TrustedPersonAdress"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.TrustedPersonAdress}
-        />
-        {formik.errors.TrustedPersonAdress ? <div>{formik.errors.TrustedPersonAdress}</div> : null}
-
-        <button type="submit">Valider</button>
-      </form>
-
-    </div>
+          <button type="submit">Valider</button>
+        </form>
+      </main>
+    </>
   );
+};
+
+AddPatient.propTypes = {
+
+  onNewPatient: PropTypes.func.isRequired,
 };
 
 export default AddPatient;

@@ -41,37 +41,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .searchPatient {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
-    input {
-      background-color: vars.$lightBlue;
-      border-color: transparent;
-      width: 20em;
-      font-family: vars.$contentFont;
-      padding: 0.5em;
-      color: vars.$darkBlue;
-    }
   
-    button {
-      color: vars.$lightBlue;
-      margin-left: 2em;
-      border-color: transparent;
-      background-color: vars.$darkBlue;
-      padding:0.5em;
-      font-size: 0.2em;
-    }
+  .input-search {
+    background-color: vars.$lightBlue;
+    border-color: transparent;
+    width: 20em;
+    font-family: vars.$contentFont;
+    padding: 0.5em;
+    color: vars.$darkBlue;
+    align-self: center;
   }
+
   
-  .patients-small {
+  .patients-small-content {
     display: flex;
-    justify-content: center;
-    flex-flow: wrap;
+    flex-direction: column;
+    align-items: center;
     height: 250px;
     margin-top: 0.5em;
     overflow: auto;
@@ -101,7 +86,7 @@
           }
         }
       }
-  .patients-small>.patient-small:nth-child(even){
+  .patients-small-content>.patient-small:nth-child(even){
   .patient-small-content{
     background-color: white;
   }
@@ -128,6 +113,7 @@
 
   .addPatient-element{
     color: white;
+    font-weight: bold;
     background-color: vars.$darkBlue;
     padding: 0.5em;
     margin: 0.8em;
@@ -135,6 +121,17 @@
   }
 }
 
-
+@media (min-width : 950px) {
+  .main {
+    .input-search {
+      width: 40em;
+    }
+    .patients-small-content {
+      .patient-small {
+        width: 40em;
+      }
+    }
+  }
+}
 
   

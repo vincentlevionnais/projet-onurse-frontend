@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import Popup from 'src/components/BigCalendar/Popup';
 
 import {
-  togglePopup, manageEventSubmit, updateTitleValue, updateStartDateValue, updateEndDateValue,
+  togglePopup, manageEventSubmit, updateTitleValue,
+  updateStartDateValue, updateEndDateValue, deleteOneEvent,
 } from 'src/actions/bigCal';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
+  id: state.cal.id,
   reason: state.cal.reason,
   datetimeStart: state.cal.datetimeStart,
   datetimeEnd: state.cal.datetimeEnd,
@@ -39,6 +41,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateEndDateValue(newValue));
   },
 
+  deleteEvent: (id) => {
+    console.log(id);
+    dispatch(deleteOneEvent(id));
+  },
   // setColor:
 
 });

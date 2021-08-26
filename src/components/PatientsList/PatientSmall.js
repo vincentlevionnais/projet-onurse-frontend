@@ -1,23 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const PatientSmall = () => (
-  <article className="patient-small">
+const PatientSmall = ({
+  id,
+  firstname,
+  lastname,
+}) => (
+  <div className="patient-small">
 
     <div className="patient-small-content">
       <h2>
         <Link
-          to="/patients/10"
+          to={`/patients/${id}`}
           className="patient-small-link"
         >
-          Mr Richard Denis
+          {`${firstname} ${lastname}`}
         </Link>
 
       </h2>
-      <p>-</p>
-      <p>75 ans</p>
     </div>
-  </article>
+  </div>
 );
+
+PatientSmall.propTypes = {
+  id: PropTypes.number.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+};
 
 export default PatientSmall;

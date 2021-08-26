@@ -1,6 +1,8 @@
-// actions types
+// ==========================actions types
 // ouverture ou fermeture du popup
 export const TOGGLE_POPUP = 'OPEN_POPUP';
+// màj de la valeur de l'id de l'event
+export const UPDATE_ID_VALUE = 'UPDATE_ID_VALUE';
 // màj de la valeur du titre de l'event
 export const UPDATE_TITLE_VALUE = 'UPDATE_TITLE_VALUE';
 // màj de la valeur de la date de debut de l'event
@@ -21,8 +23,18 @@ export const RESIZE_EVENT = 'RESIZE_EVENT';
 export const UPDATE_AFTER_RESIZE = 'UPDATE_AFTER_RESIZE';
 // update des données titre et autres
 export const UPDATE_ONE_EVENT = 'UPDATE_ONE_EVENT';
+/** delete One event by id in BDD */
+export const DELETE_ONE_EVENT = 'DELETE_ONE_EVENT';
+/** delete one event by id */
+export const DELETE_EVENT = 'DELETE_EVENT';
+// recuperations des events depuis API
+export const FETCH_EVENTS = 'FETCH_EVENTS';
+// sauvegarde des events dans le state
+export const SAVE_EVENTS = 'SAVE_EVENTS';
+// change eventsLoaded
+export const SET_EVENTS_LOADED = 'SET_EVENTS_LOADED';
 
-// ========actions creators
+// ========================actions creators
 
 /** ouverture ou fermeture du popup */
 export const togglePopup = () => ({
@@ -30,8 +42,9 @@ export const togglePopup = () => ({
 });
 
 /** envoi des données du nouvel evenement vers API */
-export const manageEventSubmit = () => ({
+export const manageEventSubmit = (id) => ({
   type: MANAGE_EVENT_SUBMIT,
+  id: id,
 });
 
 /** si retour api ok, affichage de l'event à l'ecran */
@@ -41,6 +54,12 @@ export const addEvent = (id, reason, datetimeStart, datetimeEnd) => ({
   reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
+});
+
+/** mise à jour de l'id dans le state */
+export const updateIdValue = (id) => ({
+  type: UPDATE_ID_VALUE,
+  id: id,
 });
 
 /** mise à jour du titre dans le state */
@@ -96,7 +115,37 @@ export const updateAfterResize = (id, datetimeStart, datetimeEnd) => ({
 });
 
 /** màj d'un event déjà crée */
-export const updateOneEvent = (evt) => ({
+export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd) => ({
   type: UPDATE_ONE_EVENT,
-  value: evt,
+  id: id,
+  reason: reason,
+  datetimeStart: datetimeStart,
+  datetimeEnd: datetimeEnd,
+});
+
+/** delete One event by id in BDD */
+export const deleteOneEvent = (id) => ({
+  type: DELETE_ONE_EVENT,
+  id: id,
+});
+/** delete One event by id  */
+export const deleteEvent = (id) => ({
+  type: DELETE_EVENT,
+  id: id,
+});
+
+/** recuperation des events depuis API */
+export const fetchEvents = () => ({
+  type: FETCH_EVENTS,
+});
+
+/** sauvegarde des données dans le state */
+export const saveEvents = (events) => ({
+  type: SAVE_EVENTS,
+  events: events,
+});
+
+/** change la valeur de eventsLoaded quand les données sont chargées */
+export const setEventsLoaded = () => ({
+  type: SET_EVENTS_LOADED,
 });
