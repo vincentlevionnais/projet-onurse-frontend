@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import './addPatient.scss';
-import Header from '../Page/Header';
+import Header from 'src/containers/Page/Header';
 
 const validate = (values) => {
   const errors = {};
