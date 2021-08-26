@@ -17,6 +17,8 @@ const Popup = ({
   datetimeEnd,
   setdatetimeEnd,
   deleteEvent,
+  patients,
+  setPatientId,
   // setColor,
 }) => (
   <div className="popup">
@@ -37,11 +39,14 @@ const Popup = ({
       <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de fin" selected={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
     </div>
 
-      {/* <select name="color" onClick={(evt) => setColor(evt.target.value)}>
-        <option value="">couleurs</option>
-        <option value="red">rouge</option>
-        <option value="green">green</option>
-      </select> */}
+      <select name="patients" onChange={(evt) => setPatientId(evt.target.value)}>
+       {/* TODO mettre une valeur par défaut */}
+        {patients.map((patient) =>
+          <option key={patient.id} value={patient.id}>
+            {`${patient.lastname} ${patient.firstname}`}
+          </option>
+        )}
+      </select> 
     <div className="buttons">
       <button className="button" type="submit">Valider</button>
       <button className="button" type="button" onClick={() => setDisplayPopup()}>Annuler</button>
@@ -66,6 +71,9 @@ Popup.propTypes = {
   setdatetimeEnd: PropTypes.func.isRequired,
   /** Function to delete a event in BDD */
   deleteEvent: PropTypes.func.isRequired,
+  /**patients list */
+  patients: PropTypes.array.isRequired,
+  setPatientId: PropTypes.func.isRequired,
 }
 
 export default Popup;

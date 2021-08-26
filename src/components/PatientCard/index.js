@@ -11,11 +11,12 @@ import Informations from './Informations';
 import './patientCard.scss';
 
 const PatientCard = ({ patients }) => {
+  console.log(patients);
   // get the id in params of URL
   const { id } = useParams();
   // search patient by id
   const patientToDisplay = getPatientById(id, patients);
-
+  console.log(patientToDisplay);
   return (
     <>
       <header className="header">
