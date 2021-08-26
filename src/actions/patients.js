@@ -31,10 +31,25 @@ export const submitNewPatient = (data) => ({
   patient: data,
 });
 
-export const addPatient = (id, lastname, firstname, birthdate, phone, completeAdress, informationAdress,
-  note, doctorName, nir, mutualName, mutualNumberAmc, pathology, trustedPerson) => (
+export const addPatient = (
+  id,
+  lastname,
+  firstname,
+  birthdate,
+  phone,
+  completeAdress,
+  informationAdress,
+  note,
+  doctorName,
+  nir,
+  mutualName,
+  mutualNumberAmc,
+  pathology,
+  trustedPerson,
+) => (
   {
     type: ADD_PATIENT,
+    id: id,
     lastname: lastname,
     firstname: firstname,
     birthdate: birthdate,
