@@ -11,7 +11,7 @@ const Tour = ( {events} ) => {
   console.log(events);
   
   const appointmentOfTheDay=searchAppointmentOfTheDay(events);
- 
+  
   console.log(appointmentOfTheDay);
 /*  useEffect(() => {
     loadEvents();

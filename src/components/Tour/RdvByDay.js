@@ -30,7 +30,7 @@ const RdvByDay = ({
       </time>
       <div className="appointment-patient">
         <Link
-          to={`/patients/${10}`}
+          to={`/patients/${1}`}
         >
         <div className="appointment-infos">
           {/* <span className="lastname">
