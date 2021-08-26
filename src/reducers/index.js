@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 // import all reducers
 import patientReducer from './patientReducer';
 import calReducer from './calReducer';
+import logReducer from './logReducer';
+import createAccountReducer from './createAccountReducer';
 
 // import nomReducer2 from './reducer2';
 // etc
@@ -10,8 +12,8 @@ import calReducer from './calReducer';
 const rootReducer = combineReducers({
   patients: patientReducer,
   cal: calReducer,
-  // nomDuTiroir2: nomReducer2,
-  // etc
+  log: logReducer,
+  create: createAccountReducer,
 });
 
 export default rootReducer;

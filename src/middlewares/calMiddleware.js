@@ -2,16 +2,22 @@ import axios from 'axios';
 import moment from 'moment';
 import {
   FETCH_EVENTS, saveEvents, MANAGE_EVENT_SUBMIT, addEvent, DROP_EVENT, updateAfterDrop,
-  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent,
+  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded,
 } from 'src/actions/bigCal';
 
 const calMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le autMiddleware: ', action);
 
   switch (action.type) {
-    case FETCH_EVENTS:
+    case FETCH_EVENTS: {
       axios.get(
         'http://35.173.138.41/projet-o-nurse/public/api/appointments',
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       )
         .then((response) => {
           store.dispatch(saveEvents(response.data));
@@ -19,8 +25,12 @@ const calMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           // todo gerer l'erreur
           console.log(error);
+        })
+        .finally(() => {
+          store.dispatch(setEventsLoaded());
         });
       break;
+    }
     case MANAGE_EVENT_SUBMIT: {
       const {
         id, reason, datetimeStart, datetimeEnd,
@@ -39,6 +49,12 @@ const calMiddleware = (store) => (next) => (action) => {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
+          },
+
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
           },
         )
           .then((response) => {
@@ -62,6 +78,12 @@ const calMiddleware = (store) => (next) => (action) => {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
+          },
+
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
           },
         )
           .then((response) => {
@@ -93,6 +115,12 @@ const calMiddleware = (store) => (next) => (action) => {
           datetimeStart: datetimeStartGoodFormat,
           datetimeEnd: datetimeEndGoodFormat,
         },
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       )
         .then((response) => {
           store.dispatch(updateAfterDrop(
@@ -122,6 +150,11 @@ const calMiddleware = (store) => (next) => (action) => {
           datetimeStart: datetimeStartGoodFormat,
           datetimeEnd: datetimeEndGoodFormat,
         },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       )
         .then((response) => {
           store.dispatch(updateAfterResize(
@@ -139,6 +172,12 @@ const calMiddleware = (store) => (next) => (action) => {
     case DELETE_ONE_EVENT:
       axios.delete(
         `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
 
       )
         .then((response) => {

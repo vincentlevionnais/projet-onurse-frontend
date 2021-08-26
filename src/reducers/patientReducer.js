@@ -1,4 +1,4 @@
-import { SAVE_PATIENTS, SET_SEARCH, ADD_PATIENT } from 'src/actions/patients';
+import { SAVE_PATIENTS, SET_SEARCH, ADD_PATIENT, SET_PATIENTS_LOADED } from 'src/actions/patients';
 
 const initialState = {
   patientsList: [],
@@ -12,7 +12,6 @@ function patientReducer(state = initialState, action = {}) {
       return {
         ...state,
         patientsList: action.patients,
-        patientsLoaded: true,
       };
     case SET_SEARCH:
       return {
@@ -23,46 +22,34 @@ function patientReducer(state = initialState, action = {}) {
     case ADD_PATIENT: {
       const newPatient = {
         id: action.id,
-
-        lastname: action.lastName,
+        lastname: action.lastname,
         firstname: action.firstname,
         birthdate: action.birthdate,
         phone: action.phone,
         completeAdress: action.completeAdress,
         informationAdress: action.informationAdress,
         note: action.note,
-
         doctorName: action.doctorName,
         nir: action.nir,
         mutualName: action.mutualName,
         mutualNumberAmc: action.mutualNumberAmc,
         pathology: action.pathology,
-
         trustedPerson: action.trustedPerson,
+
       };
 
       return {
         ...state,
         patientsList: [...state.patientsList, newPatient],
 
-        lastname: '',
-        firstname: '',
-        birthdate: '',
-        phone: '',
-        completeAdress: '',
-        informationAdress: '',
-        note: '',
-
-        doctorName: '',
-        nir: '',
-        mutualName: '',
-        mutualNumberAmc: '',
-        pathology: '',
-
-        trustedPerson: '',
       };
     }
 
+    case SET_PATIENTS_LOADED:
+      return {
+        ...state,
+        patientsLoaded: true,
+      };
     default:
       return state;
   }

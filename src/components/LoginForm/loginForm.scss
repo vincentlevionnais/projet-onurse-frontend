@@ -1,0 +1,49 @@
+@use 'src/styles/vars';
+
+.login-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .login-form-element {
+
+    width: 100%;
+  
+    
+    .login-form-button {
+      font-weight: 700;
+      font-size: 1em;
+      color: #fff;
+      background-color: vars.$darkBlue;
+      border: 0;
+      width: 50%;
+      padding: .7em;
+      height: 2.5em;
+    }
+
+    .log-create-account {
+
+      font-weight: 700;
+      font-size: 1em;
+      color: #fff;
+      background-color: vars.$darkBlue;
+      border-radius: .3em;
+      border: 0;
+      padding: .7em;
+      height: 2.5em;
+
+      .log-create-account-link {
+        font-weight: 700;
+        font-size: 1em;
+        color: #fff;
+        background-color: vars.$darkBlue;
+        border: 0;
+        width: 70%;
+        padding: .7em;
+        height: 2.5em;
+      }
+    }
+    
+  }
+
+}

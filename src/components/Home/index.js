@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut } from 'react-feather';
-import logo from "../../assets/images/LOGO-V3.png"
+import logo from '../../assets/images/LOGO-V3.png';
 import './home.scss';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <header className="header">
-        <div className="header-infos" >
+        <div className="header-infos">
           <h1 className="header-title">
             Bienvenue XXX
           </h1>
@@ -66,7 +66,5 @@ const Home = () => {
     </>
   );
 };
-
-
 
 export default Home;

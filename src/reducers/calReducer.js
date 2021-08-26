@@ -1,42 +1,18 @@
 import {
   TOGGLE_POPUP, SAVE_EVENTS, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
   UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE, UPDATE_ID_VALUE,
-  UPDATE_ONE_EVENT, DELETE_EVENT,
+  UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED,
 } from 'src/actions/bigCal';
 
+
 const initialState = {
-  events: [
-    // {
-    //   id: '1',
-    //   title: 'pansement genevieve',
-    //   start: new Date('2021-08-18T15:50'),
-    //   end: new Date('2021-08-18T16:50'),
-    // },
-    // {
-    //   id: '2',
-    //   title: 'pansement renéé',
-    //   start: new Date('Wed Aug 18 2021 15:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    //   end: new Date('Wed Aug 18 2021 16:00:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    // },
-    // {
-    //   id: '3',
-    //   title: 'pansement Jacques',
-    //   start: new Date('Tue Aug 19 2021 16:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    //   end: new Date('Tue Aug 19 2021 17:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    // },
-    // {
-    //   id: '4',
-    //   title: 'pansement Gillou',
-    //   start: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    //   end: new Date('Fri Aug 20 2021 14:30:00 GMT+0200 (heure d’été d’Europe centrale)'),
-    // },
-  ],
+  events: [],
   displayPopup: false,
   id: '',
   reason: '',
   datetimeStart: '',
   datetimeEnd: '',
-
+  eventsLoaded : false,
 };
 
 const calReducer = (state = initialState, action = {}) => {
@@ -53,7 +29,6 @@ const calReducer = (state = initialState, action = {}) => {
         title: event.reason,
         start: new Date(event.datetimeStart),
         end: new Date(event.datetimeEnd),
-
       }));
 
       return {
@@ -181,6 +156,11 @@ const calReducer = (state = initialState, action = {}) => {
 
       };
     }
+    case SET_EVENTS_LOADED:
+      return {
+        ...state,
+        eventsLoaded: true,
+      };
     default:
       return state;
   }

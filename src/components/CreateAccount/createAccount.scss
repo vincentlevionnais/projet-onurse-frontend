@@ -1,0 +1,65 @@
+@use 'src/styles/vars';
+
+.create-account-container {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3em;
+
+  .create-account-input {
+    border: transparent;
+    background-color: vars.$lightBlue;
+    color: black;
+    margin: 0.7em;
+    padding: 1.3em;
+    background-color: vars.$lightBlue;
+    width: 70%;
+  }
+
+  .create-account-button {
+    font: vars.$contentFont;
+    color: white;
+    background-color: vars.$darkBlue;
+    padding: 0.5em;
+    margin: 1em;
+    text-align: center;
+    width: 50%;
+
+  }
+}
+
+@media (max-width: 700px) {
+
+
+  .create-account-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+
+
+    .create-account-input {
+      border: transparent;
+      background-color: vars.$lightBlue;
+      color: black;
+      margin: 0.7em;
+      padding: 1em;
+    }
+
+    .create-account-button {
+      font: vars.$contentFont;
+      color: white;
+      background-color: vars.$darkBlue;
+      padding: 0.8em;
+      margin: 1em;
+      text-align: center;
+      width: 50%;
+      letter-spacing: 0.1em;
+
+    }
+  }
+
+
+}
