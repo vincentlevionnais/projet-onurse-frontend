@@ -31,29 +31,39 @@ export const submitNewPatient = (data) => ({
   patient: data,
 });
 
-export const addPatient = (id, lastName, firstName, dateOfBirth, phoneNumber, adress,
-  complement, information, doctor, NIR, mutual, AMC, pathology, trustedPersonLastName,
-  trustedPersonFirstName, relation, trustedPersonPhoneNumber, trustedPersonAdress) => (
+export const addPatient = (
+  id,
+  lastname,
+  firstname,
+  birthdate,
+  phone,
+  completeAdress,
+  informationAdress,
+  note,
+  doctorName,
+  nir,
+  mutualName,
+  mutualNumberAmc,
+  pathology,
+  trustedPerson,
+
+) => (
   {
     type: ADD_PATIENT,
-    lastName: lastName,
-    firstName: firstName,
-    dateOfBirth: dateOfBirth,
-    phoneNumber: phoneNumber,
-    adress: adress,
-    complement: complement,
-    information: information,
-    doctor: doctor,
-    NIR: NIR,
-    mutual: mutual,
-    AMC: AMC,
+    id: id,
+    lastname: lastname,
+    firstname: firstname,
+    birthdate: birthdate,
+    phone: phone,
+    completeAdress: completeAdress,
+    informationAdress: informationAdress,
+    note: note,
+    doctorName: doctorName,
+    nir: nir,
+    mutualName: mutualName,
+    mutualNumberAmc: mutualNumberAmc,
     pathology: pathology,
-    trustedPersonLastName: trustedPersonLastName,
-    trustedPersonFirstName: trustedPersonFirstName,
-    relation: relation,
-    trustedPersonPhoneNumber: trustedPersonPhoneNumber,
-    trustedPersonAdress: trustedPersonAdress,
-
+    trustedPerson: trustedPerson,
   });
 
 export const setPatientLoaded = () => ({

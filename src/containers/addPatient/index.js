@@ -7,25 +7,6 @@ import { submitNewPatient } from 'src/actions/patients';
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
-  lastName: state.lastName,
-  firstName: state.firstName,
-  dateOfBirth: state.dateOfBirth,
-  phoneNumber: state.phoneNumber,
-  adress: state.adress,
-  complement: state.complement,
-  information: state.information,
-
-  doctor: state.doctor,
-  nir: state.nir,
-  mutual: state.mutual,
-  AMC: state.AMC,
-  pathology: state.pathology,
-
-  trustedPersonLastName: state.trustedPersonLastName,
-  trustedPersonFirstName: state.trustedPersonFirstName,
-  relation: state.relation,
-  TrustedPersonPhoneNumber: state.TrustedPersonPhoneNumber,
-  TrustedPersonAdress: state.TrustedPersonAdress,
 
 });
 

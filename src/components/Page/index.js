@@ -54,10 +54,14 @@ const Page = ({
           <Route path="/patients" exact>
             <PatientsList />
           </Route>
+<<<<<<< HEAD
+          <Route path="/addPatient" exact>
+=======
           <Route path="/addPatient">
+>>>>>>> develop
             <AddPatient />
           </Route>
-          <Route path="/patients/:id">
+          <Route path="/patients/:id" exact>
             <PatientCard />
           </Route>
           <Route path="/calendar" exact>
