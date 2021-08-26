@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, LogOut } from 'react-feather';
+import { useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 // import function for search patient by id
 import { getPatientById } from 'src/utils';
 import CivilStatus from './CivilStatus';
+import Header from '../Page/Header';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
@@ -19,25 +20,8 @@ const PatientCard = ({ patients }) => {
   console.log(patientToDisplay);
   return (
     <>
-      <header className="header">
-        <Link
-          to="/"
-          className="home-button"
-        >
-          <ArrowLeft />
-        </Link>
-        <div className="header-infos">
-          <h1 className="header-title">
-            Fiche patient
-          </h1>
-        </div>
-        <Link
-          to="/login"
-          className="logout-button"
-        >
-          <LogOut />
-        </Link>
-      </header>
+      <Header titlePage="Fiche patient" />
+
       <main className="main">
         <h2 className="patient-name">
           {`${patientToDisplay.firstname} ${patientToDisplay.lastname}`}
