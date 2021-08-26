@@ -1,10 +1,13 @@
-import { UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT } from 'src/actions/login';
+import {
+  UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT, TOKEN_PERSIST, TO_LOGIN,
+} from 'src/actions/login';
 
 const initialState = {
   email: '',
   password: '',
   // indique si l'utilisateur est authentifié
   logged: false,
+  token: localStorage.getItem('token'),
 };
 
 function logReducer(state = initialState, action = {}) {
@@ -35,8 +38,21 @@ function logReducer(state = initialState, action = {}) {
       return {
         ...state,
         logged: false,
+        token: null,
       };
 
+    case TO_LOGIN:
+      return {
+        ...state,
+        logged: false,
+      };
+
+    case TOKEN_PERSIST:
+      return {
+        ...state,
+        logged: true,
+        token: action.token,
+      };
     default:
       return state;
   }
