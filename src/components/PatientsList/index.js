@@ -14,14 +14,14 @@ const PatientsList = ({
   setSearch,
   search,
 }) => {
-
   // search patients to display in terms of the search of user
   let patientToDisplay;
   if (search.length === 0) {
     patientToDisplay = patients;
-  } else {
-    patientToDisplay=searchPatientByName(search, patients);
-  };
+  }
+  else {
+    patientToDisplay = searchPatientByName(search, patients);
+  }
 
   return (
     <>
@@ -46,7 +46,8 @@ const PatientsList = ({
       </header>
 
       <main className="main">
-        <input className="input-search"
+        <input
+          className="input-search"
           type="text"
           placeholder="Recherche un patient"
           onChange={(event) => {
@@ -67,13 +68,13 @@ const PatientsList = ({
         <hr />
 
         <div className="addPatient-element">
-        <Link
-          to="/addPatient"
-          className="addPatient-button"
-        >Ajouter un patient
-        </Link>
-      </div>
-    </main>
+          <Link
+            to="/addPatient"
+            className="addPatient-button"
+          >Ajouter un patient
+          </Link>
+        </div>
+      </main>
     </>
   );
 };

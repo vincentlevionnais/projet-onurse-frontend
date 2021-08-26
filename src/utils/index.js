@@ -35,40 +35,49 @@ export const searchPatientByName = (search, patients) => {
  * @param {strings} values input value
  */
 
-export const createAccountValidateValue = (values) => {
+export const createAccountValidateValue = (lastName, firstName, email, phone) => {
   const errors = {};
 
-  if (!values.lastName) {
+  if (lastName === '') {
     errors.lastName = 'Requis';
+    alert('Nom Requis');
   }
-  else if (values.lastName.length > 64) {
-    errors.lastName = 'Maximum : 20 caractères';
+  else if (lastName.length > 64) {
+    errors.lastName = 'Maximum : 64 caractères';
+    alert('Maximum : 64 caractères')
   }
-  if (!values.firstName) {
+  if (firstName === '') {
     errors.firstName = 'Requis';
+    alert('Prénom Requis');
   }
-  else if (values.firstName.length > 64) {
+  else if (firstName.length > 64) {
     errors.firstName = 'Maximum : 15 caractères';
+    alert('Maximum : 64 caractères')
   }
 
-  if (!values.email) {
+  if (email === '') {
     errors.email = 'Requis';
+    alert('Email Requis');
   }
-  else if (values.firstName.email > 255) {
-    errors.firstName = 'Maximum : 255 caractères';
+  else if (email.length > 255) {
+    errors.email = 'Maximum : 255 caractères';
+    alert('Maximum : 255 caractères')
   }
-  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
     errors.email = 'Adresse email invalide';
+    alert('Adresse email invalide');
   }
 
-  if (!values.phoneNumber) {
-    errors.phoneNumber = 'Requis';
+  if (phone === '') {
+    errors.phone = 'Requis';
+    alert('Téléphone Requis');
   }
-  else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phoneNumber)) {
-    errors.phoneNumber = 'Format invalide';
+  else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(phone)) {
+    errors.phone = 'Format invalide';
+    alert('Format invalide');
   }
 
-  return errors;
+  return false;
 };
 // function to select appointment of current day
 /**

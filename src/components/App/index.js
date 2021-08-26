@@ -9,18 +9,22 @@ import './styles.scss';
 
 // == Composant
 const App = ({
-  loadEvents, fetchPatients, logged,
+  loadEvents, fetchPatients, logged, redirectToLogin, makeTokenPersist,
 }) => {
   useEffect(() => {
     if (logged) {
       loadEvents();
       fetchPatients();
     }
+    if (localStorage.getItem('token') === null) {
+      redirectToLogin();
+    }
+    if (localStorage.getItem('token')) {
+      const tokenInLocalStorage = localStorage.getItem('token');
+      makeTokenPersist(tokenInLocalStorage);
+    }
   }, [logged]);
 
- /*  useEffect(() => {
-    loadEvents();
-  }, [events]);  */
 
   return (
     <div className="app">

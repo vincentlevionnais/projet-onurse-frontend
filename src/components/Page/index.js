@@ -11,8 +11,13 @@ import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/components/Home';
 import Loader from 'src/components/Loader';
 import Errors from '../Errors';
+<<<<<<< HEAD
+import AddPatient from '../../containers/AddPatient';
+import Tour from '../Tour';
+=======
 import AddPatient from '../../containers/addPatient';
 import Tour from '../../containers/Tour';
+>>>>>>> develop
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
@@ -54,11 +59,7 @@ const Page = ({
           <Route path="/patients" exact>
             <PatientsList />
           </Route>
-<<<<<<< HEAD
-          <Route path="/addPatient" exact>
-=======
           <Route path="/addPatient">
->>>>>>> develop
             <AddPatient />
           </Route>
           <Route path="/patients/:id" exact>

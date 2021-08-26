@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'react-feather';
 import { useFormik } from 'formik';
 
-import { createAccountValidateValue } from 'src//utils';
+import { createAccountValidateValue } from 'src/utils';
 import './createAccount.scss';
 
 const CreateAccount = ({
@@ -35,16 +35,18 @@ const CreateAccount = ({
     // },
   });
 
+  // const errorsDiv = useRef(null);
+
   const onSubmit = (evt) => {
-    console.log('soumission ajout ');
     evt.preventDefault();
-    const values = [lastName, firstName, email, password, phone];
-    if (createAccountValidateValue(values)) {
+    const errors = createAccountValidateValue(lastName, firstName, email, phone);
+
+    if (errors) {
       manageSubmit();
     }
-    else {
-      alert('vérification des infos');
-    }
+    // else {
+    //   alert('vérification des infos');
+    // }
   };
 
   return (
