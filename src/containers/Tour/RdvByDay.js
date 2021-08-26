@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import RdvByDay from 'src/components/Tour/RdvByDay';
-import manageEventSubmit from '../../actions/bigCal';
+import RdvByDay from '../../components/Tour/RdvByDay';
+import { setStatus } from '../../actions/bigCal';
+
 // === mapStateToProps
 const mapStateToProps = (state) => ({
 
@@ -8,9 +9,9 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
- /*  manageEvent : (eventId) => {
-    dispatch(manageEventSubmit(eventId));
-  } */
+  setStatus: (eventId, status) => {
+    dispatch(setStatus(eventId, status));
+  },
 });
 
 // === création de l'assistant

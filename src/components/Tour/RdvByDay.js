@@ -3,13 +3,12 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Check, X } from 'react-feather';
 import PropTypes from 'prop-types';
-import { className } from 'postcss-selector-parser';
 
 const RdvByDay = ({
   id,
   datetimeStart,
   reason,
-  manageEvent,
+  setStatus,
 }) => {
   
   const eventDate = new Date (datetimeStart);
@@ -20,6 +19,7 @@ const RdvByDay = ({
   /* classe css quand on pourra changer le status
     const cssClass = classNames(
     'taskTodo',
+    {'todo' : status === 1},
     {'archive' : status === 2},
     {'cancel' : status === 3},
   ) */
@@ -48,17 +48,14 @@ const RdvByDay = ({
         <div className="checked">
           <button
             onClick={() => {
-              console.log("button checked");
-              // appel à la fonction manageEvent
-              // transmettre id et status = 2
+              setStatus(id, 2);
             }}
           >
             <Check />
           </button>
           <button
             onClick={() => {
-              // appel à la fonction manageEvent
-              // transmettre id et status =3
+              setStatus(id, 3);
             }}
           >
             <X />
@@ -72,8 +69,8 @@ const RdvByDay = ({
 RdvByDay.propTypes = {
   reason: PropTypes.string.isRequired,
   datetimeStart: PropTypes.string.isRequired,
-  //manageEvent: PropTypes.func.isRequired,
-  //id: PropTypes.nomber.isRequired,
+  id: PropTypes.number.isRequired,
+  setStatus: PropTypes.func.isRequired,
 };
 
 export default RdvByDay;

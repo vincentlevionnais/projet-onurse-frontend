@@ -14,6 +14,7 @@ const initialState = {
   datetimeEnd: '',
   eventsLoaded : false,
   patient: '',
+  status: 1,
 };
 
 const calReducer = (state = initialState, action = {}) => {
@@ -44,6 +45,8 @@ const calReducer = (state = initialState, action = {}) => {
         title: action.reason,
         start: action.datetimeStart,
         end: action.datetimeEnd,
+        patient: action.patient,
+        status: action.status,
       };
 
       return {
