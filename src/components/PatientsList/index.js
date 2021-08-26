@@ -68,7 +68,7 @@ const PatientsList = ({
 
         <div className="addPatient-element">
         <Link
-          to="/patients/add"
+          to="/addPatient"
           className="addPatient-button"
         >Ajouter un patient
         </Link>
