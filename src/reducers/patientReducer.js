@@ -22,47 +22,25 @@ function patientReducer(state = initialState, action = {}) {
     case ADD_PATIENT: {
       const newPatient = {
         id: action.id,
-        lastName: action.lastName,
-        firstName: action.firstName,
-        dateOfBirth: action.dateOfBirth,
-        phoneNumber: action.phoneNumber,
-        adress: action.adress,
-        complement: action.complement,
-        information: action.information,
-        doctor: action.doctor,
+        lastname: action.lastname,
+        firstname: action.firstname,
+        birthdate: action.birthdate,
+        phone: action.phone,
+        completeAdress: action.completeAdress,
+        informationAdress: action.informationAdress,
+        note: action.note,
+        doctorName: action.doctorName,
         nir: action.nir,
-        mutual: action.mutual,
-        AMC: action.AMC,
+        mutualName: action.mutualName,
+        mutualNumberAmc: action.mutualNumberAmc,
         pathology: action.pathology,
-        trustedPersonLastName: action.pathology,
-        trustedPersonFirstName: action.trustedPersonFirstName,
-        relation: action.relation,
-        trustedPersonPhoneNumber: action.trustedPersonPhoneNumber,
-        trustedPersonAdress: action.trustedPersonAdress,
+        trustedPerson: action.trustedPerson,
 
       };
 
       return {
         ...state,
         patientsList: [...state.patientsList, newPatient],
-
-        lastName: '',
-        firstName: '',
-        dateOfBirth: '',
-        phoneNumber: '',
-        adress: '',
-        complement: '',
-        information: '',
-        doctor: '',
-        nir: '',
-        mutual: '',
-        AMC: '',
-        pathology: '',
-        trustedPersonLastName: '',
-        trustedPersonFirstName: '',
-        relation: '',
-        trustedPersonPhoneNumber: '',
-        trustedPersonAdress: '',
 
       };
     }

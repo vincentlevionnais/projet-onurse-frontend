@@ -33,7 +33,7 @@ const calMiddleware = (store) => (next) => (action) => {
     }
     case MANAGE_EVENT_SUBMIT: {
       const {
-        id, reason, datetimeStart, datetimeEnd,
+        id, reason, datetimeStart, datetimeEnd, patient,
       } = store.getState().cal;
 
       if (id === '') {
@@ -43,12 +43,15 @@ const calMiddleware = (store) => (next) => (action) => {
       */
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
+        const patientGoodFormat = patient.toString();
+        console.log(patientGoodFormat);
         axios.post(
           'http://35.173.138.41/projet-o-nurse/public/api/appointments',
           {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
+            //patient: patientGoodFormat,
           },
 
           {
@@ -63,6 +66,7 @@ const calMiddleware = (store) => (next) => (action) => {
               reason,
               datetimeStart,
               datetimeEnd,
+              patient,
             ));
           })
           .catch((error) => {
@@ -72,12 +76,14 @@ const calMiddleware = (store) => (next) => (action) => {
       else {
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
+     
         axios.put(
           `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,
           {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
+            patient: patient_id,
           },
 
           {
@@ -92,6 +98,7 @@ const calMiddleware = (store) => (next) => (action) => {
               reason,
               datetimeStart,
               datetimeEnd,
+              patient_id,
             ));
           })
           .catch((error) => {

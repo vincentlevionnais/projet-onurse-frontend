@@ -26,63 +26,72 @@ const patientMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_NEW_PATIENT:
-      console.log(action);
-      axios.post('http://35.173.138.41/projet-o-nurse/public/api/patients',
-        {
-          lastName: action.lastName,
-          firstName: action.firstName,
-          dateOfBirth: action.dateOfBirth,
-          phoneNumber: action.phoneNumber,
-          adress: action.adress,
-          complement: action.complement,
-          information: action.information,
-          doctor: action.doctor,
-          nir: action.nir,
-          mutual: action.mutual,
-          AMC: action.AMC,
-          pathology: action.pathology,
-          trustedPersonLastName: action.trustedPersonLastName,
-          trustedPersonFirstName: action.trustedPersonFirstName,
-          relation: action.relation,
-          TrustedPersonPhoneNumber: action.TrustedPersonPhoneNumber,
-          TrustedPersonAdress: action.TrustedPersonAdress,
+      {
+        console.log(action.patient);
+        const {
+          lastname,
+          firstname,
+          birthdate,
+          phone,
+          completeAdress,
+          informationAdress,
+          note,
+          doctorName,
+          nir,
+          mutualName,
+          mutualNumberAmc,
+          pathology,
+          trustedPerson,
+        } = action.patient;
+        console.log(lastname);
+        axios.post('http://35.173.138.41/projet-o-nurse/public/api/patients',
+          {
+            lastname: lastname,
+            firstname: firstname,
+            birthdate: birthdate,
+            phone: phone,
+            completeAdress: completeAdress,
+            informationAdress: informationAdress,
+            note: note,
+            doctorName: doctorName,
+            nir: nir,
+            mutualName: mutualName,
+            mutualNumberAmc: mutualNumberAmc,
+            pathology: pathology,
+            trustedPerson: trustedPerson,
 
-        },
-
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        })
-        .then((response) => {
-          //  console.log(response);
 
-          store.dispatch(addPatient(
-            response.data.id,
-            response.data.lastName,
-            response.data.firstName,
-            response.data.dateOfBirth,
-            response.data.phoneNumber,
-            response.data.adress,
-            response.data.complement,
-            response.data.information,
-            response.data.doctor,
-            response.data.nir,
-            response.data.mutual,
-            response.data.AMC,
-            response.data.pathology,
-            response.data.trustedPersonLastName,
-            response.data.trustedPersonFirstName,
-            response.data.relation,
-            response.data.TrustedPersonPhoneNumber,
-            response.data.TrustedPersonAdress,
-          ));
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally();
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          })
+          .then((response) => {
+            //  console.log(response);
 
+            store.dispatch(addPatient(
+              response.data.id,
+              response.data.lastname,
+              response.data.firstname,
+              response.data.birthdate,
+              response.data.phone,
+              response.data.completeAdress,
+              response.data.informationAdress,
+              response.data.note,
+              response.data.doctorName,
+              response.data.nir,
+              response.data.mutualName,
+              response.data.mutualNumberAmc,
+              response.data.pathology,
+              response.data.trustedPerson,
+            ));
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally();
+      }
       break;
     default:
   }

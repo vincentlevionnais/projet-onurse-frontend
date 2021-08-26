@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, LogOut } from 'react-feather';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 
 import moment from 'moment';
 
 import Popup from 'src/containers/BigCalendar/Popup';
-
+import Header from '../Page/Header';
 import './bigCalendar.scss';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
@@ -51,25 +49,8 @@ const BigCalendar = ({
 
   return (
     <>
-      <header className="header">
-        <Link
-          to="/"
-          className="home-button"
-        >
-          <ArrowLeft />
-        </Link>
-        <div className="header-infos">
-          <h1 className="header-title">
-            Mon Calendrier
-          </h1>
-        </div>
-        <Link
-          to="/login"
-          className="logout-button"
-        >
-          <LogOut />
-        </Link>
-      </header>
+      <Header titlePage="Mon calendrier" />
+
       <div className="calendar">
         {displayPopup && <Popup />}
         <DnDCalendar
