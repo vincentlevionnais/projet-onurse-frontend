@@ -70,6 +70,7 @@ export const createAccountValidateValue = (values) => {
 
   return errors;
 };
+
 // function to select appointment of current day
 /**
  * get patient with id
@@ -82,22 +83,23 @@ export const searchAppointmentOfTheDay = (events) => {
   const currentDay = `${new Date().getDate()} ${new Date().getMonth()} ${new Date().getFullYear()}`;
   // filtered events by datetimeStart
   const appointmentOfTheDay = events.filter((appointment) => {
-    const datetimeStart = new Date (appointment.datetimeStart);
+    const datetimeStart = new Date(appointment.start);
+    console.log(datetimeStart);
     // event datetimeStart JJ/MM/AAA
     const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth()} ${datetimeStart.getFullYear()}`;
+    console.log(eventDate);
     return eventDate === currentDay;
   });
 
   // build a new table from appointment of the day, but sorted by hour to have a display in order
   const appointmentOfTheDayByHour = appointmentOfTheDay.sort(function compare(a, b) {
-    if (a.datetimeStart < b.datetimeStart) {
+    if (a.start < b.start) {
       return -1;
     }
-    if(a.datetimeStart > b.datetimeStart) {
+    if(a.start > b.start) {
       return 1;
     }
     return 0;
   });
-
   return appointmentOfTheDayByHour;
 };

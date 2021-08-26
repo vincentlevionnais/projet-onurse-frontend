@@ -4,7 +4,7 @@ import { setStatus } from '../../actions/bigCal';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-
+  patients: state.patients.patientsList, 
 });
 
 // === mapDispatchToProps

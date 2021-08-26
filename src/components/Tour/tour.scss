@@ -38,12 +38,27 @@
 .main {
   margin-top: 2em;
 
-  .taskToDo {
+  .taskTodo {
     position: relative;
     background-color: vars.$lightBlue;
     margin: 1em;
     color: vars.$darkBlue;
 
+    &.archive {
+      background-color: vars.$lightGrey;
+      .appointment-hour {
+        background-color: vars.$mediumGrey;
+      }
+    }
+
+    &.canceled {
+      background-color: vars.$lightGrey;
+      text-decoration: line-through;
+      .appointment-hour {
+        background-color: vars.$mediumGrey;
+        text-decoration: line-through;
+      }
+    }
     .appointment-hour {
       position: absolute;
       left: 0;
@@ -101,7 +116,7 @@
 
 @media (min-width: 740px) {
   .main {
-    .taskToDo {
+    .taskTodo {
       .appointment-patient {
         .checked {
           flex-direction: row;

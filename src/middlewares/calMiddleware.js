@@ -5,7 +5,6 @@ import {
   RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded, SET_STATUS,
 } from 'src/actions/bigCal';
 
-
 const calMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le autMiddleware: ', action);
 
@@ -79,7 +78,7 @@ const calMiddleware = (store) => (next) => (action) => {
       else {
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
-     
+        const patientGoodFormat = parseInt(patient);
         axios.put(
           `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,
           {

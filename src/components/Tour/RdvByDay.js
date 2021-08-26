@@ -1,47 +1,58 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Check, X } from 'react-feather';
 import PropTypes from 'prop-types';
+import { CornerDownLeft } from 'react-feather';
+import { getPatientById } from '../../utils';
 
 const RdvByDay = ({
   id,
-  datetimeStart,
-  reason,
+  start,
+  title,
+  status,
   setStatus,
+  patient_id,
+  patients,
 }) => {
-  
-  const eventDate = new Date (datetimeStart);
+
+  const patient = getPatientById(patient_id, patients);
+
+  useEffect(() => {
+
+  }, [status]);
+
+  const eventDate = start;
   const hour = `${eventDate.getHours()}h${eventDate.getMinutes()}`;
   
   //! Link à dynamiser quand on pourra lier un RDV à un patient + nom et prénom du patient
 
-  /* classe css quand on pourra changer le status
+
     const cssClass = classNames(
-    'taskTodo',
-    {'todo' : status === 1},
-    {'archive' : status === 2},
-    {'cancel' : status === 3},
-  ) */
+      'taskTodo',
+      {'archive' : status === 2},
+      {'canceled' : status === 3},
+    );
+
   return (
-    <div className="taskToDo">
+    <div className={cssClass}>
       <time className="appointment-hour">
         {hour}
       </time>
       <div className="appointment-patient">
         <Link
-          to={`/patients/${1}`}
+          to={`/patients/${patient.id}`}
         >
         <div className="appointment-infos">
-          {/* <span className="lastname">
-            {lastname}
+           <span className="lastname">
+            {patient.lastname}
           </span>
           <span className="firstname">
-            {firstname}
+            {patient.firstname}
           </span>
-          - */}
+          - 
           <span className="appointment-reason">
-            {reason}
+            {title}
           </span>
         </div>
         </Link>
@@ -60,6 +71,13 @@ const RdvByDay = ({
           >
             <X />
           </button>
+          <button
+            onClick={() => {
+              setStatus(id, 1);
+            }}
+          >
+            <CornerDownLeft />
+          </button>
         </div>
       </div> 
     </div>
@@ -67,10 +85,11 @@ const RdvByDay = ({
 };
 
 RdvByDay.propTypes = {
-  reason: PropTypes.string.isRequired,
-  datetimeStart: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   setStatus: PropTypes.func.isRequired,
+  status: PropTypes.number.isRequired,
+  patient_id: PropTypes.number.isRequired,
 };
 
 export default RdvByDay;

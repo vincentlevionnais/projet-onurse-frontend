@@ -8,18 +8,17 @@ import './tour.scss';
 
 
 const Tour = ( {events} ) => {
-  console.log(events);
   
   const appointmentOfTheDay=searchAppointmentOfTheDay(events);
-  
   console.log(appointmentOfTheDay);
+
 /*  useEffect(() => {
     loadEvents();
   }, [appointmentOfTheDay]); */
 
 /*   useEffect(() => {
     window.location.reload();
-  }, []); */
+  }, [events]);  */
   return (
     <>
       <header className="header">
@@ -43,11 +42,11 @@ const Tour = ( {events} ) => {
       </header>
       <main className="main">
       {appointmentOfTheDay.map((appointment) => {
-        console.log(appointment);
         return (
         <RdvByDay
           {...appointment}
           key={appointment.id}
+          patient_id={appointment.patient.id}
         />
       )})}
       </main>
