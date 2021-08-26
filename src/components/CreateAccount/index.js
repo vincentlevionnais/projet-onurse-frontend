@@ -53,7 +53,7 @@ const CreateAccount = ({
     <>
       <header className="header">
         <Link
-          to="/"
+          to="/login"
           className="home-button"
         >
           <ArrowLeft />

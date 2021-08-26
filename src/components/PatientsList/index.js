@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, LogOut } from 'react-feather';
+import Header from 'src/containers/Page/Header';
 
 // sub component PatientSmall
 import PatientSmall from './PatientSmall';
@@ -25,25 +25,7 @@ const PatientsList = ({
 
   return (
     <>
-      <header className="header">
-        <Link
-          to="/"
-          className="home-button"
-        >
-          <ArrowLeft />
-        </Link>
-        <div className="header-infos">
-          <h1 className="header-title">
-            Mes patients
-          </h1>
-        </div>
-        <Link
-          to="/login"
-          className="logout-button"
-        >
-          <LogOut />
-        </Link>
-      </header>
+      <Header titlePage="Liste des Patients" />
 
       <main className="main">
         <input

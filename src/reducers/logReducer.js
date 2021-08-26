@@ -21,19 +21,14 @@ function logReducer(state = initialState, action = {}) {
     case CONNECT_USER:
       localStorage.setItem('token', action.token);
 
-      if (localStorage.getItem('token')) {
-        return {
-          ...state,
-          logged: true,
-        };
-      }
       return {
         ...state,
-        logged: false,
+        logged: true,
+        token: localStorage.getItem('token'),
       };
 
     case LOG_OUT:
-      localStorage.remove('token');
+      localStorage.removeItem('token');
 
       return {
         ...state,
