@@ -23,6 +23,9 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         displayPopup: !state.displayPopup,
+        reason: '',
+        datetimeStart: '',
+        datetimeEnd: '',
       };
     case SAVE_EVENTS: {
       const newListEvents = action.events.map((event) => ({

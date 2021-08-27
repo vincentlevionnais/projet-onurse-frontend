@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { Check, X } from 'react-feather';
+import { Check, X, CornerDownLeft } from 'react-feather';
 import PropTypes from 'prop-types';
-import { CornerDownLeft } from 'react-feather';
 import { getPatientById } from '../../utils';
 
 const RdvByDay = ({
@@ -52,6 +51,7 @@ const RdvByDay = ({
         </Link>
         <div className="checked">
           <button
+            className="archive-button"
             onClick={() => {
               setStatus(id, 2);
             }}
@@ -59,6 +59,7 @@ const RdvByDay = ({
             <Check />
           </button>
           <button
+            className="canceled-button"
             onClick={() => {
               setStatus(id, 3);
             }}
@@ -66,6 +67,7 @@ const RdvByDay = ({
             <X />
           </button>
           <button
+            className="return-button"
             onClick={() => {
               setStatus(id, 1);
             }}
@@ -83,7 +85,7 @@ RdvByDay.propTypes = {
   id: PropTypes.number.isRequired,
   setStatus: PropTypes.func.isRequired,
   status: PropTypes.number.isRequired,
-  patient_id: PropTypes.number.isRequired,
+  patient_id: PropTypes.string.isRequired,
 };
 
 export default RdvByDay;
