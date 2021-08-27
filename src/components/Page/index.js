@@ -60,6 +60,9 @@ const Page = ({
           <Route path="/patients/:id" exact>
             <PatientCard />
           </Route>
+          <Route path="/patients/:id/edit" exact>
+            <AddPatient />
+          </Route>
           <Route path="/calendar" exact>
             <BigCalendar />
           </Route>

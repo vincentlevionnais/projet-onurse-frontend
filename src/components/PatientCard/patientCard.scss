@@ -51,6 +51,10 @@
    
     padding: 1em;
     font-family: vars.$titleFont;
+
+    .editPatient{
+      padding-left: 0.5em;
+    }
   }
   .section {
     width: 100%;

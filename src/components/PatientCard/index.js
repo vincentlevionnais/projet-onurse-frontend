@@ -1,8 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import function for search patient by id
 import Header from 'src/containers/Page/Header';
+import { Edit } from 'react-feather';
 import { getPatientById } from 'src/utils';
 import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
@@ -24,7 +25,15 @@ const PatientCard = ({ patients }) => {
       <main className="main">
         <h2 className="patient-name">
           {`${patientToDisplay.firstname} ${patientToDisplay.lastname}`}
+
+          <Link
+            to={`/patients/${id}/edit`}
+            className="editPatient"
+          >
+            <Edit />
+          </Link>
         </h2>
+
         <CivilStatus
           {...patientToDisplay}
         />
