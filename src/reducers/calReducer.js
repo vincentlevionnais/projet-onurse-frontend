@@ -13,7 +13,7 @@ const initialState = {
   datetimeStart: '',
   datetimeEnd: '',
   eventsLoaded : false,
-  patient: '',
+  patient: {},
   status: 1,
 };
 
@@ -40,12 +40,15 @@ const calReducer = (state = initialState, action = {}) => {
     }
 
     case ADD_EVENT: {
+      const patient_id = {
+        id: action.patient
+      }
       const newEvents = {
         id: action.id,
         title: action.reason,
         start: action.datetimeStart,
         end: action.datetimeEnd,
-        patient: action.patient,
+        patient: patient_id,
         status: action.status,
       };
 
