@@ -1,22 +1,27 @@
+// === import npm
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, LogOut } from 'react-feather';
 import PropTypes from 'prop-types';
+// === import local
 // import function for search patient by id
 import { getPatientById } from 'src/utils';
+// import function for seachr events of patient
+import { searchAppointmentOfPatient } from '../../utils';
 import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
 import './patientCard.scss';
 
-const PatientCard = ({ patients }) => {
+const PatientCard = ({ patients, events }) => {
   console.log(patients);
   // get the id in params of URL
   const { id } = useParams();
   // search patient by id
   const patientToDisplay = getPatientById(id, patients);
-  console.log(patientToDisplay);
+  const eventsOfPatient = searchAppointmentOfPatient(events, id);
+
   return (
     <>
       <header className="header">
@@ -59,6 +64,7 @@ const PatientCard = ({ patients }) => {
 
 PatientCard.propTypes = {
   patients: PropTypes.array.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
 export default PatientCard;

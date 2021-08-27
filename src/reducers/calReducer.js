@@ -142,7 +142,9 @@ const calReducer = (state = initialState, action = {}) => {
             title: action.reason,
             start: action.datetimeStart,
             end: action.datetimeEnd,
-
+            patient: {
+              id: action.patient,
+            },
           };
         }
         return items;

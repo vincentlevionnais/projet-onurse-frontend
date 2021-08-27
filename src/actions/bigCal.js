@@ -126,7 +126,7 @@ export const updateAfterResize = (id, datetimeStart, datetimeEnd) => ({
 });
 
 /** màj d'un event déjà crée */
-export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd) => ({
+export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd, patient, status) => ({
   type: UPDATE_ONE_EVENT,
   id: id,
   reason: reason,

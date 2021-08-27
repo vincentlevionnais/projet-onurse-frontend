@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
   patients: state.patients.patientsList,
   patientsLoaded: state.patients.patientsLoaded,
+  events: state.cal.events,
 });
 
 // === mapDispatchToProps
