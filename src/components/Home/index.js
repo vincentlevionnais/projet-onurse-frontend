@@ -2,7 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
-import { LogOut } from 'react-feather';
+import { LogOut, Settings } from 'react-feather';
 import logo from '../../assets/images/LOGO-V3.png';
 import './home.scss';
 
@@ -25,6 +25,13 @@ const Home = ({ handleLogOut }) => {
             </time>
           </div>
         </div>
+        <Link
+          to="/account/settings"
+          className="settings-button"
+        >
+          <Settings />
+        </Link>
+
         <Link
           to="/"
           className="logout-button"

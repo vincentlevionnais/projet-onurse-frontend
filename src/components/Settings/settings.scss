@@ -1,0 +1,12 @@
+@use 'src/styles/vars';
+
+.settings-button {
+  position: absolute;
+  right: 0;
+  margin-right: 8em;
+  background-color: vars.$lightGrey;
+  color: vars.$darkBlue;
+  padding: 0.5em 0.7em;
+  border-radius: 100%;
+  font-size: 0.6em;
+}

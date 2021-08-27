@@ -10,6 +10,7 @@ import LoginForm from 'src/containers/LoginForm';
 import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/containers/Home';
 import Loader from 'src/components/Loader';
+import Settings from 'src/components/Settings';
 import Errors from '../Errors';
 import AddPatient from '../../containers/AddPatient';
 import Tour from '../../containers/Tour';
@@ -47,6 +48,9 @@ const Page = ({
         <>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/account/settings">
+            <Settings />
           </Route>
           <Route path="/calendar/day">
             <Tour />

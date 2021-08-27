@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Field from 'src/components/Field';
 
+import { loginFormValidateValue } from 'src/utils';
+
 import logo from 'src/assets/images/LOGO-V3.png';
 
 import './loginForm.scss';
@@ -26,6 +28,11 @@ const LoginForm = ({
       className="login-form-element"
       onSubmit={(evt) => {
         evt.preventDefault();
+        // TODO ci dessous validation des info email et mdp,
+        //  a voir avec l'equipe, pour le moment les mdp en base
+        // ne respecte pas la regex et longueur mini
+        // if (loginFormValidateValue(email, password)) {
+        // }
         handleLogin();
       }}
     >
