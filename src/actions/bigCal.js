@@ -9,6 +9,8 @@ export const UPDATE_TITLE_VALUE = 'UPDATE_TITLE_VALUE';
 export const UPDATE_START_DATE_VALUE = 'UPDATE_START_DATE_VALUE';
 // màj de la valeur de la date de debut de l'event
 export const UPDATE_END_DATE_VALUE = 'UPDATE_END_DATE_VALUE';
+// màj de la valeur de patient_id
+export const UPDATE_PATIENT_ID='UPDATE_PATIENT_ID';
 // connexion api et envoi des données a api
 export const MANAGE_EVENT_SUBMIT = 'MANAGE_EVENT_SUBMIT';
 // rajout des données sur le calendrier
@@ -77,6 +79,12 @@ export const updateStartDateValue = (newValue) => ({
 /** mise à jour de la date de debut de l'event dans le state */
 export const updateEndDateValue = (newValue) => ({
   type: UPDATE_END_DATE_VALUE,
+  value: newValue,
+});
+
+/** mise à jour de patient_id */
+export const updatePatientId = (newValue) => ({
+  type: UPDATE_PATIENT_ID,
   value: newValue,
 });
 

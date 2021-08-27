@@ -6,7 +6,7 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from 'moment';
 
 import Popup from 'src/containers/BigCalendar/Popup';
-import Header from '../Page/Header';
+import Header from 'src/containers/Page/Header';
 import './bigCalendar.scss';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';

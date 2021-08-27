@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, LogOut } from 'react-feather';
+import Header from 'src/containers/Page/Header';
 
 // sub component PatientSmall
 import PatientSmall from './PatientSmall';
@@ -14,39 +14,22 @@ const PatientsList = ({
   setSearch,
   search,
 }) => {
-
   // search patients to display in terms of the search of user
   let patientToDisplay;
   if (search.length === 0) {
     patientToDisplay = patients;
-  } else {
-    patientToDisplay=searchPatientByName(search, patients);
-  };
+  }
+  else {
+    patientToDisplay = searchPatientByName(search, patients);
+  }
 
   return (
     <>
-      <header className="header">
-        <Link
-          to="/"
-          className="home-button"
-        >
-          <ArrowLeft />
-        </Link>
-        <div className="header-infos">
-          <h1 className="header-title">
-            Mes patients
-          </h1>
-        </div>
-        <Link
-          to="/login"
-          className="logout-button"
-        >
-          <LogOut />
-        </Link>
-      </header>
+      <Header titlePage="Liste des Patients" />
 
       <main className="main">
-        <input className="input-search"
+        <input
+          className="input-search"
           type="text"
           placeholder="Recherche un patient"
           onChange={(event) => {
@@ -67,13 +50,13 @@ const PatientsList = ({
         <hr />
 
         <div className="addPatient-element">
-        <Link
-          to="/addPatient"
-          className="addPatient-button"
-        >Ajouter un patient
-        </Link>
-      </div>
-    </main>
+          <Link
+            to="/addPatient"
+            className="addPatient-button"
+          >Ajouter un patient
+          </Link>
+        </div>
+      </main>
     </>
   );
 };

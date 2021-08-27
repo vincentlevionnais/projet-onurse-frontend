@@ -1,6 +1,14 @@
 import { connect } from 'react-redux';
 
-import { togglePopup, dropEvent, resizeEvent, updateOneEvent, updateTitleValue, updateStartDateValue,updateEndDateValue, updateIdValue } from 'src/actions/bigCal';
+import {
+  togglePopup,
+  dropEvent,
+  resizeEvent,
+  updateTitleValue,
+  updateStartDateValue,updateEndDateValue,
+  updateIdValue,
+  updatePatientId
+} from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';
 
@@ -47,7 +55,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateStartDateValue(evt.start));
     dispatch(updateEndDateValue(evt.end));
     dispatch(updateIdValue(evt.id));
-    // dispatch(updateOneEvent(evt));
+    dispatch(updatePatientId(evt.patient));
   },
 });
 

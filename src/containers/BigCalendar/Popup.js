@@ -5,7 +5,7 @@ import Popup from 'src/components/BigCalendar/Popup';
 
 import {
   togglePopup, manageEventSubmit, updateTitleValue,
-  updateStartDateValue, updateEndDateValue, deleteOneEvent,
+  updateStartDateValue, updateEndDateValue, deleteOneEvent, updatePatientId,
 } from 'src/actions/bigCal';
 
 // === mapStateToProps
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   reason: state.cal.reason,
   datetimeStart: state.cal.datetimeStart,
   datetimeEnd: state.cal.datetimeEnd,
+  patients: state.patients.patientsList,
 });
 
 // === mapDispatchToProps
@@ -42,8 +43,11 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   deleteEvent: (id) => {
-    console.log(id);
     dispatch(deleteOneEvent(id));
+  },
+
+  setPatientId: (newValue) => {
+    dispatch(updatePatientId(newValue));
   },
   // setColor:
 

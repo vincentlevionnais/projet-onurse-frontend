@@ -8,11 +8,11 @@ import {
 import BigCalendar from 'src/containers/BigCalendar';
 import LoginForm from 'src/containers/LoginForm';
 import CreateAccount from 'src/containers/CreateAccount';
-import Home from 'src/components/Home';
+import Home from 'src/containers/Home';
 import Loader from 'src/components/Loader';
 import Errors from '../Errors';
-import AddPatient from '../../containers/addPatient';
-import Tour from '../Tour';
+import AddPatient from '../../containers/AddPatient';
+import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import './page.scss';
