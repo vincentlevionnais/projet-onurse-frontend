@@ -85,7 +85,7 @@ RdvByDay.propTypes = {
   id: PropTypes.number.isRequired,
   setStatus: PropTypes.func.isRequired,
   status: PropTypes.number.isRequired,
-  patient_id: PropTypes.string.isRequired,
+  patient_id: PropTypes.number.isRequired,
 };
 
 export default RdvByDay;
