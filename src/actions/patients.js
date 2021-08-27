@@ -11,7 +11,8 @@ export const ADD_PATIENT = 'ADD_PATIENT';
 // change state patientsLoaded;
 export const SET_PATIENTS_LOADED = 'SET_PATIENTS_LOADED';
 
-export const UPDATE_PATIENT= 'UPDATE_PATIENT';
+export const UPDATE_PATIENT = 'UPDATE_PATIENT';
+export const UPDATE_ONE_PATIENT = 'UPDATE_ONE_PATIENT';
 
 // ========= action creators
 export const fetchPatients = () => ({
@@ -75,4 +76,37 @@ export const setPatientLoaded = () => ({
 export const updatePatient = (data) => ({
   type: UPDATE_PATIENT,
   patient: data,
+});
+
+export const updateOnePatient = (
+  id,
+  lastname,
+  firstname,
+  birthdate,
+  phone,
+  completeAdress,
+  informationAdress,
+  note,
+  doctorName,
+  nir,
+  mutualName,
+  mutualNumberAmc,
+  pathology,
+  trustedPerson,
+) => ({
+  type: UPDATE_ONE_PATIENT,
+  id: id,
+  lastname: lastname,
+  firstname: firstname,
+  birthdate: birthdate,
+  phone: phone,
+  completeAdress: completeAdress,
+  informationAdress: informationAdress,
+  note: note,
+  doctorName: doctorName,
+  nir: nir,
+  mutualName: mutualName,
+  mutualNumberAmc: mutualNumberAmc,
+  pathology: pathology,
+  trustedPerson: trustedPerson,
 });
