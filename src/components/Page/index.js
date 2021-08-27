@@ -10,7 +10,7 @@ import LoginForm from 'src/containers/LoginForm';
 import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/containers/Home';
 import Loader from 'src/components/Loader';
-import Settings from 'src/components/Settings';
+import Settings from 'src/containers/Settings';
 import Errors from '../Errors';
 import AddPatient from '../../containers/AddPatient';
 import Tour from '../../containers/Tour';
