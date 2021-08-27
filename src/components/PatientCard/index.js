@@ -20,7 +20,7 @@ const PatientCard = ({ patients, events }) => {
   const { id } = useParams();
   // search patient by id
   const patientToDisplay = getPatientById(id, patients);
-  const eventsOfPatient = searchAppointmentOfPatient(events, id);
+  // const eventsOfPatient = searchAppointmentOfPatient(events, id);
 
   return (
     <>

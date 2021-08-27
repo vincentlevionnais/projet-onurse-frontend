@@ -111,7 +111,7 @@ export const searchAppointmentOfTheDay = (events) => {
   return appointmentOfTheDayByHour;
 };
 
-export const searchAppointmentOfPatient = (events, patient_id) => {
+/* export const searchAppointmentOfPatient = (events, patient_id) => {
   // filtered events by patient id
   const appointmentOfPatient = events.filter((appointment) => {
     return appointment.patient.id === patient_id;
@@ -127,4 +127,4 @@ export const searchAppointmentOfPatient = (events, patient_id) => {
     return 0;
   });
   return appointmentOfPatientByDate;
-}
+} */
