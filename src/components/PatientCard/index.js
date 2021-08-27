@@ -12,7 +12,7 @@ import Informations from './Informations';
 import './patientCard.scss';
 
 const PatientCard = ({ patients }) => {
-  console.log(patients);
+  // console.log(patients);
   // get the id in params of URL
   const { id } = useParams();
   // search patient by id

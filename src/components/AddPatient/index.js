@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { getPatientById } from 'src/utils';
 
 import './addPatient.scss';
 import Header from 'src/containers/Page/Header';
@@ -9,19 +11,19 @@ const validate = (values) => {
   const errors = {};
   if (!values.lastname) {
     errors.lastname = 'Requis';
-  } else if (values.lastname.length > 20) {
-    errors.lastname = 'Maximum : 20 caractères';
+  } else if (values.lastname.length > 50) {
+    errors.lastname = 'Maximum : 50 caractères';
   }
   if (!values.firstname) {
     errors.firstname = 'Requis';
-  } else if (values.firstname.length > 15) {
-    errors.firstname = 'Maximum : 15 caractères';
+  } else if (values.firstname.length > 50) {
+    errors.firstname = 'Maximum : 50 caractères';
   }
-  if (!values.birthdate) {
-    errors.birthdate = 'Requis';
-  } else if (!/^(?:(?:19|20)[0-9][0-9])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/i.test(values.birthdate)) {
-    errors.birthdate = 'Date invalide';
-  }
+  // if (!values.birthdate) {
+  //   errors.birthdate = 'Requis';
+  // } else if (!/^(?:(?:19|20)[0-9][0-9])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/i.test(values.birthdate)) {
+  //   errors.birthdate = 'Date invalide';
+  // }
   if (!values.phone) {
     errors.phone = 'Requis';
   } else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(values.phone)) {
@@ -30,53 +32,93 @@ const validate = (values) => {
   if (!values.completeAdress) {
     errors.completeAdress = 'Requis';
   } else if (values.completeAdress.length > 40) {
-    errors.completeAdress = 'Maximum : 40 caractères';
+    errors.completeAdress = 'Maximum : 255 caractères';
   }
-  if (!values.doctorName) {
-    errors.doctorName = 'Requis';
-  } else if (values.doctorName.length > 40) {
-    errors.docdoctorNametor = 'Maximum : 30 caractères';
-  }
-  if (!values.nir) {
-    errors.nir = 'Requis';
-  } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.nir)) {
-    errors.nir = 'Format invalide';
-  }
-  if (!values.trustedPerson) {
-    errors.trustedPerson = 'Requis';
-  } else if (values.trustedPerson.length > 50) {
-    errors.trustedPerson = 'Maximum : 50 caractères';
-  }
+  // if (!values.doctorName) {
+  //   errors.doctorName = 'Requis';
+  // } else if (values.doctorName.length > 40) {
+  //   errors.doctorName = 'Maximum : 255 caractères';
+  // }
+  // if (!values.nir) {
+  //   errors.nir = 'Requis';
+  // } else if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.nir)) {
+  //   errors.nir = 'Format invalide';
+  // }
+  // if (!values.trustedPerson) {
+  //   errors.trustedPerson = 'Requis';
+  // } else if (values.trustedPerson.length > 255) {
+  //   errors.trustedPerson = 'Maximum : 255 caractères';
+  // }
   return errors;
 };
 
-const AddPatient = ({ onNewPatient }) => {
-  const formik = useFormik({
+const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
+  let formik;
+  const { id } = useParams();
+  const isAddMode = !id;
+  let patientToDisplay = getPatientById(id, patients);
 
-    initialValues: {
-      firstname: '',
-      lastname: '',
-      birthdate: '',
-      phone: '',
-      completeAdress: '',
-      informationAdress: '',
-      note: '',
-      doctorName: '',
-      nir: '',
-      mutualName: '',
-      mutualNumberAmc: '',
-      pathology: '',
-      trustedPerson: '',
-    },
+  let idPatient = patientToDisplay.id;
+  let idInNumber = (idPatient).toString();
+  console.log(idInNumber);
 
-    validate,
+  if (isAddMode) {
+    formik = useFormik({
 
-    onSubmit: (values, { resetForm }) => {
-      //  alert(JSON.stringify(values, null, 2));
-      onNewPatient(values);
-      resetForm({});
-    },
-  });
+      initialValues: {
+        firstname: '',
+        lastname: '',
+        birthdate: '',
+        phone: '',
+        completeAdress: '',
+        informationAdress: '',
+        note: '',
+        doctorName: '',
+        nir: '',
+        mutualName: '',
+        mutualNumberAmc: '',
+        pathology: '',
+        trustedPerson: '',
+      },
+
+      validate,
+
+      onSubmit: (values, { resetForm }) => {
+        //  alert(JSON.stringify(values, null, 2));
+        onNewPatient(values);
+        resetForm({});
+      },
+    });
+  }
+  else {
+    formik = useFormik({
+
+      initialValues: {
+        id: patientToDisplay.id,
+        firstname: patientToDisplay.firstname,
+        lastname: patientToDisplay.lastname,
+        birthdate: patientToDisplay.birthdate,
+        phone: patientToDisplay.phone,
+        completeAdress: patientToDisplay.completeAdress,
+        informationAdress: patientToDisplay.informationAdress,
+        note: patientToDisplay.note,
+        doctorName: patientToDisplay.doctorName,
+        nir: patientToDisplay.nir,
+        mutualName: patientToDisplay.mutualName,
+        mutualNumberAmc: patientToDisplay.mutualNumberAmc,
+        pathology: patientToDisplay.pathology,
+        trustedPerson: patientToDisplay.trustedPerson,
+      },
+
+      validate,
+
+      onSubmit: (values, { resetForm }) => {
+        alert(JSON.stringify(values, null, 2));
+        updatePatient(values);
+        resetForm({});
+      },
+    });
+  }
 
   return (
     <>
@@ -230,6 +272,8 @@ const AddPatient = ({ onNewPatient }) => {
 AddPatient.propTypes = {
 
   onNewPatient: PropTypes.func.isRequired,
+  patients: PropTypes.array.isRequired,
+  updatePatient: PropTypes.func.isRequired,
 };
 
 export default AddPatient;
