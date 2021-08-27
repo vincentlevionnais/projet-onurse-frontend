@@ -1,9 +1,11 @@
-import { SAVE_PATIENTS, SET_SEARCH, ADD_PATIENT, SET_PATIENTS_LOADED } from 'src/actions/patients';
+import { SAVE_PATIENTS, SET_SEARCH, ADD_PATIENT, SET_PATIENTS_LOADED, OPEN_DELETE_POPUP } from 'src/actions/patients';
+import { CLOSE_DELETE_POPUP } from '../actions/patients';
 
 const initialState = {
   patientsList: [],
   patientsLoaded: false,
   search: '',
+  popupIsOpen: false,
 };
 
 function patientReducer(state = initialState, action = {}) {
@@ -50,6 +52,18 @@ function patientReducer(state = initialState, action = {}) {
         ...state,
         patientsLoaded: true,
       };
+
+    case OPEN_DELETE_POPUP: 
+      return {
+        ...state,
+        popupIsOpen: true,
+      };
+    case CLOSE_DELETE_POPUP: 
+     return {
+       ...state,
+       popupIsOpen: false,
+     };
+     
     default:
       return state;
   }

@@ -12,9 +12,11 @@ import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
+import DeletePopUp from 'src/containers/PatientCard/DeletePopUp';
 import './patientCard.scss';
 
-const PatientCard = ({ patients, events }) => {
+
+const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
   console.log(patients);
   // get the id in params of URL
   const { id } = useParams();
@@ -40,6 +42,15 @@ const PatientCard = ({ patients, events }) => {
         <Informations
           {...patientToDisplay}
         />
+        <button 
+          className="delete-patient"
+          onClick={() => {
+            openPopUp();
+          }}
+        >
+          Supprimer le patient
+        </button>
+        {popupIsOpen && <DeletePopUp/>}
       </main>
     </>
   );
@@ -48,6 +59,8 @@ const PatientCard = ({ patients, events }) => {
 PatientCard.propTypes = {
   patients: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
+  popupIsOpen: PropTypes.bool.isRequired, 
+  openPopUp: PropTypes.func.isRequired,
 };
 
 export default PatientCard;
