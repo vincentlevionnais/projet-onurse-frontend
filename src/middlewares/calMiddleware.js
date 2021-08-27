@@ -83,7 +83,7 @@ const calMiddleware = (store) => (next) => (action) => {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
-            patient: patient_id,
+            // patient: patient_id,
           },
 
           {
@@ -98,7 +98,7 @@ const calMiddleware = (store) => (next) => (action) => {
               reason,
               datetimeStart,
               datetimeEnd,
-              patient_id,
+              // patient_id,
             ));
           })
           .catch((error) => {

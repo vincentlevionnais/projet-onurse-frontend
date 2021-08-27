@@ -3,6 +3,8 @@ import {
 } from 'src/actions/login';
 
 const initialState = {
+  // id de la personne retournée
+  id: '',
   email: '',
   password: '',
   // to know if user is connect
@@ -23,6 +25,7 @@ function logReducer(state = initialState, action = {}) {
 
       return {
         ...state,
+        // TODO id: action.id
         logged: true,
         token: localStorage.getItem('token'),
       };

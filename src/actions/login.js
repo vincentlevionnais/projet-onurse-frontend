@@ -17,9 +17,11 @@ export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const connectUser = (token) => ({
+export const connectUser = (token /* , id */) => ({
   type: CONNECT_USER,
   token: token,
+  // TODO ci dessous
+  // id: id,
 });
 
 export const logOut = () => ({

@@ -84,7 +84,7 @@ export const createAccountValidateValue = (lastName, firstName, email, phone) =>
 };
 
 /**
- *
+ *Validate the LoginForm components values
  * @param {string} email
  * @param {string} password
  *
@@ -111,7 +111,7 @@ export const loginFormValidateValue = (email, password) => {
   }
   else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
     errors.password = 'Mot de passe invalide';
-    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 numbre, 1 chiffre, une minuscule une majuscule');
+    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 nombre, 1 chiffre, une minuscule une majuscule');
     // Contain at least 8 characters
     // contain at least 1 number
     // contain at least 1 lowercase character (a-z)

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateSettingsField } from 'src/actions/settings';
+import { updateSettingsField, manageSettingsSubmit, deleteSubmit } from 'src/actions/settings';
 // on importe le composant de présentation
 import Settings from 'src/components/Settings';
 
@@ -13,8 +13,15 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  changeField: (newvalue, name) => {
-    dispatch(updateSettingsField(newvalue, name));
+  changeField: (newValue, name) => {
+    dispatch(updateSettingsField(newValue, name));
+  },
+  manageSubmit: () => {
+    dispatch(manageSettingsSubmit());
+  },
+
+  manageDeleteSubmit: () => {
+    dispatch(deleteSubmit());
   },
 });
 

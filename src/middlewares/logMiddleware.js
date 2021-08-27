@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN, connectUser } from 'src/actions/login';
+import { SUBMIT_LOGIN, connectUser, DELETE_SUBMIT } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -19,7 +19,8 @@ const logMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data.token);
+          console.log(response);
+          // todo recuperer l id pour le mettre dans le state. et l'envoyer dans connect user
           store.dispatch(connectUser(response.data.token));
         })
         .catch((error) => {
