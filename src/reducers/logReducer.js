@@ -5,7 +5,7 @@ import {
 const initialState = {
   email: '',
   password: '',
-  // indique si l'utilisateur est authentifié
+  // to know if user is connect
   logged: false,
   token: localStorage.getItem('token'),
 };

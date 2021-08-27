@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // other components
 import Header from 'src/containers/Page/Header';
@@ -6,7 +7,7 @@ import Field from 'src/components/Field';
 
 import './settings.scss';
 
-const Settings = ({ changeField, email, password }) => (
+const Settings = ({ changeField, email, confirmationEmail, confirmationPassword, password }) => (
   <>
     <Header titlePage="Parametres" />
 
@@ -26,12 +27,12 @@ const Settings = ({ changeField, email, password }) => (
           />
           <Field
             className="settings-input"
-            name="email"
+            name="confirmationEmail"
             placeholder="Confirmer votre adresse mail"
             manageChange={((newValue, name) => {
               changeField(newValue, name);
             })}
-            value={email}
+            value={confirmationEmail}
           />
           <button
             className="settings-validation-button"
@@ -66,12 +67,12 @@ const Settings = ({ changeField, email, password }) => (
           />
           <Field
             className="settings-input"
-            name="password"
+            name="confirmationPassword"
             placeholder="Confirmer votre mot de passe"
             manageChange={((newValue, name) => {
               changeField(newValue, name);
             })}
-            value={password}
+            value={confirmationPassword}
 
           />
           <button
@@ -103,5 +104,14 @@ const Settings = ({ changeField, email, password }) => (
     </div>
   </>
 );
+
+Settings.propTypes = {
+
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  confirmationEmail: PropTypes.string.isRequired,
+  confirmationPassword: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+};
 
 export default Settings;

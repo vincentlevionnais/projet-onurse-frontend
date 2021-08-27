@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
-import { updateLoginField } from 'src/actions/login';
+import { updateSettingsField } from 'src/actions/settings';
 // on importe le composant de présentation
 import Settings from 'src/components/Settings';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  email: state.log.email,
-  password: state.log.password,
+  email: state.settings.email,
+  confirmationEmail: state.settings.confirmationEmail,
+  password: state.settings.password,
+  confirmationPassword: state.settings.confirmationPassword,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
   changeField: (newvalue, name) => {
-    dispatch(updateLoginField(newvalue, name));
+    dispatch(updateSettingsField(newvalue, name));
   },
 });
 
