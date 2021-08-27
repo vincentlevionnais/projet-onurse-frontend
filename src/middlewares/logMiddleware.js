@@ -24,10 +24,7 @@ const logMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-        })
-        .finally(
-          console.log('soumission finally'),
-        );
+        });
 
       break;
     }

@@ -1,10 +1,12 @@
 import React from 'react';
+import Proptypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import { LogOut } from 'react-feather';
 import logo from '../../assets/images/LOGO-V3.png';
 import './home.scss';
 
-const Home = () => {
+const Home = ({ handleLogOut }) => {
   const today = new Date();
 
   return (
@@ -24,8 +26,9 @@ const Home = () => {
           </div>
         </div>
         <Link
-          to="/login"
+          to="/"
           className="logout-button"
+          onClick={() => handleLogOut()}
         >
           <LogOut />
         </Link>
@@ -65,6 +68,11 @@ const Home = () => {
       </nav>
     </>
   );
+};
+
+Home.propTypes = {
+
+  handleLogOut: Proptypes.func.isRequired,
 };
 
 export default Home;

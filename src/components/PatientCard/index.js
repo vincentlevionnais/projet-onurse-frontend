@@ -1,10 +1,10 @@
 // === import npm
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, LogOut } from 'react-feather';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // === import local
 // import function for search patient by id
+import Header from 'src/containers/Page/Header';
 import { getPatientById } from 'src/utils';
 // import function for seachr events of patient
 import { searchAppointmentOfPatient } from '../../utils';
@@ -24,25 +24,8 @@ const PatientCard = ({ patients, events }) => {
 
   return (
     <>
-      <header className="header">
-        <Link
-          to="/"
-          className="home-button"
-        >
-          <ArrowLeft />
-        </Link>
-        <div className="header-infos">
-          <h1 className="header-title">
-            Fiche patient
-          </h1>
-        </div>
-        <Link
-          to="/login"
-          className="logout-button"
-        >
-          <LogOut />
-        </Link>
-      </header>
+      <Header titlePage="Fiche Patient" />
+
       <main className="main">
         <h2 className="patient-name">
           {`${patientToDisplay.firstname} ${patientToDisplay.lastname}`}
