@@ -79,8 +79,7 @@ const calMiddleware = (store) => (next) => (action) => {
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
         const patientGoodFormat = parseInt(patient);
-        console.log(patient);
-        console.log(status);
+
         axios.put(
           `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,
           {
