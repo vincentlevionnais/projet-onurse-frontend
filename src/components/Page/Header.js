@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, LogOut } from 'react-feather';
 import './page.scss';
 
-const Header = ({ titlePage }) => (
+const Header = ({ titlePage, handleLogOut }) => (
 
   <header className="header">
     <Link
@@ -19,8 +19,9 @@ const Header = ({ titlePage }) => (
       </h1>
     </div>
     <Link
-      to="/login"
+      to=""
       className="logout-button"
+      onClick={() => handleLogOut()}
     >
       <LogOut />
     </Link>
@@ -29,6 +30,7 @@ const Header = ({ titlePage }) => (
 
 Header.propTypes = {
   titlePage: PropTypes.string.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
 
 };
 

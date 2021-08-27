@@ -1,26 +1,25 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 // import function for search patient by id
+import Header from 'src/containers/Page/Header';
 import { getPatientById } from 'src/utils';
 import CivilStatus from './CivilStatus';
-import Header from '../Page/Header';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
 import './patientCard.scss';
 
 const PatientCard = ({ patients }) => {
-  console.log(patients);
+  // console.log(patients);
   // get the id in params of URL
   const { id } = useParams();
   // search patient by id
   const patientToDisplay = getPatientById(id, patients);
-  console.log(patientToDisplay);
+  // console.log(patientToDisplay);
   return (
     <>
-      <Header titlePage="Fiche patient" />
+      <Header titlePage="Fiche Patient" />
 
       <main className="main">
         <h2 className="patient-name">
