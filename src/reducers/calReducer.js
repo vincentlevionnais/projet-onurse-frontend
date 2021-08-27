@@ -93,7 +93,7 @@ const calReducer = (state = initialState, action = {}) => {
     case UPDATE_PATIENT_ID:
       return {
         ...state,
-        patient: action.value,
+        patient: action.patient,
       };
 
     case UPDATE_AFTER_DROP: {
@@ -145,6 +145,7 @@ const calReducer = (state = initialState, action = {}) => {
             patient: {
               id: action.patient,
             },
+            status: action.status,
           };
         }
         return items;

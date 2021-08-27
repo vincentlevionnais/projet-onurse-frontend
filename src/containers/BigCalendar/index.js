@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateStartDateValue(evt.start));
     dispatch(updateEndDateValue(evt.end));
     dispatch(updateIdValue(evt.id));
-    dispatch(updatePatientId(evt.patient));
+    dispatch(updatePatientId(evt.patient.id));
   },
 });
 

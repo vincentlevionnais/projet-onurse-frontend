@@ -41,7 +41,7 @@ const Tour = ( {events} ) => {
         <RdvByDay
           {...appointment}
           key={appointment.id}
-          patient_id={appointment.patient.id}
+          patient_id={parseInt(appointment.patient.id)}
         />
       )})}
       </main>

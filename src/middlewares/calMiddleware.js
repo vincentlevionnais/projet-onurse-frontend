@@ -98,7 +98,7 @@ const calMiddleware = (store) => (next) => (action) => {
         )
           .then((response) => {
             store.dispatch(updateOneEvent(
-              response.data.id,
+              id,
               reason,
               datetimeStart,
               datetimeEnd,
