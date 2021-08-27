@@ -1,5 +1,6 @@
 @use 'src/styles/vars';
 
+// Css for the button to go to the settings page.
 .settings-button {
   position: absolute;
   right: 0;
@@ -9,4 +10,52 @@
   padding: 0.5em 0.7em;
   border-radius: 100%;
   font-size: 0.6em;
+}
+
+// CSS for the setting component
+.settings-container {
+
+  .settings-section-Update {
+
+    h2 {
+      font: vars.$contentFont;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 0.2em;
+      margin: 0.5em 0.8em;
+    }
+
+    p {
+      font: vars.$contentFont;
+      font-size: 0.9em;
+      font-weight: 600;
+      margin: 0.5em 0 1.2em 0.8em;
+      padding: 0.2em;
+
+      ul {
+        margin-top: 0.5em;
+      }
+    }
+
+    .settings-form {
+      max-width: 50%;
+      margin: 0 auto;
+          display: flex;
+      flex-direction: column;
+      align-items: center;
+      .settings-input {}
+
+      .settings-validation-button {
+        font: vars.$contentFont;
+        color: white;
+        background-color: vars.$darkBlue;
+        border-radius: .3em;
+        padding: 0.5em;
+        margin: 0.3em 0 3em 0;
+        text-align: center;
+      }
+
+    }
+  }
+
 }

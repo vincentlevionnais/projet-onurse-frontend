@@ -11,22 +11,22 @@ const Settings = ({ manageChange, email }) => (
     <Header titlePage="Parametres" />
 
     <div className="settings-container">
-      <section className="settings-mailUpdate">
+      <section className="settings-section-Update">
         <h2 className="settings-title"> Modifier votre identifiant</h2>
         <p> Votre identifiant ne peut être qu'une adresse mail valide</p>
-        <form>
+        <form className="settings-form">
           <Field
-            className="login-form-input"
+            className="settings-input"
             name="email"
             placeholder="Nouvelle adresse mail"
           />
           <Field
-            className="login-form-input"
+            className="settings-input"
             name="email"
             placeholder="Confirmer votre adresse mail"
           />
           <button
-            className="login-form-button"
+            className="settings-validation-button"
             type="submit"
             onClick={() => console.log('clik sur mail')}
           > Modifier
@@ -36,9 +36,9 @@ const Settings = ({ manageChange, email }) => (
 
       </section>
 
-      <section className="settings-passwordUpdate">
+      <section className="settings-section-Update">
         <h2 className="settings--title"> Modifier votre Mot de passe</h2>
-        <p> Votre mot de passe doit contenir au moins 8 caractères dont:
+        <p> Votre mot de passe doit contenir au moins 8 caractères dont :
           <ul>
             <li>- un chiffre </li>
             <li>- une lettre en minuscule</li>
@@ -46,19 +46,19 @@ const Settings = ({ manageChange, email }) => (
           </ul>
         </p>
 
-        <form>
+        <form className="settings-form">
           <Field
-            className="login-form-input"
+            className="settings-input"
             name="password"
             placeholder="Nouvelle mot de passe"
           />
           <Field
-            className="login-form-input"
+            className="settings-input"
             name="password"
             placeholder="Confirmer votre mot de passe"
           />
           <button
-            className="login-form-button"
+            className="settings-validation-button"
             type="submit"
             onClick={() => console.log('clik sur mdp')}
           > Modifier
@@ -67,16 +67,20 @@ const Settings = ({ manageChange, email }) => (
         </form>
       </section>
 
-      <section className="settings-deleteAccount">
+      <section className="settings-section-Update">
         <h2 className="settings--title"> Supprimer votre compte</h2>
+
         {/* // todo gerer une popup de confirmation,
       // todo au bouton valider un state passe à true, si true popup?? */}
-        <button
-          className="login-form-button"
-          type="submit"
-          onClick={() => console.log('clik sur delete')}
-        > Modifier
-        </button>
+      
+        <form className="settings-form">
+          <button
+            className="settings-validation-button"
+            type="submit"
+            onClick={() => console.log('clik sur delete')}
+          > Valider
+          </button>
+        </form>
       </section>
 
     </div>
