@@ -8,9 +8,8 @@ import './tour.scss';
 
 
 const Tour = ( {events} ) => {
-  
+  console.log
   const appointmentOfTheDay=searchAppointmentOfTheDay(events);
-  console.log(appointmentOfTheDay);
 
 /*  useEffect(() => {
     loadEvents();

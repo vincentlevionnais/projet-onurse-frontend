@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Check, X } from 'react-feather';
@@ -18,14 +18,8 @@ const RdvByDay = ({
 
   const patient = getPatientById(patient_id, patients);
 
-  useEffect(() => {
-
-  }, [status]);
-
   const eventDate = start;
   const hour = `${eventDate.getHours()}h${eventDate.getMinutes()}`;
-  
-  //! Link à dynamiser quand on pourra lier un RDV à un patient + nom et prénom du patient
 
 
     const cssClass = classNames(
