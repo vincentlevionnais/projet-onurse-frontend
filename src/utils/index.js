@@ -84,10 +84,8 @@ export const searchAppointmentOfTheDay = (events) => {
   // filtered events by datetimeStart
   const appointmentOfTheDay = events.filter((appointment) => {
     const datetimeStart = new Date(appointment.start);
-    console.log(datetimeStart);
     // event datetimeStart JJ/MM/AAA
     const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth()} ${datetimeStart.getFullYear()}`;
-    console.log(eventDate);
     return eventDate === currentDay;
   });
 

@@ -132,6 +132,8 @@ export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd) => ({
   reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
+  patient: patient, 
+  status: status,
 });
 
 /** delete One event by id in BDD */
