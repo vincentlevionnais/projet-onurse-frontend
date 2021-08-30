@@ -44,22 +44,27 @@
   }
 }
 
-.logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  .logo-pic {
-    width: 40%;
-  }
-}
+
 
 .nav {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   max-width: 50em;
-  margin: auto;
+  margin: 2em auto;
+
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin: 1.5em 0;
+    .logo-pic {
+      width: 40%;
+    }
+  }
+
   .nav-element {
     display: flex;
     flex-direction: column;

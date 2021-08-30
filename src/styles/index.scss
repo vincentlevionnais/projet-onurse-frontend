@@ -4,12 +4,13 @@
 body {
   font-family: vars.$contentFont;
   margin: auto;
+  border: 5px solid vars.$darkBlue;
 }
 
 @media (min-width: 780px) {
   body {
     max-width: 70%;
-    border: 5px solid vars.$darkBlue;
+    
   }
 }
 

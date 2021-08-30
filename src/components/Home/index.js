@@ -33,10 +33,11 @@ const Home = ({ handleLogOut }) => {
           <LogOut />
         </Link>
       </header>
-      <div className="logo">
+      
+      <nav className="nav">
+        <div className="logo">
           <img className="logo-pic" src={logo} alt="logo o'nurse" />
         </div>
-      <nav className="nav">
         <div className="nav-bottom">
           <div className="nav-element tour">
             <Link
