@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   patientsLoaded: state.patients.patientsLoaded,
   events: state.cal.events,
   popupIsOpen: state.patients.popupIsOpen,
+
 });
 
 // === mapDispatchToProps

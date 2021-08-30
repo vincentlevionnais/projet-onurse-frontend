@@ -12,7 +12,9 @@ export const ADD_PATIENT = 'ADD_PATIENT';
 export const SET_PATIENTS_LOADED = 'SET_PATIENTS_LOADED';
 export const OPEN_DELETE_POPUP = 'OPEN_DELETE_POPUP';
 export const CLOSE_DELETE_POPUP = 'CLOSE_DELETE_POPUP';
-
+export const DELETE_PATIENT = 'DELETE_PATIENT';
+export const DELETE_STATE_PATIENT = 'DELETE_STATE_PATIENT';
+export const SET_REDIRECT = 'SET_REDIRECT';
 // ========= action creators
 export const fetchPatients = () => ({
   type: FETCH_PATIENTS,
@@ -74,8 +76,23 @@ export const setPatientLoaded = () => ({
 
 export const openPopUp = () => ({
   type: OPEN_DELETE_POPUP,
-})
+});
 
 export const closePopUp = () => ({
   type: CLOSE_DELETE_POPUP,
-})
+});
+
+export const deletePatient = (id) => ({
+  type: DELETE_PATIENT,
+  id: id,
+});
+
+export const deleteStatePatient = (id) => ({
+  type: DELETE_STATE_PATIENT,
+  id: id,
+});
+
+export const setRedirect = (value) => ({
+  type: SET_REDIRECT,
+  redirect: value,
+});

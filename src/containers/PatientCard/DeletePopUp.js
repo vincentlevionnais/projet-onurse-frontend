@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 // on importe le composant de présentation
 import DeletePopUp from 'src/components/PatientCard/DeletePopUp';
-import { closePopUp, openPopUp } from '../../actions/patients';
+import { closePopUp, deletePatient } from '../../actions/patients';
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
@@ -13,6 +13,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   closePopUp: () => {
     dispatch(closePopUp());
+  },
+
+  deletePatient: (id) => {
+    dispatch(deletePatient(id))
   },
 });
 

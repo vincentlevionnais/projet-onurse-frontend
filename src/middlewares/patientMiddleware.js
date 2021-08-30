@@ -1,6 +1,14 @@
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import {
-  FETCH_PATIENTS, savePatients, SUBMIT_NEW_PATIENT, addPatient, setPatientLoaded,
+  FETCH_PATIENTS,
+  savePatients,
+  SUBMIT_NEW_PATIENT,
+  addPatient,
+  setPatientLoaded,
+  DELETE_PATIENT,
+  deleteStatePatient,
+  setRedirect,
 } from 'src/actions/patients';
 
 const patientMiddleware = (store) => (next) => (action) => {
@@ -59,7 +67,6 @@ const patientMiddleware = (store) => (next) => (action) => {
             mutualNumberAmc: mutualNumberAmc,
             pathology: pathology,
             trustedPerson: trustedPerson,
-
           },
 
           {
@@ -93,6 +100,27 @@ const patientMiddleware = (store) => (next) => (action) => {
           .finally();
       }
       break;
+    case DELETE_PATIENT:
+      axios.delete(
+        `http://35.173.138.41/projet-o-nurse/public/api/patients/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+          store.dispatch(setRedirect(true));
+          store.dispatch(deleteStatePatient(action.id));
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally (() => {
+          store.dispatch(setRedirect(false));
+        })
+        break;
     default:
   }
 

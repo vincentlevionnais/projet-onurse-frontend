@@ -1,6 +1,6 @@
 // === import npm
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // === import local
 // import function for search patient by id
@@ -17,7 +17,6 @@ import './patientCard.scss';
 
 
 const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
-  console.log(patients);
   // get the id in params of URL
   const { id } = useParams();
   // search patient by id
@@ -46,11 +45,12 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
           className="delete-patient"
           onClick={() => {
             openPopUp();
+            
           }}
         >
           Supprimer le patient
         </button>
-        {popupIsOpen && <DeletePopUp/>}
+        {popupIsOpen && <DeletePopUp id={id} />}
       </main>
     </>
   );

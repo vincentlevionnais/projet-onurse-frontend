@@ -18,7 +18,7 @@ const Home = ({ handleLogOut }) => {
           </h1>
           <div className="date">
             <time>
-              {`${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`}
+              {`${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`}
             </time>
             <time>
               {`${today.getHours()}h${today.getMinutes()}`}
