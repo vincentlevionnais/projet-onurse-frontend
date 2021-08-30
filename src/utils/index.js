@@ -89,12 +89,12 @@ export const createAccountValidateValue = (lastName, firstName, email, phone) =>
 
 export const searchAppointmentOfTheDay = (events) => {
   // current Date JJ/MM/AAAA
-  const currentDay = `${new Date().getDate()} ${new Date().getMonth()} ${new Date().getFullYear()}`;
+  const currentDay = `${new Date().getDate()} ${new Date().getMonth()+1} ${new Date().getFullYear()}`;
   // filtered events by datetimeStart
   const appointmentOfTheDay = events.filter((appointment) => {
     const datetimeStart = new Date(appointment.start);
     // event datetimeStart JJ/MM/AAA
-    const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth()} ${datetimeStart.getFullYear()}`;
+    const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth()+1} ${datetimeStart.getFullYear()}`;
     return eventDate === currentDay;
   });
 
@@ -128,3 +128,20 @@ export const searchAppointmentOfTheDay = (events) => {
   });
   return appointmentOfPatientByDate;
 } 
+
+export const searchNextappointments = (appointmentOfPatient) => {
+  const currentDate = new Date();
+  const nextAppointments = appointmentOfPatient.filter((appointment) => {
+    return new Date(appointment.start) >= currentDate;
+  });
+  const nextAppointmentsByDate = nextAppointments.sort(function compare(a, b) {
+    if (a.start < b.start) {
+      return -1;
+    }
+    if(a.start > b.start) {
+      return 1;
+    }
+    return 0;
+  });
+  return nextAppointmentsByDate;
+}

@@ -24,7 +24,7 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
   // const eventsOfPatient = searchAppointmentOfPatient(events, id);
   const appointmentOfPatient = searchAppointmentOfPatient(events, id);
   console.log(appointmentOfPatient);
-  
+
   return (
     <>
       <Header titlePage="Fiche Patient" />
@@ -39,7 +39,7 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
         <Pathologies
           {...patientToDisplay}
         />
-        <Visit />
+        <Visit appointmentOfPatient={appointmentOfPatient} />
         <Informations
           {...patientToDisplay}
         />
