@@ -16,6 +16,7 @@ import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
 import About from '../About';
+import LegalMention from '../LegalMention';
 import Footer from './Footer';
 import './page.scss';
 
@@ -68,6 +69,9 @@ const Page = ({
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/legal-mention">
+            <LegalMention />
           </Route>
           <Footer />
         </>

@@ -1,10 +1,11 @@
 @use 'src/styles/vars';
 
 .login-form {
+  height: 500px;
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  justify-content: center;
   .login-form-element {
 
     width: 100%;
@@ -42,8 +43,14 @@
         padding: .7em;
         height: 2.5em;
       }
-    }
-    
+    } 
   }
-
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    .logo-pic-login {
+      width: 50%;
+    }
+  }
 }

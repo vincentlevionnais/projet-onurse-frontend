@@ -65,7 +65,7 @@ const LoginForm = ({
       </Link>
     </div>
     <div className="logo">
-      <img className="logo-pic" src={logo} alt="logo o'nurse" />
+      <img className="logo-pic-login" src={logo} alt="logo o'nurse" />
     </div>
   </div>
 

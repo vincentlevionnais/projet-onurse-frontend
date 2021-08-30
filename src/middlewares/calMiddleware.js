@@ -220,6 +220,7 @@ const calMiddleware = (store) => (next) => (action) => {
           .catch((error) => {
             alert('une erreur est survenue, merci de réessayer');
           });
+          break;
     default:
   }
 
