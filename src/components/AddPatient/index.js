@@ -29,22 +29,28 @@ const validate = (values) => {
   } else if (values.completeAdress.length > 40) {
     errors.completeAdress = 'Maximum : 255 caractères';
   }
-  if (values.doctorName.length > 255) {
-    errors.doctorName = 'Maximum : 255 caractères';
+  if (values.doctorName) {
+    if (values.doctorName.length > 255) {
+      errors.doctorName = 'Maximum : 255 caractères';
+    }
   }
+
   if (values.nir) {
     if (!/^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$/i.test(values.nir)) {
       errors.nir = 'Format invalide';
     }
   }
-  if (values.trustedPerson.length > 255) {
-    errors.trustedPerson = 'Maximum : 255 caractères';
+  if (values.trustedPerson) {
+    if (values.trustedPerson.length > 255) {
+      errors.trustedPerson = 'Maximum : 255 caractères';
+    }
   }
   return errors;
 };
 
 const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
   let formik;
+  let titleForm;
   const { id } = useParams();
   const isAddMode = !id;
   const patientToDisplay = getPatientById(id, patients);
@@ -80,6 +86,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
         resetForm({});
       },
     });
+    titleForm = 'Ajouter un patient';
   }
   else {
     formik = useFormik({
@@ -101,19 +108,19 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
         trustedPerson: patientToDisplay.trustedPerson,
       },
 
-      validate,
+      // validate,
 
-      onSubmit: (values, { resetForm }) => {
+      onSubmit: (values) => {
         // alert(JSON.stringify(values, null, 2));
         updatePatient(values);
-        resetForm({});
       },
     });
+    titleForm = 'Modifier la fiche patient';
   }
 
   return (
     <>
-      <Header titlePage="Nouveau patient" />
+      <Header titlePage={titleForm} />
 
       <main className="main">
         <form onSubmit={formik.handleSubmit}>
@@ -124,7 +131,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="lastname"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.lastname}
+            value={formik.values.lastname || ''}
           />
           {formik.errors.lastname ? <div>{formik.errors.lastname}</div> : null}
 
@@ -134,7 +141,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="firstname"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.firstname}
+            value={formik.values.firstname || ''}
           />
           {formik.errors.firstname ? <div>{formik.errors.firstname}</div> : null}
 
@@ -144,7 +151,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
               name="birthdate"
               type="date"
               onChange={formik.handleChange}
-              value={formik.values.birthdate}
+              value={formik.values.birthdate || ''}
             />
           </label>
           {formik.errors.birthdate ? <div>{formik.errors.birthdate}</div> : null}
@@ -155,7 +162,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="phone"
             type="tel"
             onChange={formik.handleChange}
-            value={formik.values.phone}
+            value={formik.values.phone || ''}
           />
           {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
 
@@ -165,7 +172,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="completeAdress"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.completeAdress}
+            value={formik.values.completeAdress || ''}
           />
           {formik.errors.completeAdress ? <div>{formik.errors.completeAdress}</div> : null}
 
@@ -175,7 +182,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="informationAdress"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.informationAdress}
+            value={formik.values.informationAdress || ''}
           />
           {formik.errors.informationAdress ? <div>{formik.errors.informationAdress}</div> : null}
 
@@ -185,7 +192,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="note"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.note}
+            value={formik.values.note || ''}
           />
           {formik.errors.note ? <div>{formik.errors.note}</div> : null}
 
@@ -196,7 +203,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="doctorName"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.doctorName}
+            value={formik.values.doctorName || ''}
           />
           {formik.errors.doctorName ? <div>{formik.errors.doctorName}</div> : null}
 
@@ -206,7 +213,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="nir"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.nir}
+            value={formik.values.nir || ''}
           />
           {formik.errors.nir ? <div>{formik.errors.nir}</div> : null}
 
@@ -216,7 +223,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="mutualName"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.mutualName}
+            value={formik.values.mutualName || ''}
           />
           {formik.errors.mutualName ? <div>{formik.errors.mutualName}</div> : null}
 
@@ -226,7 +233,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="mutualNumberAmc"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.mutualNumberAmc}
+            value={formik.values.mutualNumberAmc || ''}
           />
           {formik.errors.mutualNumberAmc ? <div>{formik.errors.mutualNumberAmc}</div> : null}
 
@@ -236,7 +243,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="pathology"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.pathology}
+            value={formik.values.pathology || ''}
           />
           {formik.errors.pathology ? <div>{formik.errors.pathology}</div> : null}
 
@@ -248,7 +255,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
             name="trustedPerson"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.trustedPerson}
+            value={formik.values.trustedPerson || ''}
           />
           {formik.errors.trustedPerson
             ? <div>{formik.errors.trustedPerson}</div> : null}
