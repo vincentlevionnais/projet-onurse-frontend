@@ -35,7 +35,8 @@ export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const SAVE_EVENTS = 'SAVE_EVENTS';
 // change eventsLoaded
 export const SET_EVENTS_LOADED = 'SET_EVENTS_LOADED';
-
+// change status of the event
+export const SET_STATUS = 'SET_STATUS';
 // ========================actions creators
 
 /** ouverture ou fermeture du popup */
@@ -50,12 +51,14 @@ export const manageEventSubmit = (id) => ({
 });
 
 /** si retour api ok, affichage de l'event à l'ecran */
-export const addEvent = (id, reason, datetimeStart, datetimeEnd) => ({
+export const addEvent = (id, reason, datetimeStart, datetimeEnd, patient, status) => ({
   type: ADD_EVENT,
   id: id,
   reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
+  patient: patient, 
+  status: status,
 });
 
 /** mise à jour de l'id dans le state */
@@ -123,12 +126,14 @@ export const updateAfterResize = (id, datetimeStart, datetimeEnd) => ({
 });
 
 /** màj d'un event déjà crée */
-export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd) => ({
+export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd, patient, status) => ({
   type: UPDATE_ONE_EVENT,
   id: id,
   reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
+  patient: patient, 
+  status: status,
 });
 
 /** delete One event by id in BDD */
@@ -156,4 +161,11 @@ export const saveEvents = (events) => ({
 /** change la valeur de eventsLoaded quand les données sont chargées */
 export const setEventsLoaded = () => ({
   type: SET_EVENTS_LOADED,
+});
+
+/** change la valeur du status de l'évènement */
+export const setStatus = (id, status) => ({
+  type: SET_STATUS,
+  status: status,
+  id: id,
 });

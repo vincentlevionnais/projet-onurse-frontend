@@ -73,6 +73,7 @@
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-router-redux": "^4.0.8",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "universal-cookie": "^4.0.4"

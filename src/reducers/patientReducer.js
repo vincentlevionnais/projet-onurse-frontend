@@ -1,11 +1,22 @@
 import {
-  SAVE_PATIENTS, SET_SEARCH, ADD_PATIENT, SET_PATIENTS_LOADED, UPDATE_ONE_PATIENT,
+  SAVE_PATIENTS,
+  SET_SEARCH,
+  ADD_PATIENT,
+  SET_PATIENTS_LOADED,
+  OPEN_DELETE_POPUP,
+  CLOSE_DELETE_POPUP,
+  DELETE_STATE_PATIENT,
+  UPDATE_ONE_PATIENT,
+  SET_REDIRECT,
 } from 'src/actions/patients';
+
 
 const initialState = {
   patientsList: [],
   patientsLoaded: false,
   search: '',
+  popupIsOpen: false,
+  redirect: false,
 };
 
 function patientReducer(state = initialState, action = {}) {
@@ -82,6 +93,31 @@ function patientReducer(state = initialState, action = {}) {
 
       };
     }
+    case OPEN_DELETE_POPUP:
+      return {
+        ...state,
+        popupIsOpen: true,
+      };
+
+    case CLOSE_DELETE_POPUP:
+      return {
+        ...state,
+        popupIsOpen: false,
+      };
+
+    case DELETE_STATE_PATIENT: {
+      const newListPatients = state.patientsList.filter((items) => parseInt(items.id) !== parseInt(action.id));
+      return {
+        ...state,
+        patientsList: [...newListPatients],
+      };
+    };
+    case SET_REDIRECT:
+      return {
+        ...state,
+        redirect: action.redirect,
+      }
+
     default:
       return state;
   }

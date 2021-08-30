@@ -38,11 +38,77 @@
 .main {
   margin-top: 2em;
 
-  .taskToDo {
+  .legend {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em;
+
+    *:not(:last-child) {
+      margin-right: 1em;
+    }
+    
+    .legend-button {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      
+      button {
+        background-color: vars.$darkBlue;
+        color: white;
+        border-radius: 100%;
+        font-size: 0.1em;
+      }
+    }
+  }
+
+  .taskTodo {
     position: relative;
     background-color: vars.$lightBlue;
     margin: 1em;
     color: vars.$darkBlue;
+
+    .return-button {
+      display: none;
+    }
+
+    &.archive {
+      background-color: vars.$lightGrey;
+      .appointment-hour {
+        background-color: vars.$mediumGrey;
+      }
+
+      .archive-button {
+        display: none,
+      }
+
+      .return-button {
+        display: block;
+      }
+    }
+
+    &.canceled {
+      background-color: vars.$lightGrey;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+  
+      .appointment-hour {
+        background-color: vars.$mediumGrey;
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+      }
+
+      .canceled-button {
+        display: none;
+      }
+
+      .return-button {
+        display: block;
+      }
+    }
 
     .appointment-hour {
       position: absolute;
@@ -101,7 +167,7 @@
 
 @media (min-width: 740px) {
   .main {
-    .taskToDo {
+    .taskTodo {
       .appointment-patient {
         .checked {
           flex-direction: row;

@@ -18,12 +18,12 @@ import PatientsList from '../../containers/PatientsList';
 import './page.scss';
 
 const Page = ({
-  isCreate, logged, patientsLoaded, eventsLoaded,
+  isCreate, logged, patientsLoaded, eventsLoaded, redirect,
 }) => (
   <Router>
     <Switch>
       {isCreate && <Redirect from="/account/create/account" to="/login" /> }
-
+      {redirect && <Redirect from={`/patients/:id`} to='/patients' />}
       {!logged
      && (
      <>
@@ -45,6 +45,7 @@ const Page = ({
       && (
 
         <>
+          
           <Route path="/" exact>
             <Home />
           </Route>

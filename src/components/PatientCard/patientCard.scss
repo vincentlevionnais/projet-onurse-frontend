@@ -42,6 +42,7 @@
 
 .main {
   margin: 0;
+  position: relative;
   .patient-name {
     text-align: center;
     font-size: 1.8em;
@@ -126,5 +127,43 @@
     background-color: white;
     text-align: center;
     padding-bottom: 2em;
+  }
+
+  .delete-patient {
+    background-color: vars.$pink;
+    width: 80%;
+    align-self: center;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .popup {
+    width: 80%;
+    position: absolute;
+    bottom: 10%;
+    background-color: rgba(vars.$darkBlue, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 2em;
+
+    p{
+      color: white;
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    .button-choice {
+      button {
+        background-color: vars.$pink;
+        text-transform: uppercase;
+        width: 5em;
+        font-weight: bold;
+        padding: 0.5em;
+      }
+    }
   }
 }

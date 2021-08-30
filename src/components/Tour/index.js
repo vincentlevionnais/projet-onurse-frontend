@@ -1,38 +1,49 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, LogOut, Check, X, CornerDownLeft  } from 'react-feather';
 import Header from 'src/containers/Page/Header';
 import RdvByDay from 'src/containers/Tour/RdvByDay';
 
 import { searchAppointmentOfTheDay } from '../../utils';
 import './tour.scss';
 
-const Tour = ({ events }) => {
-  console.log(events);
+const Tour = ( {events} ) => {
+  const appointmentOfTheDay=searchAppointmentOfTheDay(events);
 
-  const appointmentOfTheDay = searchAppointmentOfTheDay(events);
-
-  console.log(appointmentOfTheDay);
-  /*  useEffect(() => {
-    loadEvents();
-  }, [appointmentOfTheDay]); */
-
-  /*   useEffect(() => {
-    window.location.reload();
-  }, []); */
   return (
     <>
       <Header titlePage="Ma Tournée" />
 
       <main className="main">
-        {appointmentOfTheDay.map((appointment) => {
-          console.log(appointment);
-          return (
-            <RdvByDay
-              {...appointment}
-              key={appointment.id}
-            />
-          );
-        })}
+      <div className="legend">
+        <div className="legend-button">
+          <button>
+            <Check />
+          </button>
+          <legend>RDV fait</legend>
+        </div>
+        <div className="legend-button">
+          <button>
+            <X />
+          </button>
+          <legend>RDV annulé</legend>
+        </div>
+        <div className="legend-button">
+          <button>
+            <CornerDownLeft />
+          </button>
+          <legend>Annuler</legend>
+        </div>
+      </div>
+      {appointmentOfTheDay.map((appointment) => {
+        return (
+        <RdvByDay
+          {...appointment}
+          key={appointment.id}
+          patient_id={parseInt(appointment.patient.id)}
+        />
+      )})}
       </main>
     </>
   );
