@@ -1,13 +1,13 @@
 // === import npm
 import React from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // === import local
 // import function for search patient by id
 import Header from 'src/containers/Page/Header';
-import { getPatientById } from 'src/utils';
+import { Edit } from 'react-feather';
+import { getPatientById, searchAppointmentOfPatient } from 'src/utils';
 // import function for seachr events of patient
-import { searchAppointmentOfPatient } from '../../utils';
 import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
@@ -32,7 +32,15 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
       <main className="main">
         <h2 className="patient-name">
           {`${patientToDisplay.firstname} ${patientToDisplay.lastname}`}
+
+          <Link
+            to={`/patients/${id}/edit`}
+            className="editPatient"
+          >
+            <Edit />
+          </Link>
         </h2>
+
         <CivilStatus
           {...patientToDisplay}
         />
@@ -43,11 +51,11 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
         <Informations
           {...patientToDisplay}
         />
-        <button 
+        <button
           className="delete-patient"
           onClick={() => {
             openPopUp();
-            
+
           }}
         >
           Supprimer le patient
@@ -61,7 +69,7 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
 PatientCard.propTypes = {
   patients: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
-  popupIsOpen: PropTypes.bool.isRequired, 
+  popupIsOpen: PropTypes.bool.isRequired,
   openPopUp: PropTypes.func.isRequired,
 };
 

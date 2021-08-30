@@ -6,6 +6,8 @@ import {
   SUBMIT_NEW_PATIENT,
   addPatient,
   setPatientLoaded,
+  UPDATE_PATIENT,
+  updateOnePatient,
   DELETE_PATIENT,
   deleteStatePatient,
   setRedirect,
@@ -54,19 +56,19 @@ const patientMiddleware = (store) => (next) => (action) => {
         console.log(lastname);
         axios.post('http://35.173.138.41/projet-o-nurse/public/api/patients',
           {
-            lastname: lastname,
-            firstname: firstname,
-            birthdate: birthdate,
-            phone: phone,
-            completeAdress: completeAdress,
-            informationAdress: informationAdress,
-            note: note,
-            doctorName: doctorName,
-            nir: nir,
-            mutualName: mutualName,
-            mutualNumberAmc: mutualNumberAmc,
-            pathology: pathology,
-            trustedPerson: trustedPerson,
+            lastname: (lastname.trim() === '' ? null : lastname),
+            firstname: (firstname.trim() === '' ? null : firstname),
+            birthdate: (birthdate.trim() === '' ? null : birthdate),
+            phone: (phone.trim() === '' ? null : phone),
+            completeAdress: (completeAdress.trim() === '' ? null : completeAdress),
+            informationAdress: (informationAdress.trim() === '' ? null : informationAdress),
+            note: (note.trim() === '' ? null : note),
+            doctorName: (doctorName.trim() === '' ? null : doctorName),
+            nir: (nir.trim() === '' ? null : nir),
+            mutualName: (mutualName.trim() === '' ? null : mutualName),
+            mutualNumberAmc: (mutualNumberAmc.trim() === '' ? null : mutualNumberAmc),
+            pathology: (pathology.trim() === '' ? null : pathology),
+            trustedPerson: (trustedPerson.trim() === '' ? null : trustedPerson),
           },
 
           {
@@ -100,6 +102,76 @@ const patientMiddleware = (store) => (next) => (action) => {
           .finally();
       }
       break;
+    case UPDATE_PATIENT:
+      {
+        console.log(action.patient);
+        const {
+          id,
+          lastname,
+          firstname,
+          birthdate,
+          phone,
+          completeAdress,
+          informationAdress,
+          note,
+          doctorName,
+          nir,
+          mutualName,
+          mutualNumberAmc,
+          pathology,
+          trustedPerson,
+        } = action.patient;
+        console.log(lastname);
+        axios.put(`http://35.173.138.41/projet-o-nurse/public/api/patients/${id}`,
+          {
+            id: id,
+            lastname: lastname,
+            firstname: firstname,
+            birthdate: birthdate,
+            phone: phone,
+            completeAdress: completeAdress,
+            informationAdress: informationAdress,
+            note: note,
+            doctorName: doctorName,
+            nir: nir,
+            mutualName: mutualName,
+            mutualNumberAmc: mutualNumberAmc,
+            pathology: pathology,
+            trustedPerson: trustedPerson,
+          },
+
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          })
+          .then((response) => {
+            alert('La fiche patient a été correctement modifiée.');
+
+            store.dispatch(updateOnePatient(
+              id,
+              lastname,
+              firstname,
+              birthdate,
+              phone,
+              completeAdress,
+              informationAdress,
+              note,
+              doctorName,
+              nir,
+              mutualName,
+              mutualNumberAmc,
+              pathology,
+              trustedPerson,
+            ));
+          })
+          .catch((error) => {
+            console.log(error);
+            alert('Une erreur est survenue, merci de réessayer');
+          })
+          .finally();
+      }
+      break;
     case DELETE_PATIENT:
       axios.delete(
         `http://35.173.138.41/projet-o-nurse/public/api/patients/${action.id}`,
@@ -117,10 +189,10 @@ const patientMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         })
-        .finally (() => {
+        .finally(() => {
           store.dispatch(setRedirect(false));
         })
-        break;
+      break;
     default:
   }
 

@@ -6,8 +6,10 @@ import {
   OPEN_DELETE_POPUP,
   CLOSE_DELETE_POPUP,
   DELETE_STATE_PATIENT,
+  UPDATE_ONE_PATIENT,
+  SET_REDIRECT,
 } from 'src/actions/patients';
-import { SET_REDIRECT } from '../actions/patients';
+
 
 const initialState = {
   patientsList: [],
@@ -62,17 +64,46 @@ function patientReducer(state = initialState, action = {}) {
         patientsLoaded: true,
       };
 
-    case OPEN_DELETE_POPUP: 
+    case UPDATE_ONE_PATIENT: {
+      const newPatientList = state.patientsList.map((patient) => {
+        if (patient.id === action.id) {
+          return {
+            ...patient,
+            lastname: action.lastname,
+            firstname: action.firstname,
+            birthdate: action.birthdate,
+            phone: action.phone,
+            completeAdress: action.completeAdress,
+            informationAdress: action.informationAdress,
+            note: action.note,
+            doctorName: action.doctorName,
+            nir: action.nir,
+            mutualName: action.mutualName,
+            mutualNumberAmc: action.mutualNumberAmc,
+            pathology: action.pathology,
+            trustedPerson: action.trustedPerson,
+          };
+        }
+        return patient;
+      });
+      console.log(newPatientList);
+      return {
+        ...state,
+        patientsList: [...newPatientList],
+
+      };
+    }
+    case OPEN_DELETE_POPUP:
       return {
         ...state,
         popupIsOpen: true,
       };
 
-    case CLOSE_DELETE_POPUP: 
-     return {
-       ...state,
-       popupIsOpen: false,
-     };
+    case CLOSE_DELETE_POPUP:
+      return {
+        ...state,
+        popupIsOpen: false,
+      };
 
     case DELETE_STATE_PATIENT: {
       const newListPatients = state.patientsList.filter((items) => parseInt(items.id) !== parseInt(action.id));
