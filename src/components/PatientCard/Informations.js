@@ -20,15 +20,15 @@ const Informations = ({ note }) => {
       </div>
       
     </div>
-  )
+  );
 };
 
 Informations.propTypes = {
   note: PropTypes.string,
-}
+};
 
 Informations.defaultProps = {
   note: "",
-}
+};
 
 export default Informations;

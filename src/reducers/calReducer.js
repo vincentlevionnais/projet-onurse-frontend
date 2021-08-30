@@ -1,7 +1,7 @@
 import {
   TOGGLE_POPUP, SAVE_EVENTS, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
   UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE, UPDATE_ID_VALUE,
-  UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED, UPDATE_PATIENT_ID,
+  UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED, UPDATE_PATIENT_ID, SET_STATUS,
 } from 'src/actions/bigCal';
 
 const initialState = {
@@ -11,8 +11,9 @@ const initialState = {
   reason: '',
   datetimeStart: '',
   datetimeEnd: '',
-  eventsLoaded : false,
-  patient: '',
+  eventsLoaded: false,
+  patient: {},
+  status: 1,
 };
 
 const calReducer = (state = initialState, action = {}) => {
@@ -21,7 +22,6 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         displayPopup: !state.displayPopup,
-        id: '',
         reason: '',
         datetimeStart: '',
         datetimeEnd: '',
@@ -42,11 +42,16 @@ const calReducer = (state = initialState, action = {}) => {
     }
 
     case ADD_EVENT: {
+      const patient_id = {
+        id: action.patient,
+      };
       const newEvents = {
         id: action.id,
         title: action.reason,
         start: action.datetimeStart,
         end: action.datetimeEnd,
+        patient: patient_id,
+        status: action.status,
       };
 
       return {
@@ -136,7 +141,10 @@ const calReducer = (state = initialState, action = {}) => {
             title: action.reason,
             start: action.datetimeStart,
             end: action.datetimeEnd,
-
+            patient: {
+              id: action.patient,
+            },
+            status: action.status,
           };
         }
         return items;
@@ -171,6 +179,17 @@ const calReducer = (state = initialState, action = {}) => {
         ...state,
         eventsLoaded: true,
       };
+    case SET_STATUS: {
+      const eventIndex = state.events.findIndex((item) => item.id === action.id);
+      const newListEvents = [...state.events];
+      newListEvents[eventIndex] = {
+        ...newListEvents[eventIndex],
+        status: action.status,
+      };
+      return {
+        ...state,
+        events: newListEvents,
+      }; }
     default:
       return state;
   }

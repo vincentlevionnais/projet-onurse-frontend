@@ -179,25 +179,55 @@ export const loginFormValidateValue = (email, password) => {
 
 export const searchAppointmentOfTheDay = (events) => {
   // current Date JJ/MM/AAAA
-  const currentDay = `${new Date().getDate()} ${new Date().getMonth()} ${new Date().getFullYear()}`;
+  const currentDay = `${new Date().getDate()} ${new Date().getMonth() + 1} ${new Date().getFullYear()}`;
   // filtered events by datetimeStart
   const appointmentOfTheDay = events.filter((appointment) => {
-    const datetimeStart = new Date(appointment.datetimeStart);
+    const datetimeStart = new Date(appointment.start);
     // event datetimeStart JJ/MM/AAA
-    const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth()} ${datetimeStart.getFullYear()}`;
+    const eventDate = `${datetimeStart.getDate()} ${datetimeStart.getMonth() + 1} ${datetimeStart.getFullYear()}`;
     return eventDate === currentDay;
   });
 
   // build a new table from appointment of the day, but sorted by hour to have a display in order
   const appointmentOfTheDayByHour = appointmentOfTheDay.sort((a, b) => {
-    if (a.datetimeStart < b.datetimeStart) {
+    if (a.start < b.start) {
       return -1;
     }
-    if (a.datetimeStart > b.datetimeStart) {
+    if (a.start > b.start) {
       return 1;
     }
     return 0;
   });
-
   return appointmentOfTheDayByHour;
+};
+
+export const searchAppointmentOfPatient = (events, patient_id) => {
+  // filtered events by patient id
+  const appointmentOfPatient = events.filter((appointment) => parseInt(appointment.patient.id) === parseInt(patient_id));
+  // build a new table from appointment of the day, but sorted by hour to have a display in order
+  const appointmentOfPatientByDate = appointmentOfPatient.sort((a, b) => {
+    if (a.start < b.start) {
+      return -1;
+    }
+    if (a.start > b.start) {
+      return 1;
+    }
+    return 0;
+  });
+  return appointmentOfPatientByDate;
+};
+
+export const searchNextappointments = (appointmentOfPatient) => {
+  const currentDate = new Date();
+  const nextAppointments = appointmentOfPatient.filter((appointment) => new Date(appointment.start) >= currentDate);
+  const nextAppointmentsByDate = nextAppointments.sort((a, b) => {
+    if (a.start < b.start) {
+      return -1;
+    }
+    if (a.start > b.start) {
+      return 1;
+    }
+    return 0;
+  });
+  return nextAppointmentsByDate;
 };

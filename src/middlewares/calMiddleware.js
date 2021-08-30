@@ -2,7 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import {
   FETCH_EVENTS, saveEvents, MANAGE_EVENT_SUBMIT, addEvent, DROP_EVENT, updateAfterDrop,
-  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded,
+  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded, SET_STATUS,
 } from 'src/actions/bigCal';
 
 const calMiddleware = (store) => (next) => (action) => {
@@ -33,7 +33,7 @@ const calMiddleware = (store) => (next) => (action) => {
     }
     case MANAGE_EVENT_SUBMIT: {
       const {
-        id, reason, datetimeStart, datetimeEnd, patient,
+        id, reason, datetimeStart, datetimeEnd, patient, status,
       } = store.getState().cal;
 
       if (id === '') {
@@ -43,15 +43,15 @@ const calMiddleware = (store) => (next) => (action) => {
       */
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
-        const patientGoodFormat = patient.toString();
-        console.log(patientGoodFormat);
+        const patientGoodFormat = parseInt(patient);
         axios.post(
           'http://35.173.138.41/projet-o-nurse/public/api/appointments',
           {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
-            //patient: patientGoodFormat,
+            patient: patientGoodFormat,
+            status: status,
           },
 
           {
@@ -61,12 +61,14 @@ const calMiddleware = (store) => (next) => (action) => {
           },
         )
           .then((response) => {
+            console.log(response);
             store.dispatch(addEvent(
               response.data.id,
               reason,
               datetimeStart,
               datetimeEnd,
               patient,
+              status,
             ));
           })
           .catch((error) => {
@@ -76,14 +78,16 @@ const calMiddleware = (store) => (next) => (action) => {
       else {
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
-     
+        const patientGoodFormat = parseInt(patient);
+
         axios.put(
           `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,
           {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
             datetimeEnd: datetimeEndGoodFormat,
-            // patient: patient_id,
+            patient: patientGoodFormat,
+            status: status,
           },
 
           {
@@ -98,7 +102,8 @@ const calMiddleware = (store) => (next) => (action) => {
               reason,
               datetimeStart,
               datetimeEnd,
-              // patient_id,
+              patient,
+              status,
             ));
           })
           .catch((error) => {
@@ -191,6 +196,26 @@ const calMiddleware = (store) => (next) => (action) => {
           alert('Rendez-vous supprimé');
 
           store.dispatch(deleteEvent(action.id));
+        })
+        .catch((error) => {
+          alert('une erreur est survenue, merci de réessayer');
+        });
+      break;
+    case SET_STATUS:
+      axios.put(
+        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+        {
+          id: action.id,
+          status: action.status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+        .then((response) => {
+
         })
         .catch((error) => {
           alert('une erreur est survenue, merci de réessayer');

@@ -20,41 +20,44 @@ const Popup = ({
   patients,
   setPatientId,
   // setColor,
-}) => (
-  <div className="popup">
-    <form
-      className="form-popup"
-      onSubmit={(evt) => {
-        evt.preventDefault();
-        manageSubmit();
-      }}
-    >
+}) => {
 
-      <label className="popup-text" htmlFor="title"  />
-      <input className="popup-input" type="text" placeholder="Titre de l'evenement" value={reason} id="title" onChange={(evt) => setReason(evt.target.value)} />
+  return (
+    <div className="popup">
+      <form
+        className="form-popup"
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          manageSubmit();
+        }}
+      >
 
-    <div className="datepickers">
-      <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de début" selected={datetimeStart} onChange={(date) => setdatetimeStart(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+        <label className="popup-text" htmlFor="title"  />
+        <input className="popup-input" type="text" placeholder="Titre de l'evenement" value={reason} id="title" onChange={(evt) => setReason(evt.target.value)} />
 
-      <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de fin" selected={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+      <div className="datepickers">
+        <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de début" selected={datetimeStart} onChange={(date) => setdatetimeStart(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+
+        <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de fin" selected={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
+      </div>
+
+        <select name="patients" onChange={(evt) => setPatientId(evt.target.value)}>
+        {/* <option value="">--Choisir un patient--</option> */}
+          {patients.map((patient) =>
+            <option key={patient.id} value={patient.id}>
+              {`${patient.lastname} ${patient.firstname}`}
+            </option>
+          )}
+        </select> 
+      <div className="buttons">
+        <button className="button" type="submit">Valider</button>
+        <button className="button" type="button" onClick={() => setDisplayPopup()}>Annuler</button>
+        <button className="button" type="button" onClick={() => {deleteEvent(id)}} >Supprimer</button>
+      </div>
+      </form>
     </div>
-
-      <select name="patients" onChange={(evt) => setPatientId(evt.target.value)}>
-       {/* TODO mettre une valeur par défaut */}
-        {patients.map((patient) =>
-          <option key={patient.id} value={patient.id}>
-            {`${patient.lastname} ${patient.firstname}`}
-          </option>
-        )}
-      </select> 
-    <div className="buttons">
-      <button className="button" type="submit">Valider</button>
-      <button className="button" type="button" onClick={() => setDisplayPopup()}>Annuler</button>
-      <button className="button" type="button" onClick={() => {deleteEvent(id)}} >Supprimer</button>
-    </div>
-    </form>
-  </div>
-);
+  )
+};
 
 Popup.propTypes = {
   /** Function which close the Popup */

@@ -19,12 +19,12 @@ import PatientsList from '../../containers/PatientsList';
 import './page.scss';
 
 const Page = ({
-  isCreate, logged, patientsLoaded, eventsLoaded,
+  isCreate, logged, patientsLoaded, eventsLoaded, redirect,
 }) => (
   <Router>
     <Switch>
-      {isCreate && <Redirect from="/account/create/account" to="/login" />}
-
+      {isCreate && <Redirect from="/account/create/account" to="/login" /> }
+      {redirect && <Redirect from="/patients/:id" to="/patients" />}
       {!logged
      && (
      <>
@@ -46,6 +46,7 @@ const Page = ({
       && (
 
         <>
+
           <Route path="/" exact>
             <Home />
           </Route>
@@ -63,6 +64,9 @@ const Page = ({
           </Route>
           <Route path="/patients/:id" exact>
             <PatientCard />
+          </Route>
+          <Route path="/patients/:id/edit" exact>
+            <AddPatient />
           </Route>
           <Route path="/calendar" exact>
             <BigCalendar />
@@ -84,6 +88,7 @@ Page.propTypes = {
   logged: Proptypes.bool.isRequired,
   patientsLoaded: Proptypes.bool.isRequired,
   eventsLoaded: Proptypes.bool.isRequired,
+  redirect: Proptypes.bool.isRequired,
 };
 
 export default Page;
