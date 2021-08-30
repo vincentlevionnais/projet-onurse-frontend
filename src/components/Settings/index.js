@@ -34,6 +34,13 @@ const Settings = ({
     }
   };
 
+  const handleDelete = (evt) => {
+    if (confirm('Etes vous sur de vouloir supprmier votre compte?')) {
+      evt.preventDefault();
+      manageDeleteSubmit();
+    }
+  };
+
   return (
     <>
       <Header titlePage="Parametres" />
@@ -114,18 +121,19 @@ const Settings = ({
 
         <section className="settings-section-Update">
           <h2 className="settings-title"> Supprimer votre compte</h2>
+          <p className="settings-text"> Attention, la suppression de votre compte entraine
+            la suppression de toutes vos données.
+          </p>
 
-          {/* // todo gerer une popup de confirmation,
-      // todo au bouton valider un state passe à true, si true popup?? */}
+          {/* // todo mieux gerer la confirm de supp,
+              // TODO une popup de confirmation,
+              // todo au bouton valider un state passe à true, si true popup?? */}
 
           <form className="settings-form">
             <button
               className="settings-validation-button"
               type="submit"
-              onClick={(evt) => {
-                evt.preventDefault();
-                manageDeleteSubmit();
-              }}
+              onClick={(evt) => handleDelete(evt)}
             > Valider
             </button>
           </form>

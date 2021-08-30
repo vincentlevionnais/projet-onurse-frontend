@@ -5,6 +5,8 @@ export const CONNECT_USER = 'CONNECT_USER';
 export const LOG_OUT = 'LOG_OUT';
 export const TO_LOGIN = 'TO_LOGIN';
 export const TOKEN_PERSIST = 'TOKEN_PERSIST';
+export const FETCH_USER_INFOS = 'GET_USER_INFOS';
+export const SAVE_USER_INFOS = 'SAVE_USER_INFOS';
 
 // action creator
 export const updateLoginField = (newvalue, name) => ({
@@ -17,11 +19,9 @@ export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const connectUser = (token /* , id */) => ({
+export const connectUser = (token) => ({
   type: CONNECT_USER,
   token: token,
-  // TODO ci dessous
-  // id: id,
 });
 
 export const logOut = () => ({
@@ -35,4 +35,14 @@ export const toLogin = () => ({
 export const tokenPersist = (token) => ({
   type: TOKEN_PERSIST,
   token: token,
+});
+
+export const fetchUserInfos = () => ({
+  type: FETCH_USER_INFOS,
+});
+
+export const saveUserInfos = (id, firstname) => ({
+  type: SAVE_USER_INFOS,
+  id: id,
+  firstname: firstname,
 });

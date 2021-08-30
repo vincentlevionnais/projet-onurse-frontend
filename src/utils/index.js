@@ -38,7 +38,7 @@ export const searchPatientByName = (search, patients) => {
  * @param {strings} phone input value
  */
 
-export const createAccountValidateValue = (lastName, firstName, email, phone) => {
+export const createAccountValidateValue = (lastName, firstName, password, email, phone) => {
   const errors = {};
 
   if (lastName === '') {
@@ -66,18 +66,37 @@ export const createAccountValidateValue = (lastName, firstName, email, phone) =>
     errors.email = 'Maximum : 255 caractères';
     alert('Maximum : 255 caractères');
   }
+
   else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
     errors.email = 'Adresse email invalide';
     alert('Adresse email invalide');
   }
 
+  if (password === '') {
+    errors.password = 'Requis';
+    alert('Mot de passe Requis');
+  }
+
+  else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
+    errors.password = 'Mot de passe invalide';
+    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
+    // Contain at least 8 characters
+    // contain at least 1 number
+    // contain at least 1 lowercase character (a-z)
+    // contain at least 1 uppercase character (A-Z)
+    // contains only 0-9a-zA-Z
+  }
+  else if (password.length < 8) {
+    errors.password = 'Minimum : 8 caractères';
+    alert('Mot de passe: Minimum 8 caractères');
+  }
   if (phone === '') {
     errors.phone = 'Requis';
     alert('Téléphone Requis');
   }
   else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(phone)) {
     errors.phone = 'Format invalide';
-    alert('Format invalide');
+    alert('Téléphone invalide');
   }
 
   return false;
@@ -111,7 +130,7 @@ export const loginFormValidateValue = (email, password) => {
   }
   else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
     errors.password = 'Mot de passe invalide';
-    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 nombre, 1 chiffre, une minuscule une majuscule');
+    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
     // Contain at least 8 characters
     // contain at least 1 number
     // contain at least 1 lowercase character (a-z)

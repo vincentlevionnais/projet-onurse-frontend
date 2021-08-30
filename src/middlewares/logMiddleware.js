@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN, connectUser, DELETE_SUBMIT } from 'src/actions/login';
+import {
+  SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS, saveUserInfos,
+} from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().log;
+
       axios.post(
         'http://35.173.138.41/projet-o-nurse/public/api/login_check',
         {
@@ -20,16 +23,35 @@ const logMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
-          // todo recuperer l id pour le mettre dans le state. et l'envoyer dans connect user
           store.dispatch(connectUser(response.data.token));
         })
         .catch((error) => {
           console.log(error);
+          alert('Une erreur est survenue, Merci de réessayer');
         });
 
       break;
     }
+    case FETCH_USER_INFOS:
 
+      axios.get(
+        'http://35.173.138.41/projet-o-nurse/public/api/index',
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+        .then((response) => {
+          store.dispatch(saveUserInfos(response.data.id, response.data.firstname));
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('Une erreur est survenue lors de la récuperation des informations utilisateurs.');
+        });
+
+      break;
     default:
   }
 

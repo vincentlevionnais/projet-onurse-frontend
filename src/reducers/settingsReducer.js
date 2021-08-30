@@ -1,4 +1,4 @@
-import { UPDATE_SETTINGS_FIELD } from 'src/actions/settings';
+import { UPDATE_SETTINGS_FIELD, CLEAN_INPUT } from 'src/actions/settings';
 
 const initialState = {
   email: '',
@@ -15,6 +15,18 @@ function logReducer(state = initialState, action = {}) {
         ...state,
         [action.name]: action.value,
       };
+
+    case CLEAN_INPUT:
+
+      return {
+
+        ...state,
+        email: '',
+        confirmationEmail: '',
+        password: '',
+        confirmationPassword: '',
+      };
+
     default:
       return state;
   }

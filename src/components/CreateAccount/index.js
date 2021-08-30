@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'react-feather';
@@ -39,14 +39,15 @@ const CreateAccount = ({
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const errors = createAccountValidateValue(lastName, firstName, email, phone);
+    const errors = createAccountValidateValue(lastName, firstName, password, email, phone);
+    // console.log(errors);
 
     if (errors) {
       manageSubmit();
     }
-    // else {
-    //   alert('vérification des infos');
-    // }
+    else {
+      alert('Merci de vérifier vos informations');
+    }
   };
 
   return (

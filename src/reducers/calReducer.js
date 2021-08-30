@@ -4,7 +4,6 @@ import {
   UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED, UPDATE_PATIENT_ID,
 } from 'src/actions/bigCal';
 
-
 const initialState = {
   events: [],
   displayPopup: false,
@@ -22,6 +21,10 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         displayPopup: !state.displayPopup,
+        id: '',
+        reason: '',
+        datetimeStart: '',
+        datetimeEnd: '',
       };
     case SAVE_EVENTS: {
       const newListEvents = action.events.map((event) => ({
