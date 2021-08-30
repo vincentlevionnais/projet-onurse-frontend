@@ -4,7 +4,7 @@ import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { LogOut } from 'react-feather';
 import logo from '../../assets/images/LOGO-V3.png';
-import './home.scss';
+import './homeV2.scss';
 
 const Home = ({ handleLogOut }) => {
   const today = new Date();
@@ -33,6 +33,9 @@ const Home = ({ handleLogOut }) => {
           <LogOut />
         </Link>
       </header>
+      <div className="logo">
+          <img className="logo-pic" src={logo} alt="logo o'nurse" />
+        </div>
       <nav className="nav">
         <div className="nav-bottom">
           <div className="nav-element tour">
@@ -44,9 +47,7 @@ const Home = ({ handleLogOut }) => {
             </Link>
           </div>
         </div>
-        <div className="logo">
-          <img className="logo-pic" src={logo} alt="logo o'nurse" />
-        </div>
+        
         <div className="nav-top">
           <div className="nav-element patient">
             <Link

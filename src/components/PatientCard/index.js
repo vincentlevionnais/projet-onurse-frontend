@@ -1,6 +1,6 @@
 // === import npm
 import React from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // === import local
 // import function for search patient by id

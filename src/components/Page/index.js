@@ -15,6 +15,8 @@ import AddPatient from '../../containers/AddPatient';
 import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
+import About from '../About';
+import Footer from './Footer';
 import './page.scss';
 
 const Page = ({
@@ -64,6 +66,10 @@ const Page = ({
           <Route path="/calendar" exact>
             <BigCalendar />
           </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Footer />
         </>
 
       )}
@@ -73,6 +79,7 @@ const Page = ({
 
     </Switch>
   </Router>
+  
 );
 
 Page.propTypes = {

@@ -1,3 +1,5 @@
+
+
 @use '../../styles/vars';
 
 .header {
@@ -49,56 +51,62 @@
   align-items: center;
   padding: 1em;
   .logo-pic {
-    width: 55%;
+    width: 40%;
   }
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-
-
+  max-width: 50em;
+  margin: auto;
   .nav-element {
-    width: 50%;
-    height: 11.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1em;
   }
 
   .nav-link {
-    border-radius: 100%;
-    padding: 2.5em 0.5em;
+    //border-radius: 100%;
+    //padding: 2.5em 0.5em;
     font-weight: bold;
-    max-width: 60%;
+    //max-width: 60%;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 1em;
     text-transform: uppercase;
-    box-shadow: 3px 5px 5px rgba(#2C3C4B, 0.7);
+    //box-shadow: 3px 5px 5px rgba(#2C3C4B, 0.7);
   }
 
   .nav-top {
     display: flex;
     flex-direction: row;
+    height: 6em;
 
+    margin: 1em 1em 2em 1em;
     .nav-element {
-
+      margin: 0;
       &.patient {
         background-color: vars.$darkBlue;
+        //border: 8px solid vars.$darkBlue;
+        height: 100%;
+        width: 50%;
+        margin-right: 0.5em;
         .nav-link {
-          background-color: vars.$lightBlue;
-          color: vars.$darkBlue;
-          box-shadow: 3px 5px 5px rgba(vars.$mediumGrey, 0.7);
+          //background-color: vars.$lightBlue;
+          color: vars.$lightBlue;
+          //box-shadow: 3px 5px 5px rgba(vars.$mediumGrey, 0.7);
         }
       }
 
       &.agenda {
         background-color: vars.$lightBlue;
+        //border: 8px solid vars.$lightBlue;
+        height: 100%;
+        width: 50%;
+        margin-left: 0.5em;
         .nav-link {
-          background-color: vars.$darkBlue;
-          color: white;
+          color: vars.$darkBlue;
         }
       }
     }
@@ -107,17 +115,20 @@
   .nav-bottom {
     display: flex;
     flex-direction: row;
-
+    height: 6em;
+    margin: 1em 1em 0 1em;
     .nav-element {
       &.tour {
-        background-color: white;
+        background-color: vars.$pink;
         width: 100%;
-        border: 10px solid vars.$pink;
+        height: 100%;
+        //border: 8px solid vars.$pink;
+        height: 6em;
+        margin: 0;
         .nav-link {
-          background-color: vars.$darkBlue;
+          //background-color: vars.$darkBlue;
           color: white;
-          max-width: 40%;
-          font-size: 1em;
+          //max-width: 40%;
         }
       }
     }
@@ -133,12 +144,20 @@
   
 }
 
-@media (min-width: 740px) {
+@media (min-width: 740px) and (max-width:1000px) {
   .logo {
     .logo-pic {
-      width: 30%;
+      width: 35%;
       margin: 2em;
     }
   }
- 
+}
+
+@media (min-width: 1000px) {
+  .logo {
+    .logo-pic {
+      width: 25%;
+      margin: 2em;
+    }
+  }
 }
