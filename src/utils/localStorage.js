@@ -1,17 +1,15 @@
 /**
- * return the middle part of the jwt token
+ * return the middle part of the jwt token value in JSON
  * @param {string} jwt
  * @returns
  */
 // eslint-disable-next-line import/prefer-default-export
 export const getPayload = (jwt) => {
+  // cut the middle part of token
   const str = jwt.split('.')[1];
-  console.log(str);
-
+  // convert in string
   let base = atob(str, 'base64');
-  console.log(base);
-
+  // convert in Json
   base = JSON.parse(base);
-  console.log(base);
   return base;
 };

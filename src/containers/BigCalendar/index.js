@@ -5,9 +5,10 @@ import {
   dropEvent,
   resizeEvent,
   updateTitleValue,
-  updateStartDateValue,updateEndDateValue,
+  updateStartDateValue,
+  updateEndDateValue,
   updateIdValue,
-  updatePatientId
+  updatePatientId,
 } from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';

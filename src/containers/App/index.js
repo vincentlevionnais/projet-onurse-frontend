@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchEvents } from 'src/actions/bigCal';
 import { fetchPatients } from 'src/actions/patients';
-import { tokenPersist, toLogin } from 'src/actions/login';
+import { tokenPersist, toLogin, fetchUserInfos } from 'src/actions/login';
 // on importe le composant de présentation
 import App from 'src/components/App';
 
@@ -32,6 +32,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   makeTokenPersist: (token) => {
     dispatch(tokenPersist(token));
+  },
+  getUserInfos: () => {
+    dispatch(fetchUserInfos());
   },
 });
 

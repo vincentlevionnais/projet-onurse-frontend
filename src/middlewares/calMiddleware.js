@@ -201,25 +201,26 @@ const calMiddleware = (store) => (next) => (action) => {
           alert('une erreur est survenue, merci de réessayer');
         });
       break;
-      case SET_STATUS : 
-        axios.put(
-          `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
-          {
-            id: action.id,
-            status: action.status,
+    case SET_STATUS:
+      axios.put(
+        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+        {
+          id: action.id,
+          status: action.status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-          },
-        )
-          .then((response) => {
+        },
+      )
+        .then((response) => {
 
-          })
-          .catch((error) => {
-            alert('une erreur est survenue, merci de réessayer');
-          });
+        })
+        .catch((error) => {
+          alert('une erreur est survenue, merci de réessayer');
+        });
+      break;
     default:
   }
 

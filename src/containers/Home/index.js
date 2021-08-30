@@ -7,6 +7,7 @@ import { logOut } from 'src/actions/login';
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
+  firstname: state.log.firstname,
 
 });
 

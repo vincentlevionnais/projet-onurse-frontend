@@ -4,7 +4,6 @@ import {
   UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED, UPDATE_PATIENT_ID, SET_STATUS,
 } from 'src/actions/bigCal';
 
-
 const initialState = {
   events: [],
   displayPopup: false,
@@ -12,7 +11,7 @@ const initialState = {
   reason: '',
   datetimeStart: '',
   datetimeEnd: '',
-  eventsLoaded : false,
+  eventsLoaded: false,
   patient: {},
   status: 1,
 };
@@ -44,8 +43,8 @@ const calReducer = (state = initialState, action = {}) => {
 
     case ADD_EVENT: {
       const patient_id = {
-        id: action.patient
-      }
+        id: action.patient,
+      };
       const newEvents = {
         id: action.id,
         title: action.reason,
@@ -180,7 +179,7 @@ const calReducer = (state = initialState, action = {}) => {
         ...state,
         eventsLoaded: true,
       };
-    case SET_STATUS : 
+    case SET_STATUS: {
       const eventIndex = state.events.findIndex((item) => item.id === action.id);
       const newListEvents = [...state.events];
       newListEvents[eventIndex] = {
@@ -190,7 +189,7 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         events: newListEvents,
-      };
+      }; }
     default:
       return state;
   }

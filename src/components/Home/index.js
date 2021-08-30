@@ -2,11 +2,11 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
-import { LogOut } from 'react-feather';
+import { LogOut, Settings } from 'react-feather';
 import logo from '../../assets/images/LOGO-V3.png';
 import './home.scss';
 
-const Home = ({ handleLogOut }) => {
+const Home = ({ handleLogOut, firstname }) => {
   const today = new Date();
 
   return (
@@ -14,7 +14,7 @@ const Home = ({ handleLogOut }) => {
       <header className="header">
         <div className="header-infos">
           <h1 className="header-title">
-            Bienvenue XXX
+            Bonjour {firstname}
           </h1>
           <div className="date">
             <time>
@@ -25,6 +25,13 @@ const Home = ({ handleLogOut }) => {
             </time>
           </div>
         </div>
+        <Link
+          to="/account/settings"
+          className="settings-button"
+        >
+          <Settings />
+        </Link>
+
         <Link
           to="/"
           className="logout-button"
@@ -73,6 +80,7 @@ const Home = ({ handleLogOut }) => {
 Home.propTypes = {
 
   handleLogOut: Proptypes.func.isRequired,
+  firstname: Proptypes.string.isRequired,
 };
 
 export default Home;

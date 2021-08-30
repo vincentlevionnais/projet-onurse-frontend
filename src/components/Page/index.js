@@ -10,6 +10,7 @@ import LoginForm from 'src/containers/LoginForm';
 import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/containers/Home';
 import Loader from 'src/components/Loader';
+import Settings from 'src/containers/Settings';
 import Errors from '../Errors';
 import AddPatient from '../../containers/AddPatient';
 import Tour from '../../containers/Tour';
@@ -23,7 +24,7 @@ const Page = ({
   <Router>
     <Switch>
       {isCreate && <Redirect from="/account/create/account" to="/login" /> }
-      {redirect && <Redirect from={`/patients/:id`} to='/patients' />}
+      {redirect && <Redirect from="/patients/:id" to="/patients" />}
       {!logged
      && (
      <>
@@ -39,15 +40,18 @@ const Page = ({
       {(!patientsLoaded || !eventsLoaded) && (
         <Loader />
       )}
-      { logged && <Redirect from="/login" to="/" />}
+      {logged && <Redirect from="/login" to="/" />}
 
       {logged && patientsLoaded && eventsLoaded
       && (
 
         <>
-          
+
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/account/settings">
+            <Settings />
           </Route>
           <Route path="/calendar/day">
             <Tour />
@@ -84,6 +88,7 @@ Page.propTypes = {
   logged: Proptypes.bool.isRequired,
   patientsLoaded: Proptypes.bool.isRequired,
   eventsLoaded: Proptypes.bool.isRequired,
+  redirect: Proptypes.bool.isRequired,
 };
 
 export default Page;

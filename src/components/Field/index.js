@@ -7,6 +7,7 @@ import './field.scss';
 
 // == Composant
 const Field = ({
+  // ref,
   value,
   type,
   name,
@@ -22,6 +23,7 @@ const Field = ({
   return (
     <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
       <input
+        // ref={ref}
         // React - state
         value={value}
         onChange={handleChange}
@@ -44,6 +46,8 @@ const Field = ({
 };
 
 Field.propTypes = {
+  /** ref used as value to target the input */
+  // ref: PropTypes.string,
   /** text used as value for the input */
   value: PropTypes.string,
   /** type of the input */
@@ -63,6 +67,7 @@ Field.propTypes = {
 Field.defaultProps = {
   value: '',
   type: 'text',
+  // ref: '',
 };
 
 // == Export

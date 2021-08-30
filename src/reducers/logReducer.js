@@ -1,11 +1,15 @@
 import {
-  UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT, TOKEN_PERSIST, TO_LOGIN,
+  UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT, TOKEN_PERSIST, TO_LOGIN, SAVE_USER_INFOS,
 } from 'src/actions/login';
 
 const initialState = {
+  // user's id
+  id: '',
   email: '',
   password: '',
-  // indique si l'utilisateur est authentifié
+  // use in home components
+  firstname: '',
+  // to know if user is connect
   logged: false,
   token: localStorage.getItem('token'),
 };
@@ -37,17 +41,27 @@ function logReducer(state = initialState, action = {}) {
       };
 
     case TO_LOGIN:
+
       return {
         ...state,
         logged: false,
       };
 
     case TOKEN_PERSIST:
+
       return {
         ...state,
         logged: true,
         token: action.token,
       };
+
+    case SAVE_USER_INFOS:
+      return {
+        ...state,
+        id: action.id,
+        firstname: action.firstname,
+      };
+
     default:
       return state;
   }
