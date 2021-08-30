@@ -22,7 +22,6 @@ const logMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
           store.dispatch(connectUser(response.data.token));
         })
         .catch((error) => {

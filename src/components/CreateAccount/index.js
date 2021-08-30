@@ -12,6 +12,7 @@ const CreateAccount = ({
   firstName,
   email,
   password,
+  confirmationPassword,
   phone,
   manageSubmit,
   handleChange,
@@ -39,14 +40,15 @@ const CreateAccount = ({
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const errors = createAccountValidateValue(lastName, firstName, password, email, phone);
-    // console.log(errors);
+    const errors = createAccountValidateValue(lastName, firstName, email, password, phone);
+    console.log(errors);
+    console.log('je click');
 
-    if (errors) {
+    if (errors && password === confirmationPassword) {
       manageSubmit();
     }
-    else {
-      alert('Merci de vérifier vos informations');
+    else if (password !== confirmationPassword) {
+      alert('Les mots de passe ne correspondent pas');
     }
   };
 
@@ -126,6 +128,19 @@ const CreateAccount = ({
 
         <input
           className="create-account-input"
+          placeholder="Confirmer votre mot de passe"
+          id="confirmationPassword"
+          name="confirmationPassword"
+          type="password"
+          onChange={((evt) => {
+            handleChange(evt.target.value, evt.target.name);
+          })}
+          value={confirmationPassword}
+        />
+        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+
+        <input
+          className="create-account-input"
           placeholder="N° de téléphone"
           id="phone"
           name="phone"
@@ -148,6 +163,7 @@ CreateAccount.propTypes = {
   lastName: Proptypes.string.isRequired,
   firstName: Proptypes.string.isRequired,
   email: Proptypes.string.isRequired,
+  confirmationPassword: Proptypes.string.isRequired,
   password: Proptypes.string.isRequired,
   phone: Proptypes.string.isRequired,
   manageSubmit: Proptypes.func.isRequired,

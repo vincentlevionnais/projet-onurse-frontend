@@ -23,7 +23,7 @@ const Page = ({
 }) => (
   <Router>
     <Switch>
-      {isCreate && <Redirect from="/account/create/account" to="/login" /> }
+      {isCreate && <Redirect from="/account/create/account" to="/login" />}
 
       {!logged
      && (
@@ -40,7 +40,7 @@ const Page = ({
       {(!patientsLoaded || !eventsLoaded) && (
         <Loader />
       )}
-      { logged && <Redirect from="/login" to="/" />}
+      {logged && <Redirect from="/login" to="/" />}
 
       {logged && patientsLoaded && eventsLoaded
       && (

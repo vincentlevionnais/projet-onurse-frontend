@@ -34,72 +34,90 @@ export const searchPatientByName = (search, patients) => {
  * Validate the CreateAccount components values
  * @param {strings} lastName input value
  * @param {strings} firstName input value
+ * @param {strings} password input value
  * @param {strings} email input value
  * @param {strings} phone input value
  */
 
-export const createAccountValidateValue = (lastName, firstName, password, email, phone) => {
+export const createAccountValidateValue = (lastName, firstName, email, password, phone) => {
   const errors = {};
+  console.log('je suis la fonctione de vérif');
 
   if (lastName === '') {
     errors.lastName = 'Requis';
     alert('Nom Requis');
+    console.log('je passe lastname');
+    return false;
   }
-  else if (lastName.length > 64) {
+  if (lastName.length > 64) {
     errors.lastName = 'Maximum : 64 caractères';
     alert('Maximum : 64 caractères');
+    return false;
   }
   if (firstName === '') {
     errors.firstName = 'Requis';
     alert('Prénom Requis');
+    console.log('je passe firstname');
+    return false;
   }
-  else if (firstName.length > 64) {
+  if (firstName.length > 64) {
     errors.firstName = 'Maximum : 15 caractères';
     alert('Maximum : 64 caractères');
+    return false;
   }
 
   if (email === '') {
     errors.email = 'Requis';
     alert('Email Requis');
+    return false;
   }
-  else if (email.length > 255) {
+  if (email.length > 255) {
     errors.email = 'Maximum : 255 caractères';
     alert('Maximum : 255 caractères');
+    return false;
   }
 
-  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
     errors.email = 'Adresse email invalide';
     alert('Adresse email invalide');
+    console.log('je passe la regex mail');
+    return false;
   }
-
   if (password === '') {
     errors.password = 'Requis';
     alert('Mot de passe Requis');
+    return false;
   }
-
-  else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
-    errors.password = 'Mot de passe invalide';
-    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
-    // Contain at least 8 characters
-    // contain at least 1 number
-    // contain at least 1 lowercase character (a-z)
-    // contain at least 1 uppercase character (A-Z)
-    // contains only 0-9a-zA-Z
-  }
-  else if (password.length < 8) {
+  // todo la regex ci dessous fonctionne en test sur un site (https://regexr.com/3bfsi) mais pas sur notre site
+  // if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
+  //   errors.password = 'Mot de passe invalide';
+  //   console.log(password);
+  //   alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
+  //   return false;
+  //   // Contain at least 8 characters
+  //   // contain at least 1 number
+  //   // contain at least 1 lowercase character (a-z)
+  //   // contain at least 1 uppercase character (A-Z)
+  //   // contains only 0-9a-zA-Z
+  // }
+  if (password.length < 8) {
     errors.password = 'Minimum : 8 caractères';
     alert('Mot de passe: Minimum 8 caractères');
+    return false;
   }
   if (phone === '') {
     errors.phone = 'Requis';
     alert('Téléphone Requis');
+    return false;
   }
-  else if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(phone)) {
+  if (!/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i.test(phone)) {
     errors.phone = 'Format invalide';
     alert('Téléphone invalide');
+    console.log('je passe la regex phone');
+    return false;
   }
 
-  return false;
+  return true;
 };
 
 /**
@@ -114,35 +132,42 @@ export const loginFormValidateValue = (email, password) => {
   if (email === '') {
     errors.email = 'Requis';
     alert('Email Requis');
+    return false;
   }
-  else if (email.length > 255) {
+  if (email.length > 255) {
     errors.email = 'Maximum : 255 caractères';
     alert('Adresse Mail: Maximum 255 caractères');
+    return false;
   }
-  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
     errors.email = 'Adresse email invalide';
     alert('Adresse email invalide');
+    return false;
   }
 
   if (password === '') {
     errors.password = 'Requis';
     alert('Mot de passe Requis');
+    return false;
   }
-  else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
+  if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
     errors.password = 'Mot de passe invalide';
     alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
+    return false;
+
     // Contain at least 8 characters
     // contain at least 1 number
     // contain at least 1 lowercase character (a-z)
     // contain at least 1 uppercase character (A-Z)
     // contains only 0-9a-zA-Z
   }
-  else if (password.length < 8) {
+  if (password.length < 8) {
     errors.password = 'Minimum : 8 caractères';
     alert('Mot de passe: Minimum 8 caractères');
+    return false;
   }
 
-  return false;
+  return true;
 };
 
 // function to select appointment of current day
