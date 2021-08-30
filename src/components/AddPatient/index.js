@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { getPatientById } from 'src/utils';
 
@@ -55,6 +55,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
   const isAddMode = !id;
   const patientToDisplay = getPatientById(id, patients);
 
+  const history = useHistory();
   // let idPatient = patientToDisplay.id;
   // let idInNumber = (idPatient).toString();
   // console.log(idInNumber);
@@ -84,6 +85,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
         //  alert(JSON.stringify(values, null, 2));
         onNewPatient(values);
         resetForm({});
+        history.push('/patients');
       },
     });
     titleForm = 'Ajouter un patient';
@@ -113,6 +115,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
       onSubmit: (values) => {
         // alert(JSON.stringify(values, null, 2));
         updatePatient(values);
+        history.push('/patients');
       },
     });
     titleForm = 'Modifier la fiche patient';
