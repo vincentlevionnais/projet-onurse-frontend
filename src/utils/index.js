@@ -111,10 +111,10 @@ export const searchAppointmentOfTheDay = (events) => {
   return appointmentOfTheDayByHour;
 };
 
-/* export const searchAppointmentOfPatient = (events, patient_id) => {
+ export const searchAppointmentOfPatient = (events, patient_id) => {
   // filtered events by patient id
   const appointmentOfPatient = events.filter((appointment) => {
-    return appointment.patient.id === patient_id;
+    return parseInt(appointment.patient.id) === parseInt(patient_id);
   });
   // build a new table from appointment of the day, but sorted by hour to have a display in order
   const appointmentOfPatientByDate = appointmentOfPatient.sort(function compare(a, b) {
@@ -127,4 +127,4 @@ export const searchAppointmentOfTheDay = (events) => {
     return 0;
   });
   return appointmentOfPatientByDate;
-} */
+} 

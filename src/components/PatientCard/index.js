@@ -22,7 +22,9 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
   // search patient by id
   const patientToDisplay = getPatientById(id, patients);
   // const eventsOfPatient = searchAppointmentOfPatient(events, id);
-
+  const appointmentOfPatient = searchAppointmentOfPatient(events, id);
+  console.log(appointmentOfPatient);
+  
   return (
     <>
       <Header titlePage="Fiche Patient" />
