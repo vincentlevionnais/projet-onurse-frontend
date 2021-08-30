@@ -49,18 +49,23 @@ const CivilStatus = ({
 )};
 
 CivilStatus.propTypes = {
-  birthdate: PropTypes.string.isRequired,
+  birthdate: PropTypes.string,
   completeAdress: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   trustedPerson: PropTypes.string,
-  nir: PropTypes.string.isRequired,
-  mutualName: PropTypes.string.isRequired,
-  mutualNumberAmc: PropTypes.string.isRequired,
-  doctorName: PropTypes.string.isRequired,
+  nir: PropTypes.string,
+  mutualName: PropTypes.string,
+  mutualNumberAmc: PropTypes.string,
+  doctorName: PropTypes.string,
 };
 
 CivilStatus.defaultProps = {
   trustedPerson: "",
-}
+  birthdate: "",
+  doctorName: "",
+  mutualNumberAmc: "",
+  mutualName: "",
+  nir: "",
+};
 
 export default CivilStatus;
