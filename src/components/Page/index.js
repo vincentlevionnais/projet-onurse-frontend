@@ -22,8 +22,8 @@ const Page = ({
   isCreate, logged, patientsLoaded, eventsLoaded, redirect,
 }) => (
   <Router>
+    {isCreate && <Redirect from="/account/create/account" to="/login" /> }
     <Switch>
-      {isCreate && <Redirect from="/account/create/account" to="/login" /> }
       {redirect && <Redirect from="/patients/:id" to="/patients" />}
       {!logged
      && (
