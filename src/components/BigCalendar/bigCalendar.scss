@@ -27,6 +27,80 @@
       justify-content: space-between;
       padding: 1em;
 
+      div {
+        display: flex;
+        flex-direction: column;
+
+        .react-datepicker {
+          width: 100%;
+          display: block;
+          flex-direction: column;
+          .react-datepicker__navigation{
+            margin: 0em;
+            padding: 0em;
+          }
+
+          .react-datepicker__month-container {
+            display: inline;
+            flex-direction: row;
+            padding: 0em;
+            margin: 0em;
+            width: 70%;
+
+            .react-datepicker__header--has-time-select {
+              display: inline;
+              flex-direction: row;
+              .react-datepicker__day-names{
+                flex-direction: row;
+                font-size: x-large;
+                justify-content: space-between;
+                .react-datepicker__day-name{
+                  margin-right: 1em;
+                }
+                
+              }
+              .react-datepicker__current-month {
+                flex-direction: column;
+                padding: 0.5em;
+            
+              }
+              .react-datepicker__header__dropdown--scroll{}
+              
+
+            }
+
+            .react-datepicker__month {
+              display: flex;
+              flex-direction: column;
+              font-size: large;
+
+              .react-datepicker__week{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                color: yellow;
+
+                .react-datepicker__day{
+                  margin-right: 0.5em;
+                  font-size: large;
+                }
+              }
+
+            }
+          }
+          .react-datepicker__time-container{
+            display: flex;
+            .react-datepicker__header--time {
+              background-color: white;
+            }
+            .react-datepicker__time{
+              font-size: large;
+              color: red;
+            }
+          }
+        }
+      }
+
       .popup-text {}
 
       .buttons {
@@ -71,22 +145,24 @@
           margin: 0.5em 0 0.5em 0;
           border-radius: vars.$borderRadius;
         }
+
         .datepickers {
           display: flex;
           text-align: center;
           margin-top: 0.5em;
+
           .react-datepicker__input-container {
 
-          input {
-            width: 80%;
-            background-color: vars.$lightBlue;
-            padding: 0.5em;
-            border-radius: vars.$borderRadius;
+            input {
+              width: 100%;
+              background-color: vars.$lightBlue;
+              padding: 0.5em;
+              border-radius: vars.$borderRadius;
 
+            }
           }
         }
-        }
-        
+
 
         .buttons {
           display: flex;

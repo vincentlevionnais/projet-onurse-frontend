@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import fr from 'date-fns/esm/locale/fr';
 import 'react-datepicker/dist/react-datepicker.css';
 
+
 const Popup = ({
   setDisplayPopup,
   manageSubmit,
