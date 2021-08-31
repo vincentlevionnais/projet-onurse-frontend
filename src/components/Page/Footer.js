@@ -5,7 +5,7 @@ import './page.scss';
 const Footer = () => (
   <footer className='footer'>
     <Link 
-      to="/legal-mentions"
+      to="/legal-mention"
       className="footer-link"
     >
       Mentions légales
