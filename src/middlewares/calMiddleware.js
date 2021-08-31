@@ -1,8 +1,9 @@
 import axios from 'axios';
 import moment from 'moment';
 import {
-  FETCH_EVENTS, saveEvents, MANAGE_EVENT_SUBMIT, addEvent, DROP_EVENT, updateAfterDrop,
-  RESIZE_EVENT, updateAfterResize, updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded, SET_STATUS,
+  FETCH_EVENTS, saveEvents, MANAGE_EVENT_SUBMIT, addEvent,
+  DROP_EVENT, updateAfterDrop, RESIZE_EVENT, updateAfterResize,
+  updateOneEvent, DELETE_ONE_EVENT, deleteEvent, setEventsLoaded, SET_STATUS,
 } from 'src/actions/bigCal';
 
 const calMiddleware = (store) => (next) => (action) => {
@@ -43,7 +44,7 @@ const calMiddleware = (store) => (next) => (action) => {
       */
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
-        const patientGoodFormat = parseInt(patient);
+        const patientGoodFormat = parseInt(patient, 10);
         axios.post(
           'http://35.173.138.41/projet-o-nurse/public/api/appointments',
           {
@@ -78,7 +79,7 @@ const calMiddleware = (store) => (next) => (action) => {
       else {
         const datetimeStartGoodFormat = moment(datetimeStart).format();
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
-        const patientGoodFormat = parseInt(patient);
+        const patientGoodFormat = parseInt(patient, 10);
 
         axios.put(
           `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,

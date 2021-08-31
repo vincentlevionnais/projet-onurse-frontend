@@ -10,7 +10,9 @@ export const UPDATE_START_DATE_VALUE = 'UPDATE_START_DATE_VALUE';
 // màj de la valeur de la date de debut de l'event
 export const UPDATE_END_DATE_VALUE = 'UPDATE_END_DATE_VALUE';
 // màj de la valeur de patient_id
-export const UPDATE_PATIENT_ID='UPDATE_PATIENT_ID';
+export const UPDATE_PATIENT_ID = 'UPDATE_PATIENT_ID';
+// màj de la valeur de patientChoosed
+export const UPDATE_PATIENT_CHOOSED = 'UPDATE_PATIENT_CHOOSED';
 // connexion api et envoi des données a api
 export const MANAGE_EVENT_SUBMIT = 'MANAGE_EVENT_SUBMIT';
 // rajout des données sur le calendrier
@@ -57,7 +59,7 @@ export const addEvent = (id, reason, datetimeStart, datetimeEnd, patient, status
   reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
-  patient: patient, 
+  patient: patient,
   status: status,
 });
 
@@ -88,6 +90,13 @@ export const updateEndDateValue = (newValue) => ({
 /** mise à jour de patient_id */
 export const updatePatientId = (newValue) => ({
   type: UPDATE_PATIENT_ID,
+  value: newValue,
+});
+/** mise à jour de patientChoosed qui sert
+ * à faire la comparaison avec patient.id dans le composant popup
+ */
+export const updatePatientChoosed = (newValue) => ({
+  type: UPDATE_PATIENT_CHOOSED,
   value: newValue,
 });
 
@@ -132,7 +141,7 @@ export const updateOneEvent = (id, reason, datetimeStart, datetimeEnd, patient, 
   reason: reason,
   datetimeStart: datetimeStart,
   datetimeEnd: datetimeEnd,
-  patient: patient, 
+  patient: patient,
   status: status,
 });
 

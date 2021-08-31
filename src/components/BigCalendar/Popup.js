@@ -19,8 +19,10 @@ const Popup = ({
   deleteEvent,
   patients,
   setPatientId,
+  patientChoosed,
   // setColor,
 }) => {
+  // console.log(patient.id);
 
   return (
     <div className="popup">
@@ -41,10 +43,10 @@ const Popup = ({
         <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" locale={fr} placeholderText="Date de fin" selected={datetimeEnd} onChange={(date) => setdatetimeEnd(date)} showTimeSelect shouldCloseOnSelect timeCaption="Heure" />
       </div>
 
-        <select name="patients" onChange={(evt) => setPatientId(evt.target.value)}>
-        {/* <option value="">--Choisir un patient--</option> */}
+        <select name="patients" onChange={(evt) => setPatientId(evt.target.value)} defaultValue={patientChoosed}>
+        <option value="">--Choisir un patient--</option>
           {patients.map((patient) =>
-            <option key={patient.id} value={patient.id}>
+            <option key={patient.id} value={patient.id} >
               {`${patient.lastname} ${patient.firstname}`}
             </option>
           )}

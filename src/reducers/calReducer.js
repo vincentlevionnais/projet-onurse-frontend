@@ -2,6 +2,7 @@ import {
   TOGGLE_POPUP, SAVE_EVENTS, ADD_EVENT, UPDATE_TITLE_VALUE, UPDATE_START_DATE_VALUE,
   UPDATE_END_DATE_VALUE, UPDATE_AFTER_DROP, UPDATE_AFTER_RESIZE, UPDATE_ID_VALUE,
   UPDATE_ONE_EVENT, DELETE_EVENT, SET_EVENTS_LOADED, UPDATE_PATIENT_ID, SET_STATUS,
+  UPDATE_PATIENT_CHOOSED,
 } from 'src/actions/bigCal';
 
 const initialState = {
@@ -13,6 +14,8 @@ const initialState = {
   datetimeEnd: '',
   eventsLoaded: false,
   patient: {},
+  // to compare whith the patient id in popup components
+  patientChoosed: '',
   status: 1,
 };
 
@@ -22,9 +25,11 @@ const calReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         displayPopup: !state.displayPopup,
+        id: '',
         reason: '',
         datetimeStart: '',
         datetimeEnd: '',
+        patientChoosed: '',
       };
     case SAVE_EVENTS: {
       const newListEvents = action.events.map((event) => ({
@@ -61,7 +66,7 @@ const calReducer = (state = initialState, action = {}) => {
         reason: '',
         datetimeStart: '',
         datetimeEnd: '',
-
+        patientChoosed: '',
       };
     }
 
@@ -84,6 +89,7 @@ const calReducer = (state = initialState, action = {}) => {
       };
 
     case UPDATE_ID_VALUE:
+
       return {
         ...state,
         id: action.id,
@@ -95,9 +101,15 @@ const calReducer = (state = initialState, action = {}) => {
         patient: action.value,
       };
 
+    case UPDATE_PATIENT_CHOOSED:
+      return {
+        ...state,
+        patientChoosed: action.value,
+      };
+
     case UPDATE_AFTER_DROP: {
       const newListEvents = state.events.map((items) => {
-        if (items.id == action.id) {
+        if (items.id === action.id) {
           return {
             ...items,
             start: action.datetimeStart,
@@ -115,7 +127,7 @@ const calReducer = (state = initialState, action = {}) => {
     }
     case UPDATE_AFTER_RESIZE: {
       const newListEvents = state.events.map((items) => {
-        if (items.id == action.id) {
+        if (items.id === action.id) {
           return {
             ...items,
             start: action.datetimeStart,
@@ -134,7 +146,7 @@ const calReducer = (state = initialState, action = {}) => {
 
     case UPDATE_ONE_EVENT: {
       const newListEvents = state.events.map((items) => {
-        if (items.id == action.id) {
+        if (items.id === action.id) {
           return {
             ...items,
             id: action.id,
@@ -158,7 +170,7 @@ const calReducer = (state = initialState, action = {}) => {
         reason: '',
         datetimeStart: '',
         datetimeEnd: '',
-
+        patientChoosed: '',
       };
     }
     case DELETE_EVENT: {

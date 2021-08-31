@@ -74,7 +74,7 @@ const LoginForm = ({
           onClick={() => togglePopup()}
           className="login-form-button"
         >
-          Mot de passe perdue
+          Mot de passe perdu
         </button>
       </div>
       <div className="log-create-account">
