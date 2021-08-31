@@ -9,8 +9,8 @@
   .login-form-element {
 
     width: 100%;
-  
-    
+
+
     .login-form-button {
       font-weight: 700;
       font-size: 1em;
@@ -52,5 +52,69 @@
     .logo-pic-login {
       width: 50%;
     }
+
+  }
+
+}
+
+// CSS for the lossing password popup
+
+.popup {
+
+  height: 50%;
+  width: 40%;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  cursor: pointer;
+  background-color: vars.$darkBlue;
+  box-shadow: 1px 2px 10px #000;
+  border-radius: vars.$borderRadius;
+  opacity: 0.95;
+  padding: 2em;
+  z-index: 1000;
+
+  .password-popup {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+
+    .password-popup-title {
+      
+      color: #fff;
+      font: vars.$contentFont;
+      font-size: 2em;
+      font-weight: 600;
+      padding: 0.2em;
+      margin: 0.5em 0.8em;
+    }
+
+    .password-popup-text {
+      
+      color: #fff;
+      font: vars.$contentFont;
+      font-size: 1.1em;
+      font-weight: 600;
+      margin: 0.7em 0 1.5em 0.8em;
+      padding: 0.2em;
+    }
+
+    .password-popup-input {
+      padding: 0.5em;
+      border-radius: .2em;
+
+    }
+
+    .buttons {
+
+      margin-top: 1em;
+      display: flex;
+      justify-content: space-around;
+
+      .password-button {}
+    }
+
   }
 }

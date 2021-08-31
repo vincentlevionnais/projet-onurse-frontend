@@ -5,9 +5,11 @@ import {
   dropEvent,
   resizeEvent,
   updateTitleValue,
-  updateStartDateValue,updateEndDateValue,
+  updateStartDateValue,
+  updateEndDateValue,
   updateIdValue,
-  updatePatientId
+  updatePatientId,
+  updatePatientChoosed,
 } from 'src/actions/bigCal';
 // on importe le composant de présentation
 import BigCalendar from 'src/components/BigCalendar';
@@ -56,6 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateEndDateValue(evt.end));
     dispatch(updateIdValue(evt.id));
     dispatch(updatePatientId(evt.patient.id));
+    dispatch(updatePatientChoosed(evt.patient.id));
   },
 });
 

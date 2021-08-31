@@ -5,6 +5,7 @@ const initialState = {
   firstName: '',
   email: '',
   password: '',
+  confirmationPassword: '',
   phone: '',
   // suite à compte crée
   isCreate: false,
@@ -19,15 +20,18 @@ const createAccountReducer = (state = initialState, action = {}) => {
       };
 
     case CLEAN_INPUT:
+
       return {
         ...state,
         lastName: '',
         firstName: '',
         email: '',
         password: '',
+        confirmationPassword: '',
         phone: '',
         isCreate: true,
       };
+
     default:
       return state;
   }

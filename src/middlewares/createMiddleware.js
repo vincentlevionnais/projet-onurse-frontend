@@ -35,8 +35,7 @@ const createMiddleware = (store) => (next) => (action) => {
           store.dispatch(cleanInput());
         })
         .catch((error) => {
-          console.log(error);
-          alert('Une erreur est survenue, merci de réessayer');
+          alert('Adresse mail déjà utilisée');
         });
       break;
     }
