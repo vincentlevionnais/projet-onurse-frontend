@@ -9,7 +9,7 @@
   .popup {
 
     height: 30%;
-    width: 80%;
+    width: 40%;
     position: absolute;
     top: 25%;
     left: 35%;
@@ -28,6 +28,22 @@
       padding: 1em;
 
       .popup-text {}
+
+      .react-datepicker__day {
+        font-size: 5em;
+      }
+      .react-datepicker__day-name {
+        font-size: 5em;
+      }
+      .react-datepicker__time-container {
+        width: 30%;
+      }
+      .react-datepicker__time-list {
+        font-size: 5em;
+      }
+      .react-datepicker {
+        width: 180%;
+      }
 
       .buttons {
         display: flex;
