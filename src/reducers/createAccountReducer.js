@@ -20,6 +20,7 @@ const createAccountReducer = (state = initialState, action = {}) => {
       };
 
     case CLEAN_INPUT:
+
       return {
         ...state,
         lastName: '',
@@ -30,6 +31,7 @@ const createAccountReducer = (state = initialState, action = {}) => {
         phone: '',
         isCreate: true,
       };
+
     default:
       return state;
   }
