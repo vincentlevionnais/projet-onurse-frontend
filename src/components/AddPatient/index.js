@@ -148,15 +148,15 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
           />
           {formik.errors.firstname ? <div>{formik.errors.firstname}</div> : null}
 
-          <label htmlFor="birthdate">Date de naissance
-            <input
-              id="birthdate"
-              name="birthdate"
-              type="date"
-              onChange={formik.handleChange}
-              value={formik.values.birthdate || ''}
-            />
-          </label>
+          <label htmlFor="birthdate">Date de naissance</label>
+          <input
+            id="birthdate"
+            name="birthdate"
+            type="date"
+            onChange={formik.handleChange}
+            value={formik.values.birthdate || ''}
+          />
+
           {formik.errors.birthdate ? <div>{formik.errors.birthdate}</div> : null}
 
           <input
