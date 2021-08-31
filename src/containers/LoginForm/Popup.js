@@ -1,17 +1,15 @@
 import { connect } from 'react-redux';
 
 // on importe le composant de présentation
-import LoginForm from 'src/components/LoginForm';
+import Popup from 'src/components/LoginForm/Popup';
 
-import { updateLoginField, submitLogin, logOut, displayPopup } from 'src/actions/login';
+import { displayPopup, updateLoginField, managePopupSubmit } from 'src/actions/login';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
-  email: state.log.email,
-  password: state.log.password,
-  displayPopup: state.log.displayPopup,
+  popupEmail: state.log.popupEmail,
 });
 
 // === mapDispatchToProps
@@ -22,17 +20,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateLoginField(newvalue, name));
   },
 
-  handleLogin: () => {
-    dispatch(submitLogin());
-  },
-  handleLogout: () => {
-    dispatch(logOut());
-  },
-
   togglePopup: () => {
     dispatch(displayPopup());
+  },
+
+  manageSubmit: () => {
+    dispatch(managePopupSubmit());
   },
 });
 
 // === création de l'assistant
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Popup);

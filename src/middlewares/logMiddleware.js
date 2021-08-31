@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS, saveUserInfos,
+  SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS, saveUserInfos, MANAGE_POPUP_SUBMIT,
 } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
@@ -51,6 +51,28 @@ const logMiddleware = (store) => (next) => (action) => {
         });
 
       break;
+
+    case MANAGE_POPUP_SUBMIT: {
+      const { popupEmail } = store.getState().log;
+      // todo verifier l url avec le back
+      axios.post(
+        'http://35.173.138.41/projet-o-nurse/public/api/login_check',
+        {
+          username: popupEmail,
+        },
+
+      )
+        .then((response) => {
+          // TODO voir avec le back + fermer la popup et vider tout les input
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('Une erreur est survenue, Merci de réessayer');
+        });
+
+      break;
+    }
+
     default:
   }
 

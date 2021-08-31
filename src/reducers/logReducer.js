@@ -1,5 +1,7 @@
 import {
-  UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT, TOKEN_PERSIST, TO_LOGIN, SAVE_USER_INFOS,
+  UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT,
+  TOKEN_PERSIST, TO_LOGIN, SAVE_USER_INFOS,
+  TOGGLE_POPUP,
 } from 'src/actions/login';
 
 const initialState = {
@@ -12,6 +14,9 @@ const initialState = {
   // to know if user is connect
   logged: false,
   token: localStorage.getItem('token'),
+  // password lost
+  displayPopup: false,
+  popupEmail: '',
 };
 
 function logReducer(state = initialState, action = {}) {
@@ -60,6 +65,14 @@ function logReducer(state = initialState, action = {}) {
         ...state,
         id: action.id,
         firstname: action.firstname,
+      };
+
+    case TOGGLE_POPUP:
+
+      return {
+        ...state,
+        displayPopup: !state.displayPopup,
+        popupEmail: '',
       };
 
     default:

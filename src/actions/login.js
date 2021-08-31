@@ -1,12 +1,24 @@
 // actions type
+/** update the login and password lost input value  */
 export const UPDATE_LOGIN_FIELD = 'UPDATE_LOGIN_FIELD';
+/** submit the loginForm component input value */
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
+/** use to connect user, adding token */
 export const CONNECT_USER = 'CONNECT_USER';
+/** use when the logOut button clicked, remove local storage token */
 export const LOG_OUT = 'LOG_OUT';
+/** use when token expire or removed */
 export const TO_LOGIN = 'TO_LOGIN';
+/** token persist in localstorage */
 export const TOKEN_PERSIST = 'TOKEN_PERSIST';
+/** use for get the user connected info */
 export const FETCH_USER_INFOS = 'GET_USER_INFOS';
+/** save the user connected info in state */
 export const SAVE_USER_INFOS = 'SAVE_USER_INFOS';
+/** use to open or close toggen */
+export const TOGGLE_POPUP = 'TOGGLE_POPUP';
+/** connect API and post email when password loosed */
+export const MANAGE_POPUP_SUBMIT = 'MANAGE_POPUP_SUBMIT';
 
 // action creator
 export const updateLoginField = (newvalue, name) => ({
@@ -45,4 +57,12 @@ export const saveUserInfos = (id, firstname) => ({
   type: SAVE_USER_INFOS,
   id: id,
   firstname: firstname,
+});
+
+export const displayPopup = () => ({
+  type: TOGGLE_POPUP,
+});
+
+export const managePopupSubmit = () => ({
+  type: MANAGE_POPUP_SUBMIT,
 });
