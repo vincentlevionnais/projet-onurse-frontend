@@ -150,6 +150,15 @@
 }
 
 @media (min-width: 740px) and (max-width:1000px) {
+  .header {
+    .header-infos {
+      flex-direction: row;
+      justify-content: center;
+      * {
+        margin-right: 1em;
+      }
+    }
+  }
   .logo {
     .logo-pic {
       width: 35%;
