@@ -43,13 +43,14 @@
 .main {
   margin: 0;
   position: relative;
+
+  
   .patient-name {
     text-align: center;
     font-size: 1.8em;
     color: vars.$darkBlue;
     background-color: white;
     font-weight: bold;
-   
     padding: 1em;
     font-family: vars.$titleFont;
 
@@ -57,6 +58,22 @@
       padding-left: 0.5em;
     }
   }
+
+  .road {
+    text-align: center;
+    font-family: vars.$contentFont;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: vars.$darkBlue;
+    margin-bottom: 1em;
+    img {
+     width: 40px; 
+    }
+  }
+
   .section {
     width: 100%;
     padding: 1em;

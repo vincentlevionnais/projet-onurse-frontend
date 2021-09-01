@@ -28,9 +28,10 @@ const CivilStatus = ({
           /${birthdateInDate.getFullYear()}`
         }
       </p>
-      <p>Adresse: {completeAdress}</p>
+      <p>Adresse: {completeAdress}  </p>
       <p>Téléphone: {phone}</p>
     </div>
+    
     <div className="trusted-person">
       <h3>Personne de confiance</h3>
       <p>{trustedPerson}</p>
