@@ -131,10 +131,10 @@ const Settings = ({
 
           <form className="settings-form">
             <button
-              className="settings-validation-button"
+              className="settings-validation-button-delete"
               type="submit"
               onClick={(evt) => handleDelete(evt)}
-            > Valider
+            > Supprimer
             </button>
           </form>
         </section>
