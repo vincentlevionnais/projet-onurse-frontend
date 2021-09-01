@@ -38,6 +38,7 @@ const Page = ({
        <Route path="/account/create/account">
          <CreateAccount />
        </Route>
+       <Footer />
      </>
      )}
       {(!patientsLoaded || !eventsLoaded) && (
@@ -87,7 +88,7 @@ const Page = ({
       <Route>
         <Errors />
       </Route>
-
+      
     </Switch>
   </Router>
   

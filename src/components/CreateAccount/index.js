@@ -67,7 +67,6 @@ const CreateAccount = ({
           </h1>
         </div>
       </header>
-
       <form
         className="create-account-container"
         onSubmit={(evt) => {
