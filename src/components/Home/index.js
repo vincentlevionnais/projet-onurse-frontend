@@ -25,18 +25,16 @@ const Home = ({ handleLogOut, firstname }) => {
 
   return (
     <>
-      <header className="header">
+      <header className="header-home">
         <div className="header-infos">
           <h1 className="header-title">
             Bonjour {firstname}
           </h1>
           <div className="date">
             <time>
-              {/* {`${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`} */}
               {today}
             </time>
             <time>
-              {/* {`${today.getHours()}h${today.getMinutes()}`} */}
               {hour}
             </time>
           </div>
