@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 import {
-  SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS, saveUserInfos, MANAGE_POPUP_SUBMIT,
+  SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS,
+  saveUserInfos, MANAGE_POPUP_SUBMIT,
+  MANAGE_RESET_PASSWORD_SUBMIT,
 } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
@@ -56,20 +58,41 @@ const logMiddleware = (store) => (next) => (action) => {
       const { popupEmail } = store.getState().log;
       // todo verifier l url avec le back
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/login_check',
+        'http://35.173.138.41/projet-o-nurse/public/reset-password',
         {
           username: popupEmail,
         },
 
       )
         .then((response) => {
-          // TODO voir avec le back + fermer la popup et vider tout les input
+          // TODO voir avec le back, stocker le token envoyer
+          // TODO + fermer la popup et vider tout les input
         })
         .catch((error) => {
           console.log(error);
           alert('Une erreur est survenue, Merci de réessayer');
         });
+      break;
+    }
 
+    case MANAGE_RESET_PASSWORD_SUBMIT: {
+      const { password } = store.getState().log;
+      // TODO verifier l 'url de post
+      axios.post(
+        'http://35.173.138.41/projet-o-nurse/public/api/login_check',
+        {
+          password: password,
+        },
+
+      )
+        .then((response) => {
+          // TODO voir avec le back + rediriger vers login et vider les input
+          // TODO voir TO LOGIN
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('Une erreur est survenue, Merci de réessayer');
+        });
       break;
     }
 

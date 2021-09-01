@@ -9,6 +9,8 @@ const initialState = {
   id: '',
   email: '',
   password: '',
+  // use in reset password component
+  confirmationPassword: '',
   // use in home components
   firstname: '',
   // to know if user is connect
@@ -17,6 +19,7 @@ const initialState = {
   // password lost
   displayPopup: false,
   popupEmail: '',
+  isResetSubmit: true,
 };
 
 function logReducer(state = initialState, action = {}) {

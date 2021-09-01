@@ -150,7 +150,40 @@ export const loginFormValidateValue = (email, password) => {
     alert('Mot de passe Requis');
     return false;
   }
-  if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(password)) {
+  if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(password)) {
+    errors.password = 'Mot de passe invalide';
+    alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
+    return false;
+
+    // Contain at least 8 characters
+    // contain at least 1 number
+    // contain at least 1 lowercase character (a-z)
+    // contain at least 1 uppercase character (A-Z)
+    // contains only 0-9a-zA-Z
+  }
+  if (password.length < 8) {
+    errors.password = 'Minimum : 8 caractères';
+    alert('Mot de passe: Minimum 8 caractères');
+    return false;
+  }
+
+  return true;
+};
+
+/**
+ *Validate the resetPassword components values
+ * @param {string} password
+ *
+ */
+export const resetPasswordValidateValue = (password) => {
+  const errors = {};
+
+  if (password === '') {
+    errors.password = 'Requis';
+    alert('Mot de passe Requis');
+    return false;
+  }
+  if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(password)) {
     errors.password = 'Mot de passe invalide';
     alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
     return false;

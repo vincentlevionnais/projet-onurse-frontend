@@ -7,6 +7,7 @@ import {
 // local imports
 import BigCalendar from 'src/containers/BigCalendar';
 import LoginForm from 'src/containers/LoginForm';
+import ResetPassword from 'src/containers/LoginForm/ResetPassword';
 import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/containers/Home';
 import Loader from 'src/components/Loader';
@@ -22,12 +23,20 @@ import Footer from './Footer';
 import './page.scss';
 
 const Page = ({
-  isCreate, logged, patientsLoaded, eventsLoaded, redirect,
+  isCreate, logged, patientsLoaded, eventsLoaded, redirect, isResetSubmit,
 }) => (
   <Router>
+
     {isCreate && <Redirect from="/account/create/account" to="/login" /> }
     <Switch>
       {redirect && <Redirect from="/patients/:id" to="/patients" />}
+
+      {isResetSubmit && (
+      <Route path="/reset_password" exact>
+        <ResetPassword />
+      </Route>
+      )}
+
       {!logged
      && (
      <>
@@ -90,7 +99,7 @@ const Page = ({
 
     </Switch>
   </Router>
-  
+
 );
 
 Page.propTypes = {
@@ -100,6 +109,7 @@ Page.propTypes = {
   patientsLoaded: Proptypes.bool.isRequired,
   eventsLoaded: Proptypes.bool.isRequired,
   redirect: Proptypes.bool.isRequired,
+  isResetSubmit: Proptypes.bool.isRequired,
 };
 
 export default Page;

@@ -19,6 +19,8 @@ export const SAVE_USER_INFOS = 'SAVE_USER_INFOS';
 export const TOGGLE_POPUP = 'TOGGLE_POPUP';
 /** connect API and post email when password loosed */
 export const MANAGE_POPUP_SUBMIT = 'MANAGE_POPUP_SUBMIT';
+/** connect API and post password to modify it */
+export const MANAGE_RESET_PASSWORD_SUBMIT = 'MANAGE_RESET_PASSWORD_SUBMIT';
 
 // action creator
 export const updateLoginField = (newvalue, name) => ({
@@ -65,4 +67,8 @@ export const displayPopup = () => ({
 
 export const managePopupSubmit = () => ({
   type: MANAGE_POPUP_SUBMIT,
+});
+
+export const manageResetPasswordSubmit = () => ({
+  type: MANAGE_RESET_PASSWORD_SUBMIT,
 });
