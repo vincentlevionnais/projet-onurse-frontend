@@ -7,7 +7,7 @@ const DeletePopUp = ({ closePopUp, deletePatient, id }) => {
   
 
   return (
-  <div className="popup">
+  <div className="delete-popup">
     <p>Voulez vous vraiment supprimer ce patient ? </p>
     <div className="button-choice">
       <button 
