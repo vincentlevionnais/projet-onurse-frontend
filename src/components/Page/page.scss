@@ -41,11 +41,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 6em;
+  width: 100%;
   background-color: vars.$darkBlue;
   color: white;
   font-family: vars.$titleFont;
+
 
   .footer-link {
     margin: 1em;

@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .field {
   margin: .3em;
   position: relative;
@@ -14,7 +16,7 @@
   border-color: #f17f42;
 }
 .field-input:focus + .field-label {
-  color: #f17f42;
+  color: vars.$pink;
 }
 
 .field--has-content .field-label {
