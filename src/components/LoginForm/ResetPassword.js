@@ -90,16 +90,18 @@ const ResetPassword = ({
             value={confirmationPassword}
           />
 
-          <button className="create-account-button" type="submit">Valider</button>
-          <button
-            className="create-account-button"
-            type="submit"
-            onClick={() => redirectToLogin()}
-          >
-            Annuler
-          </button>
-        </form>
+          <div className="reset-password-buttons">
+            <button className="reset-password-button" type="submit">Valider</button>
+            <button
+              className="reset-password-button"
+              type="submit"
+              onClick={() => redirectToLogin()}
+            >
+              Annuler
+            </button>
+          </div>
 
+        </form>
       </section>
 
     </>
