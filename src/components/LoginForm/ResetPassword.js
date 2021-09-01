@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'react-feather';
 
 const ResetPassword = ({
-  password, confirmationPassword, manageSubmit, changeField,
+  password, confirmationPassword, manageSubmit, changeField, redirectToLogin,
 }) => {
   const onSubmit = (evt) => {
     evt.preventDefault();
@@ -91,6 +91,13 @@ const ResetPassword = ({
           />
 
           <button className="create-account-button" type="submit">Valider</button>
+          <button
+            className="create-account-button"
+            type="submit"
+            onClick={() => redirectToLogin()}
+          >
+            Annuler
+          </button>
         </form>
 
       </section>
@@ -106,6 +113,7 @@ ResetPassword.propTypes = {
   confirmationPassword: PropTypes.string.isRequired,
   manageSubmit: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
+  redirectToLogin: PropTypes.func.isRequired,
 };
 
 export default ResetPassword;

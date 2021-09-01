@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // on importe le composant de présentation
 import ResetPassword from 'src/components/LoginForm/ResetPassword';
 
-import { updateLoginField, manageResetPasswordSubmit } from 'src/actions/login';
+import { updateLoginField, manageResetPasswordSubmit, logAfterReset } from 'src/actions/login';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   manageSubmit: () => {
     dispatch(manageResetPasswordSubmit());
+  },
+  redirectToLogin: () => {
+    dispatch(logAfterReset());
   },
 });
 

@@ -31,11 +31,15 @@ const Page = ({
     <Switch>
       {redirect && <Redirect from="/patients/:id" to="/patients" />}
 
-      {isResetSubmit && (
-      <Route path="/reset_password" exact>
-        <ResetPassword />
-      </Route>
-      )}
+      {isResetSubmit
+        && (
+        <>
+          <Redirect from="/login" to="/reset_password" />
+          <Route path="/reset_password" exact>
+            <ResetPassword />
+          </Route>
+        </>
+        )}
 
       {!logged
      && (
@@ -58,7 +62,6 @@ const Page = ({
       && (
 
         <>
-
           <Route path="/" exact>
             <Home />
           </Route>

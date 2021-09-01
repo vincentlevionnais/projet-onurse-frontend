@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
   SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS,
   saveUserInfos, MANAGE_POPUP_SUBMIT,
-  MANAGE_RESET_PASSWORD_SUBMIT,
+  MANAGE_RESET_PASSWORD_SUBMIT, logAfterReset,
+  displayPopup,
 } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
@@ -66,7 +67,9 @@ const logMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           // TODO voir avec le back, stocker le token envoyer
-          // TODO + fermer la popup et vider tout les input
+          // TODO isResetSubmit à true
+          // fermer la popup et vider tout les input
+          store.dispacth(displayPopup());
         })
         .catch((error) => {
           console.log(error);
@@ -88,6 +91,8 @@ const logMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // TODO voir avec le back + rediriger vers login et vider les input
           // TODO voir TO LOGIN
+          // isResetSubmit à false
+          store.dispatch(logAfterReset());
         })
         .catch((error) => {
           console.log(error);

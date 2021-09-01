@@ -1,7 +1,7 @@
 import {
   UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT,
   TOKEN_PERSIST, TO_LOGIN, SAVE_USER_INFOS,
-  TOGGLE_POPUP,
+  TOGGLE_POPUP, LOG_AFTER_RESET,
 } from 'src/actions/login';
 
 const initialState = {
@@ -76,6 +76,13 @@ function logReducer(state = initialState, action = {}) {
         ...state,
         displayPopup: !state.displayPopup,
         popupEmail: '',
+      };
+    case LOG_AFTER_RESET:
+      return {
+        ...state,
+        isResetSubmit: false,
+        password: '',
+        confirmationPassword: '',
       };
 
     default:

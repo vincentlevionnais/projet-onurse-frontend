@@ -21,6 +21,8 @@ export const TOGGLE_POPUP = 'TOGGLE_POPUP';
 export const MANAGE_POPUP_SUBMIT = 'MANAGE_POPUP_SUBMIT';
 /** connect API and post password to modify it */
 export const MANAGE_RESET_PASSWORD_SUBMIT = 'MANAGE_RESET_PASSWORD_SUBMIT';
+/** redirect to login page */
+export const LOG_AFTER_RESET = 'LOG_AFTER_RESET';
 
 // action creator
 export const updateLoginField = (newvalue, name) => ({
@@ -71,4 +73,8 @@ export const managePopupSubmit = () => ({
 
 export const manageResetPasswordSubmit = () => ({
   type: MANAGE_RESET_PASSWORD_SUBMIT,
+});
+
+export const logAfterReset = () => ({
+  type: LOG_AFTER_RESET,
 });
