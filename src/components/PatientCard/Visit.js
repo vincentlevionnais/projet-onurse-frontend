@@ -19,7 +19,12 @@ const Visit = ({ appointmentOfPatient }) => {
             <ul>
               {nextAppointments.map((item) => {
                 const datetimeStart = new Date(item.datetimeStart);
-                const date =`${datetimeStart.getDate()}/${datetimeStart.getMonth()+1}/${datetimeStart.getFullYear()}`;
+                const date = datetimeStart.toLocaleString('fr-FR', {
+                  timeZone: 'Europe/Paris',
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                });
                 return (
                   <li key={item.id}> {date} - {item.reason} </li>
                 )
