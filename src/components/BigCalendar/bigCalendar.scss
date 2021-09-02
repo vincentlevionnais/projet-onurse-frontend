@@ -8,9 +8,8 @@
 
   .popup {
 
-    //display: inline-block;
-    height: 52%;
-    width: 80%;
+
+    width: 45%;
     position: absolute;
     top: 25%;
     left: 30%;
@@ -20,7 +19,7 @@
     box-shadow: vars.$boxShadowValueNoColor vars.$green;
     border-radius: vars.$borderRadius;
 
-    padding: 0.5em;
+    padding: 1em;
     z-index: 1000;
 
 
@@ -30,7 +29,33 @@
       align-items: center;
       padding: 1em;
 
-      .popup-input {}
+      .buttons {
+        display: initial;
+
+        margin-top: 1.5em;
+
+
+        .button {
+          padding: 0.5em;
+          background-color: vars.$pink;
+          box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+          border-radius: vars.$borderRadius;
+
+        }
+
+      }
+
+      input {
+        border-radius: vars.$borderRadius;
+
+      }
+
+      select {
+        border-radius: vars.$borderRadius;
+        margin-top: 1em;
+        padding: 0.5em;
+
+      }
 
       .datepickers {
 
@@ -39,81 +64,76 @@
         .react-datepicker-wrapper {
           .react-datepicker__input-container {
             align-items: center;
+
+            input {
+              border-radius: vars.$borderRadius;
+
+            }
           }
         }
       }
 
-      .buttons {
-        display: inline;
 
-        margin-top: 1.5em;
-
-        .button {
-          padding: 0.5em;
-          background-color: vars.$pink;
-          box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
-          border-radius: vars.$borderRadius;
-        }
-
-
-      }
     }
 
   }
 
+}
+
+@media (max-width: 700px) {
+  .calendar {
+
+    //popup date RDV
+    .popup {
+
+  
+      width: 80%;
+      position: absolute;
+      top: 25%;
+      left: 10%;
+      cursor: pointer;
+      background-color: vars.$darkBlue;
+      opacity: 0.9;
+      // background-color: rgba(168, 168, 168, 0.815);
+      box-shadow: vars.$boxShadowValueNoColor vars.$green;
+      padding: 0.5em;
+      z-index: 1000;
+
+      .form-popup {
+
+        // button validation/annuler/suppression
+        .buttons {
+          display: inline-block;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 1.5em;
 
 
-
-  @media (max-width: 700px) {
-    .calendar {
-
-      //popup date RDV
-      .popup {
-
-        height: 35%;
-        width: 80%;
-        position: absolute;
-        top: 25%;
-        left: 10%;
-        cursor: pointer;
-        background-color: vars.$darkBlue;
-        opacity: 0.9;
-        // background-color: rgba(168, 168, 168, 0.815);
-        box-shadow: vars.$boxShadowValueNoColor vars.$green;
-        padding: 0.5em;
-        z-index: 1000;
-
-        .form-popup {
-          // zone des datePicker
-          .datepickers {
-            display: flex;
-            text-align: center;
-            margin-top: 0.5em;
-
-            .react-datepicker__input-container {
-
-              input {
-                width: 100%;
-                background-color: vars.$lightBlue;
-                padding: 0.5em;
-                border-radius: vars.$borderRadius;
-              }
-            }
+          .button {
+            padding: 0.5em;
+            background-color: vars.$pink;
+            box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+            border-radius: vars.$borderRadius;
           }
+        }
 
-          // button validation/annuler/suppression
-          .buttons {
-            display: inline;
-            margin-top: 1.5em;
+        // zone des datePicker
+        .datepickers {
+          display: flex;
+          text-align: center;
+          margin-top: 0.5em;
 
-            .button {
+          .react-datepicker__input-container {
+
+            input {
+              width: 100%;
+              background-color: vars.$lightBlue;
               padding: 0.5em;
-              background-color: vars.$pink;
-              box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
               border-radius: vars.$borderRadius;
             }
           }
         }
+
         //input de date ->popup
         .popup-input {
           background-color: vars.$lightBlue;
@@ -121,11 +141,18 @@
           margin: 0.5em 0 0.5em 0;
           border-radius: vars.$borderRadius;
         }
-
-
+        input {
+          border-radius: vars.$borderRadius;
+  
+        }
       }
 
 
+
+
+
     }
+
+
   }
 }

@@ -126,7 +126,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
       <Header titlePage={titleForm} />
 
       <main className="main">
-        <form onSubmit={formik.handleSubmit}>
+        <form className="addPatientForm" onSubmit={formik.handleSubmit}>
           <h2>Coordonnées du nouveau patient</h2>
           <input
             placeholder="Nom"
