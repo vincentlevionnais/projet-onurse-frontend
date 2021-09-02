@@ -1,7 +1,8 @@
-import { SET_LABEL } from 'src/actions/toDoList';
+import { SET_LABEL, SAVE_TASKS } from 'src/actions/toDoList';
 
 const initialState = {
   label: '',
+  tasks: [],
 };
 
 function toDoListReducer(state = initialState, action = {}) {
@@ -11,6 +12,11 @@ function toDoListReducer(state = initialState, action = {}) {
         ...state,
         [action.name]: action.value,
       };
+    case SAVE_TASKS:
+      return {
+        ...state,
+        tasks: action.tasks,
+      }
     default:
       return state;
   }
