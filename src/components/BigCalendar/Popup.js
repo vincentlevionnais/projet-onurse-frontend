@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 // import DatePicker from 'react-datepicker';
 import DatePicker from 'react-datepicker';
 import fr from 'date-fns/esm/locale/fr';
+import './picker.scss';
 import 'react-datepicker/dist/react-datepicker.css';
+
 
 const Popup = ({
   setDisplayPopup,

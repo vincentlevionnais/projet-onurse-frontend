@@ -6,49 +6,99 @@
   color: vars.$darkBlue;
   font-weight: 900;
 
+  .rbc-toolbar{
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .rbc-toolbar-label{
+      color: vars.$pink;
+      font-size: x-large;
+
+    }
+  }
+
   .popup {
 
-    height: 30%;
-    width: 80%;
+
+    width: 45%;
     position: absolute;
     top: 25%;
-    left: 35%;
+    left: 30%;
     cursor: pointer;
     background-color: vars.$darkBlue;
-    box-shadow: 1px 2px 10px #000;
+    opacity: 0.9;
+    box-shadow: vars.$boxShadowValueNoColor vars.$green;
     border-radius: vars.$borderRadius;
-    padding: 2em;
+
+    padding: 1em;
     z-index: 1000;
+
+
 
     .form-popup {
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
       padding: 1em;
 
-      .popup-text {}
-
       .buttons {
-        display: flex;
-        justify-content: space-around;
+        display: initial;
 
-        .button {}
+        margin-top: 1.5em;
+
+
+        .button {
+          padding: 0.5em;
+          background-color: vars.$pink;
+          box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+          border-radius: vars.$borderRadius;
+
+        }
+
       }
+
+      input {
+        border-radius: vars.$borderRadius;
+
+      }
+
+      select {
+        border-radius: vars.$borderRadius;
+        margin-top: 1em;
+        padding: 0.5em;
+
+      }
+
+      .datepickers {
+
+        padding: 0;
+
+        .react-datepicker-wrapper {
+          .react-datepicker__input-container {
+            align-items: center;
+
+            input {
+              border-radius: vars.$borderRadius;
+
+            }
+          }
+        }
+      }
+
+
     }
 
   }
 
 }
 
-
 @media (max-width: 700px) {
   .calendar {
 
-
+    //popup date RDV
     .popup {
 
-      height: 35%;
+  
       width: 80%;
       position: absolute;
       top: 25%;
@@ -63,35 +113,13 @@
 
       .form-popup {
 
-        .popup-text {}
-
-        .popup-input {
-          background-color: vars.$lightBlue;
-          padding: 0.8em;
-          margin: 0.5em 0 0.5em 0;
-          border-radius: vars.$borderRadius;
-        }
-        .datepickers {
-          display: flex;
-          text-align: center;
-          margin-top: 0.5em;
-          .react-datepicker__input-container {
-
-          input {
-            width: 80%;
-            background-color: vars.$lightBlue;
-            padding: 0.5em;
-            border-radius: vars.$borderRadius;
-
-          }
-        }
-        }
-        
-
+        // button validation/annuler/suppression
         .buttons {
-          display: flex;
-          justify-content: space-around;
+          display: inline-block;
+          align-items: center;
+          flex-direction: column;
           margin-top: 1.5em;
+
 
           .button {
             padding: 0.5em;
@@ -100,7 +128,41 @@
             border-radius: vars.$borderRadius;
           }
         }
+
+        // zone des datePicker
+        .datepickers {
+          display: flex;
+          text-align: center;
+          margin-top: 0.5em;
+
+          .react-datepicker__input-container {
+
+            input {
+              width: 100%;
+              background-color: vars.$lightBlue;
+              padding: 0.5em;
+              border-radius: vars.$borderRadius;
+            }
+          }
+        }
+
+        //input de date ->popup
+        .popup-input {
+          background-color: vars.$lightBlue;
+          padding: 0.8em;
+          margin: 0.5em 0 0.5em 0;
+          border-radius: vars.$borderRadius;
+        }
+        input {
+          border-radius: vars.$borderRadius;
+  
+        }
       }
+
+
+
+
+
     }
 
 

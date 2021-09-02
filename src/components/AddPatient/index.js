@@ -26,8 +26,8 @@ const validate = (values) => {
   }
   if (!values.completeAdress) {
     errors.completeAdress = 'Requis';
-  } else if (values.completeAdress.length > 40) {
-    errors.completeAdress = 'Maximum : 255 caractères';
+  } else if (values.completeAdress.length > 300) {
+    errors.completeAdress = 'Maximum : 300 caractères';
   }
   if (values.doctorName) {
     if (values.doctorName.length > 255) {
@@ -126,7 +126,7 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
       <Header titlePage={titleForm} />
 
       <main className="main">
-        <form onSubmit={formik.handleSubmit}>
+        <form className="addPatientForm" onSubmit={formik.handleSubmit}>
           <h2>Coordonnées du nouveau patient</h2>
           <input
             placeholder="Nom"
@@ -148,15 +148,15 @@ const AddPatient = ({ onNewPatient, patients, updatePatient }) => {
           />
           {formik.errors.firstname ? <div>{formik.errors.firstname}</div> : null}
 
-          <label htmlFor="birthdate">Date de naissance
-            <input
-              id="birthdate"
-              name="birthdate"
-              type="date"
-              onChange={formik.handleChange}
-              value={formik.values.birthdate || ''}
-            />
-          </label>
+          <label htmlFor="birthdate">Date de naissance</label>
+          <input
+            id="birthdate"
+            name="birthdate"
+            type="date"
+            onChange={formik.handleChange}
+            value={formik.values.birthdate || ''}
+          />
+
           {formik.errors.birthdate ? <div>{formik.errors.birthdate}</div> : null}
 
           <input
