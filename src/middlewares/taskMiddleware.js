@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { FETCH_TASKS, saveTasks } from 'src/actions/toDoList';
 
-const TaskMiddleware = (store) => (next) => (action) => {
+const taskMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_TASKS:
       axios.get('http://35.173.138.41/projet-o-nurse/public/api/tasks',
