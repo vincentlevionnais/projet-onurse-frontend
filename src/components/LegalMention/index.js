@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUp } from 'react-feather';
 import Header from 'src/containers/Page/Header';
 import './legalMention.scss';
 
@@ -189,6 +190,9 @@ const LegalMention = () => (
       <p className="legal-mention-content">
         Pour toute question vous pouvez laissez un message à l'adresse suivante : o-nurse@apotheose.fr.
       </p>
+      <div className="arrow-up">
+        <a href="#"><ArrowUp /></a>
+      </div>
     </main>
   </>
 );
