@@ -4,24 +4,38 @@ import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { LogOut, Settings } from 'react-feather';
 import logo from '../../assets/images/LOGO-V3.png';
-import './home.scss';
+import './homeV2.scss';
 
 const Home = ({ handleLogOut, firstname }) => {
-  const today = new Date();
+  // current date
+  const date = new Date();
+  // convert current date in french
+  const today = date.toLocaleString('fr-FR', {
+    timeZone: 'Europe/Paris',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  // convert current hour in french
+  const hour = date.toLocaleString('fr-FR', {
+    timeZone: 'Europe/Paris',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
   return (
     <>
-      <header className="header">
+      <header className="header-home">
         <div className="header-infos">
           <h1 className="header-title">
             Bonjour {firstname}
           </h1>
           <div className="date">
             <time>
-              {`${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`}
+              {today}
             </time>
             <time>
-              {`${today.getHours()}h${today.getMinutes()}`}
+              {hour}
             </time>
           </div>
         </div>
@@ -40,7 +54,11 @@ const Home = ({ handleLogOut, firstname }) => {
           <LogOut />
         </Link>
       </header>
+      
       <nav className="nav">
+        <div className="logo">
+          <img className="logo-pic" src={logo} alt="logo o'nurse" />
+        </div>
         <div className="nav-bottom">
           <div className="nav-element tour">
             <Link
@@ -51,9 +69,7 @@ const Home = ({ handleLogOut, firstname }) => {
             </Link>
           </div>
         </div>
-        <div className="logo">
-          <img className="logo-pic" src={logo} alt="logo o'nurse" />
-        </div>
+        
         <div className="nav-top">
           <div className="nav-element patient">
             <Link

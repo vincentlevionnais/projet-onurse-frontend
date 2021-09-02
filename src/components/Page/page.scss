@@ -8,12 +8,13 @@
   font-family: vars.$titleFont;
   text-align: center;
   position: relative;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   .home-button {
     border-radius: 100%;
     background-color: vars.$pink;
-    position: absolute;
-    left: 0;
     margin-left: 2em;
     padding: 0.5em 0.7em;
     font-size: 0.6em;
@@ -26,12 +27,28 @@
   }
 
   .logout-button {
-    position: absolute;
-    right: 0;
     margin-right: 2em;
     background-color: vars.$pink;
     padding: 0.5em 0.7em;
     border-radius: 100%;
     font-size: 0.6em;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 6em;
+  width: 100%;
+  background-color: vars.$darkBlue;
+  color: white;
+  font-family: vars.$titleFont;
+
+
+  .footer-link {
+    margin: 1em;
+    font-size: 1.5em;
   }
 }

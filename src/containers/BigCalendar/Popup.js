@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
   datetimeStart: state.cal.datetimeStart,
   datetimeEnd: state.cal.datetimeEnd,
   patients: state.patients.patientsList,
+  patientChoosed: state.cal.patientChoosed,
 });
 
 // === mapDispatchToProps

@@ -1,0 +1,45 @@
+@use 'src/styles/vars';
+
+.main-legal-mention {
+  color: vars.$darkBlue;
+
+  .legal-mention-title {
+    font-family: vars.$titleFont;
+    font-size: 2em;
+    text-align: center;
+    margin: 1em;
+  }
+  .legal-mention-content {
+    background-color: vars.$lightBlue;
+    margin: 1em;
+    padding: 1em;
+    line-height: 1.3em;
+  }
+  .legal-mention-item {
+    text-align: center;
+    font-family: vars.$titleFont;
+    font-size: 1.5em;
+  }
+  h4 {
+    margin-left: 1em;
+  }
+
+  ul {
+    background-color: vars.$lightBlue;
+
+
+    li {
+      list-style: inside;
+    }
+  }
+
+  .arrow-up {
+    position: fixed;
+    bottom: 5em;
+    right: 1em;
+    background-color: rgba(vars.$pink, 0.8);
+    border-radius: 100%;
+    padding: 0.5em;
+    color: white;
+  }
+}

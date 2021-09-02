@@ -13,6 +13,7 @@ import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
 import DeletePopUp from 'src/containers/PatientCard/DeletePopUp';
+import maps from '../../assets/images/maps.png';
 import './patientCard.scss';
 
 
@@ -23,7 +24,8 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
   const patientToDisplay = getPatientById(id, patients);
   // const eventsOfPatient = searchAppointmentOfPatient(events, id);
   const appointmentOfPatient = searchAppointmentOfPatient(events, id);
-  console.log(appointmentOfPatient);
+
+  const road = patientToDisplay.completeAdress.replace(/ /g, '+');
 
   return (
     <>
@@ -39,8 +41,12 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
           >
             <Edit />
           </Link>
+         
         </h2>
-
+        <a className="road" href={`https://www.google.com/maps/search/?api=1&query=${road}`}>
+          <img src={maps}/>
+          Itinéraire
+        </a>
         <CivilStatus
           {...patientToDisplay}
         />

@@ -65,6 +65,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 1em;
   }
 
   .nav-link {
@@ -83,6 +84,7 @@
     flex-direction: row;
 
     .nav-element {
+
       &.patient {
         background-color: vars.$darkBlue;
         .nav-link {
@@ -134,7 +136,7 @@
 @media (min-width: 740px) {
   .logo {
     .logo-pic {
-      width: 35%;
+      width: 30%;
       margin: 2em;
     }
   }

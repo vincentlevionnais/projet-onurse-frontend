@@ -11,9 +11,13 @@ const CivilStatus = ({
   mutualNumberAmc,
   doctorName,
 }) => {
-  
-  // convert birthdate props (string) in Date Object
-  const birthdateInDate = new Date(birthdate);
+  // convert birthdate props (string) in french date
+  const birthdateInDate = new Date(birthdate).toLocaleString('fr-FR', {
+    timeZone: 'Europe/Paris',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
 
   return (
   <div className="section civil-status">
@@ -22,15 +26,12 @@ const CivilStatus = ({
     </h2>
     <div className="identity">
       <p>Date de naissance : 
-        {
-          `${birthdateInDate.getDate()}
-          /${birthdateInDate.getMonth()}
-          /${birthdateInDate.getFullYear()}`
-        }
+        {birthdateInDate}
       </p>
-      <p>Adresse: {completeAdress}</p>
+      <p>Adresse: {completeAdress}  </p>
       <p>Téléphone: {phone}</p>
     </div>
+    
     <div className="trusted-person">
       <h3>Personne de confiance</h3>
       <p>{trustedPerson}</p>
