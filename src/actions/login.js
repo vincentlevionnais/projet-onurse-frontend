@@ -23,6 +23,8 @@ export const MANAGE_POPUP_SUBMIT = 'MANAGE_POPUP_SUBMIT';
 export const MANAGE_RESET_PASSWORD_SUBMIT = 'MANAGE_RESET_PASSWORD_SUBMIT';
 /** redirect to login page */
 export const LOG_AFTER_RESET = 'LOG_AFTER_RESET';
+/** get new token from backend and redirect to new password page */
+export const GET_TOKEN_AND_REDIRECT = 'GET_TOKEN_AND_REDIRECT';
 
 // action creator
 export const updateLoginField = (newvalue, name) => ({
@@ -77,4 +79,9 @@ export const manageResetPasswordSubmit = () => ({
 
 export const logAfterReset = () => ({
   type: LOG_AFTER_RESET,
+});
+
+export const getTokenAndRedirect = (token) => ({
+  type: GET_TOKEN_AND_REDIRECT,
+  token: token,
 });

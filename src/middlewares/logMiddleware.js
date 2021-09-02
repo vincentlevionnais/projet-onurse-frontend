@@ -4,7 +4,7 @@ import {
   SUBMIT_LOGIN, connectUser, FETCH_USER_INFOS,
   saveUserInfos, MANAGE_POPUP_SUBMIT,
   MANAGE_RESET_PASSWORD_SUBMIT, logAfterReset,
-  displayPopup,
+  getTokenAndRedirect,
 } from 'src/actions/login';
 
 const logMiddleware = (store) => (next) => (action) => {
@@ -57,19 +57,20 @@ const logMiddleware = (store) => (next) => (action) => {
 
     case MANAGE_POPUP_SUBMIT: {
       const { popupEmail } = store.getState().log;
-      // todo verifier l url avec le back
+
       axios.post(
         'http://35.173.138.41/projet-o-nurse/public/reset-password',
         {
-          username: popupEmail,
+          email: popupEmail,
         },
 
       )
         .then((response) => {
-          // TODO voir avec le back, stocker le token envoyer
-          // TODO isResetSubmit à true
-          // fermer la popup et vider tout les input
-          store.dispacth(displayPopup());
+          // TODO stocker une valeur en localstorage??
+          // stocker le token
+          // isResetSubmit à true
+          store.dispatch(getTokenAndRedirect(response.data.token));
+          alert('Un mail vient de vous être envoyé, merci de cliquer sur le lien pour redéfinir votre mot de passe');
         })
         .catch((error) => {
           console.log(error);
@@ -79,20 +80,21 @@ const logMiddleware = (store) => (next) => (action) => {
     }
 
     case MANAGE_RESET_PASSWORD_SUBMIT: {
-      const { password } = store.getState().log;
-      // TODO verifier l 'url de post
+      const { password, confirmationPassword, token } = store.getState().log;
+
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/login_check',
+        `http://35.173.138.41/projet-o-nurse/public/reset-password/reset/${token}`,
         {
           password: password,
+          confirmationPassword: confirmationPassword,
         },
 
       )
         .then((response) => {
-          // TODO voir avec le back + rediriger vers login et vider les input
-          // TODO voir TO LOGIN
+          // rediriger vers login et vider les input
           // isResetSubmit à false
           store.dispatch(logAfterReset());
+          alert('Mot de passe modifié');
         })
         .catch((error) => {
           console.log(error);

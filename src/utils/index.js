@@ -183,11 +183,12 @@ export const resetPasswordValidateValue = (password) => {
     alert('Mot de passe Requis');
     return false;
   }
-  if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(password)) {
+
+  if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(password)) {
     errors.password = 'Mot de passe invalide';
+    console.log(password);
     alert('Mot de passe invalide, doit contenir au moins 8 caractères, 1 chiffre, une minuscule une majuscule');
     return false;
-
     // Contain at least 8 characters
     // contain at least 1 number
     // contain at least 1 lowercase character (a-z)

@@ -1,11 +1,11 @@
 import {
   UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT,
   TOKEN_PERSIST, TO_LOGIN, SAVE_USER_INFOS,
-  TOGGLE_POPUP, LOG_AFTER_RESET,
+  TOGGLE_POPUP, LOG_AFTER_RESET, GET_TOKEN_AND_REDIRECT,
 } from 'src/actions/login';
 
 const initialState = {
-  // user's id
+  // user's connected id
   id: '',
   email: '',
   password: '',
@@ -19,7 +19,7 @@ const initialState = {
   // password lost
   displayPopup: false,
   popupEmail: '',
-  isResetSubmit: true,
+  isResetSubmit: false,
 };
 
 function logReducer(state = initialState, action = {}) {
@@ -78,11 +78,26 @@ function logReducer(state = initialState, action = {}) {
         popupEmail: '',
       };
     case LOG_AFTER_RESET:
+      localStorage.removeItem('token');
+
       return {
         ...state,
         isResetSubmit: false,
         password: '',
         confirmationPassword: '',
+        token: null,
+      };
+
+    case GET_TOKEN_AND_REDIRECT:
+      localStorage.setItem('token', action.token);
+
+      return {
+        ...state,
+        isResetSubmit: true,
+        token: localStorage.getItem('token'),
+        displayPopup: false,
+        password: '',
+        popupEmail: '',
       };
 
     default:

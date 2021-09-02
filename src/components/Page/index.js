@@ -23,7 +23,8 @@ import Footer from './Footer';
 import './page.scss';
 
 const Page = ({
-  isCreate, logged, patientsLoaded, eventsLoaded, redirect, isResetSubmit,
+  isCreate, logged, patientsLoaded, eventsLoaded,
+  redirect, isResetSubmit,
 }) => (
   <Router>
 
