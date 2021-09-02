@@ -24,7 +24,7 @@ import './page.scss';
 
 const Page = ({
   isCreate, logged, patientsLoaded, eventsLoaded,
-  redirect, isResetSubmit, token,
+  redirect, token,
 }) => {
   const resetToken = localStorage.getItem('resetToken');
   console.log(token);
@@ -35,20 +35,24 @@ const Page = ({
       <Switch>
         {redirect && <Redirect from="/patients/:id" to="/patients" />}
 
-        {/* {isResetSubmit && <Redirect from="" to="/login" /> } */}
-
         {resetToken
         && (
         <>
           <Route path={`/reset_password/${resetToken}`} exact>
             <ResetPassword />
           </Route>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
+          <Route path="/account/create/account">
+            <CreateAccount />
+          </Route>
         </>
         )}
 
         {(token === null) && <Redirect from={`/reset_password/${resetToken}`} to="/login" />}
 
-        {!logged && (token === resetToken)
+        {!logged
      && (
      <>
        <Redirect from="/" to="/login" />
@@ -121,7 +125,6 @@ Page.propTypes = {
   eventsLoaded: Proptypes.bool.isRequired,
   redirect: Proptypes.bool.isRequired,
   token: Proptypes.string,
-  // isResetSubmit: Proptypes.bool.isRequired,
 };
 
 Page.defaultProps = {

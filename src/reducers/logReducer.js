@@ -19,7 +19,6 @@ const initialState = {
   // password lost
   displayPopup: false,
   popupEmail: '',
-  isResetSubmit: false,
 };
 
 function logReducer(state = initialState, action = {}) {
@@ -88,7 +87,6 @@ function logReducer(state = initialState, action = {}) {
 
       return {
         ...state,
-        // isResetSubmit: false,
         password: '',
         confirmationPassword: '',
         token: null,
@@ -103,7 +101,6 @@ function logReducer(state = initialState, action = {}) {
         displayPopup: false,
         password: '',
         popupEmail: '',
-        // isResetSubmit: true,
       };
 
     default:
