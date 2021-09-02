@@ -16,6 +16,7 @@ import AddPatient from '../../containers/AddPatient';
 import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
+import ToDoList from '../../components/ToDoList';
 import About from '../About';
 import LegalMention from '../LegalMention';
 import Footer from './Footer';
@@ -49,7 +50,6 @@ const Page = ({
       && (
 
         <>
-
           <Route path="/" exact>
             <Home />
           </Route>
@@ -79,6 +79,9 @@ const Page = ({
           </Route>
           <Route path="/legal-mention">
             <LegalMention />
+          </Route>
+          <Route path="/to-do-list">
+            <ToDoList />
           </Route>
           <Footer />
         </>

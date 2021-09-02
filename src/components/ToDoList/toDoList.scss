@@ -1,0 +1,52 @@
+@use '../../styles/vars';
+
+.main-toDoList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .addTask {
+    width: 100%;
+    font-size: 1.5em;
+    .field-input {
+      border-radius: 0;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+  }
+
+  ul {
+    margin: 1em;
+    width: 90%;
+
+    .task-container {
+      background-color: vars.$lightBlue;
+      color: vars.$darkBlue;
+      width: 100%;
+      height: auto;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .delete-task {
+        color: vars.$darkBlue;
+      }
+      .checkbox {
+        margin-right: 1em;
+      }
+
+      &*:not(:last-child) {
+        margin-bottom: 1em;
+      }
+
+      &.task-container--done {
+        background-color: vars.$lightGrey;
+        color: vars.$mediumGrey;
+      }
+    }
+  }
+}
+
