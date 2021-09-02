@@ -1,0 +1,169 @@
+@use 'src/styles/vars';
+
+
+
+
+div {
+  display: flex;
+  flex-direction: column;
+
+  .react-datepicker {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .react-datepicker__navigation {
+      margin: 0em;
+      padding: 0em;
+    }
+
+    .react-datepicker__month-container {
+      display: initial;
+      flex-direction: row;
+    
+      padding: 0em;
+      margin: 0em;
+      width: 100%;
+    
+
+      .react-datepicker__header--has-time-select {
+        display: inline;
+        flex-direction: row;
+
+
+        .react-datepicker__day-names {
+          flex-direction: row;
+          font-size: x-large;
+          justify-content: space-between;
+       
+
+          .react-datepicker__day-name {
+            margin-right: 1em;
+         
+          }
+
+        }
+
+        .react-datepicker__current-month {
+          flex-direction: column;
+          padding: 0.5em;
+          align-items: center;
+        }
+
+        .react-datepicker__header__dropdown--scroll {}
+
+
+      }
+
+      .react-datepicker__month {
+        display: contents;
+        flex-direction: column;
+        font-size: large;
+
+        .react-datepicker__week {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+
+
+          .react-datepicker__day {
+            margin-right: 0.5em;
+            font-size: large;
+          }
+        }
+
+      }
+    }
+
+    .react-datepicker__time-container {
+      display: flex;
+
+      .react-datepicker__header--time {
+        background-color: white;
+      }
+
+      .react-datepicker__time {
+        font-size: large;
+        color: red;
+      }
+    }
+  }
+}
+
+
+
+
+
+@media (max-width: 700px) {
+  .calendar {
+
+
+    .popup {
+
+      height: 35%;
+      width: 80%;
+      position: absolute;
+      top: 25%;
+      left: 10%;
+      cursor: pointer;
+      background-color: vars.$darkBlue;
+      opacity: 0.9;
+      // background-color: rgba(168, 168, 168, 0.815);
+      box-shadow: vars.$boxShadowValueNoColor vars.$green;
+      padding: 0.5em;
+      z-index: 1000;
+
+      .form-popup {
+
+        .datepickers {
+          display: flex;
+          text-align: center;
+          margin-top: 0.5em;
+          background-color: pink;
+
+
+          .react-datepicker__input-container {
+
+            input {
+              width: 100%;
+              background-color: vars.$lightBlue;
+              padding: 0.5em;
+              border-radius: vars.$borderRadius;
+
+
+            }
+          }
+        }
+
+
+        .buttons {
+          display: inline;
+
+          margin-top: 1.5em;
+
+          .button {
+            padding: 0.5em;
+            background-color: vars.$pink;
+            box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+            border-radius: vars.$borderRadius;
+          }
+        }
+      }
+
+      .popup-text {}
+
+      .popup-input {
+        background-color: vars.$lightBlue;
+        padding: 0.8em;
+        margin: 0.5em 0 0.5em 0;
+        border-radius: vars.$borderRadius;
+      }
+
+
+    }
+
+
+  }
+}
+

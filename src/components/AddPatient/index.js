@@ -26,8 +26,8 @@ const validate = (values) => {
   }
   if (!values.completeAdress) {
     errors.completeAdress = 'Requis';
-  } else if (values.completeAdress.length > 40) {
-    errors.completeAdress = 'Maximum : 255 caractères';
+  } else if (values.completeAdress.length > 300) {
+    errors.completeAdress = 'Maximum : 300 caractères';
   }
   if (values.doctorName) {
     if (values.doctorName.length > 255) {
