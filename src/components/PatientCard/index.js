@@ -8,14 +8,13 @@ import Header from 'src/containers/Page/Header';
 import { Edit } from 'react-feather';
 import { getPatientById, searchAppointmentOfPatient } from 'src/utils';
 // import function for seachr events of patient
+import DeletePopUp from 'src/containers/PatientCard/DeletePopUp';
 import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
-import DeletePopUp from 'src/containers/PatientCard/DeletePopUp';
 import maps from '../../assets/images/maps.png';
 import './patientCard.scss';
-
 
 const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
   // get the id in params of URL
@@ -41,10 +40,9 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
           >
             <Edit />
           </Link>
-         
         </h2>
         <a className="road" href={`https://www.google.com/maps/search/?api=1&query=${road}`}>
-          <img src={maps}/>
+          <img src={maps} alt="logo Google Maps"/>
           Itinéraire
         </a>
         <CivilStatus
@@ -58,10 +56,10 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
           {...patientToDisplay}
         />
         <button
+          type="button"
           className="delete-patient"
           onClick={() => {
             openPopUp();
-
           }}
         >
           Supprimer le patient
