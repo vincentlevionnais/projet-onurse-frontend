@@ -6,6 +6,18 @@
   color: vars.$darkBlue;
   font-weight: 900;
 
+  .rbc-toolbar{
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .rbc-toolbar-label{
+      color: vars.$pink;
+      font-size: x-large;
+
+    }
+  }
+
   .popup {
 
 
