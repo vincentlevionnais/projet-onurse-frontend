@@ -26,7 +26,7 @@
     overflow: auto;
 
     .patient-small {
-      width: 15em;
+      width: 80%;
       .patient-small-content {
         padding: 1em;
         display: flex;
@@ -92,6 +92,7 @@
       width: 40em;
     }
     .patients-small-content {
+
       .patient-small {
         width: 40em;
       }
@@ -102,4 +103,10 @@
   }
 }
 
-  
+@media (min-width: 700px) {
+  .main {
+    .patients-small-content {
+      height: 400px;
+    }
+  }
+}

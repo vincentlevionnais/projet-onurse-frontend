@@ -6,7 +6,6 @@ import { searchNextappointments } from '../../utils';
 
 const Visit = ({ appointmentOfPatient }) => {
   const nextAppointments = searchNextappointments(appointmentOfPatient);
-  console.log(nextAppointments);
   return (
     <div className="section visit">
       <h2 className="visit-title title">
@@ -18,7 +17,7 @@ const Visit = ({ appointmentOfPatient }) => {
             <span>Prochaine(s) visite(s):</span> 
             <ul>
               {nextAppointments.map((item) => {
-                const datetimeStart = new Date(item.datetimeStart);
+                const datetimeStart = new Date(item.start);
                 const date = datetimeStart.toLocaleString('fr-FR', {
                   timeZone: 'Europe/Paris',
                   year: 'numeric',
