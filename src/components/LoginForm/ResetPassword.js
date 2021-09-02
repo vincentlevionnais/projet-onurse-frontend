@@ -95,7 +95,7 @@ const ResetPassword = ({
             <button className="reset-password-button" type="submit">Valider</button>
             <button
               className="reset-password-button"
-              type="submit"
+              type="button"
               onClick={() => redirectToLogin()}
             >
               Annuler

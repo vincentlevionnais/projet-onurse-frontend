@@ -24,25 +24,31 @@ import './page.scss';
 
 const Page = ({
   isCreate, logged, patientsLoaded, eventsLoaded,
-  redirect, isResetSubmit,
-}) => (
-  <Router>
+  redirect, isResetSubmit, token,
+}) => {
+  const resetToken = localStorage.getItem('resetToken');
+  console.log(token);
+  return (
+    <Router>
 
-    {isCreate && <Redirect from="/account/create/account" to="/login" /> }
-    <Switch>
-      {redirect && <Redirect from="/patients/:id" to="/patients" />}
+      {isCreate && <Redirect from="/account/create/account" to="/login" /> }
+      <Switch>
+        {redirect && <Redirect from="/patients/:id" to="/patients" />}
 
-      {isResetSubmit
+        {/* {isResetSubmit && <Redirect from="" to="/login" /> } */}
+
+        {resetToken
         && (
         <>
-          <Redirect from="/login" to="/reset_password" />
-          <Route path="/reset_password" exact>
+          <Route path={`/reset_password/${resetToken}`} exact>
             <ResetPassword />
           </Route>
         </>
         )}
 
-      {!logged
+        {(token === null) && <Redirect from={`/reset_password/${resetToken}`} to="/login" />}
+
+        {!logged && (token === resetToken)
      && (
      <>
        <Redirect from="/" to="/login" />
@@ -54,12 +60,12 @@ const Page = ({
        </Route>
      </>
      )}
-      {(!patientsLoaded || !eventsLoaded) && (
+        {(!patientsLoaded || !eventsLoaded) && (
         <Loader />
-      )}
-      {logged && <Redirect from="/login" to="/" />}
+        )}
+        {logged && <Redirect from="/login" to="/" />}
 
-      {logged && patientsLoaded && eventsLoaded
+        {logged && patientsLoaded && eventsLoaded
       && (
 
         <>
@@ -97,14 +103,15 @@ const Page = ({
         </>
 
       )}
-      <Route>
-        <Errors />
-      </Route>
+        <Route>
+          <Errors />
+        </Route>
 
-    </Switch>
-  </Router>
+      </Switch>
+    </Router>
 
-);
+  );
+};
 
 Page.propTypes = {
 
@@ -113,7 +120,12 @@ Page.propTypes = {
   patientsLoaded: Proptypes.bool.isRequired,
   eventsLoaded: Proptypes.bool.isRequired,
   redirect: Proptypes.bool.isRequired,
-  isResetSubmit: Proptypes.bool.isRequired,
+  token: Proptypes.string,
+  // isResetSubmit: Proptypes.bool.isRequired,
+};
+
+Page.defaultProps = {
+  token: '',
 };
 
 export default Page;

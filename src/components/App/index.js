@@ -24,8 +24,7 @@ const App = ({
     if (localStorage.getItem('token') === null) {
       redirectToLogin();
     }
-
-    if (localStorage.getItem('token')) {
+    else if (localStorage.getItem('token')) {
       const tokenInLocalStorage = localStorage.getItem('token');
       const payload = getPayload(tokenInLocalStorage);
       const expiration = new Date(payload.exp);
@@ -37,6 +36,11 @@ const App = ({
       else {
         makeTokenPersist(tokenInLocalStorage);
       }
+    }
+    // condition if token is a reset token
+    if (localStorage.getItem('resetToken')) {
+      const tokenInLocalStorage = localStorage.getItem('resetToken');
+      makeTokenPersist(tokenInLocalStorage);
     }
   }, []);
 

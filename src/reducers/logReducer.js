@@ -56,7 +56,13 @@ function logReducer(state = initialState, action = {}) {
       };
 
     case TOKEN_PERSIST:
-
+      if (localStorage.getItem('resetToken')) {
+        return {
+          ...state,
+          logged: false,
+          token: localStorage.getItem('resetToken'),
+        };
+      }
       return {
         ...state,
         logged: true,
@@ -78,26 +84,26 @@ function logReducer(state = initialState, action = {}) {
         popupEmail: '',
       };
     case LOG_AFTER_RESET:
-      localStorage.removeItem('token');
+      localStorage.removeItem('resetToken');
 
       return {
         ...state,
-        isResetSubmit: false,
+        // isResetSubmit: false,
         password: '',
         confirmationPassword: '',
         token: null,
       };
 
     case GET_TOKEN_AND_REDIRECT:
-      localStorage.setItem('token', action.token);
+      localStorage.setItem('resetToken', action.token);
 
       return {
         ...state,
-        isResetSubmit: true,
-        token: localStorage.getItem('token'),
+        token: localStorage.getItem('resetToken'),
         displayPopup: false,
         password: '',
         popupEmail: '',
+        // isResetSubmit: true,
       };
 
     default:

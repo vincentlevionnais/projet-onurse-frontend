@@ -81,6 +81,7 @@ const logMiddleware = (store) => (next) => (action) => {
 
     case MANAGE_RESET_PASSWORD_SUBMIT: {
       const { password, confirmationPassword, token } = store.getState().log;
+      console.log(token);
 
       axios.post(
         `http://35.173.138.41/projet-o-nurse/public/reset-password/reset/${token}`,
