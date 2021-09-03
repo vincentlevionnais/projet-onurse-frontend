@@ -27,7 +27,7 @@ const Page = ({
   redirect, token,
 }) => {
   const resetToken = localStorage.getItem('resetToken');
-  console.log(token);
+
   return (
     <Router>
 
