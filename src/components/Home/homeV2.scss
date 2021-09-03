@@ -66,8 +66,9 @@
     align-items: center;
     padding: 1em;
     margin: 1.5em 0;
+
     .logo-pic {
-      width: 40%;
+      width: 60%;
     }
   }
 
@@ -147,10 +148,12 @@
       }
     }
   }
-  .logo {
-    .logo-pic {
-      width: 35%;
-      margin: 2em;
+  .nav {
+    .logo {
+      .logo-pic {
+        width: 30%;
+        margin: 2em;
+      }
     }
   }
 }
@@ -164,10 +167,13 @@
       }
     }
   }
-  .logo {
-    .logo-pic {
-      width: 25%;
-      margin: 2em;
+  .nav {
+    .logo {
+      .logo-pic {
+        width: 35%;
+        margin: 2em;
+      }
     }
   }
+  
 }

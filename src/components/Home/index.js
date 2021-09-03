@@ -3,7 +3,7 @@ import Proptypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { LogOut, Settings } from 'react-feather';
-import logo from '../../assets/images/LOGO-V3.png';
+import logo from '../../assets/images/LOGO3-rond.png';
 import './homeV2.scss';
 
 const Home = ({ handleLogOut, firstname }) => {
