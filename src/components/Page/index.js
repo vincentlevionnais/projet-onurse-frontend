@@ -48,7 +48,6 @@ const Page = ({
 
       {logged && patientsLoaded && eventsLoaded && tasksLoaded
       && (
-
         <>
           <Route path="/" exact>
             <Home />
@@ -85,7 +84,6 @@ const Page = ({
           </Route>
           <Footer />
         </>
-
       )}
       <Route>
         <Errors />
