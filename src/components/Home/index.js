@@ -3,7 +3,7 @@ import Proptypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { LogOut, Settings } from 'react-feather';
-import logo from '../../assets/images/LOGO-V3.png';
+import logo from '../../assets/images/LOGO3-rond.png';
 import './homeV2.scss';
 
 const Home = ({ handleLogOut, firstname }) => {
@@ -60,33 +60,35 @@ const Home = ({ handleLogOut, firstname }) => {
           <img className="logo-pic" src={logo} alt="logo o'nurse" />
         </div>
         <div className="nav-bottom">
-          <div className="nav-element tour">
-            <Link
-              to="/calendar/day"
-              className="nav-link"
-            >
-              Ma tournée
-            </Link>
-          </div>
+          <Link
+            to="/calendar/day"
+            className="nav-link tour"
+          >
+            Ma tournée
+          </Link>
         </div>
         
         <div className="nav-top">
-          <div className="nav-element patient">
-            <Link
-              to="/patients"
-              className="nav-link"
-            >
-              Mes patients
-            </Link>
-          </div>
-          <div className="nav-element agenda">
-            <Link
-              to="/calendar"
-              className="nav-link"
-            >
-              Mon Agenda
-            </Link>
-          </div>
+          <Link
+            to="/to-do-list"
+            className="nav-link toDoList"
+          >
+            TO-DO-LIST
+          </Link>
+          <Link
+            to="/calendar"
+            className="nav-link agenda"
+          >
+            Mon Agenda
+          </Link>
+        </div>
+        <div className="nav-bottom">
+          <Link
+            to="/patients"
+            className="nav-link patient"
+          >
+            Mes patients
+          </Link>
         </div>
       </nav>
     </>

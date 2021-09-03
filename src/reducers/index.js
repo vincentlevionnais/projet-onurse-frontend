@@ -6,7 +6,7 @@ import calReducer from './calReducer';
 import logReducer from './logReducer';
 import createAccountReducer from './createAccountReducer';
 import settingsReducer from './settingsReducer';
-
+import toDoListReducer from './toDoListReducer';
 // import nomReducer2 from './reducer2';
 // etc
 
@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
   log: logReducer,
   create: createAccountReducer,
   settings: settingsReducer,
+  task: toDoListReducer,
 });
 
 export default rootReducer;

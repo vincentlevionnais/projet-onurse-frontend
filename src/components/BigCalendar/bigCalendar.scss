@@ -6,17 +6,24 @@
   color: vars.$darkBlue;
   font-weight: 900;
 
-  .rbc-toolbar{
+  .rbc-time-content {
+    display: inherit;
+    flex-direction: row;
+  }
+
+  .rbc-toolbar {
     padding: 1em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    .rbc-toolbar-label{
+
+    .rbc-toolbar-label {
       color: vars.$pink;
       font-size: x-large;
 
     }
   }
+
 
   .popup {
 
@@ -37,7 +44,7 @@
 
 
     .form-popup {
-
+      display: contents;
       align-items: center;
       padding: 1em;
 
@@ -72,6 +79,7 @@
       .datepickers {
 
         padding: 0;
+        margin: 1em;
 
         .react-datepicker-wrapper {
           .react-datepicker__input-container {
@@ -98,7 +106,7 @@
     //popup date RDV
     .popup {
 
-  
+
       width: 80%;
       position: absolute;
       top: 25%;
@@ -112,6 +120,7 @@
       z-index: 1000;
 
       .form-popup {
+        display: contents;
 
         // button validation/annuler/suppression
         .buttons {
@@ -153,9 +162,10 @@
           margin: 0.5em 0 0.5em 0;
           border-radius: vars.$borderRadius;
         }
+
         input {
           border-radius: vars.$borderRadius;
-  
+
         }
       }
 

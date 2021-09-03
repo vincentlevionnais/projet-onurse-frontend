@@ -8,6 +8,7 @@ import patientMiddleware from '../middlewares/patientMiddleware';
 import logMiddleware from '../middlewares/logMiddleware';
 import createMiddleware from '../middlewares/createMiddleware';
 import settingsMiddleware from '../middlewares/settingsMiddleware';
+import taskMiddleware from '../middlewares/taskMiddleware';
 
 // on combine devTools avec les middlewares
 const enhancers = composeWithDevTools(
@@ -16,7 +17,8 @@ const enhancers = composeWithDevTools(
     calMiddleware,
     logMiddleware,
     createMiddleware,
-    settingsMiddleware
+    settingsMiddleware,
+    taskMiddleware,
     // ... d'autres middlewares
   ),
 );
