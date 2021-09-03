@@ -7,7 +7,6 @@ import {
 } from 'src/actions/bigCal';
 
 const calMiddleware = (store) => (next) => (action) => {
-  // console.log('on a intercepté une action dans le autMiddleware: ', action);
 
   switch (action.type) {
     case FETCH_EVENTS: {

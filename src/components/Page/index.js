@@ -16,14 +16,14 @@ import AddPatient from '../../containers/AddPatient';
 import Tour from '../../containers/Tour';
 import PatientCard from '../../containers/PatientCard';
 import PatientsList from '../../containers/PatientsList';
-import ToDoList from '../../components/ToDoList';
+import ToDoList from '../../containers/ToDoList';
 import About from '../About';
 import LegalMention from '../LegalMention';
 import Footer from './Footer';
 import './page.scss';
 
 const Page = ({
-  isCreate, logged, patientsLoaded, eventsLoaded, redirect,
+  isCreate, logged, patientsLoaded, eventsLoaded, tasksLoaded, redirect,
 }) => (
   <Router>
     {isCreate && <Redirect from="/account/create/account" to="/login" /> }
@@ -41,12 +41,12 @@ const Page = ({
        </Route>
      </>
      )}
-      {(!patientsLoaded || !eventsLoaded) && (
+      {(!patientsLoaded || !eventsLoaded || !tasksLoaded) && (
         <Loader />
       )}
       {logged && <Redirect from="/login" to="/" />}
 
-      {logged && patientsLoaded && eventsLoaded
+      {logged && patientsLoaded && eventsLoaded && tasksLoaded
       && (
 
         <>
@@ -101,6 +101,7 @@ Page.propTypes = {
   logged: Proptypes.bool.isRequired,
   patientsLoaded: Proptypes.bool.isRequired,
   eventsLoaded: Proptypes.bool.isRequired,
+  tasksLoaded: Proptypes.bool.isRequired,
   redirect: Proptypes.bool.isRequired,
 };
 
