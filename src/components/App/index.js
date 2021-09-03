@@ -10,12 +10,13 @@ import './styles.scss';
 
 // == Composant
 const App = ({
-  loadEvents, fetchPatients, logged, redirectToLogin, makeTokenPersist, getUserInfos,
+  loadEvents, fetchPatients, logged, redirectToLogin, makeTokenPersist, getUserInfos, fetchTasks
 }) => {
   useEffect(() => {
     if (logged) {
       loadEvents();
       fetchPatients();
+      fetchTasks();
       getUserInfos();
     }
   }, [logged]);
@@ -57,6 +58,7 @@ const App = ({
 App.propTypes = {
   loadEvents: PropTypes.func.isRequired,
   fetchPatients: PropTypes.func.isRequired,
+  fetchTasks: PropTypes.func.isRequired,
   logged: PropTypes.bool.isRequired,
   redirectToLogin: PropTypes.func.isRequired,
   makeTokenPersist: PropTypes.func.isRequired,
