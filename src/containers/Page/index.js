@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
   patientsLoaded: state.patients.patientsLoaded,
   eventsLoaded: state.cal.eventsLoaded,
   redirect: state.patients.redirect,
+  token: state.log.token,
 });
 
 // === mapDispatchToProps

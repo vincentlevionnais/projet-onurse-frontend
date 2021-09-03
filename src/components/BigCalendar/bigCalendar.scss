@@ -112,6 +112,7 @@
       z-index: 1000;
 
       .form-popup {
+        display: contents;
 
         // button validation/annuler/suppression
         .buttons {

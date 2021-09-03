@@ -7,6 +7,7 @@ import {
 // local imports
 import BigCalendar from 'src/containers/BigCalendar';
 import LoginForm from 'src/containers/LoginForm';
+import ResetPassword from 'src/containers/LoginForm/ResetPassword';
 import CreateAccount from 'src/containers/CreateAccount';
 import Home from 'src/containers/Home';
 import Loader from 'src/components/Loader';
@@ -22,13 +23,36 @@ import Footer from './Footer';
 import './page.scss';
 
 const Page = ({
-  isCreate, logged, patientsLoaded, eventsLoaded, redirect,
-}) => (
-  <Router>
-    {isCreate && <Redirect from="/account/create/account" to="/login" /> }
-    <Switch>
-      {redirect && <Redirect from="/patients/:id" to="/patients" />}
-      {!logged
+  isCreate, logged, patientsLoaded, eventsLoaded,
+  redirect, token,
+}) => {
+  const resetToken = localStorage.getItem('resetToken');
+
+  return (
+    <Router>
+
+      {isCreate && <Redirect from="/account/create/account" to="/login" /> }
+      <Switch>
+        {redirect && <Redirect from="/patients/:id" to="/patients" />}
+
+        {resetToken
+        && (
+        <>
+          <Route path={`/reset_password/${resetToken}`} exact>
+            <ResetPassword />
+          </Route>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
+          <Route path="/account/create/account">
+            <CreateAccount />
+          </Route>
+        </>
+        )}
+
+        {(token === null) && <Redirect from={`/reset_password/${resetToken}`} to="/login" />}
+
+        {!logged
      && (
      <>
        <Redirect from="/" to="/login" />
@@ -40,16 +64,15 @@ const Page = ({
        </Route>
      </>
      )}
-      {(!patientsLoaded || !eventsLoaded) && (
+        {(!patientsLoaded || !eventsLoaded) && (
         <Loader />
-      )}
-      {logged && <Redirect from="/login" to="/" />}
+        )}
+        {logged && <Redirect from="/login" to="/" />}
 
-      {logged && patientsLoaded && eventsLoaded
+        {logged && patientsLoaded && eventsLoaded
       && (
 
         <>
-
           <Route path="/" exact>
             <Home />
           </Route>
@@ -84,13 +107,14 @@ const Page = ({
         </>
 
       )}
-      <Route>
-        <Errors />
-      </Route>
-    </Switch>
-  </Router>
-  
-);
+        <Route>
+          <Errors />
+        </Route>
+      </Switch>
+    </Router>
+
+  );
+};
 
 Page.propTypes = {
 
@@ -99,6 +123,11 @@ Page.propTypes = {
   patientsLoaded: Proptypes.bool.isRequired,
   eventsLoaded: Proptypes.bool.isRequired,
   redirect: Proptypes.bool.isRequired,
+  token: Proptypes.string,
+};
+
+Page.defaultProps = {
+  token: '',
 };
 
 export default Page;
