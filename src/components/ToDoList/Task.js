@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { X } from 'react-feather';
 
-const Task = ({ id, status, taskName }) => {
+const Task = ({ id, status, taskName, deleteTask }) => {
 
   const cssClass = classNames(
     'task-container',
@@ -27,7 +27,7 @@ const Task = ({ id, status, taskName }) => {
       <div className="delete-task">
         <X 
           onClick={() => {
-            console.log('suppression de la tâche');
+            deleteTask(id);
           }}
         />
       </div>
@@ -39,6 +39,7 @@ Task.propTypes = {
   id: PropTypes.number.isRequired,
   taskName: PropTypes.string.isRequired,
   status: PropTypes.number.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 export default Task;

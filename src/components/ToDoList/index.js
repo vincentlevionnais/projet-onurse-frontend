@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from 'src/containers/Page/Header';
-import Task from './Task';
+import Task from 'src/containers/ToDoList/Task';
 import Form from 'src/containers/ToDoList/Form';
 import './toDoList.scss';
 

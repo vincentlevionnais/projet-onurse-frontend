@@ -49,6 +49,22 @@ const taskMiddleware = (store) => (next) => (action) => {
           .catch((error) => {
             alert('Une erreur est survenue merci de réessayer');
           });
+      case DELETE_TASK:
+        axios.delete(
+          `http://35.173.138.41/projet-o-nurse/public/api/tasks/${action.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          },
+        )
+          .then((response) => {
+            store.dispatch(removeTask(action.id));
+          })
+          .catch((error) => {
+            alert('une erreur est survenue, merci de réessayer');
+          });
+        break;
     default:
   }
 
