@@ -1,4 +1,13 @@
-.app {
+@use 'src/styles/vars';
 
+.app {
+  font-family: vars.$contentFont;
+  margin: auto;
+  border: 5px solid vars.$darkBlue;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 

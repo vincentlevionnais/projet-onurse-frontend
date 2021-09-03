@@ -1,50 +1,14 @@
 @use '../../styles/vars';
 
-.header {
-  width: 100%;
-  height: 6em;
-  background-color: vars.$darkBlue;
-  color: white;
-  font-family: vars.$titleFont;
-  text-align: center;
-  position: relative;
-
-  .home-button {
-    border-radius: 100%;
-    background-color: vars.$pink;
-    position: absolute;
-    left: 0;
-    margin-left: 2em;
-    padding: 0.5em 0.7em;
-    font-size: 0.6em;
-  }
-  
-  .header-infos {
-    .header-title {
-      font-size: 2em;
-    }
-  }
-
-  .logout-button {
-    position: absolute;
-    right: 0;
-    margin-right: 2em;
-    background-color: vars.$pink;
-    padding: 0.5em 0.7em;
-    border-radius: 100%;
-    font-size: 0.6em;
-  }
-}
 .main {
-  margin-top: 2em;
-
   .legend {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    margin: 0.5em;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 1em;
 
     *:not(:last-child) {
       margin-right: 1em;
@@ -60,7 +24,7 @@
         background-color: vars.$darkBlue;
         color: white;
         border-radius: 100%;
-        font-size: 0.1em;
+        font-size: 0.3em;
       }
     }
   }
@@ -161,6 +125,16 @@
           font-size: 1px;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 380px) {
+  .main {
+    .legend {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: 100%;
     }
   }
 }

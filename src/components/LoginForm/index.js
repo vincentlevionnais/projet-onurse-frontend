@@ -72,7 +72,7 @@ const LoginForm = ({
         <button
           type="submit"
           onClick={() => togglePopup()}
-          className="login-form-button"
+          className="forgot-password-button"
         >
           Mot de passe perdu
         </button>

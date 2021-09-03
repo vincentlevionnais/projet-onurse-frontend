@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUp } from 'react-feather';
 import Header from 'src/containers/Page/Header';
 import './legalMention.scss';
 
@@ -6,13 +7,13 @@ const LegalMention = () => (
   <>
     <Header titlePage="Mentions légales" />
     <main className="main-legal-mention">
-      <h2 className="legal-mention-title">Mentions légales et politique de confidentialité</h2>
+      <h2 className="legal-mention-title">Mentions légales et politique de confidentialité </h2>
       <p className="legal-mention-content">
         L'entreprise individuelle O'nurse, soucieuse des droits des individus, notamment au regard des traitements automatisés et dans une volonté de transparence avec les utilisateurs du site O'nurse, a mis en place une politique reprenant l'ensemble de ces traitements, des finalités poursuivies par ces derniers ainsi que des moyens d'actions à la disposition des individus afin qu'ils puissent au mieux exercer leurs droits. <br/>
         Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter le site de la <a href="https://www.cnil.fr" className="cnil-link">CNIL</a>. <br/>
         La poursuite de la navigation sur ce site vaut acceptation sans réserve de dispositions et conditions d'utilisation qui suivent. La version actuellement en ligne de ces conditions d'utilisation est la seule opposable pendant toute la durée d'utilisation du site et jusqu'à ce qu'une nouvelle version la remplace.
       </p>
-      <h3 className="legal-mention-item">Article 1 - Mentions légales</h3>
+      <h3 className="legal-mention-item">Article 1 - Mentions légales (données à titre d'exemple)</h3>
       <h4>1.1 Site :</h4>
       <p className="legal-mention-content">O'nurse</p>
       <h4>1.2 Editeur :</h4>
@@ -189,6 +190,9 @@ const LegalMention = () => (
       <p className="legal-mention-content">
         Pour toute question vous pouvez laissez un message à l'adresse suivante : o-nurse@apotheose.fr.
       </p>
+      <div className="arrow-up">
+        <a href="#"><ArrowUp /></a>
+      </div>
     </main>
   </>
 );

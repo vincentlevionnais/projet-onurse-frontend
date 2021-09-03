@@ -52,7 +52,7 @@ const CreateAccount = ({
 
   return (
     <>
-      <header className="header">
+      <header className="header-create-account">
         <Link
           to="/login"
           className="home-button"
@@ -65,7 +65,6 @@ const CreateAccount = ({
           </h1>
         </div>
       </header>
-
       <form
         className="create-account-container"
         onSubmit={(evt) => {

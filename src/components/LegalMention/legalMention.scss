@@ -33,4 +33,13 @@
     }
   }
 
+  .arrow-up {
+    position: fixed;
+    bottom: 5em;
+    right: 1em;
+    background-color: rgba(vars.$pink, 0.8);
+    border-radius: 100%;
+    padding: 0.5em;
+    color: white;
+  }
 }
