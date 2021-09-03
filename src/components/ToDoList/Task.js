@@ -14,7 +14,7 @@ const Task = ({ id, status, taskName, deleteTask, setTaskStatus }) => {
   if(status===0) {
     statusToChange=1;
   } else if(status===1) {
-    statusToChange===0;
+    statusToChange=0;
   };
 
   return (
