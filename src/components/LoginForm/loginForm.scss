@@ -16,6 +16,7 @@
       font-size: 1.5em;
       border-radius: 0;
     }
+
     .login-form-button {
       font-weight: 700;
       font-size: 1em;
@@ -35,7 +36,7 @@
     padding: .7em;
     width: 12rem;
     text-align: center;
-  } 
+  }
 
   .forgot-password-button {
     background-color: vars.$lightBlue;
@@ -53,6 +54,7 @@
     display: flex;
     justify-content: center;
     margin: 1em;
+
     .logo-pic-login {
       width: 12rem;
     }
@@ -85,7 +87,7 @@
     padding: 1em;
 
     .password-popup-title {
-      
+
       color: #fff;
       font: vars.$contentFont;
       font-size: 2em;
@@ -95,7 +97,7 @@
     }
 
     .password-popup-text {
-      
+
       color: #fff;
       font: vars.$contentFont;
       font-size: 1.1em;
@@ -142,23 +144,23 @@
     opacity: 0.95;
     padding: 1em;
     z-index: 1000;
-    
+
     .password-popup {
-  
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      
-  
+
+
       .password-popup-title {
         color: #fff;
         font: vars.$contentFont;
         font-size: 1.5em;
         font-weight: 600;
       }
-  
+
       .password-popup-text {
-        
+
         color: #fff;
         font: vars.$contentFont;
         font-size: 1.1em;
@@ -166,23 +168,93 @@
         margin: 0.7em 0 1.5em 0.8em;
         padding: 0.2em;
       }
-  
+
       .password-popup-input {
         padding: 0.5em;
         border-radius: .2em;
-  
+
       }
-  
+
       .buttons {
-  
+
         margin-top: 1em;
         display: flex;
         justify-content: space-around;
-  
+
         .password-button {}
       }
-  
+
     }
+  }
+}
+
+
+// CSS for reset password components
+
+.reset-password-section-Update {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: 3em;
+
+  .reset-password-title {
+
+    font: vars.$contentFont;
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 0.2em;
+  }
+
+  .reset-password-text {
+
+    font: vars.$contentFont;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin: 0.8em 0 1.5em 0;
+    padding: 0.2em;
+  }
+
+  .reset-password-list {
+
+    font: vars.$contentFont;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 0.2em;
+  }
+
+  .reset-password-container {
+    width: 60%;
+    margin: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .reset-password-input {
+
+      padding: 0.5em;
+      text-align: center;
+      margin-top: 0.5em;
+    }
+
+    .reset-password-buttons {
+      margin: 1em;
+
+
+      .reset-password-button {
+        width: 100%;
+        font: vars.$contentFont;
+        color: white;
+        background-color: vars.$darkBlue;
+        padding: 0.5em;
+        margin: 0.5em 0 0em 0;
+        text-align: center;
+        border: none;
+
+      }
+    }
+
   }
 }
 

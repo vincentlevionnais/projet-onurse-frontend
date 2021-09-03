@@ -8,11 +8,11 @@ import Header from 'src/containers/Page/Header';
 import { Edit } from 'react-feather';
 import { getPatientById, searchAppointmentOfPatient } from 'src/utils';
 // import function for seachr events of patient
+import DeletePopUp from 'src/containers/PatientCard/DeletePopUp';
 import CivilStatus from './CivilStatus';
 import Pathologies from './Pathologies';
 import Visit from './Visit';
 import Informations from './Informations';
-import DeletePopUp from 'src/containers/PatientCard/DeletePopUp';
 import maps from '../../assets/images/maps.png';
 import './patientCard.scss';
 

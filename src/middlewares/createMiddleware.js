@@ -9,8 +9,6 @@ const createMiddleware = (store) => (next) => (action) => {
         lastName, firstName, email, password, phone,
       } = store.getState().create;
 
-      console.log('soumission');
-
       axios.post(
         'http://35.173.138.41/projet-o-nurse/public/api/login',
         {
@@ -27,10 +25,6 @@ const createMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
-          // TODO le back me renvoi un token à la creation d'un nouveau nurse?
-          // todo si oui je dispatch connectUser
-          // store.dispatch(connectUser(response.data.token));
           alert('Compte crée');
           store.dispatch(cleanInput());
         })

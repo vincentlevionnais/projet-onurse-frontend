@@ -1,14 +1,16 @@
 import {
   UPDATE_LOGIN_FIELD, CONNECT_USER, LOG_OUT,
   TOKEN_PERSIST, TO_LOGIN, SAVE_USER_INFOS,
-  TOGGLE_POPUP,
+  TOGGLE_POPUP, LOG_AFTER_RESET, GET_TOKEN_AND_REDIRECT,
 } from 'src/actions/login';
 
 const initialState = {
-  // user's id
+  // user's connected id
   id: '',
   email: '',
   password: '',
+  // use in reset password component
+  confirmationPassword: '',
   // use in home components
   firstname: '',
   // to know if user is connect
@@ -53,7 +55,13 @@ function logReducer(state = initialState, action = {}) {
       };
 
     case TOKEN_PERSIST:
-
+      if (localStorage.getItem('resetToken')) {
+        return {
+          ...state,
+          logged: false,
+          token: localStorage.getItem('resetToken'),
+        };
+      }
       return {
         ...state,
         logged: true,
@@ -72,6 +80,26 @@ function logReducer(state = initialState, action = {}) {
       return {
         ...state,
         displayPopup: !state.displayPopup,
+        popupEmail: '',
+      };
+    case LOG_AFTER_RESET:
+      localStorage.removeItem('resetToken');
+
+      return {
+        ...state,
+        password: '',
+        confirmationPassword: '',
+        token: null,
+      };
+
+    case GET_TOKEN_AND_REDIRECT:
+      localStorage.setItem('resetToken', action.token);
+
+      return {
+        ...state,
+        token: localStorage.getItem('resetToken'),
+        displayPopup: false,
+        password: '',
         popupEmail: '',
       };
 

@@ -41,8 +41,6 @@ const CreateAccount = ({
   const onSubmit = (evt) => {
     evt.preventDefault();
     const errors = createAccountValidateValue(lastName, firstName, email, password, phone);
-    console.log(errors);
-    console.log('je click');
 
     if (errors && password === confirmationPassword) {
       manageSubmit();
