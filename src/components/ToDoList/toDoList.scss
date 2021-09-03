@@ -9,11 +9,18 @@
   .addTask {
     width: 100%;
     font-size: 1.5em;
-    .field-input {
-      border-radius: 0;
+    .field {
       width: 100%;
-      margin-bottom: 1em;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .field-input {
+        border-radius: 0;
+        width: 80%;
+        margin: 1em;
+      }
     }
+    
   }
 
   ul {
@@ -21,11 +28,11 @@
     width: 90%;
     height: 300px;
     overflow: auto;
+
     .task-container {
       background-color: vars.$lightBlue;
       color: vars.$darkBlue;
       width: 100%;
-      height: auto;
       padding: 0.5em;
       display: flex;
       flex-direction: row;
@@ -34,6 +41,7 @@
 
       .delete-task {
         color: vars.$darkBlue;
+        margin-left: 1em;
       }
       .checkbox {
         margin-right: 1em;
