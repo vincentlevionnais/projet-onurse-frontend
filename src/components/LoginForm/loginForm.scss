@@ -9,20 +9,35 @@
   margin-top: 5em;
 
   .login-form-element {
-    width: 100%;
-
-    .field-input {
-      width: 12rem;
-      font-size: 1.5em;
-      border-radius: 0;
+    margin-bottom: 2em;
+    .field{
+      input{
+        width: 90%;
+        border: transparent;
+        background-color: vars.$lightBlue;
+        color: vars.$darkBlue;
+        margin: 0.4em;
+        padding: 1em;
+        height: 2em;
+        text-align: center;
+  
+        box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+        border-radius: vars.$borderRadius;
+  
+      }
     }
 
     .login-form-button {
+      margin-top: 0.5em;
+      width: 90%;
+      border: transparent;
       font-weight: 700;
       font-size: 1em;
-      color: #fff;
       background-color: vars.$darkBlue;
-      border: 0;
+      color: vars.$lightBlue;
+      box-shadow: vars.$boxShadowValueNoColor vars.$darkBlue;
+      border-radius: vars.$borderRadius;
+  
       width: 12rem;
       padding: .7em;
       height: 2.5em;
@@ -33,14 +48,14 @@
     font-weight: 700;
     font-size: 1em;
     color: vars.$darkBlue;
-    padding: .7em;
+    
     width: 12rem;
     text-align: center;
   }
 
   .forgot-password-button {
     background-color: vars.$lightBlue;
-    border: 0;
+    border: transparent;
     margin-bottom: 1em;
     font-weight: 700;
     font-size: 1em;
@@ -48,6 +63,8 @@
     width: 12rem;
     padding: .7em;
     height: 2.5em;
+    box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+    border-radius: vars.$borderRadius;
   }
 
   .logo {
