@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-import { FETCH_TASKS, saveTasks, setTasksLoaded, SUBMIT_TASK, addTask, DELETE_TASK, removeTask } from 'src/actions/toDoList';
+import {
+  FETCH_TASKS,
+  saveTasks,
+  setTasksLoaded,
+  SUBMIT_TASK,
+  addTask,
+  DELETE_TASK,
+  removeTask,
+  SET_TASK_STATUS
+} from 'src/actions/toDoList';
 
 const taskMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -64,6 +73,26 @@ const taskMiddleware = (store) => (next) => (action) => {
           .catch((error) => {
             alert('une erreur est survenue, merci de réessayer');
           });
+        break;
+      case SET_TASK_STATUS:
+        axios.put(
+          `http://35.173.138.41/projet-o-nurse/public/api/tasks/${action.id}`,
+          {
+            id: action.id,
+            status: action.status,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        )
+        .then((response) => {
+          
+        })
+        .catch((error) => {
+          console.log('une erreur est survenue, merci de réessayer');
+        });
         break;
     default:
   }

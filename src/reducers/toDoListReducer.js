@@ -1,4 +1,5 @@
-import { SET_LABEL, SAVE_TASKS, SET_TASKS_LOADED, ADD_TASK, REMOVE_TASK } from 'src/actions/toDoList';
+import { SET_LABEL, SAVE_TASKS, SET_TASKS_LOADED, ADD_TASK, REMOVE_TASK, SET_TASKS_STATUS } from 'src/actions/toDoList';
+import { SET_TASK_STATUS } from '../actions/toDoList';
 
 const initialState = {
   label: '',
@@ -42,7 +43,17 @@ function toDoListReducer(state = initialState, action = {}) {
         ...state,
         tasks: [...newListTasks],
       };
-      
+    case SET_TASK_STATUS: {
+      const taskIndex = state.tasks.findIndex((item) => item.id === action.id);
+      const newListTasks = [...state.tasks];
+      newListTasks[taskIndex] = {
+        ...newListTasks[taskIndex],
+        status: action.status,
+      };
+      return {
+        ...state,
+        tasks: newListTasks,
+      }; }
     default:
       return state;
   }

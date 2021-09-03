@@ -7,6 +7,7 @@ export const SUBMIT_TASK = 'SUBMIT_TASK';
 export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const REMOVE_TASK = 'REMOVE_TASK';
+export const SET_TASK_STATUS = 'SET_TASK_STATUS';
 
 export const setLabel = (newValue, name) => ({
   type: SET_LABEL,
@@ -48,3 +49,8 @@ export const removeTask = (id) => ({
   id: id,
 });
 
+export const setTaskStatus = (id, status) => ({
+  type: SET_TASK_STATUS,
+  id: id,
+  status: status,
+});

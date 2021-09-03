@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux';
-import { deleteTask } from 'src/actions/toDoList';
+import { deleteTask, setTaskStatus } from 'src/actions/toDoList';
 // on importe le composant de présentation
 import Task from 'src/components/ToDoList/Task';
 
@@ -13,6 +13,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   deleteTask : (id) => {
     dispatch(deleteTask(id))
+  },
+
+  setTaskStatus: (id, status) => {
+    dispatch(setTaskStatus(id, status));
   },
 });
 

@@ -3,12 +3,19 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { X } from 'react-feather';
 
-const Task = ({ id, status, taskName, deleteTask }) => {
+const Task = ({ id, status, taskName, deleteTask, setTaskStatus }) => {
 
   const cssClass = classNames(
     'task-container',
     { 'task-container--done': status===1 },
   );
+
+  let statusToChange;
+  if(status===0) {
+    statusToChange=1;
+  } else if(status===1) {
+    statusToChange===0;
+  };
 
   return (
     <li className={cssClass}>
@@ -17,9 +24,9 @@ const Task = ({ id, status, taskName, deleteTask }) => {
           type="checkbox"
           className="checkbox"
           id={id}
-          //checked={done}
-          onChange={(event) => {
-            console.log("on change le statut de la tâche");
+          checked={status===1}
+          onChange={() => {
+            setTaskStatus(id, statusToChange);
           }}
         />
         {taskName}
@@ -40,6 +47,7 @@ Task.propTypes = {
   taskName: PropTypes.string.isRequired,
   status: PropTypes.number.isRequired,
   deleteTask: PropTypes.func.isRequired,
+  setTaskStatus: PropTypes.func.isRequired,
 };
 
 export default Task;
