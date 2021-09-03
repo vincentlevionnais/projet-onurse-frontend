@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Field from 'src/components/Field';
 
 // import { loginFormValidateValue } from 'src/utils';
-import logo from 'src/assets/images/LOGO-V3.png';
+import logo from 'src/assets/images/LOGO3-rond.png';
 
 import Popup from 'src/containers/LoginForm/Popup';
 
@@ -74,7 +74,7 @@ const LoginForm = ({
           onClick={() => togglePopup()}
           className="forgot-password-button"
         >
-          Mot de passe perdu
+          Mot de passe oublié
         </button>
       </div>
       <div className="log-create-account">
