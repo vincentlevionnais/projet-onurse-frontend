@@ -26,8 +26,6 @@
 
 
   .popup {
-
-
     width: 45%;
     position: absolute;
     top: 25%;
@@ -37,19 +35,20 @@
     opacity: 0.9;
     box-shadow: vars.$boxShadowValueNoColor vars.$green;
     border-radius: vars.$borderRadius;
-
     padding: 1em;
     z-index: 1000;
 
-
-
     .form-popup {
-      display: contents;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 1em;
+      padding: 2em;
 
       .buttons {
-        display: initial;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
         margin-top: 1.5em;
 
@@ -66,7 +65,10 @@
 
       input {
         border-radius: vars.$borderRadius;
-
+        background-color: vars.$lightBlue;
+        padding: 0.5em;
+        box-shadow: vars.$boxShadowValueNoColor vars.$lightBlue;
+        border: none;
       }
 
       select {
@@ -84,7 +86,7 @@
         .react-datepicker-wrapper {
           .react-datepicker__input-container {
             align-items: center;
-
+            margin-bottom: 1em;
             input {
               border-radius: vars.$borderRadius;
 
@@ -120,11 +122,13 @@
       z-index: 1000;
 
       .form-popup {
-        display: contents;
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         // button validation/annuler/suppression
         .buttons {
-          display: inline-block;
+          display: flex;
           align-items: center;
           flex-direction: column;
           margin-top: 1.5em;

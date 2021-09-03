@@ -14,6 +14,9 @@
     padding: 0.5em;
     color: vars.$darkBlue;
     align-self: center;
+    border-radius: 5px;
+    box-shadow: 1px 2px 10px vars.$darkBlue;
+    font-weight: bold;
   }
 
   
@@ -43,6 +46,9 @@
         }
   
           .patient-small-link {
+            font-weight: 700;
+            color: vars.$darkBlue;
+
             &:hover {
               text-decoration: underline;
             }
