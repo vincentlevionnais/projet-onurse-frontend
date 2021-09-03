@@ -5,11 +5,13 @@ import { X } from 'react-feather';
 
 const Task = ({ id, status, taskName, deleteTask, setTaskStatus }) => {
 
+  // determine cssClass according to the status of task to adapt rendering of task
   const cssClass = classNames(
     'task-container',
     { 'task-container--done': status===1 },
   );
 
+  // determine status to change according to the status of task
   let statusToChange;
   if(status===0) {
     statusToChange=1;
