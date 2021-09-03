@@ -93,7 +93,7 @@ const Settings = ({
               className="settings-input"
               name="password"
               type="password"
-              placeholder="Nouvelle mot de passe"
+              placeholder="Nouveau mot de passe"
               manageChange={((newValue, name) => {
                 changeField(newValue, name);
               })}
