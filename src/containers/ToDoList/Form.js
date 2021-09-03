@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setLabel } from 'src/actions/toDoList';
+import { setLabel, submitTask } from 'src/actions/toDoList';
 // on importe le composant de présentation
 import Form from 'src/components/ToDoList/Form';
 
@@ -12,6 +12,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setLabel: (newValue, name) => {
     dispatch(setLabel(newValue, name));
+  },
+
+  submitTask: () => {
+    dispatch(submitTask());
   },
 });
 

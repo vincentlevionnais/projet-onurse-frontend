@@ -25,13 +25,17 @@ function toDoListReducer(state = initialState, action = {}) {
       };
     case ADD_TASK:
       const newTask = {
-        // propriété d'une tâche
-      }
+        id: action.id,
+        taskName: action.taskName,
+        status: action.status,
+      };
 
       return {
         ...state,
-        tasks: [...tasks, newTask],
+        tasks: [...state.tasks, newTask],
+        label: '',
       };
+      
     case REMOVE_TASK:
       const newListTasks = state.tasks.filter((items) => items.id !== action.id);
       return {

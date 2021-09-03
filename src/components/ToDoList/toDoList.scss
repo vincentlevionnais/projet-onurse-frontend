@@ -19,7 +19,8 @@
   ul {
     margin: 1em;
     width: 90%;
-
+    height: 300px;
+    overflow: auto;
     .task-container {
       background-color: vars.$lightBlue;
       color: vars.$darkBlue;

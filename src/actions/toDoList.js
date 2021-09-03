@@ -27,15 +27,15 @@ export const setTasksLoaded = () => ({
   type: SET_TASKS_LOADED,
 });
 
-export const submitTask = (id) => ({
+export const submitTask = () => ({
   type: SUBMIT_TASK,
-  id: id,
 });
 
-export const addTask = (id /* ajout des autres propriétés */) => ({
+export const addTask = (id, taskName, status) => ({
   type: ADD_TASK,
   id: id,
- // ajout des autres propriétés
+  taskName: taskName,
+  status: status,
 });
 
 export const deleteTask = (id) => ({

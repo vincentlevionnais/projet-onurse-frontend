@@ -23,7 +23,32 @@ const taskMiddleware = (store) => (next) => (action) => {
           store.dispatch(setTasksLoaded());
         });
       break;
-    
+      case SUBMIT_TASK:
+        const { label } = store.getState().task;
+        axios.post(
+          'http://35.173.138.41/projet-o-nurse/public/api/tasks',
+          {
+            taskName: label,
+            status: 0,
+          },
+  
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          },
+        )
+          .then((response) => {
+            console.log(response);
+            store.dispatch(addTask(
+              response.data.id,
+              response.data.taskName,
+              response.data.status,
+            ));
+          })
+          .catch((error) => {
+            alert('Une erreur est survenue merci de réessayer');
+          });
     default:
   }
 

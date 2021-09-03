@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 
-const Form = ( {label, setLabel }) => (
+const Form = ( {label, setLabel, submitTask }) => (
   <form className="addTask"
     onSubmit={(event) => {
       event.preventDefault();
-      // Add task in BDD
+      submitTask();
     }}
   >
     <Field
@@ -24,5 +24,6 @@ const Form = ( {label, setLabel }) => (
 Form.propTypes = {
   label: PropTypes.string.isRequired,
   setLabel: PropTypes.func.isRequired,
+  submitTask: PropTypes.func.isRequired,
 }
 export default Form;
