@@ -71,76 +71,57 @@
     }
   }
 
-  .nav-element {
+  .nav-top {
+    height: 5em;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+    width: 100%;
 
-  .nav-link {
-    //border-radius: 100%;
-    //padding: 2.5em 0.5em;
-    font-weight: bold;
-    //max-width: 60%;
-    text-align: center;
-    font-size: 1em;
-    text-transform: uppercase;
-    //box-shadow: 3px 5px 5px rgba(#2C3C4B, 0.7);
-  }
+    .nav-link {
+      background-color: vars.$lightBlue;
+      color: vars.$darkBlue;
+      width: 50%;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
 
-  .nav-top {
-    display: flex;
-    flex-direction: row;
-    height: 6em;
-
-    margin: 1em 1em 2em 1em;
-    .nav-element {
-      margin: 0;
-      &.patient {
-        background-color: vars.$darkBlue;
-        //border: 8px solid vars.$darkBlue;
-        height: 100%;
-        width: 50%;
-        margin-right: 0.5em;
-        .nav-link {
-          //background-color: vars.$lightBlue;
-          color: vars.$lightBlue;
-          //box-shadow: 3px 5px 5px rgba(vars.$mediumGrey, 0.7);
-        }
+      &.toDoList {
+        margin: 1em;
       }
 
       &.agenda {
-        background-color: vars.$lightBlue;
-        //border: 8px solid vars.$lightBlue;
-        height: 100%;
-        width: 50%;
-        margin-left: 0.5em;
-        .nav-link {
-          color: vars.$darkBlue;
-        }
+        margin: 1em 1em 1em 0;
       }
     }
   }
-  
+
   .nav-bottom {
+    height: 5em;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    height: 6em;
-    margin: 1em 1em 0 1em;
-    .nav-element {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+
+    .nav-link {
+      text-transform: uppercase;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+      margin: 0 1em;
+
       &.tour {
         background-color: vars.$pink;
-        width: 100%;
-        height: 100%;
-        //border: 8px solid vars.$pink;
-        height: 6em;
-        margin: 0;
-        .nav-link {
-          //background-color: vars.$darkBlue;
-          color: white;
-          //max-width: 40%;
-        }
+        color: white;
+      }
+
+      &.patient {
+        background-color: vars.$darkBlue;
+        color: vars.$lightBlue;
       }
     }
   }
@@ -190,3 +171,4 @@
     }
   }
 }
+
