@@ -16,7 +16,6 @@ import Informations from './Informations';
 import maps from '../../assets/images/maps.png';
 import './patientCard.scss';
 
-
 const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
   // get the id in params of URL
   const { id } = useParams();
@@ -41,10 +40,9 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
           >
             <Edit />
           </Link>
-         
         </h2>
         <a className="road" href={`https://www.google.com/maps/search/?api=1&query=${road}`}>
-          <img src={maps}/>
+          <img src={maps} alt="logo Google Maps"/>
           Itinéraire
         </a>
         <CivilStatus
@@ -58,10 +56,10 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
           {...patientToDisplay}
         />
         <button
+          type="button"
           className="delete-patient"
           onClick={() => {
             openPopUp();
-
           }}
         >
           Supprimer le patient

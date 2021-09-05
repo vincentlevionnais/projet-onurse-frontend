@@ -85,7 +85,7 @@ const Page = ({
           <Route path="/patients" exact>
             <PatientsList />
           </Route>
-          <Route path="/addPatient">
+          <Route path="/addPatient" exact>
             <AddPatient />
           </Route>
           <Route path="/patients/:id" exact>
