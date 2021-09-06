@@ -54,7 +54,7 @@ const Home = ({ handleLogOut, firstname }) => {
           <LogOut />
         </Link>
       </header>
-      
+
       <nav className="nav">
         <div className="logo">
           <img className="logo-pic" src={logo} alt="logo o'nurse" />
@@ -67,7 +67,7 @@ const Home = ({ handleLogOut, firstname }) => {
             Ma tournée
           </Link>
         </div>
-        
+
         <div className="nav-top">
           <Link
             to="/to-do-list"
