@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const CivilStatus = ({
   birthdate,
   completeAdress,
+  informationAdress,
   phone,
   trustedPerson,
   nir,
@@ -29,6 +30,7 @@ const CivilStatus = ({
         {birthdateInDate}
       </p>
       <p>Adresse: {completeAdress}  </p>
+      <p>Complément d'adresse: {informationAdress}  </p>
       <p>Téléphone: {phone}</p>
     </div>
     
@@ -58,6 +60,7 @@ CivilStatus.propTypes = {
   mutualName: PropTypes.string,
   mutualNumberAmc: PropTypes.string,
   doctorName: PropTypes.string,
+  informationAdress: PropTypes.string,
 };
 
 CivilStatus.defaultProps = {
@@ -67,6 +70,7 @@ CivilStatus.defaultProps = {
   mutualNumberAmc: "",
   mutualName: "",
   nir: "",
+  informationAdress: "",
 };
 
 export default CivilStatus;
