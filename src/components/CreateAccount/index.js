@@ -2,7 +2,6 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'react-feather';
-import { useFormik } from 'formik';
 
 import { createAccountValidateValue } from 'src/utils';
 import './createAccount.scss';
@@ -17,27 +16,6 @@ const CreateAccount = ({
   manageSubmit,
   handleChange,
 }) => {
-  const formik = useFormik({
-    initialValues: {
-      lastName,
-      firstName,
-      email,
-      password,
-      phone,
-      manageSubmit,
-
-    },
-    // createAccountValidateValue,
-    // onSubmit: (evt, values) => {
-    //   alert(JSON.stringify(values, null, 2));
-    //   console.log('soumission ajout ');
-    //   evt.preventDefault();
-    //   manageSubmit();
-    // },
-  });
-
-  // const errorsDiv = useRef(null);
-
   const onSubmit = (evt) => {
     evt.preventDefault();
     const errors = createAccountValidateValue(lastName, firstName, email, password, phone);
@@ -82,7 +60,6 @@ const CreateAccount = ({
           })}
           value={lastName}
         />
-        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
 
         <input
           className="create-account-input"
@@ -95,7 +72,6 @@ const CreateAccount = ({
           })}
           value={firstName}
         />
-        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
 
         <input
           className="create-account-input"
@@ -108,7 +84,6 @@ const CreateAccount = ({
           })}
           value={email}
         />
-        {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
         <input
           className="create-account-input"
@@ -121,7 +96,6 @@ const CreateAccount = ({
           })}
           value={password}
         />
-        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
         <input
           className="create-account-input"
@@ -134,7 +108,6 @@ const CreateAccount = ({
           })}
           value={confirmationPassword}
         />
-        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
         <input
           className="create-account-input"
@@ -147,7 +120,6 @@ const CreateAccount = ({
           })}
           value={phone}
         />
-        {formik.errors.phoneNumber ? <div>{formik.errors.phoneNumber}</div> : null}
 
         <button className="create-account-button" type="submit">Valider</button>
       </form>

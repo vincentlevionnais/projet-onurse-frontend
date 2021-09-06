@@ -10,16 +10,16 @@ const ResetPassword = ({
 }) => {
   const onSubmit = (evt) => {
     evt.preventDefault();
-    // const errors = resetPasswordValidateValue(password);
-    // console.log(errors);
-    // console.log('je click');
+    const errors = resetPasswordValidateValue(password);
+    console.log(errors);
+    console.log('je click');
 
-    manageSubmit();
-    // if (errors && password === confirmationPassword) {
-    // }
-    // else if (password !== confirmationPassword) {
-    //   alert('Les mots de passe ne correspondent pas');
-    // }
+    if (errors && password === confirmationPassword) {
+      manageSubmit();
+    }
+    else if (password !== confirmationPassword) {
+      alert('Les mots de passe ne correspondent pas');
+    }
 };
 
   return (

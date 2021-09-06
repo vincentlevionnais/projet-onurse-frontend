@@ -53,6 +53,7 @@
       align-items: center;
 
       .field {
+        width: 50%;
         .field-input {
           background-color: vars.$lightBlue;
           box-shadow: 1px 2px 10px vars.$darkBlue;
@@ -61,7 +62,7 @@
 
       .settings-validation-button {
         font: vars.$contentFont;
-        color: white;
+        color: #fff;
         background-color: vars.$darkBlue;
         padding: 0.5em;
         margin: 0.3em 0 3em 0;
@@ -76,7 +77,7 @@
         box-shadow: 1px 2px 10px vars.$darkBlue;
         padding: 0.5em;
         margin-bottom: 1em;
-        color: white;
+        color: #fff;
         font-weight: 700;
       }
     }
