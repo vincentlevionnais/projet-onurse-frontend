@@ -30,7 +30,7 @@
 }
 
 .main-create-account {
-
+  padding-left: calc(100vw - 100%);
   .create-account-container {
     display: flex;
     flex-direction: column;
@@ -39,6 +39,7 @@
     position: absolute;
     top: 10em;
     width: 100%;
+    
 
     .create-account-input {
       border: transparent;
