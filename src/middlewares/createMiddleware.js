@@ -25,7 +25,7 @@ const createMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          alert('Compte crée');
+        //  alert('Compte crée');
           store.dispatch(cleanInput());
         })
         .catch((error) => {

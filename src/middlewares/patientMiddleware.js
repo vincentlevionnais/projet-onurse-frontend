@@ -145,7 +145,7 @@ const patientMiddleware = (store) => (next) => (action) => {
             },
           })
           .then((response) => {
-            alert('La fiche patient a été correctement modifiée.');
+          //  alert('La fiche patient a été correctement modifiée.');
 
             store.dispatch(updateOnePatient(
               id,
