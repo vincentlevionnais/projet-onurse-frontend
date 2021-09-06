@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 
-
+@media screen and (min-width: 481px) {
 
 div {
   display: flex;
@@ -12,6 +12,7 @@ div {
     height: 100%;
     display: flex;
     flex-direction: row;
+
 
     .react-datepicker__navigation {
       margin: 0em;
@@ -116,7 +117,126 @@ div {
     }
   }
 }
+}
 
 
 
+@media screen and (max-width: 480px) {
+  
 
+div {
+  display: flex;
+  flex-direction: column;
+
+  .react-datepicker {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size:14px;
+
+    .react-datepicker__navigation {
+      margin: 0em;
+      padding: 0em;
+    }
+
+    .react-datepicker__month-container {
+      display: initial;
+      flex-direction: row;
+    
+      padding: 0em;
+      margin: 0em;
+      width: 100%;
+    
+
+      .react-datepicker__header--has-time-select {
+        display: inline;
+        flex-direction: row;
+
+
+        .react-datepicker__day-names {
+          flex-direction: row;
+         // font-size: x-large;
+          justify-content: space-between;
+       
+
+          // .react-datepicker__day-name {
+          //   margin-right: 1em;
+         
+          // }
+
+        }
+
+        .react-datepicker__current-month {
+          flex-direction: column;
+          padding: 0.5em;
+          align-items: center;
+        }
+
+        .react-datepicker__header__dropdown--scroll {}
+
+
+      }
+
+      .react-datepicker__month {
+        display: contents;
+        align-items: center;
+        flex-direction: column;
+        //font-size: large;
+
+        .react-datepicker__week {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+
+
+          .react-datepicker__day {
+            margin-right: 0.5em;
+            //font-size: large;
+          }
+        }
+
+      }
+    }
+
+    .react-datepicker__time-container {
+      display: flex;
+      margin: auto;
+      
+
+      .react-datepicker__header--time {
+        background-color: white;
+        margin: auto;
+      }
+
+      .react-datepicker__time {
+       // font-size: x-large;
+        margin: auto;
+        
+        color: vars.$pink;
+        .react-datepicker__time-box{
+          margin: auto;
+          vertical-align:text-top;
+
+          .react-datepicker__time-list{
+            padding: 0;
+            
+
+
+            .react-datepicker__time-list-item {
+              padding: 0;
+              margin: 0;
+             
+            }
+          }
+        }
+
+        .react-datepicker__time-box{
+          float: left;
+        }
+      }
+    }
+  }
+}
+  
+}
