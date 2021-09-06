@@ -29,72 +29,76 @@
   }
 }
 
-.create-account-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 10em;
-  width: 100%;
-  
-  .create-account-input {
-    border: transparent;
-    background-color: vars.$lightBlue;
-    color: black;
-    margin: 0.7em;
-    padding: 1.3em;
-    background-color: vars.$lightBlue;
-    width: 70%;
-    border-radius: 5px;
-    box-shadow: 1px 2px 10px vars.$darkBlue;
-  }
-
-  .create-account-button {
-    font: vars.$contentFont;
-    color: white;
-    border: none;
-    background-color: vars.$darkBlue;
-    padding: 0.5em;
-    margin: 1em;
-    text-align: center;
-    width: 50%;
-    box-shadow: 1px 2px 10px vars.$darkBlue
-  }
-}
-
-
-
-@media (max-width: 700px) {
-
-
+.main-create-account {
+  padding-left: calc(100vw - 100%);
   .create-account-container {
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3em;
+    justify-content: center;
+    position: absolute;
+    top: 10em;
+    width: 100%;
+    
 
     .create-account-input {
       border: transparent;
       background-color: vars.$lightBlue;
       color: black;
       margin: 0.7em;
-      padding: 1em;
+      padding: 1.3em;
+      background-color: vars.$lightBlue;
+      width: 70%;
+      border-radius: 5px;
+      box-shadow: 1px 2px 10px vars.$darkBlue;
     }
-
+  
     .create-account-button {
       font: vars.$contentFont;
       color: white;
+      border: none;
       background-color: vars.$darkBlue;
-      padding: 0.8em;
+      padding: 0.5em;
       margin: 1em;
       text-align: center;
       width: 50%;
-      letter-spacing: 0.1em;
-
+      box-shadow: 1px 2px 10px vars.$darkBlue
     }
   }
+}
 
 
+
+
+@media (max-width: 700px) {
+
+  .main-create-account {
+    .create-account-container {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3em;
+
+      .create-account-input {
+        border: transparent;
+        background-color: vars.$lightBlue;
+        color: black;
+        margin: 0.7em;
+        padding: 1em;
+      }
+
+      .create-account-button {
+        font: vars.$contentFont;
+        color: white;
+        background-color: vars.$darkBlue;
+        padding: 0.8em;
+        margin: 1em;
+        text-align: center;
+        width: 50%;
+        letter-spacing: 0.1em;
+
+      }
+    }
+  }
 }

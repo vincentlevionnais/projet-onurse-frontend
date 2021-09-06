@@ -43,86 +43,88 @@ const CreateAccount = ({
           </h1>
         </div>
       </header>
-      <form
-        className="create-account-container"
-        onSubmit={(evt) => {
-          onSubmit(evt);
-        }}
-      >
-        <input
-          className="create-account-input"
-          placeholder="Nom"
-          id="lastName"
-          name="lastName"
-          type="text"
-          onChange={((evt) => {
-            handleChange(evt.target.value, evt.target.name);
-          })}
-          value={lastName}
-        />
+      <main className="main-create-account">
+        <form
+          className="create-account-container"
+          onSubmit={(evt) => {
+            onSubmit(evt);
+          }}
+        >
+          <input
+            className="create-account-input"
+            placeholder="Nom"
+            id="lastName"
+            name="lastName"
+            type="text"
+            onChange={((evt) => {
+              handleChange(evt.target.value, evt.target.name);
+            })}
+            value={lastName}
+          />
 
-        <input
-          className="create-account-input"
-          placeholder="Prénom"
-          id="firstName"
-          name="firstName"
-          type="text"
-          onChange={((evt) => {
-            handleChange(evt.target.value, evt.target.name);
-          })}
-          value={firstName}
-        />
+          <input
+            className="create-account-input"
+            placeholder="Prénom"
+            id="firstName"
+            name="firstName"
+            type="text"
+            onChange={((evt) => {
+              handleChange(evt.target.value, evt.target.name);
+            })}
+            value={firstName}
+          />
 
-        <input
-          className="create-account-input"
-          placeholder="Email"
-          id="email"
-          name="email"
-          type="email"
-          onChange={((evt) => {
-            handleChange(evt.target.value, evt.target.name);
-          })}
-          value={email}
-        />
+          <input
+            className="create-account-input"
+            placeholder="Email"
+            id="email"
+            name="email"
+            type="email"
+            onChange={((evt) => {
+              handleChange(evt.target.value, evt.target.name);
+            })}
+            value={email}
+          />
 
-        <input
-          className="create-account-input"
-          placeholder="Mot de passe"
-          id="password"
-          name="password"
-          type="password"
-          onChange={((evt) => {
-            handleChange(evt.target.value, evt.target.name);
-          })}
-          value={password}
-        />
+          <input
+            className="create-account-input"
+            placeholder="Mot de passe"
+            id="password"
+            name="password"
+            type="password"
+            onChange={((evt) => {
+              handleChange(evt.target.value, evt.target.name);
+            })}
+            value={password}
+          />
 
-        <input
-          className="create-account-input"
-          placeholder="Confirmer votre mot de passe"
-          id="confirmationPassword"
-          name="confirmationPassword"
-          type="password"
-          onChange={((evt) => {
-            handleChange(evt.target.value, evt.target.name);
-          })}
-          value={confirmationPassword}
-        />
+          <input
+            className="create-account-input"
+            placeholder="Confirmer votre mot de passe"
+            id="confirmationPassword"
+            name="confirmationPassword"
+            type="password"
+            onChange={((evt) => {
+              handleChange(evt.target.value, evt.target.name);
+            })}
+            value={confirmationPassword}
+          />
 
-        <input
-          className="create-account-input"
-          placeholder="N° de téléphone"
-          id="phone"
-          name="phone"
-          type="tel"
-          onChange={((evt) => {
-            handleChange(evt.target.value, evt.target.name);
-          })}
-          value={phone}
-        />
+          <input
+            className="create-account-input"
+            placeholder="N° de téléphone"
+            id="phone"
+            name="phone"
+            type="tel"
+            onChange={((evt) => {
+              handleChange(evt.target.value, evt.target.name);
+            })}
+            value={phone}
+          />
 
-        <button className="create-account-button" type="submit">Valider</button>
-      </form>
+          <button className="create-account-button" type="submit">Valider</button>
+        </form>
+      </main>
     </>
 
   );

@@ -18,8 +18,11 @@ const RdvByDay = ({
   const patient = getPatientById(patient_id, patients);
 
   const eventDate = start;
-  const hour = `${eventDate.getHours()}h${eventDate.getMinutes()}`;
-
+  const hour = eventDate.toLocaleString('fr-FR', {
+    timeZone: 'Europe/Paris',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
     const cssClass = classNames(
       'taskTodo',
