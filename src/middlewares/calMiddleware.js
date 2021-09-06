@@ -140,7 +140,7 @@ const calMiddleware = (store) => (next) => (action) => {
             action.datetimeStart,
             action.datetimeEnd,
           ));
-          alert('Modification effectué');
+         // alert('Modification effectué');
         })
         .catch((error) => {
           alert('une erreur est survenue, merci de réessayer');
@@ -174,7 +174,7 @@ const calMiddleware = (store) => (next) => (action) => {
             action.datetimeStart,
             action.datetimeEnd,
           ));
-          alert('Modification effectué');
+          // alert('Modification effectué');
         })
         .catch((error) => {
           alert('une erreur est survenue, merci de réessayer');
@@ -193,7 +193,7 @@ const calMiddleware = (store) => (next) => (action) => {
 
       )
         .then((response) => {
-          alert('Rendez-vous supprimé');
+         // alert('Rendez-vous supprimé');
 
           store.dispatch(deleteEvent(action.id));
         })
