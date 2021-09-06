@@ -1,6 +1,6 @@
 // === import npm
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // === import local
 // import function for search patient by id
@@ -16,7 +16,9 @@ import Informations from './Informations';
 import maps from '../../assets/images/maps.png';
 import './patientCard.scss';
 
-const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
+const PatientCard = ({
+  patients, events, popupIsOpen, openPopUp,
+}) => {
   // get the id in params of URL
   const { id } = useParams();
   // search patient by id
@@ -41,8 +43,8 @@ const PatientCard = ({ patients, events, popupIsOpen, openPopUp }) => {
             <Edit />
           </Link>
         </h2>
-        <a className="road" href={`https://www.google.com/maps/search/?api=1&query=${road}`}>
-          <img src={maps} alt="logo Google Maps"/>
+        <a className="road" href={`https://www.google.com/maps/search/?api=1&query=${road}`} target="_blank" rel="noreferrer">
+          <img src={maps} alt="logo Google Maps" />
           Itinéraire
         </a>
         <CivilStatus
