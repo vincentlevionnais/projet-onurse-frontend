@@ -36,6 +36,8 @@ function logReducer(state = initialState, action = {}) {
         ...state,
         logged: true,
         token: localStorage.getItem('token'),
+        email: '',
+        password: '',
       };
 
     case LOG_OUT:
@@ -45,6 +47,8 @@ function logReducer(state = initialState, action = {}) {
         ...state,
         logged: false,
         token: null,
+        email: '',
+        password: '',
       };
 
     case TO_LOGIN:
