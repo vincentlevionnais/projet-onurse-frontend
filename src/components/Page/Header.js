@@ -6,7 +6,7 @@ import './page.scss';
 
 const Header = ({ titlePage, handleLogOut }) => {
   const history = useHistory();
-
+  // if need use history
   const handleBack = () => {
     history.goBack();
   };
@@ -15,9 +15,8 @@ const Header = ({ titlePage, handleLogOut }) => {
 
     <header className="header">
       <Link
-        to=""
+        to="/"
         type="submit"
-        onClick={handleBack}
         className="home-button"
       >
         <ArrowLeft />
