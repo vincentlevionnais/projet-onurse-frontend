@@ -15,7 +15,7 @@ import {
 const patientMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_PATIENTS:
-      axios.get('http://35.173.138.41/projet-o-nurse/public/api/patients',
+      axios.get('http://34.201.19.168/projet-onurse-backend/public/api/patients',
 
         {
           headers: {
@@ -53,7 +53,7 @@ const patientMiddleware = (store) => (next) => (action) => {
           trustedPerson,
         } = action.patient;
         console.log(lastname);
-        axios.post('http://35.173.138.41/projet-o-nurse/public/api/patients',
+        axios.post('http://34.201.19.168/projet-onurse-backend/public/api/patients',
           {
             lastname: (lastname.trim() === '' ? null : lastname),
             firstname: (firstname.trim() === '' ? null : firstname),
@@ -121,7 +121,7 @@ const patientMiddleware = (store) => (next) => (action) => {
           trustedPerson,
         } = action.patient;
         console.log(lastname);
-        axios.put(`http://35.173.138.41/projet-o-nurse/public/api/patients/${id}`,
+        axios.put(`http://34.201.19.168/projet-onurse-backend/public/api/patients/${id}`,
           {
             id: id,
             lastname: lastname,
@@ -173,7 +173,7 @@ const patientMiddleware = (store) => (next) => (action) => {
       break;
     case DELETE_PATIENT:
       axios.delete(
-        `http://35.173.138.41/projet-o-nurse/public/api/patients/${action.id}`,
+        `http://34.201.19.168/projet-onurse-backend/public/api/patients/${action.id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

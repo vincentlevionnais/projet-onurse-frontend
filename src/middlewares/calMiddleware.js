@@ -11,7 +11,7 @@ const calMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_EVENTS: {
       axios.get(
-        'http://35.173.138.41/projet-o-nurse/public/api/appointments',
+        'http://34.201.19.168/projet-onurse-backend/public/api/appointments',
 
         {
           headers: {
@@ -45,7 +45,7 @@ const calMiddleware = (store) => (next) => (action) => {
         const datetimeEndGoodFormat = moment(datetimeEnd).format();
         const patientGoodFormat = parseInt(patient, 10);
         axios.post(
-          'http://35.173.138.41/projet-o-nurse/public/api/appointments',
+          'http://34.201.19.168/projet-onurse-backend/public/api/appointments',
           {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
@@ -81,7 +81,7 @@ const calMiddleware = (store) => (next) => (action) => {
         const patientGoodFormat = parseInt(patient, 10);
 
         axios.put(
-          `http://35.173.138.41/projet-o-nurse/public/api/appointments/${id}`,
+          `http://34.201.19.168/projet-onurse-backend/public/api/appointments/${id}`,
           {
             reason: reason,
             datetimeStart: datetimeStartGoodFormat,
@@ -121,7 +121,7 @@ const calMiddleware = (store) => (next) => (action) => {
       const datetimeStartGoodFormat = moment(action.datetimeStart).format();
       const datetimeEndGoodFormat = moment(action.datetimeEnd).format();
       axios.put(
-        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+        `http://34.201.19.168/projet-onurse-backend/public/api/appointments/${action.id}`,
         {
           id: action.id,
           datetimeStart: datetimeStartGoodFormat,
@@ -156,7 +156,7 @@ const calMiddleware = (store) => (next) => (action) => {
       const datetimeEndGoodFormat = moment(action.datetimeEnd).format();
 
       axios.put(
-        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+        `http://34.201.19.168/projet-onurse-backend/public/api/appointments/${action.id}`,
         {
           id: action.id,
           datetimeStart: datetimeStartGoodFormat,
@@ -183,7 +183,7 @@ const calMiddleware = (store) => (next) => (action) => {
       break;
     case DELETE_ONE_EVENT:
       axios.delete(
-        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+        `http://34.201.19.168/projet-onurse-backend/public/api/appointments/${action.id}`,
 
         {
           headers: {
@@ -203,7 +203,7 @@ const calMiddleware = (store) => (next) => (action) => {
       break;
     case SET_STATUS:
       axios.put(
-        `http://35.173.138.41/projet-o-nurse/public/api/appointments/${action.id}`,
+        `http://34.201.19.168/projet-onurse-backend/public/api/appointments/${action.id}`,
         {
           id: action.id,
           status: action.status,

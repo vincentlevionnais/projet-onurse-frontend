@@ -13,7 +13,7 @@ const logMiddleware = (store) => (next) => (action) => {
       const { email, password } = store.getState().log;
 
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/login_check',
+        'http://34.201.19.168/projet-onurse-backend/public/api/login_check',
         {
           username: email,
           password: password,
@@ -37,7 +37,7 @@ const logMiddleware = (store) => (next) => (action) => {
     case FETCH_USER_INFOS:
 
       axios.get(
-        'http://35.173.138.41/projet-o-nurse/public/api/index',
+        'http://34.201.19.168/projet-onurse-backend/public/api/index',
 
         {
           headers: {
@@ -59,7 +59,7 @@ const logMiddleware = (store) => (next) => (action) => {
       const { popupEmail } = store.getState().log;
 
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/reset-password',
+        'http://34.201.19.168/projet-onurse-backend/public/reset-password',
         {
           email: popupEmail,
         },
@@ -84,7 +84,7 @@ const logMiddleware = (store) => (next) => (action) => {
       console.log(token);
 
       axios.post(
-        `http://35.173.138.41/projet-o-nurse/public/reset-password/reset/${token}`,
+        `http://34.201.19.168/projet-onurse-backend/public/reset-password/reset/${token}`,
         {
           password: password,
           confirmationPassword: confirmationPassword,

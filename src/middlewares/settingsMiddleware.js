@@ -12,7 +12,7 @@ const settingsMiddleware = (store) => (next) => (action) => {
 
       if (email !== '') {
         axios.put(
-          `http://35.173.138.41/projet-o-nurse/public/api/nurses/${id}`,
+          `http://34.201.19.168/projet-onurse-backend/public/api/nurses/${id}`,
           {
             email: email,
           },
@@ -34,7 +34,7 @@ const settingsMiddleware = (store) => (next) => (action) => {
       }
       else {
         axios.put(
-          `http://35.173.138.41/projet-o-nurse/public/api/nurses/${id}`,
+          `http://34.201.19.168/projet-onurse-backend/public/api/nurses/${id}`,
           {
             password: password,
           },
@@ -61,7 +61,7 @@ const settingsMiddleware = (store) => (next) => (action) => {
       const { id } = store.getState().log;
 
       axios.delete(
-        `http://35.173.138.41/projet-o-nurse/public/api/nurses/${id}`,
+        `http://34.201.19.168/projet-onurse-backend/public/api/nurses/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

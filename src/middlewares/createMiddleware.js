@@ -10,7 +10,7 @@ const createMiddleware = (store) => (next) => (action) => {
       } = store.getState().create;
 
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/login',
+        'http://34.201.19.168/projet-onurse-backend/public/api/login',
         {
           lastName: lastName,
           firstName: firstName,

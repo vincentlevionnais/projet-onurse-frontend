@@ -15,7 +15,7 @@ const taskMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_TASKS:
       console.log('fetch tasks');
-      axios.get('http://35.173.138.41/projet-o-nurse/public/api/tasks',
+      axios.get('http://34.201.19.168/projet-onurse-backend/public/api/tasks',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -35,7 +35,7 @@ const taskMiddleware = (store) => (next) => (action) => {
     case SUBMIT_TASK:
       const { label } = store.getState().task;
       axios.post(
-        'http://35.173.138.41/projet-o-nurse/public/api/tasks',
+        'http://34.201.19.168/projet-onurse-backend/public/api/tasks',
         {
           taskName: label,
           status: 0,
@@ -61,7 +61,7 @@ const taskMiddleware = (store) => (next) => (action) => {
         break;
       case DELETE_TASK:
         axios.delete(
-          `http://35.173.138.41/projet-o-nurse/public/api/tasks/${action.id}`,
+          `http://34.201.19.168/projet-onurse-backend/public/api/tasks/${action.id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -77,7 +77,7 @@ const taskMiddleware = (store) => (next) => (action) => {
         break;
       case SET_TASK_STATUS:
         axios.put(
-          `http://35.173.138.41/projet-o-nurse/public/api/tasks/${action.id}`,
+          `http://34.201.19.168/projet-onurse-backend/public/api/tasks/${action.id}`,
           {
             id: action.id,
             status: action.status,
